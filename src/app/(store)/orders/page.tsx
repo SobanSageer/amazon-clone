@@ -6,7 +6,7 @@ import { Package } from "lucide-react";
 import { currentUser } from "@/auth";
 import { CardAddToCart } from "@/components/card-add-to-cart";
 import { formatPrice } from "@/lib/format";
-import { getOrders, orderDate, STATUS_LABEL } from "@/lib/orders";
+import { getOrders, orderDate, STATUS_CLASS, STATUS_LABEL } from "@/lib/orders";
 
 export const metadata: Metadata = { title: "Your orders" };
 
@@ -58,7 +58,7 @@ export default async function OrdersPage() {
                   </div>
                 </div>
                 <div className="px-4 py-3">
-                  <p className="text-sm font-semibold text-emerald-700">{STATUS_LABEL[o.status] ?? o.status}</p>
+                  <p className={`text-sm font-bold ${STATUS_CLASS[o.status] ?? ""}`}>{STATUS_LABEL[o.status] ?? o.status}</p>
                   <ul className="mt-2 flex flex-col gap-2">
                     {o.items.map((i) => (
                       <li key={i.id} className="flex items-center gap-3">

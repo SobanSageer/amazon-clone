@@ -7,7 +7,9 @@ import { CreditCard, Loader2, Lock } from "lucide-react";
 import { placeOrderAction, type CheckoutState } from "@/app/actions/checkout";
 import { OrderSummary } from "@/components/order-summary";
 import { formatPrice } from "@/lib/format";
+import { arrivalFor, processingDays } from "@/lib/delivery";
 import { cardBrand, formatCardNumber, formatExpiry, TEST_CARD } from "@/lib/payment";
+import { findPromo, orderTotals, promoProblem, PROMOS, SHIPPING_SPEEDS, shippingFeeFor, type ShippingSpeed } from "@/lib/pricing";
 import { US_STATES } from "@/lib/us-states";
 import { cn } from "@/lib/utils";
 
@@ -21,7 +23,7 @@ type SavedAddress = {
   zip: string;
   phone: string;
 };
-type Line = { id: string; quantity: number; product: { title: string; thumbnail: string; price: number; slug: string } };
+type Line = { id: string; quantity: number; product: { title: string; thumbnail: string; price: number; slug: string; shipping?: string } };
 
 const inputCls = (error?: string) =>
   cn(
@@ -126,6 +128,29 @@ export function CheckoutForm({
     startTransition(() => action(data));
   }
   const [addressId, setAddressId] = useState(addresses[0]?.id ?? "new");
+  const [newState, setNewState] = useState(state.address?.state ?? "");
+  const [speed, setSpeed] = useState<ShippingSpeed>("standard");
+  const [promoInput, setPromoInput] = useState("");
+  const [promo, setPromo] = useState("");
+  const [promoMsg, setPromoMsg] = useState<string | null>(null);
+
+  // Live totals: the server recomputes the same numbers when the order is placed.
+  const shipState = addressId === "new" ? newState || null : (addresses.find((a) => a.id === addressId)?.state ?? null);
+  const totals = orderTotals(subtotal, { speed, state: shipState, promoCode: promo || null });
+  const processing = Math.max(1, ...items.map((i) => processingDays(i.product.shipping)));
+
+  function applyPromo() {
+    const code = promoInput.trim().toUpperCase();
+    if (!code) return;
+    const problem = promoProblem(code, subtotal);
+    if (problem) {
+      setPromoMsg(problem);
+      return;
+    }
+    setPromo(code);
+    setPromoMsg(null);
+    setPromoInput("");
+  }
   const [card, setCard] = useState({ name: "", number: "", expiry: "", cvc: "" });
   const ae = state.addressErrors ?? {};
   const ce = state.cardErrors ?? {};
@@ -212,6 +237,7 @@ export function CheckoutForm({
                   name="state"
                   autoComplete="shipping address-level1"
                   defaultValue={state.address?.state ?? ""}
+                  onChange={(e) => setNewState(e.target.value)}
                   aria-invalid={ae.state ? true : undefined}
                   aria-describedby={ae.state ? "state-error" : undefined}
                   className={inputCls(ae.state)}
@@ -232,8 +258,46 @@ export function CheckoutForm({
           )}
         </Section>
 
+        <Section step={2} title="Delivery speed">
+          <fieldset>
+            <legend className="sr-only">Choose a delivery speed</legend>
+            <div className="flex flex-col gap-2">
+              {(Object.keys(SHIPPING_SPEEDS) as ShippingSpeed[]).map((sp) => {
+                const fee = promo && findPromo(promo)?.kind === "free-shipping" && sp === "standard" ? 0 : shippingFeeFor(sp, subtotal);
+                return (
+                  <label
+                    key={sp}
+                    className={cn(
+                      "flex cursor-pointer items-start gap-3 rounded-lg border p-3 text-sm has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-[#007185]",
+                      speed === sp ? "border-[#007185] bg-[#f0f8fa]" : "border-zinc-200 hover:border-zinc-300",
+                    )}
+                  >
+                    <input
+                      type="radio"
+                      name="shippingSpeed"
+                      value={sp}
+                      checked={speed === sp}
+                      onChange={() => setSpeed(sp)}
+                      className="mt-1 accent-[#007185]"
+                    />
+                    <span className="flex-1">
+                      <span className="block font-bold text-[#067d62]">{arrivalFor(processing, sp).long}</span>
+                      <span className="block text-zinc-700">
+                        {fee === 0 ? "FREE" : formatPrice(fee)} — {SHIPPING_SPEEDS[sp].label}
+                      </span>
+                    </span>
+                  </label>
+                );
+              })}
+            </div>
+          </fieldset>
+          {processing > 3 && (
+            <p className="mt-2 text-xs text-zinc-600">Delivery dates include time for items that take longer to ship.</p>
+          )}
+        </Section>
+
         <Section
-          step={2}
+          step={3}
           title="Payment"
           action={
             <button
@@ -326,7 +390,7 @@ export function CheckoutForm({
         </Section>
 
         <Section
-          step={3}
+          step={4}
           title={`Review items (${itemCount})`}
           action={
             <Link href="/cart" className="text-sm font-medium text-amz-link hover:underline">
@@ -352,10 +416,59 @@ export function CheckoutForm({
       </div>
 
       <div className="lg:sticky lg:top-4">
-        <OrderSummary subtotal={subtotal} itemCount={itemCount}>
+        <input type="hidden" name="promoCode" value={promo} />
+        <OrderSummary totals={totals} itemCount={itemCount} speed={speed} state={shipState}>
           <PlaceOrderButton pending={pending} />
           <p className="mt-2 text-center text-xs text-zinc-600">Simulated payment — you won’t be charged.</p>
         </OrderSummary>
+        <div className="mt-3 rounded-lg border border-[#d5d9d9] bg-white p-4">
+          {promo ? (
+            <p className="flex items-center justify-between gap-2 text-sm">
+              <span>
+                <span className="font-bold text-[#067d62]">{promo}</span> applied — {findPromo(promo)?.description}
+              </span>
+              <button
+                type="button"
+                onClick={() => setPromo("")}
+                className="text-[13px] text-amz-link hover:text-amz-link-hover hover:underline"
+              >
+                Remove
+              </button>
+            </p>
+          ) : (
+            <>
+              <label htmlFor="promo-input" className="block text-sm font-bold text-[#0f1111]">
+                Gift card or promo code
+              </label>
+              <div className="mt-1 flex gap-2">
+                <input
+                  id="promo-input"
+                  value={promoInput}
+                  onChange={(e) => setPromoInput(e.target.value)}
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter") {
+                      e.preventDefault();
+                      applyPromo();
+                    }
+                  }}
+                  aria-invalid={promoMsg || state.promoError ? true : undefined}
+                  aria-describedby="promo-help"
+                  className="h-8 min-w-0 flex-1 rounded-[3px] border border-[#a6a6a6] px-2 text-base uppercase focus:border-[#e77600] focus:shadow-[0_0_3px_2px_rgba(228,121,17,.5)] focus:outline-none sm:text-sm"
+                />
+                <button
+                  type="button"
+                  onClick={applyPromo}
+                  className="h-8 rounded-lg border border-[#d5d9d9] bg-white px-3 text-[13px] shadow-[0_2px_5px_rgba(213,217,217,.5)] hover:bg-[#f7fafa]"
+                >
+                  Apply
+                </button>
+              </div>
+              <p id="promo-help" className={cn("mt-1 text-xs", promoMsg || state.promoError ? "text-[#c40000]" : "text-zinc-600")} aria-live="polite">
+                {promoMsg ?? state.promoError ?? `Demo codes: ${PROMOS.map((p) => p.code).join(", ")}`}
+              </p>
+            </>
+          )}
+        </div>
       </div>
     </form>
   );

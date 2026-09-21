@@ -42,13 +42,18 @@ export async function getCartItems(owner: CartOwner | null, { saved = false } = 
     select: {
       id: true,
       quantity: true,
-      product: { select: { id: true, slug: true, title: true, thumbnail: true, price: true, stock: true } },
+      product: { select: { id: true, slug: true, title: true, thumbnail: true, price: true, stock: true, specs: true } },
     },
   });
   return rows.map((r) => ({
     id: r.id,
     quantity: r.quantity,
-    product: { ...r.product, price: r.product.price.toNumber() },
+    product: {
+      ...r.product,
+      price: r.product.price.toNumber(),
+      shipping: (r.product.specs as Record<string, string> | null)?.Shipping,
+      specs: undefined,
+    },
   }));
 }
 

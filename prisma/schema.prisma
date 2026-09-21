@@ -105,21 +105,26 @@ model CartItem {
 }
 
 model Order {
-  id           String      @id @default(cuid())
-  orderNumber  String      @unique
-  userId       String
-  user         User        @relation(fields: [userId], references: [id])
-  addressId    String
-  address      Address     @relation(fields: [addressId], references: [id])
-  status       String      @default("placed")
-  subtotal     Decimal     @db.Decimal(10, 2)
-  tax          Decimal     @db.Decimal(10, 2)
-  shippingFee  Decimal     @db.Decimal(10, 2)
-  total        Decimal     @db.Decimal(10, 2)
-  paymentBrand String
-  paymentLast4 String
-  createdAt    DateTime    @default(now())
-  items        OrderItem[]
+  id            String      @id @default(cuid())
+  orderNumber   String      @unique
+  userId        String
+  user          User        @relation(fields: [userId], references: [id])
+  addressId     String
+  address       Address     @relation(fields: [addressId], references: [id])
+  status        String      @default("placed")
+  shippingSpeed String      @default("standard")
+  promoCode     String?
+  discount      Decimal     @default(0) @db.Decimal(10, 2)
+  taxRate       Decimal     @default(0) @db.Decimal(6, 4)
+  cancelledAt   DateTime?
+  subtotal      Decimal     @db.Decimal(10, 2)
+  tax           Decimal     @db.Decimal(10, 2)
+  shippingFee   Decimal     @db.Decimal(10, 2)
+  total         Decimal     @db.Decimal(10, 2)
+  paymentBrand  String
+  paymentLast4  String
+  createdAt     DateTime    @default(now())
+  items         OrderItem[]
 
   @@index([userId, createdAt])
 }

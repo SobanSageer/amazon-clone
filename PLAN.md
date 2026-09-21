@@ -160,6 +160,7 @@ Address
   zip           String
   country       String   // "US" only for v1
   isDefault     Boolean
+  archived      Boolean                 // removed from address book; kept because orders point at it
 
 Category
   id            String   @id
@@ -188,13 +189,19 @@ CartItem
   sessionId     String?                 // cookie-scoped id while guest; nulled after merge
   productId     String   -> Product
   quantity      Int
+  savedForLater Boolean                 // "Saved for later": excluded from count, checkout, order clearing
 
 Order
   id            String   @id
   orderNumber   String   @unique        // shown on confirmation, human-facing
   userId        String   -> User
   addressId     String   -> Address
-  status        String                  // "placed" for v1; room to grow later
+  status        String                  // "placed" | "cancelled"
+  shippingSpeed String                  // standard | two-day | one-day
+  promoCode     String?
+  discount      Decimal
+  taxRate       Decimal                 // state base rate at time of order
+  cancelledAt   DateTime?
   subtotal      Decimal
   tax           Decimal
   shippingFee   Decimal
@@ -211,6 +218,15 @@ OrderItem
   priceSnapshot Decimal                 // frozen at purchase time — price can drift later
   imageSnapshot String?                 // thumbnail for order history, frozen too
   quantity      Int
+
+Review                                  // Phase 8
+  id, productId -> Product, userId? -> User, authorName, rating (1-5), title?, body,
+  verified      Boolean                 // reviewer has a non-cancelled order containing it
+  sourceKey     String? @unique         // seeded DummyJSON reviews, for idempotent seeding
+  @@unique([userId, productId])         // one review per person per product
+
+ListItem                                // Phase 8: "Your List"
+  id, userId -> User, productId -> Product, createdAt, @@unique([userId, productId])
 ```
 
 `CartItem` carries both `userId` and `sessionId` so a guest can add to cart with no

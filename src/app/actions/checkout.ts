@@ -6,7 +6,7 @@ import { currentUser } from "@/auth";
 import { getCartItems } from "@/lib/cart";
 import { db } from "@/lib/db";
 import { cardBrand, digitsOnly, validateCard, type CardErrors } from "@/lib/payment";
-import { orderTotals } from "@/lib/pricing";
+import { isShippingSpeed, orderTotals, promoProblem } from "@/lib/pricing";
 import { readAddress, toAddressData, type AddressErrors, type AddressInput } from "@/lib/address";
 import { Prisma } from "@/generated/prisma/client";
 
@@ -14,6 +14,7 @@ export type CheckoutState = {
   error?: string;
   addressErrors?: AddressErrors & { addressId?: string };
   cardErrors?: CardErrors;
+  promoError?: string;
   address?: Partial<AddressInput>;
 };
 
@@ -33,15 +34,25 @@ export async function placeOrderAction(_prev: CheckoutState, formData: FormData)
   const addressChoice = String(formData.get("addressId") ?? "new");
   let addressId: string | null = null;
   let newAddress: AddressInput | null = null;
+  let shipState: string;
   if (addressChoice !== "new") {
-    const owned = await db.address.findFirst({ where: { id: addressChoice, userId: user.id, archived: false }, select: { id: true } });
+    const owned = await db.address.findFirst({
+      where: { id: addressChoice, userId: user.id, archived: false },
+      select: { id: true, state: true },
+    });
     if (!owned) return { addressErrors: { addressId: "Choose a shipping address." } };
     addressId = owned.id;
+    shipState = owned.state;
   } else {
     const { a, errors } = readAddress(formData);
     if (Object.keys(errors).length) return { addressErrors: errors, address: a };
     newAddress = a;
+    shipState = a.state;
   }
+
+  const speedRaw = formData.get("shippingSpeed");
+  const speed = isShippingSpeed(speedRaw) ? speedRaw : "standard";
+  const promoCode = String(formData.get("promoCode") ?? "").trim();
 
   const card = {
     name: String(formData.get("cardName") ?? ""),
@@ -55,7 +66,13 @@ export async function placeOrderAction(_prev: CheckoutState, formData: FormData)
   const items = await getCartItems({ userId: user.id });
   if (!items.length) return { error: "Your cart is empty." };
 
-  const totals = orderTotals(items.reduce((s, i) => s + i.quantity * i.product.price, 0));
+  const subtotal = items.reduce((s, i) => s + i.quantity * i.product.price, 0);
+  if (promoCode) {
+    const problem = promoProblem(promoCode, subtotal);
+    if (problem) return { promoError: problem, address: newAddress ?? undefined };
+  }
+  // Recomputed here from the cart and address, never taken from the client.
+  const { taxRate, ...totals } = orderTotals(subtotal, { speed, state: shipState, promoCode });
   const digits = digitsOnly(card.number);
 
   let orderNumber = "";
@@ -89,6 +106,8 @@ export async function placeOrderAction(_prev: CheckoutState, formData: FormData)
               userId: user.id,
               addressId: shipTo,
               ...totals,
+              taxRate: taxRate ?? 0,
+              shippingSpeed: speed,
               paymentBrand: cardBrand(digits),
               paymentLast4: digits.slice(-4),
               items: {

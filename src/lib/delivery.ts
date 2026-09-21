@@ -1,7 +1,7 @@
-import { FREE_SHIPPING_THRESHOLD } from "@/lib/pricing";
+import { FREE_SHIPPING_THRESHOLD, SHIPPING_SPEEDS, type ShippingSpeed } from "@/lib/pricing";
 
-// Business days from the product's own "Ships in…" text, plus two days in transit.
-function businessDaysFor(shipping: string | undefined) {
+// Business days before the item leaves the warehouse, from its own "Ships in…" text.
+export function processingDays(shipping: string | undefined) {
   const s = (shipping ?? "").toLowerCase();
   if (s.includes("overnight")) return 1;
   if (s.includes("1-2 business")) return 2;
@@ -23,11 +23,18 @@ function addBusinessDays(from: Date, days: number) {
   return d;
 }
 
-export function deliveryEstimate(shipping: string | undefined, price: number, now = new Date()) {
-  const date = addBusinessDays(now, businessDaysFor(shipping) + 2);
+function formats(date: Date) {
   return {
-    free: price >= FREE_SHIPPING_THRESHOLD,
     short: date.toLocaleDateString("en-US", { weekday: "short", month: "short", day: "numeric", timeZone: "UTC" }),
     long: date.toLocaleDateString("en-US", { weekday: "long", month: "long", day: "numeric", timeZone: "UTC" }),
   };
+}
+
+export function arrivalFor(processing: number, speed: ShippingSpeed, now = new Date()) {
+  return formats(addBusinessDays(now, processing + SHIPPING_SPEEDS[speed].transitDays));
+}
+
+// What the product page and cards show: the Standard-shipping arrival date.
+export function deliveryEstimate(shipping: string | undefined, price: number, now = new Date()) {
+  return { free: price >= FREE_SHIPPING_THRESHOLD, ...arrivalFor(processingDays(shipping), "standard", now) };
 }

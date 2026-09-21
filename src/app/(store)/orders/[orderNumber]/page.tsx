@@ -6,7 +6,9 @@ import { CheckCircle2 } from "lucide-react";
 import { auth } from "@/auth";
 import { CartCountSync } from "@/components/cart-quantity";
 import { formatPrice } from "@/lib/format";
-import { getOrder, orderDate, STATUS_LABEL } from "@/lib/orders";
+import { cancelOrderAction } from "@/app/actions/orders";
+import { getOrder, orderDate, STATUS_CLASS, STATUS_LABEL } from "@/lib/orders";
+import { SHIPPING_SPEEDS, isShippingSpeed } from "@/lib/pricing";
 
 export async function generateMetadata(props: PageProps<"/orders/[orderNumber]">): Promise<Metadata> {
   return { title: `Order ${(await props.params).orderNumber}` };
@@ -66,7 +68,7 @@ export default async function OrderPage(props: PageProps<"/orders/[orderNumber]"
             </div>
             <div>
               <dt className="text-zinc-600">Status</dt>
-              <dd className="font-semibold text-emerald-700">{STATUS_LABEL[order.status] ?? order.status}</dd>
+              <dd className={`font-semibold ${STATUS_CLASS[order.status] ?? ""}`}>{STATUS_LABEL[order.status] ?? order.status}</dd>
             </div>
             <div>
               <dt className="text-zinc-600">Total</dt>
@@ -126,8 +128,12 @@ export default async function OrderPage(props: PageProps<"/orders/[orderNumber]"
               <dl className="mt-2 space-y-1">
                 {[
                   ["Items", formatPrice(order.subtotal)],
-                  ["Shipping", order.shippingFee === 0 ? "Free" : formatPrice(order.shippingFee)],
-                  ["Tax", formatPrice(order.tax)],
+                  ...(order.discount > 0 ? [[`Promotion (${order.promoCode})`, `−${formatPrice(order.discount)}`]] : []),
+                  [
+                    isShippingSpeed(order.shippingSpeed) ? SHIPPING_SPEEDS[order.shippingSpeed].label : "Shipping",
+                    order.shippingFee === 0 ? "Free" : formatPrice(order.shippingFee),
+                  ],
+                  [order.taxRate > 0 ? `Tax (${+(order.taxRate * 100).toFixed(3)}%)` : "Tax", formatPrice(order.tax)],
                 ].map(([k, v]) => (
                   <div key={k} className="flex justify-between">
                     <dt className="text-zinc-600">{k}</dt>
@@ -143,7 +149,24 @@ export default async function OrderPage(props: PageProps<"/orders/[orderNumber]"
           </div>
         </div>
 
+        {order.status === "cancelled" && order.cancelledAt && (
+          <p className="rounded-lg border border-[#c40000] bg-white p-4 text-sm text-[#0f1111]">
+            <span className="font-bold text-[#c40000]">Cancelled</span> on {orderDate(order.cancelledAt)}. Nothing was charged
+            and the items went back into stock.
+          </p>
+        )}
         <div className="flex flex-wrap gap-3">
+          {order.status === "placed" && (
+            <form action={cancelOrderAction}>
+              <input type="hidden" name="orderNumber" value={order.orderNumber} />
+              <button
+                type="submit"
+                className="rounded-full border border-[#d5d9d9] bg-white px-5 py-2.5 text-sm text-[#0f1111] shadow-[0_2px_5px_rgba(213,217,217,.5)] hover:bg-[#f7fafa]"
+              >
+                Cancel order
+              </button>
+            </form>
+          )}
           <Link href="/" className="rounded-full bg-amz-yellow px-5 py-2.5 text-sm font-semibold text-zinc-900 hover:bg-amz-yellow-hover">
             Continue shopping
           </Link>
