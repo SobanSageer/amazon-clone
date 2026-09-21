@@ -52,6 +52,7 @@ model Product {
   description String
   brand       String?
   price       Decimal     @db.Decimal(10, 2)
+  thumbnail   String
   images      String[]
   rating      Float
   ratingCount Int

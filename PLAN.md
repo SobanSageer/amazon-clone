@@ -165,6 +165,7 @@ Product
   description   String
   brand         String?
   price         Decimal
+  thumbnail     String                  // small image for grids/cards; images[] for the gallery
   images        String[]
   rating        Float
   ratingCount   Int
