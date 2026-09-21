@@ -25,7 +25,7 @@ export function ReviewForm({ productId }: { productId: string }) {
   useEffect(() => {
     if (!signedIn) return;
     const ctrl = new AbortController();
-    fetch(`/api/reviews/mine?productId=${encodeURIComponent(productId)}`, { signal: ctrl.signal, cache: "no-store" })
+    fetch(`/api/product-state?productId=${encodeURIComponent(productId)}`, { signal: ctrl.signal, cache: "no-store" })
       .then((r) => (r.ok ? r.json() : null))
       .then((d) => d && setMine(d.review))
       .catch(() => {});

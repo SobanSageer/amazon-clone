@@ -30,7 +30,7 @@ export async function getOrders(userId: string) {
       status: true,
       total: true,
       address: { select: { fullName: true } },
-      items: { select: { id: true, titleSnapshot: true, imageSnapshot: true, quantity: true, product: { select: { slug: true } } } },
+      items: { select: { id: true, titleSnapshot: true, imageSnapshot: true, quantity: true, product: { select: { id: true, slug: true, stock: true } } } },
     },
   });
   return rows.map((r) => ({ ...r, total: n(r.total) }));

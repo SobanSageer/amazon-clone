@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { CheckCircle2 } from "lucide-react";
-import { CartCountSync, CartQuantity, CartRemove } from "@/components/cart-quantity";
+import { CartCountSync, CartQuantity, CartRemove, SaveForLater } from "@/components/cart-quantity";
 import { Price } from "@/components/price";
 import { getCartItems, getCartOwner } from "@/lib/cart";
 import { formatPrice } from "@/lib/format";
@@ -19,16 +19,46 @@ function Subtotal({ count, amount, className }: { count: number; amount: number;
 }
 
 export default async function CartPage() {
-  const items = await getCartItems(await getCartOwner({ create: false }));
+  const owner = await getCartOwner({ create: false });
+  const [items, saved] = await Promise.all([getCartItems(owner), getCartItems(owner, { saved: true })]);
   const itemCount = items.reduce((n, i) => n + i.quantity, 0);
   const subtotal = items.reduce((s, i) => s + i.quantity * i.product.price, 0);
   const toFree = FREE_SHIPPING_THRESHOLD - subtotal;
 
+  const savedSection = saved.length > 0 && (
+    <section aria-labelledby="saved-heading" className="bg-white px-5 py-4">
+      <h2 id="saved-heading" className="border-b border-zinc-200 pb-2 text-xl font-bold text-[#0f1111]">
+        Saved for later ({saved.length} {saved.length === 1 ? "item" : "items"})
+      </h2>
+      <ul className="grid gap-4 pt-4 sm:grid-cols-2 lg:grid-cols-4">
+        {saved.map((item) => (
+          <li key={item.id} className="flex gap-3 rounded-lg border border-zinc-200 p-3 lg:flex-col">
+            <Link href={`/product/${item.product.slug}`} tabIndex={-1} aria-hidden className="relative size-24 shrink-0 bg-[#f7f7f7] lg:size-auto lg:aspect-square">
+              <Image src={item.product.thumbnail} alt="" fill sizes="200px" className="object-contain p-2 mix-blend-multiply" />
+            </Link>
+            <div className="flex min-w-0 flex-1 flex-col gap-1">
+              <Link href={`/product/${item.product.slug}`} className="line-clamp-2 text-sm text-[#0f1111] hover:text-amz-link-hover hover:underline">
+                {item.product.title}
+              </Link>
+              <Price value={item.product.price} />
+              <div className="mt-auto flex flex-wrap items-center gap-3 pt-1">
+                <SaveForLater itemId={item.id} saved />
+                <span className="h-3 w-px bg-zinc-300" aria-hidden />
+                <CartRemove itemId={item.id} title={item.product.title} />
+              </div>
+            </div>
+          </li>
+        ))}
+      </ul>
+    </section>
+  );
+
   if (items.length === 0) {
     return (
-      <div className="bg-amz-page px-4 py-6">
+      <div className="flex flex-col gap-5 bg-amz-page px-4 py-6">
         <CartCountSync count={0} />
-        <div className="mx-auto max-w-[1500px] bg-white p-6 sm:p-8">
+        <div className="mx-auto w-full max-w-[1500px]">{savedSection}</div>
+        <div className="order-first mx-auto w-full max-w-[1500px] bg-white p-6 sm:p-8">
           <h1 className="text-[28px] font-normal leading-tight text-[#0f1111]">Your Amazon Clone Cart is empty</h1>
           <p className="mt-2 text-sm text-[#0f1111]">
             Your Shopping Cart lives to serve. Give it purpose — fill it with groceries, clothing, household supplies,
@@ -88,6 +118,8 @@ export default async function CartPage() {
                         <CartQuantity itemId={item.id} quantity={item.quantity} max={max} title={item.product.title} />
                         <span className="h-4 w-px bg-zinc-300" aria-hidden />
                         <CartRemove itemId={item.id} title={item.product.title} />
+                        <span className="h-4 w-px bg-zinc-300" aria-hidden />
+                        <SaveForLater itemId={item.id} saved={false} />
                       </div>
                     </div>
                     <div className="order-first sm:order-none sm:text-right">
@@ -100,6 +132,7 @@ export default async function CartPage() {
           </ul>
           <Subtotal count={itemCount} amount={subtotal} className="border-t border-zinc-200 pt-2 text-right text-lg text-[#0f1111]" />
         </section>
+        {savedSection && <div className="order-3 lg:col-start-1">{savedSection}</div>}
 
         <div className="order-1 bg-white p-5 lg:sticky lg:top-4 lg:order-2">
           {toFree > 0 ? (

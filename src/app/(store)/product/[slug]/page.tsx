@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ChevronRight, Lock } from "lucide-react";
 import { BuyBoxForm } from "@/components/buy-box";
+import { ListButton } from "@/components/list-button";
 import { Price } from "@/components/price";
 import { ProductGallery } from "@/components/product-gallery";
 import { ProductRail } from "@/components/product-rail";
@@ -122,6 +123,9 @@ export default async function ProductPage(props: PageProps<"/product/[slug]">) {
           <p className={`mt-3 text-lg ${stock.className}`}>{stock.text}</p>
           <div className="mt-3">
             <BuyBoxForm productId={product.id} stock={product.stock} />
+          </div>
+          <div className="mt-3 border-t border-zinc-200 pt-3">
+            <ListButton productId={product.id} />
           </div>
           <dl className="mt-4 grid grid-cols-[5.5rem_1fr] gap-x-2 gap-y-1 text-xs">
             <dt className="text-zinc-600">Ships from</dt>

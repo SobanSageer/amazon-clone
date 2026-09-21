@@ -15,7 +15,7 @@ export default async function CheckoutPage() {
   if (!items.length) redirect("/cart");
 
   const addresses = await db.address.findMany({
-    where: { userId: user.id },
+    where: { userId: user.id, archived: false },
     orderBy: [{ isDefault: "desc" }, { id: "desc" }],
     take: 5,
     select: { id: true, fullName: true, street: true, unit: true, city: true, state: true, zip: true, phone: true },

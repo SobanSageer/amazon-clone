@@ -77,6 +77,16 @@ export function NavDrawer({ categories }: { categories: Category[] }) {
               </Link>
             </li>
             <li>
+              <Link href="/list" className={row}>
+                Your List
+              </Link>
+            </li>
+            <li>
+              <Link href="/account" className={row}>
+                Your Account
+              </Link>
+            </li>
+            <li>
               <Link href="/cart" className={row}>
                 Your Cart
               </Link>

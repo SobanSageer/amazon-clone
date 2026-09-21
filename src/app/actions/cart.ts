@@ -2,7 +2,7 @@
 
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
-import { addItem, getCartCount, getCartOwner, setItemQuantity } from "@/lib/cart";
+import { addItem, getCartCount, getCartOwner, setItemQuantity, setSavedForLater } from "@/lib/cart";
 import { MAX_QTY_PER_ITEM } from "@/lib/pricing";
 
 export type AddToCartState =
@@ -39,6 +39,15 @@ export async function setQuantityAction(formData: FormData) {
   const owner = await getCartOwner({ create: false });
   if (!owner) return;
   await setItemQuantity(owner, itemId, quantity);
+  revalidatePath("/cart");
+}
+
+export async function saveForLaterAction(formData: FormData) {
+  const itemId = String(formData.get("itemId") ?? "");
+  const saved = formData.get("saved") === "true";
+  const owner = await getCartOwner({ create: false });
+  if (!owner || !itemId) return;
+  await setSavedForLater(owner, itemId, saved);
   revalidatePath("/cart");
 }
 

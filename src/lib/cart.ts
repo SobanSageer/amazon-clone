@@ -33,10 +33,11 @@ export function ownerWhere(owner: CartOwner) {
   return "userId" in owner ? { userId: owner.userId } : { sessionId: owner.sessionId };
 }
 
-export async function getCartItems(owner: CartOwner | null) {
+// Lines in the active cart (what checkout buys) or the "Saved for later" list.
+export async function getCartItems(owner: CartOwner | null, { saved = false } = {}) {
   if (!owner) return [];
   const rows = await db.cartItem.findMany({
-    where: ownerWhere(owner),
+    where: { ...ownerWhere(owner), savedForLater: saved },
     orderBy: { id: "asc" },
     select: {
       id: true,
@@ -55,7 +56,7 @@ export type CartLine = Awaited<ReturnType<typeof getCartItems>>[number];
 
 export async function getCartCount(owner: CartOwner | null) {
   if (!owner) return 0;
-  const agg = await db.cartItem.aggregate({ where: ownerWhere(owner), _sum: { quantity: true } });
+  const agg = await db.cartItem.aggregate({ where: { ...ownerWhere(owner), savedForLater: false }, _sum: { quantity: true } });
   return agg._sum.quantity ?? 0;
 }
 
@@ -68,21 +69,27 @@ export async function mergeGuestCartInto(userId: string) {
 
   const guestItems = await db.cartItem.findMany({
     where: { sessionId },
-    select: { id: true, productId: true, quantity: true, product: { select: { stock: true } } },
+    select: { id: true, productId: true, quantity: true, savedForLater: true, product: { select: { stock: true } } },
   });
   if (guestItems.length) {
     const existing = await db.cartItem.findMany({
       where: { userId, productId: { in: guestItems.map((g) => g.productId) } },
-      select: { id: true, productId: true, quantity: true },
+      select: { id: true, productId: true, quantity: true, savedForLater: true },
     });
     const byProduct = new Map(existing.map((e) => [e.productId, e]));
     await db.$transaction([
       ...guestItems.map((g) => {
         const cap = Math.max(1, Math.min(g.product.stock, MAX_QTY_PER_ITEM));
         const mine = byProduct.get(g.productId);
+        // Stays "saved for later" only if both sides had it saved.
         return mine
-          ? db.cartItem.update({ where: { id: mine.id }, data: { quantity: Math.min(cap, mine.quantity + g.quantity) } })
-          : db.cartItem.create({ data: { userId, productId: g.productId, quantity: Math.min(cap, g.quantity) } });
+          ? db.cartItem.update({
+              where: { id: mine.id },
+              data: { quantity: Math.min(cap, mine.quantity + g.quantity), savedForLater: mine.savedForLater && g.savedForLater },
+            })
+          : db.cartItem.create({
+              data: { userId, productId: g.productId, quantity: Math.min(cap, g.quantity), savedForLater: g.savedForLater },
+            });
       }),
       db.cartItem.deleteMany({ where: { sessionId } }),
     ]);
@@ -106,19 +113,25 @@ export async function setItemQuantity(owner: CartOwner, itemId: string, quantity
   await db.cartItem.update({ where: { id: item.id }, data: { quantity: Math.min(quantity, cap) } });
 }
 
+export async function setSavedForLater(owner: CartOwner, itemId: string, saved: boolean) {
+  await db.cartItem.updateMany({ where: { id: itemId, ...ownerWhere(owner) }, data: { savedForLater: saved } });
+}
+
 // Adds to any quantity already in the cart, capped by stock and the per-item limit.
+// A product sitting in "Saved for later" moves back into the cart.
 export async function addItem(owner: CartOwner, productId: string, quantity: number) {
   const product = await db.product.findUnique({ where: { id: productId }, select: { stock: true } });
   if (!product || product.stock <= 0) return { ok: false as const, error: "This item is currently unavailable." };
 
   const cap = Math.min(product.stock, MAX_QTY_PER_ITEM);
   const where = ownerWhere(owner);
-  const existing = await db.cartItem.findFirst({ where: { ...where, productId }, select: { id: true, quantity: true } });
-  const next = Math.min(cap, (existing?.quantity ?? 0) + quantity);
+  const existing = await db.cartItem.findFirst({ where: { ...where, productId }, select: { id: true, quantity: true, savedForLater: true } });
+  const base = existing && !existing.savedForLater ? existing.quantity : 0;
+  const next = Math.min(cap, base + quantity);
 
-  if (existing) await db.cartItem.update({ where: { id: existing.id }, data: { quantity: next } });
+  if (existing) await db.cartItem.update({ where: { id: existing.id }, data: { quantity: next, savedForLater: false } });
   else await db.cartItem.create({ data: { ...where, productId, quantity: next } });
 
-  const capped = (existing?.quantity ?? 0) + quantity > cap;
+  const capped = base + quantity > cap;
   return { ok: true as const, capped, cap };
 }

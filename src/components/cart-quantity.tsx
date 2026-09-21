@@ -3,7 +3,7 @@
 import { useEffect } from "react";
 import { useFormStatus } from "react-dom";
 import { Loader2, Minus, Plus, Trash2 } from "lucide-react";
-import { setQuantityAction } from "@/app/actions/cart";
+import { saveForLaterAction, setQuantityAction } from "@/app/actions/cart";
 import { announceCartCount } from "@/lib/cart-events";
 
 function StepperButtons({ quantity, max, title }: { quantity: number; max: number; title: string }) {
@@ -68,4 +68,23 @@ export function CartRemove({ itemId, title }: { itemId: string; title: string })
 export function CartCountSync({ count }: { count: number }) {
   useEffect(() => announceCartCount(count), [count]);
   return null;
+}
+
+function LinkButton({ children }: { children: React.ReactNode }) {
+  const { pending } = useFormStatus();
+  return (
+    <button type="submit" disabled={pending} className="text-xs text-amz-link hover:text-amz-link-hover hover:underline disabled:opacity-50">
+      {children}
+    </button>
+  );
+}
+
+export function SaveForLater({ itemId, saved }: { itemId: string; saved: boolean }) {
+  return (
+    <form action={saveForLaterAction}>
+      <input type="hidden" name="itemId" value={itemId} />
+      <input type="hidden" name="saved" value={String(!saved)} />
+      <LinkButton>{saved ? "Move to cart" : "Save for later"}</LinkButton>
+    </form>
+  );
 }

@@ -4,6 +4,7 @@ import Link from "next/link";
 import { redirect } from "next/navigation";
 import { Package } from "lucide-react";
 import { currentUser } from "@/auth";
+import { CardAddToCart } from "@/components/card-add-to-cart";
 import { formatPrice } from "@/lib/format";
 import { getOrders, orderDate, STATUS_LABEL } from "@/lib/orders";
 
@@ -68,6 +69,7 @@ export default async function OrdersPage() {
                           {i.titleSnapshot}
                         </Link>
                         {i.quantity > 1 && <span className="text-xs text-zinc-600">× {i.quantity}</span>}
+                        {i.product.stock > 0 && <CardAddToCart productId={i.product.id} title={i.titleSnapshot} label="Buy it again" />}
                       </li>
                     ))}
                   </ul>

@@ -94,8 +94,13 @@ export function AccountMenu() {
                   </Link>
                 </li>
                 <li>
-                  <Link href="/cart" className="hover:text-amz-link-hover hover:underline">
-                    Your Cart
+                  <Link href="/list" className="hover:text-amz-link-hover hover:underline">
+                    Your List
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/account" className="hover:text-amz-link-hover hover:underline">
+                    Your Account
                   </Link>
                 </li>
                 <li>

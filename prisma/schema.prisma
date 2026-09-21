@@ -17,6 +17,7 @@ model User {
   cartItems    CartItem[]
   orders       Order[]
   reviews      Review[]
+  listItems    ListItem[]
 }
 
 model Address {
@@ -32,6 +33,8 @@ model Address {
   zip       String
   country   String  @default("US")
   isDefault Boolean @default(false)
+  // Deleted from the address book but kept, because past orders still point at it.
+  archived  Boolean @default(false)
   orders    Order[]
 
   @@index([userId])
@@ -63,6 +66,7 @@ model Product {
   cartItems   CartItem[]
   orderItems  OrderItem[]
   reviews     Review[]
+  listItems   ListItem[]
 
   @@index([categoryId])
 }
@@ -86,13 +90,14 @@ model Review {
 }
 
 model CartItem {
-  id        String  @id @default(cuid())
-  userId    String?
-  user      User?   @relation(fields: [userId], references: [id], onDelete: Cascade)
-  sessionId String?
-  productId String
-  product   Product @relation(fields: [productId], references: [id], onDelete: Cascade)
-  quantity  Int     @default(1)
+  id            String  @id @default(cuid())
+  userId        String?
+  user          User?   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  sessionId     String?
+  productId     String
+  product       Product @relation(fields: [productId], references: [id], onDelete: Cascade)
+  quantity      Int     @default(1)
+  savedForLater Boolean @default(false)
 
   @@unique([userId, productId])
   @@unique([sessionId, productId])
@@ -100,21 +105,21 @@ model CartItem {
 }
 
 model Order {
-  id          String      @id @default(cuid())
-  orderNumber String      @unique
-  userId      String
-  user        User        @relation(fields: [userId], references: [id])
-  addressId   String
-  address     Address     @relation(fields: [addressId], references: [id])
-  status      String      @default("placed")
-  subtotal    Decimal     @db.Decimal(10, 2)
-  tax         Decimal     @db.Decimal(10, 2)
-  shippingFee Decimal     @db.Decimal(10, 2)
-  total       Decimal     @db.Decimal(10, 2)
+  id           String      @id @default(cuid())
+  orderNumber  String      @unique
+  userId       String
+  user         User        @relation(fields: [userId], references: [id])
+  addressId    String
+  address      Address     @relation(fields: [addressId], references: [id])
+  status       String      @default("placed")
+  subtotal     Decimal     @db.Decimal(10, 2)
+  tax          Decimal     @db.Decimal(10, 2)
+  shippingFee  Decimal     @db.Decimal(10, 2)
+  total        Decimal     @db.Decimal(10, 2)
   paymentBrand String
   paymentLast4 String
-  createdAt   DateTime    @default(now())
-  items       OrderItem[]
+  createdAt    DateTime    @default(now())
+  items        OrderItem[]
 
   @@index([userId, createdAt])
 }
@@ -131,4 +136,15 @@ model OrderItem {
   quantity      Int
 
   @@index([orderId])
+}
+
+model ListItem {
+  id        String   @id @default(cuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  productId String
+  product   Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
+  createdAt DateTime @default(now())
+
+  @@unique([userId, productId])
 }
