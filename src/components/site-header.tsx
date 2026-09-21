@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Suspense } from "react";
-import { CartLink } from "@/components/cart-link";
+import { HeaderActions } from "@/components/header-actions";
 import { CategoryNav } from "@/components/category-nav";
 import { SearchBox, SearchBoxFallback } from "@/components/search-box";
 import { site } from "@/lib/site";
@@ -30,7 +30,7 @@ export function SiteHeader() {
             </Suspense>
           </div>
           <div className="col-start-3 row-start-1 justify-self-end">
-            <CartLink />
+            <HeaderActions />
           </div>
         </div>
       </div>

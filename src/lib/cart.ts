@@ -1,6 +1,7 @@
 import "server-only";
 import { randomUUID } from "node:crypto";
 import { cookies } from "next/headers";
+import { auth } from "@/auth";
 import { db } from "@/lib/db";
 import { MAX_QTY_PER_ITEM } from "@/lib/pricing";
 
@@ -8,9 +9,11 @@ const CART_COOKIE = "cart_session";
 
 export type CartOwner = { userId: string } | { sessionId: string };
 
-// Guests are identified by a random, httpOnly cookie id. Signed-in owners replace this
-// in Phase 4; the rest of the cart code only ever sees a CartOwner.
+// Signed-in users own their cart by user id; guests by a random, httpOnly cookie id.
 export async function getCartOwner({ create }: { create: boolean }): Promise<CartOwner | null> {
+  const session = await auth();
+  if (session?.user?.id) return { userId: session.user.id };
+
   const jar = await cookies();
   const existing = jar.get(CART_COOKIE)?.value;
   if (existing) return { sessionId: existing };
@@ -54,6 +57,40 @@ export async function getCartCount(owner: CartOwner | null) {
   if (!owner) return 0;
   const agg = await db.cartItem.aggregate({ where: ownerWhere(owner), _sum: { quantity: true } });
   return agg._sum.quantity ?? 0;
+}
+
+// Moves a guest's cart into the account they just signed into, summing quantities for
+// products already in the account's cart. With `replace`, the account's existing cart
+// is discarded first — used for the shared demo account, so one reviewer never
+// inherits another's leftovers. Call from server actions only (clears a cookie).
+export async function mergeGuestCartInto(userId: string, { replace = false } = {}) {
+  if (replace) await db.cartItem.deleteMany({ where: { userId } });
+  const jar = await cookies();
+  const sessionId = jar.get(CART_COOKIE)?.value;
+  if (!sessionId) return;
+
+  const guestItems = await db.cartItem.findMany({
+    where: { sessionId },
+    select: { id: true, productId: true, quantity: true, product: { select: { stock: true } } },
+  });
+  if (guestItems.length) {
+    const existing = await db.cartItem.findMany({
+      where: { userId, productId: { in: guestItems.map((g) => g.productId) } },
+      select: { id: true, productId: true, quantity: true },
+    });
+    const byProduct = new Map(existing.map((e) => [e.productId, e]));
+    await db.$transaction([
+      ...guestItems.map((g) => {
+        const cap = Math.max(1, Math.min(g.product.stock, MAX_QTY_PER_ITEM));
+        const mine = byProduct.get(g.productId);
+        return mine
+          ? db.cartItem.update({ where: { id: mine.id }, data: { quantity: Math.min(cap, mine.quantity + g.quantity) } })
+          : db.cartItem.create({ data: { userId, productId: g.productId, quantity: Math.min(cap, g.quantity) } });
+      }),
+      db.cartItem.deleteMany({ where: { sessionId } }),
+    ]);
+  }
+  jar.delete(CART_COOKIE);
 }
 
 // Sets an existing line's quantity (0 removes it). Scoped by owner so one visitor can

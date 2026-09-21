@@ -1,6 +1,8 @@
 import { redirect } from "next/navigation";
+import { auth } from "@/auth";
 
-// Placeholder until Phase 5 lands the real checkout.
-export default function CheckoutPage() {
+// Login gate for checkout. The checkout itself lands in Phase 5.
+export default async function CheckoutPage() {
+  if (!(await auth())?.user) redirect("/signin?callbackUrl=/checkout");
   redirect("/cart");
 }
