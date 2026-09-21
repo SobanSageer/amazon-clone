@@ -51,3 +51,27 @@ export async function submitReviewAction(_prev: ReviewFormState, formData: FormD
   revalidatePath(`/product/${product.slug}`);
   return { status: "done" };
 }
+
+export async function deleteReviewAction(formData: FormData) {
+  const user = await currentUser();
+  if (!user) return;
+  const productId = String(formData.get("productId") ?? "");
+  const review = await db.review.findUnique({
+    where: { userId_productId: { userId: user.id, productId } },
+    select: { id: true, rating: true, product: { select: { slug: true } } },
+  });
+  if (!review) return;
+
+  // Reverse this review's contribution to the running average.
+  await db.$transaction(async (tx) => {
+    await tx.review.delete({ where: { id: review.id } });
+    const p = await tx.product.findUniqueOrThrow({ where: { id: productId }, select: { rating: true, ratingCount: true } });
+    const count = Math.max(1, p.ratingCount - 1);
+    const rating = p.ratingCount > 1 ? (p.rating * p.ratingCount - review.rating) / count : p.rating;
+    await tx.product.update({
+      where: { id: productId },
+      data: { ratingCount: count, rating: Math.min(5, Math.max(0, Math.round(rating * 100) / 100)) },
+    });
+  });
+  revalidatePath(`/product/${review.product.slug}`);
+}

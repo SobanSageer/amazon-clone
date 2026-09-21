@@ -4,7 +4,7 @@ import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { startTransition, useActionState, useEffect, useState } from "react";
 import { Loader2, Star } from "lucide-react";
-import { submitReviewAction, type ReviewFormState } from "@/app/actions/reviews";
+import { deleteReviewAction, submitReviewAction, type ReviewFormState } from "@/app/actions/reviews";
 import { useMe } from "@/components/header-actions";
 import { cn } from "@/lib/utils";
 
@@ -17,6 +17,20 @@ export function ReviewForm({ productId }: { productId: string }) {
   const [open, setOpen] = useState(false);
   const [rating, setRating] = useState(0);
   const [state, action, pending] = useActionState<ReviewFormState, FormData>(submitReviewAction, { status: "idle" });
+  // undefined = not checked yet, null = no review of mine on this product.
+  const [mine, setMine] = useState<{ rating: number } | null | undefined>(undefined);
+  const [deleting, setDeleting] = useState(false);
+  const signedIn = Boolean(me?.user);
+
+  useEffect(() => {
+    if (!signedIn) return;
+    const ctrl = new AbortController();
+    fetch(`/api/reviews/mine?productId=${encodeURIComponent(productId)}`, { signal: ctrl.signal, cache: "no-store" })
+      .then((r) => (r.ok ? r.json() : null))
+      .then((d) => d && setMine(d.review))
+      .catch(() => {});
+    return () => ctrl.abort();
+  }, [signedIn, productId, state.status]);
 
   useEffect(() => {
     if (state.status === "done") router.refresh();
@@ -25,8 +39,30 @@ export function ReviewForm({ productId }: { productId: string }) {
   const pillBtn =
     "flex h-8 w-full items-center justify-center rounded-full border border-[#d5d9d9] bg-white text-[13px] text-[#0f1111] shadow-[0_2px_5px_rgba(213,217,217,.5)] hover:bg-[#f7fafa] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#007185]";
 
-  if (state.status === "done") {
-    return <p className="rounded-lg bg-[#f0f8f6] p-3 text-sm text-[#067d62]">Thanks! Your review is live.</p>;
+  if (signedIn && mine) {
+    return (
+      <div className="flex flex-col gap-2">
+        <p className="rounded-lg bg-[#f0f8f6] p-3 text-sm text-[#067d62]">
+          {state.status === "done" ? "Thanks! Your review is live." : `You rated this product ${mine.rating} out of 5.`}
+        </p>
+        <form
+          action={async (data) => {
+            setDeleting(true);
+            await deleteReviewAction(data);
+            setMine(null);
+            setDeleting(false);
+            setOpen(false);
+            setRating(0);
+            router.refresh();
+          }}
+        >
+          <input type="hidden" name="productId" value={productId} />
+          <button type="submit" disabled={deleting} className="text-[13px] text-amz-link hover:text-amz-link-hover hover:underline disabled:opacity-50">
+            {deleting ? "Deleting…" : "Delete your review"}
+          </button>
+        </form>
+      </div>
+    );
   }
   if (!me?.user) {
     return (
