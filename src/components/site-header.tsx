@@ -35,27 +35,26 @@ export async function SiteHeader() {
           Skip to main content
         </a>
 
-        {/* Desktop: one row, like amazon.com */}
-        <div className="hidden h-[60px] items-center gap-1 bg-amz-header px-2 md:flex">
+        {/* One search box that reflows: its own full-width row on phones, inline on desktop. */}
+        <div className="flex flex-wrap items-center gap-x-1 bg-amz-header px-2 pt-1 md:h-[60px] md:flex-nowrap md:pt-0">
           {logo}
           <div className="hidden shrink-0 lg:block">
             <DeliverTo />
           </div>
-          <div className="mx-2 min-w-0 flex-1">{search}</div>
-          <AccountMenu />
-          <OrdersLink />
-          <CartButton />
-        </div>
-
-        {/* Phone: logo + account + cart, then full-width search, then deliver-to strip */}
-        <div className="bg-amz-header md:hidden">
-          <div className="flex items-center gap-1 px-2 pt-1">
-            {logo}
-            <div className="flex-1" />
-            <MobileAccountLink />
-            <CartButton />
+          <div className="order-last w-full px-0.5 pb-2.5 pt-1.5 md:order-none md:mx-2 md:w-auto md:min-w-0 md:flex-1 md:p-0">
+            {search}
           </div>
-          <div className="px-2.5 pb-2.5 pt-1.5">{search}</div>
+          <div className="flex-1 md:hidden" />
+          <div className="md:hidden">
+            <MobileAccountLink />
+          </div>
+          <div className="hidden md:block">
+            <AccountMenu />
+          </div>
+          <div className="hidden md:block">
+            <OrdersLink />
+          </div>
+          <CartButton />
         </div>
         <div className="md:hidden">
           <DeliverTo compact />
