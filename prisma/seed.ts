@@ -4,12 +4,13 @@ import { PrismaNeon } from "@prisma/adapter-neon";
 import { PrismaClient } from "../src/generated/prisma/client";
 import products from "./data/products.json";
 import { DEMO_USER } from "../src/lib/demo-user";
+import { directUrl } from "../src/lib/direct-url";
 
 // Runs on every Vercel build, so it must be idempotent and fast: bulk inserts that
 // skip rows already present, no per-row round trips.
 
 const db = new PrismaClient({
-  adapter: new PrismaNeon({ connectionString: process.env.DIRECT_URL }),
+  adapter: new PrismaNeon({ connectionString: directUrl }),
 });
 
 const CATEGORY_NAMES: Record<string, string> = {

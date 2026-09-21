@@ -28,7 +28,9 @@ Target: full core loop (Phases 0–6) live in ~8–10 hours, then polish.
   in `src/lib/db.ts` → `DATABASE_URL`. Generated client lives in `src/generated/prisma`
   (gitignored; `postinstall` and `build` regenerate it).
 - The Vercel Neon integration names its direct string `DATABASE_URL_UNPOOLED`;
-  `DIRECT_URL` must be added in Vercel with that same value.
+  `src/lib/direct-url.ts` falls back to it when `DIRECT_URL` isn't set.
+- Migrations and seed run in the `vercel-build` script on every deploy (seed is
+  idempotent). Testing happens on the live deploy — there is no local `.env`.
 - `prisma generate` runs as part of the build step (`"build": "prisma generate && next
   build"`), so Vercel always builds against a fresh client.
 - `AUTH_SECRET` is set in Vercel project env vars (and in `.env.local` for local dev).
