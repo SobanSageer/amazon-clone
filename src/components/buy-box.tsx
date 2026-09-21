@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useActionState, useEffect, useState } from "react";
 import { useFormStatus } from "react-dom";
-import { CheckCircle2, Loader2 } from "lucide-react";
+import { CheckCircle2, ChevronDown, Loader2 } from "lucide-react";
 import { addToCartAction, buyNowAction, type AddToCartState } from "@/app/actions/cart";
 import { announceCartCount } from "@/lib/cart-events";
 import { MAX_QTY_PER_ITEM } from "@/lib/pricing";
@@ -19,20 +19,20 @@ function SubmitButtons({ disabled }: { disabled: boolean }) {
         type="submit"
         onClick={() => setClicked("add")}
         disabled={disabled || pending}
-        className="flex h-11 items-center justify-center gap-2 rounded-full bg-amz-yellow text-sm font-semibold text-zinc-900 hover:bg-amz-yellow-hover focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-zinc-900 disabled:cursor-not-allowed disabled:opacity-60"
+        className="flex h-9 items-center justify-center gap-2 rounded-full text-[13px] text-[#0f1111] shadow-[0_2px_5px_rgba(213,217,217,.5)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#007185] disabled:cursor-not-allowed disabled:opacity-60 bg-amz-yellow hover:bg-amz-yellow-hover"
       >
         {busyAdd && <Loader2 className="size-4 animate-spin" aria-hidden />}
-        Add to cart
+        Add to Cart
       </button>
       <button
         type="submit"
         formAction={buyNowAction}
         onClick={() => setClicked("buy")}
         disabled={disabled || pending}
-        className="flex h-11 items-center justify-center gap-2 rounded-full bg-amz-orange text-sm font-semibold text-zinc-950 hover:bg-amz-orange-hover focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-zinc-900 disabled:cursor-not-allowed disabled:opacity-60"
+        className="flex h-9 items-center justify-center gap-2 rounded-full text-[13px] text-[#0f1111] shadow-[0_2px_5px_rgba(213,217,217,.5)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#007185] disabled:cursor-not-allowed disabled:opacity-60 bg-amz-orange hover:bg-amz-orange-hover"
       >
         {busyBuy && <Loader2 className="size-4 animate-spin" aria-hidden />}
-        Buy now
+        Buy Now
       </button>
     </div>
   );
@@ -42,6 +42,7 @@ export function BuyBoxForm({ productId, stock }: { productId: string; stock: num
   const [state, formAction] = useActionState<AddToCartState, FormData>(addToCartAction, { status: "idle" });
   const available = stock > 0;
   const maxQty = Math.min(stock, MAX_QTY_PER_ITEM);
+  const [qty, setQty] = useState(1);
 
   useEffect(() => {
     if (state.status === "added") {
@@ -52,13 +53,20 @@ export function BuyBoxForm({ productId, stock }: { productId: string; stock: num
   return (
     <form action={formAction} className="flex flex-col gap-3">
       <input type="hidden" name="productId" value={productId} />
+      {/* Sent via a hidden input, not the select: React resets forms after an action and a
+          reset select would silently fall back to 1 while the pill still shows the choice. */}
+      <input type="hidden" name="quantity" value={qty} />
       {available && (
-        <label className="flex items-center gap-2 text-sm text-zinc-700">
-          Quantity
+        <div className="relative w-fit rounded-lg border border-[#d5d9d9] bg-[#f0f2f2] shadow-[0_2px_5px_rgba(15,17,17,.15)] focus-within:outline-2 focus-within:outline-[#007185] hover:bg-[#e3e6e6]">
+          <span aria-hidden className="flex h-8 items-center gap-1 px-2.5 text-[13px] text-[#0f1111]">
+            Quantity: {qty}
+            <ChevronDown className="size-3.5" />
+          </span>
           <select
-            name="quantity"
-            defaultValue={1}
-            className="h-9 rounded-md border border-zinc-300 bg-white px-2 text-sm text-zinc-900 focus-visible:outline-2 focus-visible:outline-amber-500"
+            aria-label="Quantity"
+            value={qty}
+            onChange={(e) => setQty(Number(e.target.value))}
+            className="absolute inset-0 w-full cursor-pointer opacity-0"
           >
             {Array.from({ length: maxQty }, (_, i) => i + 1).map((n) => (
               <option key={n} value={n}>
@@ -66,7 +74,7 @@ export function BuyBoxForm({ productId, stock }: { productId: string; stock: num
               </option>
             ))}
           </select>
-        </label>
+        </div>
       )}
       <SubmitButtons disabled={!available} />
       <div aria-live="polite" className="text-sm">

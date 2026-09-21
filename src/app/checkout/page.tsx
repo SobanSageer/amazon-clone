@@ -4,7 +4,6 @@ import { currentUser } from "@/auth";
 import { CheckoutForm } from "@/components/checkout-form";
 import { getCartItems } from "@/lib/cart";
 import { db } from "@/lib/db";
-import { orderTotals } from "@/lib/pricing";
 
 export const metadata: Metadata = { title: "Checkout" };
 
@@ -31,7 +30,6 @@ export default async function CheckoutPage() {
           addresses={addresses}
           items={items}
           subtotal={subtotal}
-          total={orderTotals(subtotal).total}
         />
       </div>
     </div>

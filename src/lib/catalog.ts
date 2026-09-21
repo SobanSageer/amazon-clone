@@ -3,6 +3,7 @@ import { db } from "@/lib/db";
 import type { ProductCardData } from "@/components/product-card";
 
 export const productCardSelect = {
+  id: true,
   slug: true,
   title: true,
   brand: true,
@@ -10,12 +11,14 @@ export const productCardSelect = {
   thumbnail: true,
   rating: true,
   ratingCount: true,
+  stock: true,
+  specs: true,
 } as const;
 
-type CardRow = Omit<ProductCardData, "price"> & { price: { toNumber(): number } };
+type CardRow = Omit<ProductCardData, "price" | "shipping"> & { price: { toNumber(): number }; specs: unknown };
 
-export function toCard(row: CardRow): ProductCardData {
-  return { ...row, price: row.price.toNumber() };
+export function toCard({ specs, ...row }: CardRow): ProductCardData {
+  return { ...row, price: row.price.toNumber(), shipping: (specs as Record<string, string> | null)?.Shipping };
 }
 
 // Categories ordered by how many products they hold, so the densest ones lead.

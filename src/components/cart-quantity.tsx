@@ -9,7 +9,7 @@ import { announceCartCount } from "@/lib/cart-events";
 function StepperButtons({ quantity, max, title }: { quantity: number; max: number; title: string }) {
   const { pending } = useFormStatus();
   return (
-    <div className="inline-flex h-9 items-center rounded-full border-2 border-amber-400 bg-white">
+    <div className="inline-flex h-8 items-center rounded-full border-[3px] border-amz-yellow bg-white">
       <button
         type="submit"
         name="quantity"
@@ -49,8 +49,8 @@ export function CartQuantity({ itemId, quantity, max, title }: { itemId: string;
 function RemoveButton() {
   const { pending } = useFormStatus();
   return (
-    <button type="submit" disabled={pending} className="text-sm font-medium text-amz-link hover:underline disabled:opacity-50">
-      Remove
+    <button type="submit" disabled={pending} className="text-xs text-amz-link hover:text-amz-link-hover hover:underline disabled:opacity-50">
+      Delete
     </button>
   );
 }

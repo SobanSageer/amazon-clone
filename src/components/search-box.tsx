@@ -3,17 +3,19 @@
 import Image from "next/image";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useId, useState } from "react";
-import { Search } from "lucide-react";
+import { ChevronDown, Search } from "lucide-react";
 import { formatPrice } from "@/lib/format";
 
+type Category = { slug: string; name: string };
 type Suggestion = { slug: string; title: string; thumbnail: string; categoryName: string; price: number };
 
-export function SearchBox() {
+export function SearchBox({ categories }: { categories: Category[] }) {
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const onSearchPage = pathname === "/search";
   const urlQ = onSearchPage ? (searchParams.get("q") ?? "") : "";
+  const urlCategory = onSearchPage ? (searchParams.get("category") ?? "") : "";
 
   const [value, setValue] = useState(urlQ);
   const [suggestions, setSuggestions] = useState<Suggestion[]>([]);
@@ -25,6 +27,14 @@ export function SearchBox() {
 
   // Keep the box in sync when the URL changes from elsewhere (back button, filter links,
   // leaving /search).
+  const [category, setCategory] = useState(urlCategory);
+  const [syncedCategory, setSyncedCategory] = useState(urlCategory);
+  if (urlCategory !== syncedCategory) {
+    setSyncedCategory(urlCategory);
+    setCategory(urlCategory);
+  }
+  const categoryName = categories.find((c) => c.slug === category)?.name ?? "All";
+
   const [syncedQ, setSyncedQ] = useState(urlQ);
   if (urlQ !== syncedQ) {
     setSyncedQ(urlQ);
@@ -79,11 +89,28 @@ export function SearchBox() {
     router.push(href);
   }
 
+  function resultsHref(q: string, cat: string) {
+    const params = new URLSearchParams();
+    if (q) params.set("q", q);
+    if (cat) params.set("category", cat);
+    const qs = params.toString();
+    return qs ? `/search?${qs}` : "/search";
+  }
+
   function submit(e: React.FormEvent) {
     e.preventDefault();
     if (showList && active >= 0) return go(`/product/${suggestions[active].slug}`);
-    const q = value.trim();
-    go(q ? `/search?q=${encodeURIComponent(q)}` : "/search");
+    go(resultsHref(value.trim(), category));
+  }
+
+  function changeCategory(next: string) {
+    setCategory(next);
+    if (!onSearchPage) return;
+    const params = new URLSearchParams(searchParams.toString());
+    if (next) params.set("category", next);
+    else params.delete("category");
+    params.delete("page");
+    router.replace(`/search?${params}`, { scroll: false });
   }
 
   function onKeyDown(e: React.KeyboardEvent<HTMLInputElement>) {
@@ -104,6 +131,29 @@ export function SearchBox() {
 
   return (
     <form role="search" action="/search" onSubmit={submit} className="relative flex w-full">
+      <div className="relative hidden shrink-0 sm:block">
+        <span
+          aria-hidden
+          className="flex h-10 items-center gap-1 rounded-l-md border-r border-zinc-300 bg-[#e6e6e6] px-2.5 text-xs text-zinc-700"
+        >
+          {categoryName}
+          <ChevronDown className="size-3" />
+        </span>
+        <select
+          name="category"
+          value={category}
+          onChange={(e) => changeCategory(e.target.value)}
+          aria-label="Search in"
+          className="absolute inset-0 w-full cursor-pointer opacity-0"
+        >
+          <option value="">All Departments</option>
+          {categories.map((c) => (
+            <option key={c.slug} value={c.slug}>
+              {c.name}
+            </option>
+          ))}
+        </select>
+      </div>
       <label htmlFor={`${listId}-input`} className="sr-only">
         Search products
       </label>
@@ -120,14 +170,14 @@ export function SearchBox() {
         onFocus={() => setOpen(true)}
         onBlur={() => setTimeout(() => setOpen(false), 120)}
         onKeyDown={onKeyDown}
-        placeholder="Search products, brands, categories"
+        placeholder="Search Amazon Clone"
         autoComplete="off"
         role="combobox"
         aria-expanded={showList}
         aria-controls={listId}
         aria-autocomplete="list"
         aria-activedescendant={showList && active >= 0 ? `${listId}-opt-${active}` : undefined}
-        className="h-10 min-w-0 flex-1 rounded-l-md border-0 bg-white px-3 text-base text-zinc-900 placeholder:text-zinc-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-amber-400 sm:text-sm"
+        className="h-10 min-w-0 flex-1 rounded-l-md border-0 bg-white px-3 text-base text-zinc-900 placeholder:text-zinc-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-amber-400 sm:rounded-l-none sm:text-[15px]"
       />
       <button
         type="submit"
@@ -172,7 +222,7 @@ export function SearchBox() {
           aria-selected={false}
           onMouseDown={(e) => {
             e.preventDefault();
-            go(`/search?q=${encodeURIComponent(value.trim())}`);
+            go(resultsHref(value.trim(), category));
           }}
           className="cursor-pointer border-t border-zinc-100 px-3 py-2 text-sm font-medium text-amz-link hover:bg-zinc-50"
         >
@@ -193,7 +243,7 @@ export function SearchBoxFallback() {
         id="search-fallback"
         name="q"
         type="search"
-        placeholder="Search products, brands, categories"
+        placeholder="Search Amazon Clone"
         className="h-10 min-w-0 flex-1 rounded-l-md border-0 bg-white px-3 text-base text-zinc-900 placeholder:text-zinc-500 sm:text-sm"
       />
       <button type="submit" className="flex h-10 w-12 items-center justify-center rounded-r-md bg-amz-search text-zinc-900">

@@ -85,7 +85,7 @@ function Section({ step, title, children, action }: { step: number; title: strin
   );
 }
 
-function PlaceOrderButton({ total, pending }: { total: number; pending: boolean }) {
+function PlaceOrderButton({ pending }: { pending: boolean }) {
   return (
     <button
       type="submit"
@@ -93,7 +93,7 @@ function PlaceOrderButton({ total, pending }: { total: number; pending: boolean 
       className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-amz-yellow text-base font-semibold text-zinc-900 hover:bg-amz-yellow-hover focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-zinc-900 disabled:opacity-60"
     >
       {pending ? <Loader2 className="size-5 animate-spin" aria-hidden /> : <Lock className="size-4" aria-hidden />}
-      {pending ? "Placing your order…" : `Place order · ${formatPrice(total)}`}
+      {pending ? "Placing your order…" : "Place your order"}
     </button>
   );
 }
@@ -102,12 +102,10 @@ export function CheckoutForm({
   addresses,
   items,
   subtotal,
-  total,
 }: {
   addresses: SavedAddress[];
   items: Line[];
   subtotal: number;
-  total: number;
 }) {
   const [state, action, pending] = useActionState<CheckoutState, FormData>(placeOrderAction, {});
   const formRef = useRef<HTMLFormElement>(null);
@@ -353,9 +351,9 @@ export function CheckoutForm({
         </Section>
       </div>
 
-      <div className="lg:sticky lg:top-32">
+      <div className="lg:sticky lg:top-4">
         <OrderSummary subtotal={subtotal} itemCount={itemCount}>
-          <PlaceOrderButton total={total} pending={pending} />
+          <PlaceOrderButton pending={pending} />
           <p className="mt-2 text-center text-xs text-zinc-600">Simulated payment — you won’t be charged.</p>
         </OrderSummary>
       </div>

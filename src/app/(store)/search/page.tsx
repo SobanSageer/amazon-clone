@@ -6,7 +6,7 @@ import { SearchFilters } from "@/components/search-filters";
 import { SortSelect } from "@/components/sort-select";
 import { getCategories } from "@/lib/catalog";
 import { formatPrice } from "@/lib/format";
-import { parseSearchParams, searchHref, searchProducts, SORTS, type SearchInput, type Sort } from "@/lib/search";
+import { PAGE_SIZE, parseSearchParams, searchHref, searchProducts, SORTS, type SearchInput, type Sort } from "@/lib/search";
 
 export async function generateMetadata(props: PageProps<"/search">): Promise<Metadata> {
   const input = parseSearchParams(await props.searchParams);
@@ -42,37 +42,35 @@ export default async function SearchPage(props: PageProps<"/search">) {
     (Object.keys(SORTS) as Sort[]).map((s) => [s, searchHref(input, { sort: s === "relevance" ? undefined : s })]),
   ) as Record<Sort, string>;
 
-  const heading = input.q ? (
-    <>
-      {total} {total === 1 ? "result" : "results"} for <span className="text-amber-700">“{input.q}”</span>
-      {categoryName && <> in {categoryName}</>}
-    </>
-  ) : (
-    (categoryName ?? "All products")
-  );
+  const from = total === 0 ? 0 : (page - 1) * PAGE_SIZE + 1;
+  const to = Math.min(page * PAGE_SIZE, total);
+  const range = total > PAGE_SIZE ? `${from}-${to} of ${total}` : `${total}`;
 
   return (
-    <div className="mx-auto max-w-7xl px-4 py-5 sm:py-6">
-      <div className="flex flex-col gap-3 border-b border-zinc-200 pb-4 sm:flex-row sm:items-end sm:justify-between">
-        <div>
-          <h1 className="text-xl font-bold tracking-tight text-zinc-900 sm:text-2xl" aria-live="polite">
-            {heading}
-          </h1>
-          {!input.q && (
-            <p className="mt-1 text-sm text-zinc-600">
-              {total} {total === 1 ? "product" : "products"}
-            </p>
-          )}
+    <div>
+      <div className="border-b border-zinc-200 shadow-[0_2px_4px_-2px_rgba(0,0,0,.12)]">
+        <div className="mx-auto flex max-w-[1500px] flex-wrap items-center justify-between gap-2 px-4 py-2.5">
+          <p className="text-sm text-[#0f1111]" aria-live="polite">
+            {range} {total === 1 ? "result" : "results"}
+            {input.q && (
+              <>
+                {" "}for <span className="font-bold text-amz-link-hover">“{input.q}”</span>
+              </>
+            )}
+            {categoryName && <> in {categoryName}</>}
+          </p>
+          <SortSelect value={input.sort} hrefs={sortHrefs} />
         </div>
-        <SortSelect value={input.sort} hrefs={sortHrefs} />
       </div>
 
-      <div className="mt-4 grid gap-6 lg:grid-cols-[15rem_1fr]">
+      <div className="mx-auto grid max-w-[1500px] gap-6 px-4 py-4 lg:grid-cols-[15rem_1fr]">
         <aside aria-label="Filters" className="hidden lg:block">
           <SearchFilters input={input} facets={categoryFacets} idPrefix="desk" categoryName={categoryName} />
         </aside>
 
         <div className="min-w-0">
+          <h1 className="text-xl font-bold text-[#0f1111]">{input.q || categoryName ? "Results" : "All products"}</h1>
+          <p className="mb-4 text-sm text-zinc-600">Check each product page for other buying options.</p>
           <details className="mb-4 rounded-lg border border-zinc-200 bg-white lg:hidden">
             <summary className="flex cursor-pointer list-none items-center gap-2 px-4 py-3 text-sm font-semibold text-zinc-900 [&::-webkit-details-marker]:hidden">
               <SlidersHorizontal className="size-4" aria-hidden />
@@ -134,7 +132,7 @@ export default async function SearchPage(props: PageProps<"/search">) {
               </div>
             </div>
           ) : (
-            <ul className="grid grid-cols-2 gap-3 sm:grid-cols-3 xl:grid-cols-4">
+            <ul className="grid grid-cols-2 gap-x-4 gap-y-8 sm:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5">
               {results.map((p, i) => (
                 <li key={p.slug}>
                   <ProductCard product={p} priority={i < 4} />

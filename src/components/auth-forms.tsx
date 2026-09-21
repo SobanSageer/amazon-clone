@@ -26,7 +26,7 @@ function Field({
   const describedBy = error ? `${name}-error` : hint ? `${name}-hint` : undefined;
   return (
     <div>
-      <label htmlFor={name} className="block text-sm font-semibold text-zinc-900">
+      <label htmlFor={name} className="block text-[13px] font-bold text-[#0f1111]">
         {label}
       </label>
       <input
@@ -38,12 +38,12 @@ function Field({
         aria-invalid={error ? true : undefined}
         aria-describedby={describedBy}
         className={cn(
-          "mt-1 h-11 w-full rounded-md border bg-white px-3 text-base text-zinc-900 focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-amber-500 sm:text-sm",
-          error ? "border-red-600" : "border-zinc-300",
+          "mt-1 h-9 w-full rounded-[3px] border bg-white px-2 text-base text-[#0f1111] shadow-[0_1px_0_rgba(255,255,255,.5),0_1px_0_rgba(0,0,0,.07)_inset] focus:border-[#e77600] focus:shadow-[0_0_3px_2px_rgba(228,121,17,.5)] focus:outline-none sm:text-[13px]",
+          error ? "border-[#d00]" : "border-[#a6a6a6] border-t-[#949494]",
         )}
       />
       {error ? (
-        <p id={`${name}-error`} className="mt-1 text-sm text-red-700">
+        <p id={`${name}-error`} className="mt-1 text-xs text-[#c40000]">
           {error}
         </p>
       ) : hint ? (
@@ -61,7 +61,7 @@ function Submit({ children }: { children: React.ReactNode }) {
     <button
       type="submit"
       disabled={pending}
-      className="flex h-11 w-full items-center justify-center gap-2 rounded-full bg-amz-yellow text-sm font-semibold text-zinc-900 hover:bg-amz-yellow-hover focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-zinc-900 disabled:opacity-60"
+      className="flex h-8 w-full items-center justify-center gap-2 rounded-full bg-amz-yellow text-[13px] text-[#0f1111] shadow-[0_2px_5px_rgba(213,217,217,.5)] hover:bg-amz-yellow-hover focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#007185] disabled:opacity-60"
     >
       {pending && <Loader2 className="size-4 animate-spin" aria-hidden />}
       {children}
@@ -72,7 +72,8 @@ function Submit({ children }: { children: React.ReactNode }) {
 function FormError({ state }: { state: AuthFormState }) {
   if (!state.error) return null;
   return (
-    <p role="alert" className="rounded-md bg-red-50 p-3 text-sm text-red-800">
+    <p role="alert" className="rounded-lg border border-[#c40000] p-3 text-[13px] text-[#0f1111] shadow-[0_0_0_4px_#fcf4f4_inset]">
+      <span className="block font-bold text-[#c40000]">There was a problem</span>
       {state.error}
     </p>
   );
@@ -81,7 +82,7 @@ function FormError({ state }: { state: AuthFormState }) {
 export function SignInForm({ callbackUrl }: { callbackUrl: string }) {
   const [state, action] = useActionState(signInAction, {});
   return (
-    <form action={action} className="flex flex-col gap-4" noValidate>
+    <form action={action} className="flex flex-col gap-3.5" noValidate>
       <input type="hidden" name="callbackUrl" value={callbackUrl} />
       <FormError state={state} />
       <Field label="Email" name="email" type="email" autoComplete="email" defaultValue={state.values?.email} error={state.fieldErrors?.email} />
@@ -108,7 +109,7 @@ export function SignUpForm({ callbackUrl }: { callbackUrl: string }) {
         hint="At least 8 characters."
       />
       <Field label="Re-enter password" name="confirm" type="password" autoComplete="new-password" error={state.fieldErrors?.confirm} />
-      <Submit>Create account</Submit>
+      <Submit>Continue</Submit>
     </form>
   );
 }
