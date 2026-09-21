@@ -57,6 +57,7 @@ model Product {
   rating      Float
   ratingCount Int
   stock       Int
+  specs       Json?
   categoryId  String
   category    Category    @relation(fields: [categoryId], references: [id])
   cartItems   CartItem[]

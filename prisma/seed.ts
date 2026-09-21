@@ -1,7 +1,7 @@
 import { randomBytes } from "node:crypto";
 import bcrypt from "bcryptjs";
 import { PrismaNeon } from "@prisma/adapter-neon";
-import { PrismaClient } from "../src/generated/prisma/client";
+import { Prisma, PrismaClient } from "../src/generated/prisma/client";
 import products from "./data/products.json";
 import { DEMO_USER } from "../src/lib/demo-user";
 import { directUrl } from "../src/lib/direct-url";
@@ -85,11 +85,27 @@ async function main() {
       rating: p.rating,
       ratingCount: ratingCountFor(p.id),
       stock: p.stock,
+      specs: p.specs,
       categoryId: categoryId.get(p.category)!,
     };
   });
 
   const inserted = await db.product.createMany({ data: productRows, skipDuplicates: true });
+
+  // Backfill columns added after the first seed. Only touches rows still missing
+  // them, so steady-state builds do no per-row work.
+  const missingSpecs = await db.product.findMany({
+    where: { specs: { equals: Prisma.DbNull } },
+    select: { slug: true },
+  });
+  if (missingSpecs.length) {
+    const bySlug = new Map(productRows.map((r) => [r.slug, r.specs]));
+    await db.$transaction(
+      missingSpecs.map(({ slug }) =>
+        db.product.update({ where: { slug }, data: { specs: bySlug.get(slug) ?? {} } }),
+      ),
+    );
+  }
 
   // The demo account signs in through its own provider, never with a password, so it
   // gets a random, unguessable hash rather than a shared credential.
@@ -105,7 +121,9 @@ async function main() {
   });
 
   const total = await db.product.count();
-  console.log(`Seed: ${categories.length} categories, ${total} products (${inserted.count} new), demo user ready.`);
+  console.log(
+    `Seed: ${categories.length} categories, ${total} products (${inserted.count} new, ${missingSpecs.length} specs backfilled), demo user ready.`,
+  );
 }
 
 main()

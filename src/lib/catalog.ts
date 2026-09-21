@@ -38,6 +38,29 @@ export async function getProductsInCategory(slug: string, take: number) {
   return rows.map(toCard);
 }
 
+export const getProduct = cache(async (slug: string) => {
+  const p = await db.product.findUnique({
+    where: { slug },
+    include: { category: { select: { slug: true, name: true } } },
+  });
+  if (!p) return null;
+  return {
+    ...p,
+    price: p.price.toNumber(),
+    specs: (p.specs ?? {}) as Record<string, string>,
+  };
+});
+
+export async function getMoreInCategory(categoryId: string, excludeId: string, take: number) {
+  const rows = await db.product.findMany({
+    where: { categoryId, id: { not: excludeId } },
+    orderBy: [{ rating: "desc" }, { ratingCount: "desc" }],
+    take,
+    select: productCardSelect,
+  });
+  return rows.map(toCard);
+}
+
 export async function getTopRated(take: number) {
   const rows = await db.product.findMany({
     where: { ratingCount: { gte: 100 } },

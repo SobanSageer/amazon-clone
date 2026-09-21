@@ -1,11 +1,13 @@
 import Link from "next/link";
-import { ShoppingCart } from "lucide-react";
+import { Suspense } from "react";
+import { CartLink } from "@/components/cart-link";
 import { CategoryNav } from "@/components/category-nav";
+import { SearchBox, SearchBoxFallback } from "@/components/search-box";
 import { site } from "@/lib/site";
 
 export function SiteHeader() {
   return (
-    <header className="sticky top-0 z-40">
+    <header className="relative z-40 sm:sticky sm:top-0">
       <a
         href="#main"
         className="sr-only focus:not-sr-only focus:absolute focus:left-2 focus:top-2 focus:z-50 focus:rounded focus:bg-amber-400 focus:px-3 focus:py-2 focus:text-sm focus:font-semibold focus:text-zinc-900"
@@ -13,7 +15,7 @@ export function SiteHeader() {
         Skip to content
       </a>
       <div className="bg-zinc-900 text-white">
-        <div className="mx-auto flex h-14 max-w-7xl items-center gap-3 px-4">
+        <div className="mx-auto grid max-w-7xl grid-cols-[auto_1fr_auto] items-center gap-x-3 gap-y-2 px-4 py-2 sm:gap-x-6">
           <Link
             href="/"
             className="rounded-sm text-2xl font-extrabold tracking-tight focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-400"
@@ -21,14 +23,15 @@ export function SiteHeader() {
             {site.name}
             <span className="text-amber-400">.</span>
           </Link>
-          <div className="flex-1" />
-          <Link
-            href="/cart"
-            className="flex items-center gap-2 rounded-md px-2 py-1.5 text-sm font-medium hover:bg-white/10 focus-visible:outline-2 focus-visible:outline-amber-400"
-          >
-            <ShoppingCart className="size-6" aria-hidden />
-            <span>Cart</span>
-          </Link>
+          {/* Search takes its own full-width row on phones, sits inline from sm up. */}
+          <div className="col-span-3 row-start-2 sm:col-span-1 sm:row-start-1 sm:col-start-2">
+            <Suspense fallback={<SearchBoxFallback />}>
+              <SearchBox />
+            </Suspense>
+          </div>
+          <div className="col-start-3 row-start-1 justify-self-end">
+            <CartLink />
+          </div>
         </div>
       </div>
       <CategoryNav />

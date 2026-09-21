@@ -170,6 +170,7 @@ Product
   rating        Float
   ratingCount   Int
   stock         Int
+  specs         Json?                   // warranty / shipping / returns text from DummyJSON
   categoryId    String   -> Category
 
 CartItem
