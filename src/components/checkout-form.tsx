@@ -2,8 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useActionState, useState } from "react";
-import { useFormStatus } from "react-dom";
+import { startTransition, useActionState, useEffect, useRef, useState } from "react";
 import { CreditCard, Loader2, Lock } from "lucide-react";
 import { placeOrderAction, type CheckoutState } from "@/app/actions/checkout";
 import { OrderSummary } from "@/components/order-summary";
@@ -86,8 +85,7 @@ function Section({ step, title, children, action }: { step: number; title: strin
   );
 }
 
-function PlaceOrderButton({ total }: { total: number }) {
-  const { pending } = useFormStatus();
+function PlaceOrderButton({ total, pending }: { total: number; pending: boolean }) {
   return (
     <button
       type="submit"
@@ -111,7 +109,24 @@ export function CheckoutForm({
   subtotal: number;
   total: number;
 }) {
-  const [state, action] = useActionState<CheckoutState, FormData>(placeOrderAction, {});
+  const [state, action, pending] = useActionState<CheckoutState, FormData>(placeOrderAction, {});
+  const formRef = useRef<HTMLFormElement>(null);
+
+  // After a failed attempt, take keyboard and screen-reader users straight to the problem.
+  useEffect(() => {
+    const first = formRef.current?.querySelector<HTMLElement>('[aria-invalid="true"], [role="alert"]');
+    first?.focus();
+    first?.scrollIntoView({ block: "center" });
+  }, [state]);
+
+  // Submitted via a transition rather than <form action>, so React doesn't auto-reset the
+  // form after an error (that silently cleared the State select and bounced the retry).
+  function onSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    if (pending) return;
+    const data = new FormData(e.currentTarget);
+    startTransition(() => action(data));
+  }
   const [addressId, setAddressId] = useState(addresses[0]?.id ?? "new");
   const [card, setCard] = useState({ name: "", number: "", expiry: "", cvc: "" });
   const ae = state.addressErrors ?? {};
@@ -119,10 +134,10 @@ export function CheckoutForm({
   const itemCount = items.reduce((n, i) => n + i.quantity, 0);
 
   return (
-    <form action={action} noValidate className="grid gap-6 lg:grid-cols-[1fr_22rem] lg:items-start">
+    <form ref={formRef} onSubmit={onSubmit} noValidate className="grid gap-6 lg:grid-cols-[1fr_22rem] lg:items-start">
       <div className="flex flex-col gap-4">
         {state.error && (
-          <p role="alert" className="rounded-lg border border-red-200 bg-red-50 p-4 text-sm text-red-800">
+          <p role="alert" tabIndex={-1} className="rounded-lg border border-red-200 bg-red-50 p-4 text-sm text-red-800">
             {state.error}{" "}
             <Link href="/cart" className="font-semibold underline">
               Go to cart
@@ -340,7 +355,7 @@ export function CheckoutForm({
 
       <div className="lg:sticky lg:top-32">
         <OrderSummary subtotal={subtotal} itemCount={itemCount}>
-          <PlaceOrderButton total={total} />
+          <PlaceOrderButton total={total} pending={pending} />
           <p className="mt-2 text-center text-xs text-zinc-600">Simulated payment — you won’t be charged.</p>
         </OrderSummary>
       </div>
