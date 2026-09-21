@@ -2,7 +2,7 @@
 // formatting/feedback) and the server (the authoritative check). No card data is stored
 // beyond brand + last four digits.
 
-export const TEST_CARD = { name: "Demo Shopper", number: "4242 4242 4242 4242", expiry: "12/30", cvc: "123" };
+export const TEST_CARD = { name: "Test Shopper", number: "4242 4242 4242 4242", expiry: "12/30", cvc: "123" };
 
 export function digitsOnly(s: string) {
   return s.replace(/\D/g, "");

@@ -4,6 +4,23 @@
 
 @custom-variant dark (&:is(.dark *));
 
+/* Amazon's storefront palette. */
+@theme {
+  --color-amz-header: #131921;
+  --color-amz-nav: #232f3e;
+  --color-amz-search: #febd69;
+  --color-amz-search-hover: #f3a847;
+  --color-amz-yellow: #ffd814;
+  --color-amz-yellow-hover: #f7ca00;
+  --color-amz-orange: #ffa41c;
+  --color-amz-orange-hover: #fa8900;
+  --color-amz-link: #007185;
+  --color-amz-link-hover: #c7511f;
+  --color-amz-star: #de7921;
+  --color-amz-page: #eaeded;
+  --color-amz-deal: #cc0c39;
+}
+
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);

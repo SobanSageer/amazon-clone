@@ -6,7 +6,6 @@ import bcrypt from "bcryptjs";
 import { signIn, signOut } from "@/auth";
 import { mergeGuestCartInto } from "@/lib/cart";
 import { db } from "@/lib/db";
-import { DEMO_USER } from "@/lib/demo-user";
 
 export type AuthFormState = {
   error?: string;
@@ -60,7 +59,7 @@ export async function signUpAction(_prev: AuthFormState, formData: FormData): Pr
   if (confirm !== password) fieldErrors.confirm = "Passwords don’t match.";
   if (Object.keys(fieldErrors).length) return { fieldErrors, values };
 
-  if (email === DEMO_USER.email || (await db.user.findUnique({ where: { email }, select: { id: true } }))) {
+  if ((await db.user.findUnique({ where: { email }, select: { id: true } }))) {
     return { fieldErrors: { email: "An account with this email already exists. Sign in instead." }, values };
   }
 
@@ -70,14 +69,6 @@ export async function signUpAction(_prev: AuthFormState, formData: FormData): Pr
   });
   await signIn("credentials", { email, password, redirect: false });
   await mergeGuestCartInto(user.id);
-  redirect(callbackUrl);
-}
-
-export async function demoSignInAction(formData: FormData) {
-  const callbackUrl = safeCallback(formData.get("callbackUrl"));
-  await signIn("demo", { redirect: false });
-  const demo = await db.user.findUnique({ where: { email: DEMO_USER.email }, select: { id: true } });
-  if (demo) await mergeGuestCartInto(demo.id, { replace: true });
   redirect(callbackUrl);
 }
 

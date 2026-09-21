@@ -61,7 +61,7 @@ function Submit({ children }: { children: React.ReactNode }) {
     <button
       type="submit"
       disabled={pending}
-      className="flex h-11 w-full items-center justify-center gap-2 rounded-full bg-amber-400 text-sm font-semibold text-zinc-900 hover:bg-amber-300 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-zinc-900 disabled:opacity-60"
+      className="flex h-11 w-full items-center justify-center gap-2 rounded-full bg-amz-yellow text-sm font-semibold text-zinc-900 hover:bg-amz-yellow-hover focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-zinc-900 disabled:opacity-60"
     >
       {pending && <Loader2 className="size-4 animate-spin" aria-hidden />}
       {children}
@@ -110,19 +110,5 @@ export function SignUpForm({ callbackUrl }: { callbackUrl: string }) {
       <Field label="Re-enter password" name="confirm" type="password" autoComplete="new-password" error={state.fieldErrors?.confirm} />
       <Submit>Create account</Submit>
     </form>
-  );
-}
-
-export function DemoButton() {
-  const { pending } = useFormStatus();
-  return (
-    <button
-      type="submit"
-      disabled={pending}
-      className="flex h-11 w-full items-center justify-center gap-2 rounded-full bg-zinc-900 text-sm font-semibold text-white hover:bg-zinc-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-500 disabled:opacity-60"
-    >
-      {pending && <Loader2 className="size-4 animate-spin" aria-hidden />}
-      Continue as demo user
-    </button>
   );
 }

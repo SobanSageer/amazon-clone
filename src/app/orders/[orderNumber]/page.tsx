@@ -24,7 +24,7 @@ export default async function OrderPage(props: PageProps<"/orders/[orderNumber]"
   const itemCount = order.items.reduce((s, i) => s + i.quantity, 0);
 
   return (
-    <div className="bg-zinc-100">
+    <div className="bg-amz-page">
       {placed && <CartCountSync count={0} />}
       <div className="mx-auto flex max-w-4xl flex-col gap-5 px-4 py-6 sm:py-8">
         {placed ? (
@@ -37,14 +37,14 @@ export default async function OrderPage(props: PageProps<"/orders/[orderNumber]"
                 </h1>
                 <p className="mt-1 text-emerald-900">
                   Your order <strong className="tabular-nums">{order.orderNumber}</strong> is confirmed and will ship to{" "}
-                  {a.fullName} in {a.city}, {a.state}. This is a demo, so nothing will actually arrive.
+                  {a.fullName} in {a.city}, {a.state}. Payment was simulated, so nothing will actually ship.
                 </p>
               </div>
             </div>
           </section>
         ) : (
           <div>
-            <Link href="/orders" className="text-sm font-medium text-sky-700 hover:underline">
+            <Link href="/orders" className="text-sm font-medium text-amz-link hover:underline">
               ← Your orders
             </Link>
             <h1 className="mt-2 text-2xl font-bold tracking-tight text-zinc-900">Order details</h1>
@@ -144,7 +144,7 @@ export default async function OrderPage(props: PageProps<"/orders/[orderNumber]"
         </div>
 
         <div className="flex flex-wrap gap-3">
-          <Link href="/" className="rounded-full bg-amber-400 px-5 py-2.5 text-sm font-semibold text-zinc-900 hover:bg-amber-300">
+          <Link href="/" className="rounded-full bg-amz-yellow px-5 py-2.5 text-sm font-semibold text-zinc-900 hover:bg-amz-yellow-hover">
             Continue shopping
           </Link>
           <Link href="/orders" className="rounded-full border border-zinc-300 bg-white px-5 py-2.5 text-sm font-semibold text-zinc-900 hover:bg-zinc-50">

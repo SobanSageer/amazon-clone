@@ -1,9 +1,6 @@
-import { randomBytes } from "node:crypto";
-import bcrypt from "bcryptjs";
 import { PrismaNeon } from "@prisma/adapter-neon";
 import { Prisma, PrismaClient } from "../src/generated/prisma/client";
 import products from "./data/products.json";
-import { DEMO_USER } from "../src/lib/demo-user";
 import { directUrl } from "../src/lib/direct-url";
 
 // Runs on every Vercel build, so it must be idempotent and fast: bulk inserts that
@@ -107,28 +104,9 @@ async function main() {
     );
   }
 
-  // The demo account signs in through its own provider, never with a password, so it
-  // gets a random, unguessable hash rather than a shared credential.
-  const demo = await db.user.upsert({
-    where: { email: DEMO_USER.email },
-    update: {},
-    create: {
-      email: DEMO_USER.email,
-      name: DEMO_USER.name,
-      isDemo: true,
-      passwordHash: await bcrypt.hash(randomBytes(32).toString("hex"), 10),
-    },
-  });
-
-  // A ready-made address so reviewers can check out without typing one.
-  const demoAddress = await db.address.findFirst({ where: { userId: demo.id, isDefault: true } });
-  if (!demoAddress) {
-    await db.address.create({ data: { userId: demo.id, isDefault: true, ...DEMO_USER.address } });
-  }
-
   const total = await db.product.count();
   console.log(
-    `Seed: ${categories.length} categories, ${total} products (${inserted.count} new, ${missingSpecs.length} specs backfilled), demo user ready.`,
+    `Seed: ${categories.length} categories, ${total} products (${inserted.count} new, ${missingSpecs.length} specs backfilled).`,
   );
 }
 

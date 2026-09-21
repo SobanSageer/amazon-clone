@@ -42,23 +42,23 @@ Target: full core loop (Phases 0–6) live in ~8–10 hours, then polish.
 - Seed ~150–200 real-looking products from the DummyJSON products dataset (images,
   ratings, categories included). Seed script lives under `prisma/` and is re-runnable
   against a fresh Neon database.
-- Seed one demo user (`isDemo: true`) that the "Continue as demo user" button signs into.
 - Schema matches the entities and fields in [PLAN.md](PLAN.md)'s Data Model section —
   update that section first if the schema needs to diverge, so the doc stays truthful.
 
 ## Product rules
 
-- The public brand is **Nile** (`src/lib/site.ts`), not Amazon — no Amazon name or logo
-  on a public site that has a sign-in page and a card form. Keep the "demo, payments
-  simulated" notice visible.
+- Branding is Amazon's look (palette tokens `amz-*` in `globals.css`) with an
+  **"amazon" text wordmark + "clone" tag** (`src/lib/site.ts`, `wordmark.tsx`) — never
+  Amazon's logo artwork. A public page with the real logo next to a working sign-in and
+  card form reads as phishing and gets flagged/taken down. Keep the "not affiliated /
+  payments simulated" footer and the don't-reuse-your-Amazon-password note on sign-in.
 
 - Guest users can browse, search, view products, and add to cart with **no account**.
   Cart persists for guests via a cookie-scoped session id.
 - Login is required **only** at checkout. On login, the guest session's cart items
   reassign to the user's account rather than being lost.
-- The checkout sign-in step shows a **"Continue as demo user"** button that logs into
-  the seeded demo account in one click, so reviewers can test the full flow without
-  signing up.
+- No demo account (retired 2026-09-21 at the user's request): reviewers create an
+  account at checkout. Real sign-up/sign-in must stay working end to end.
 - Product page has both **Add to Cart** and **Buy Now** (Buy Now adds the item and goes
   straight to checkout).
 - Product page shows a **"More in this category"** rail: real products from the same

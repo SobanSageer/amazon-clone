@@ -2,7 +2,6 @@ import NextAuth, { CredentialsSignin } from "next-auth";
 import Credentials from "next-auth/providers/credentials";
 import bcrypt from "bcryptjs";
 import { db } from "@/lib/db";
-import { DEMO_USER } from "@/lib/demo-user";
 
 class InvalidLogin extends CredentialsSignin {
   code = "invalid_login";
@@ -20,17 +19,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
         const password = String(credentials.password ?? "");
         if (!email || !password) throw new InvalidLogin();
         const user = await db.user.findUnique({ where: { email } });
-        // The demo account has no usable password; it only signs in via the demo provider.
-        if (!user || user.isDemo || !(await bcrypt.compare(password, user.passwordHash))) throw new InvalidLogin();
-        return { id: user.id, name: user.name, email: user.email };
-      },
-    }),
-    Credentials({
-      id: "demo",
-      credentials: {},
-      async authorize() {
-        const user = await db.user.findUnique({ where: { email: DEMO_USER.email } });
-        if (!user?.isDemo) return null;
+        if (!user || !(await bcrypt.compare(password, user.passwordHash))) throw new InvalidLogin();
         return { id: user.id, name: user.name, email: user.email };
       },
     }),
@@ -51,5 +40,5 @@ export async function currentUser() {
   const session = await auth();
   const id = session?.user?.id;
   if (!id) return null;
-  return db.user.findUnique({ where: { id }, select: { id: true, name: true, email: true, isDemo: true } });
+  return db.user.findUnique({ where: { id }, select: { id: true, name: true, email: true } });
 }

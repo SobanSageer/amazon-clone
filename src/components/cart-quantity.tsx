@@ -49,7 +49,7 @@ export function CartQuantity({ itemId, quantity, max, title }: { itemId: string;
 function RemoveButton() {
   const { pending } = useFormStatus();
   return (
-    <button type="submit" disabled={pending} className="text-sm font-medium text-sky-700 hover:underline disabled:opacity-50">
+    <button type="submit" disabled={pending} className="text-sm font-medium text-amz-link hover:underline disabled:opacity-50">
       Remove
     </button>
   );

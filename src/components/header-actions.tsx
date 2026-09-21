@@ -77,7 +77,7 @@ export function HeaderActions() {
           {count ? (
             <span
               aria-hidden
-              className="absolute -right-2 -top-2 flex h-5 min-w-5 items-center justify-center rounded-full bg-amber-400 px-1 text-xs font-bold text-zinc-900"
+              className="absolute -right-2 -top-2 flex h-5 min-w-5 items-center justify-center rounded-full bg-amz-yellow px-1 text-xs font-bold text-zinc-900"
             >
               {count > 99 ? "99+" : count}
             </span>

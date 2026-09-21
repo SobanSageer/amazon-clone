@@ -131,7 +131,7 @@ export function SearchBox() {
       />
       <button
         type="submit"
-        className="flex h-10 w-12 shrink-0 items-center justify-center rounded-r-md bg-amber-400 text-zinc-900 hover:bg-amber-300 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-400"
+        className="flex h-10 w-12 shrink-0 items-center justify-center rounded-r-md bg-amz-search text-zinc-900 hover:bg-amz-search-hover focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-400"
       >
         <Search className="size-5" aria-hidden />
         <span className="sr-only">Search</span>
@@ -174,7 +174,7 @@ export function SearchBox() {
             e.preventDefault();
             go(`/search?q=${encodeURIComponent(value.trim())}`);
           }}
-          className="cursor-pointer border-t border-zinc-100 px-3 py-2 text-sm font-medium text-sky-700 hover:bg-zinc-50"
+          className="cursor-pointer border-t border-zinc-100 px-3 py-2 text-sm font-medium text-amz-link hover:bg-zinc-50"
         >
           See all results for “{value.trim()}”
         </li>
@@ -196,7 +196,7 @@ export function SearchBoxFallback() {
         placeholder="Search products, brands, categories"
         className="h-10 min-w-0 flex-1 rounded-l-md border-0 bg-white px-3 text-base text-zinc-900 placeholder:text-zinc-500 sm:text-sm"
       />
-      <button type="submit" className="flex h-10 w-12 items-center justify-center rounded-r-md bg-amber-400 text-zinc-900">
+      <button type="submit" className="flex h-10 w-12 items-center justify-center rounded-r-md bg-amz-search text-zinc-900">
         <Search className="size-5" aria-hidden />
         <span className="sr-only">Search</span>
       </button>

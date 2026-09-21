@@ -2,8 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import { auth } from "@/auth";
-import { demoSignInAction } from "@/app/actions/auth";
-import { DemoButton, SignInForm, SignUpForm } from "@/components/auth-forms";
+import { SignInForm, SignUpForm } from "@/components/auth-forms";
 import { cn } from "@/lib/utils";
 
 export const metadata: Metadata = { title: "Sign in" };
@@ -21,38 +20,17 @@ export default async function SignInPage(props: PageProps<"/signin">) {
 
   const fromCheckout = callbackUrl.startsWith("/checkout");
   const tabHref = (m: string) => `/signin?${new URLSearchParams({ mode: m, callbackUrl })}`;
+  const heading = mode === "signup" ? "Create account" : fromCheckout ? "Sign in to check out" : "Sign in";
 
   return (
-    <div className="bg-zinc-100 px-4 py-8 sm:py-12">
-      <div className="mx-auto flex max-w-md flex-col gap-4">
-        <div className="text-center">
-          <h1 className="text-2xl font-bold tracking-tight text-zinc-900">
-            {fromCheckout ? "Sign in to check out" : mode === "signup" ? "Create your account" : "Sign in"}
-          </h1>
-          {fromCheckout && <p className="mt-1 text-sm text-zinc-600">Your cart is saved and comes with you.</p>}
-        </div>
-
-        <section aria-labelledby="demo-heading" className="rounded-xl border-2 border-amber-400 bg-amber-50 p-5">
-          <h2 id="demo-heading" className="font-semibold text-zinc-900">
-            Just looking around?
-          </h2>
-          <p className="mt-1 text-sm text-zinc-700">
-            Use the shared demo account to try checkout and order history without signing up.
-          </p>
-          <form action={demoSignInAction} className="mt-4">
-            <input type="hidden" name="callbackUrl" value={callbackUrl} />
-            <DemoButton />
-          </form>
-        </section>
-
-        <div className="flex items-center gap-3 text-xs font-medium uppercase tracking-wide text-zinc-500" aria-hidden>
-          <span className="h-px flex-1 bg-zinc-300" />
-          or use your own account
-          <span className="h-px flex-1 bg-zinc-300" />
-        </div>
-
-        <section className="rounded-xl bg-white p-5 sm:p-6">
-          <nav aria-label="Account options" className="mb-5 grid grid-cols-2 rounded-full bg-zinc-100 p-1 text-sm font-semibold">
+    <div className="px-4 py-8 sm:py-12">
+      <div className="mx-auto max-w-sm">
+        <section className="rounded-lg border border-zinc-300 bg-white p-5 sm:p-6">
+          <h1 className="text-2xl font-normal text-zinc-900 sm:text-[1.75rem]">{heading}</h1>
+          {fromCheckout && mode === "signin" && (
+            <p className="mt-1 text-sm text-zinc-600">Your cart is saved and comes with you.</p>
+          )}
+          <nav aria-label="Account options" className="my-5 grid grid-cols-2 rounded-full bg-zinc-100 p-1 text-sm font-semibold">
             {(["signin", "signup"] as const).map((m) => (
               <Link
                 key={m}
@@ -69,7 +47,25 @@ export default async function SignInPage(props: PageProps<"/signin">) {
             ))}
           </nav>
           {mode === "signup" ? <SignUpForm callbackUrl={callbackUrl} /> : <SignInForm callbackUrl={callbackUrl} />}
+          <p className="mt-5 text-xs leading-relaxed text-zinc-600">
+            This is a portfolio clone, not Amazon. Use a new password here — don’t reuse your real Amazon password.
+          </p>
         </section>
+        {mode === "signin" ? (
+          <p className="mt-5 text-center text-sm text-zinc-700">
+            New here?{" "}
+            <Link href={tabHref("signup")} className="font-medium text-amz-link hover:underline">
+              Create your account
+            </Link>
+          </p>
+        ) : (
+          <p className="mt-5 text-center text-sm text-zinc-700">
+            Already have an account?{" "}
+            <Link href={tabHref("signin")} className="font-medium text-amz-link hover:underline">
+              Sign in
+            </Link>
+          </p>
+        )}
       </div>
     </div>
   );

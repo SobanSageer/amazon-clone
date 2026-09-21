@@ -19,7 +19,7 @@ function SubmitButtons({ disabled }: { disabled: boolean }) {
         type="submit"
         onClick={() => setClicked("add")}
         disabled={disabled || pending}
-        className="flex h-11 items-center justify-center gap-2 rounded-full bg-amber-400 text-sm font-semibold text-zinc-900 hover:bg-amber-300 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-zinc-900 disabled:cursor-not-allowed disabled:opacity-60"
+        className="flex h-11 items-center justify-center gap-2 rounded-full bg-amz-yellow text-sm font-semibold text-zinc-900 hover:bg-amz-yellow-hover focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-zinc-900 disabled:cursor-not-allowed disabled:opacity-60"
       >
         {busyAdd && <Loader2 className="size-4 animate-spin" aria-hidden />}
         Add to cart
@@ -29,7 +29,7 @@ function SubmitButtons({ disabled }: { disabled: boolean }) {
         formAction={buyNowAction}
         onClick={() => setClicked("buy")}
         disabled={disabled || pending}
-        className="flex h-11 items-center justify-center gap-2 rounded-full bg-orange-500 text-sm font-semibold text-zinc-950 hover:bg-orange-400 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-zinc-900 disabled:cursor-not-allowed disabled:opacity-60"
+        className="flex h-11 items-center justify-center gap-2 rounded-full bg-amz-orange text-sm font-semibold text-zinc-950 hover:bg-amz-orange-hover focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-zinc-900 disabled:cursor-not-allowed disabled:opacity-60"
       >
         {busyBuy && <Loader2 className="size-4 animate-spin" aria-hidden />}
         Buy now
@@ -76,7 +76,7 @@ export function BuyBoxForm({ productId, stock }: { productId: string; stock: num
               <CheckCircle2 className="size-4" aria-hidden /> Added to cart
             </p>
             {state.note && <p>{state.note}</p>}
-            <Link href="/cart" className="font-medium text-sky-800 underline">
+            <Link href="/cart" className="font-medium text-amz-link underline">
               Go to cart ({state.count} {state.count === 1 ? "item" : "items"})
             </Link>
           </div>

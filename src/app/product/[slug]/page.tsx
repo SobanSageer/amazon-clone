@@ -79,7 +79,7 @@ export default async function ProductPage(props: PageProps<"/product/[slug]">) {
           {product.brand && (
             <Link
               href={`/search?q=${encodeURIComponent(product.brand)}`}
-              className="text-sm font-medium text-sky-700 hover:underline"
+              className="text-sm font-medium text-amz-link hover:underline"
             >
               {product.brand}
             </Link>
@@ -155,7 +155,7 @@ export default async function ProductPage(props: PageProps<"/product/[slug]">) {
       </div>
 
       {more.length > 0 && (
-        <div className="mt-10 rounded-xl bg-zinc-100 p-1 sm:p-2">
+        <div className="mt-10 -mx-4 sm:mx-0">
           <ProductRail
             title={`More in ${product.category.name}`}
             href={`/search?category=${product.category.slug}`}

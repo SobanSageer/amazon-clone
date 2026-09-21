@@ -60,11 +60,8 @@ export async function getCartCount(owner: CartOwner | null) {
 }
 
 // Moves a guest's cart into the account they just signed into, summing quantities for
-// products already in the account's cart. With `replace`, the account's existing cart
-// is discarded first — used for the shared demo account, so one reviewer never
-// inherits another's leftovers. Call from server actions only (clears a cookie).
-export async function mergeGuestCartInto(userId: string, { replace = false } = {}) {
-  if (replace) await db.cartItem.deleteMany({ where: { userId } });
+// products already in the account's cart. Call from server actions only (clears a cookie).
+export async function mergeGuestCartInto(userId: string) {
   const jar = await cookies();
   const sessionId = jar.get(CART_COOKIE)?.value;
   if (!sessionId) return;

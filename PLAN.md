@@ -49,8 +49,8 @@ deployed to Vercel. Goal: a live URL exists before any product code does, so eve
 after this is a diff against something already working in production.
 
 ### Phase 1 — Browse (~1.5h)
-Seed ~150–200 products (DummyJSON) with images, ratings, categories, plus one seeded
-demo user account. Homepage with category rails + product grid. Product card component
+Seed ~150–200 products (DummyJSON) with images, ratings, categories, plus the
+category data. Homepage with category rails + product grid. Product card component
 (image, title, price, rating). Mobile-responsive grid from the start. **Deploy.**
 
 ### Phase 2 — Search & product page (~2h)
@@ -67,10 +67,10 @@ Amazon lets you shop before it ever asks for an account. **Deploy.**
 
 ### Phase 4 — Auth, login only at checkout (~1h)
 Auth.js credentials sign-in/sign-up (single email+password screen, no OTP/phone
-verification — see "Left out"). Guest cart merges into the account's cart on login. A
-seeded demo account plus a **"Continue as demo user"** button on the checkout sign-in
-step, so reviewers can walk the full loop without creating an account. Nothing before
-checkout requires being signed in. **Deploy.**
+verification — see "Left out"). Guest cart merges into the account's cart on login.
+Nothing before checkout requires being signed in. **Deploy.** *(A one-click shared demo
+account shipped here and was retired later at the user's request — sign-up is quick
+enough, and a shared account leaked reviewers' addresses and orders to each other.)*
 
 ### Phase 5 — Checkout & simulated payment (~2.5h)
 Address form (reuses the field set from the real shipping-address modal: name, phone,
@@ -97,7 +97,7 @@ anywhere missed, a final accessibility sweep, final deploy.
 | Prime Video, Alexa, Coupons, Registry, Whole Foods, Pharmacy, Subscriptions | Not the core commerce loop — separate products bolted onto amazon.com's nav, zero relation to browse→buy. |
 | Seller Central / "Sell" flow | This is a buyer-side clone; a seller marketplace is a second, unrelated application. |
 | Real payments (Stripe/etc.) | Assignment explicitly wants simulated payment; wiring a real gateway is scope and risk (PCI, real charges) for zero judged benefit. |
-| Email OTP + WhatsApp/SMS phone verification at signup | Real Amazon's screenshots show a 4-step identity-verification gauntlet; it demos account-security maturity, not commerce UX, and burns hours on a canary account. Single email+password (plus a one-click demo-user login) is enough to prove "login gates checkout." |
+| Email OTP + WhatsApp/SMS phone verification at signup | Real Amazon's screenshots show a 4-step identity-verification gauntlet; it demos account-security maturity, not commerce UX, and burns hours on a canary account. Single email+password is enough to prove "login gates checkout." |
 | Product reviews (writing them) | Ratings are seeded and shown read-only; a review-authoring + moderation system is a separate feature with no payoff in a buy-flow demo. |
 | Wishlists / "Save for later" / "Buy it again" | Secondary retention features, not part of the core loop. |
 | Protection plans / gift cards / "Add a new Amazon Visa" upsells | Pure monetization surface on the buy box; adds visual clutter without demonstrating engineering or UX judgement. |
@@ -136,7 +136,6 @@ User
   email         String   @unique
   passwordHash  String
   name          String
-  isDemo        Boolean  @default(false)   // the seeded "Continue as demo user" account
   createdAt     DateTime
 
 Address
@@ -212,10 +211,6 @@ actually work end to end rather than just being a claim in the nav bar.
 `OrderItem` snapshots title/price at purchase time rather than joining live to `Product`,
 so an order placed today still reads correctly if the product's price or listing changes
 later — standard e-commerce practice, and cheap to get right now versus painful to retrofit.
-
-`User.isDemo` flags the single seeded account the "Continue as demo user" button logs
-into, so reviewers can exercise checkout and order history without ever creating an
-account of their own.
 
 ---
 

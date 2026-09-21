@@ -78,7 +78,7 @@ export default async function SearchPage(props: PageProps<"/search">) {
               <SlidersHorizontal className="size-4" aria-hidden />
               Filters
               {chips.length > 0 && (
-                <span className="rounded-full bg-amber-400 px-2 py-0.5 text-xs font-bold text-zinc-900">{chips.length}</span>
+                <span className="rounded-full bg-amz-yellow px-2 py-0.5 text-xs font-bold text-zinc-900">{chips.length}</span>
               )}
             </summary>
             <div className="border-t border-zinc-200 p-2">
@@ -102,7 +102,7 @@ export default async function SearchPage(props: PageProps<"/search">) {
                 </li>
               ))}
               <li>
-                <Link href={clearAll} scroll={false} className="text-sm font-medium text-sky-700 hover:underline">
+                <Link href={clearAll} scroll={false} className="text-sm font-medium text-amz-link hover:underline">
                   Clear all
                 </Link>
               </li>
@@ -118,7 +118,7 @@ export default async function SearchPage(props: PageProps<"/search">) {
               </p>
               <div className="mt-5 flex flex-wrap justify-center gap-2">
                 {chips.length > 0 && (
-                  <Link href={clearAll} className="rounded-full bg-amber-400 px-4 py-2 text-sm font-semibold text-zinc-900 hover:bg-amber-300">
+                  <Link href={clearAll} className="rounded-full bg-amz-yellow px-4 py-2 text-sm font-semibold text-zinc-900 hover:bg-amz-yellow-hover">
                     Clear filters
                   </Link>
                 )}

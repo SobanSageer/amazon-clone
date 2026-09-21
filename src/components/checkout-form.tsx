@@ -92,7 +92,7 @@ function PlaceOrderButton({ total }: { total: number }) {
     <button
       type="submit"
       disabled={pending}
-      className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-amber-400 text-base font-semibold text-zinc-900 hover:bg-amber-300 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-zinc-900 disabled:opacity-60"
+      className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-amz-yellow text-base font-semibold text-zinc-900 hover:bg-amz-yellow-hover focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-zinc-900 disabled:opacity-60"
     >
       {pending ? <Loader2 className="size-5 animate-spin" aria-hidden /> : <Lock className="size-4" aria-hidden />}
       {pending ? "Placing your order…" : `Place order · ${formatPrice(total)}`}
@@ -105,13 +105,11 @@ export function CheckoutForm({
   items,
   subtotal,
   total,
-  isDemo,
 }: {
   addresses: SavedAddress[];
   items: Line[];
   subtotal: number;
   total: number;
-  isDemo: boolean;
 }) {
   const [state, action] = useActionState<CheckoutState, FormData>(placeOrderAction, {});
   const [addressId, setAddressId] = useState(addresses[0]?.id ?? "new");
@@ -129,13 +127,6 @@ export function CheckoutForm({
             <Link href="/cart" className="font-semibold underline">
               Go to cart
             </Link>
-          </p>
-        )}
-
-        {isDemo && (
-          <p className="rounded-lg border border-amber-300 bg-amber-50 p-4 text-sm text-amber-950">
-            You’re on the <strong>shared demo account</strong>. Anything you enter here can be seen by other people
-            trying the demo — use made-up details.
           </p>
         )}
 
@@ -325,7 +316,7 @@ export function CheckoutForm({
           step={3}
           title={`Review items (${itemCount})`}
           action={
-            <Link href="/cart" className="text-sm font-medium text-sky-700 hover:underline">
+            <Link href="/cart" className="text-sm font-medium text-amz-link hover:underline">
               Edit cart
             </Link>
           }

@@ -4,7 +4,7 @@ import { getCategories } from "@/lib/catalog";
 export async function CategoryNav() {
   const categories = await getCategories();
   return (
-    <nav aria-label="Shop by category" className="bg-zinc-800">
+    <nav aria-label="Shop by category" className="bg-amz-nav">
       <ul className="mx-auto flex max-w-7xl gap-1 overflow-x-auto px-2 py-1.5 text-sm [scrollbar-width:none] sm:px-3">
         <li className="shrink-0">
           <Link href="/search" className="block rounded-sm px-2 py-1 font-semibold text-white hover:bg-white/10 focus-visible:outline-2 focus-visible:outline-amber-400">

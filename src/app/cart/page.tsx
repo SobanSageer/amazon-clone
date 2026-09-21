@@ -24,7 +24,7 @@ export default async function CartPage() {
           <h1 className="mt-4 text-2xl font-bold tracking-tight text-zinc-900">Your cart is empty</h1>
           <p className="mt-2 text-sm text-zinc-600">You don’t need an account to start shopping. Items you add stay here.</p>
           <div className="mt-6 flex flex-wrap justify-center gap-3">
-            <Link href="/" className="rounded-full bg-amber-400 px-5 py-2.5 text-sm font-semibold text-zinc-900 hover:bg-amber-300">
+            <Link href="/" className="rounded-full bg-amz-yellow px-5 py-2.5 text-sm font-semibold text-zinc-900 hover:bg-amz-yellow-hover">
               Continue shopping
             </Link>
             <Link href="/search" className="rounded-full border border-zinc-300 bg-white px-5 py-2.5 text-sm font-semibold text-zinc-900 hover:bg-zinc-50">
@@ -37,7 +37,7 @@ export default async function CartPage() {
   }
 
   return (
-    <div className="bg-zinc-100">
+    <div className="bg-amz-page">
       <CartCountSync count={itemCount} />
       <div className="mx-auto grid max-w-7xl gap-6 px-4 py-6 sm:py-8 lg:grid-cols-[1fr_22rem] lg:items-start">
         <section aria-labelledby="cart-heading" className="order-2 rounded-xl bg-white p-4 sm:p-6 lg:order-1">
@@ -89,11 +89,11 @@ export default async function CartPage() {
           <OrderSummary subtotal={subtotal} itemCount={itemCount}>
             <Link
               href="/checkout"
-              className="flex h-11 items-center justify-center rounded-full bg-amber-400 text-sm font-semibold text-zinc-900 hover:bg-amber-300 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-zinc-900"
+              className="flex h-11 items-center justify-center rounded-full bg-amz-yellow text-sm font-semibold text-zinc-900 hover:bg-amz-yellow-hover focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-zinc-900"
             >
               Proceed to checkout
             </Link>
-            <p className="mt-2 text-center text-xs text-zinc-600">You’ll sign in or continue as a demo user at the next step.</p>
+            <p className="mt-2 text-center text-xs text-zinc-600">You’ll sign in or create an account at the next step.</p>
           </OrderSummary>
         </div>
       </div>
