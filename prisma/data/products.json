@@ -16,12 +16,31 @@
    "beauty",
    "mascara"
   ],
-  "reviewCount": 3,
   "specs": {
    "Warranty": "1 week warranty",
    "Shipping": "Ships in 3-5 business days",
    "Returns": "No return policy"
-  }
+  },
+  "reviews": [
+   {
+    "rating": 3,
+    "comment": "Would not recommend!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Eleanor Collins"
+   },
+   {
+    "rating": 4,
+    "comment": "Very satisfied!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Lucas Gordon"
+   },
+   {
+    "rating": 5,
+    "comment": "Highly impressed!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Eleanor Collins"
+   }
+  ]
  },
  {
   "id": 2,
@@ -40,12 +59,31 @@
    "beauty",
    "eyeshadow"
   ],
-  "reviewCount": 3,
   "specs": {
    "Warranty": "1 year warranty",
    "Shipping": "Ships in 2 weeks",
    "Returns": "7 days return policy"
-  }
+  },
+  "reviews": [
+   {
+    "rating": 5,
+    "comment": "Great product!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Savannah Gomez"
+   },
+   {
+    "rating": 4,
+    "comment": "Awesome product!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Christian Perez"
+   },
+   {
+    "rating": 1,
+    "comment": "Poor quality!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Nicholas Bailey"
+   }
+  ]
  },
  {
   "id": 3,
@@ -64,12 +102,31 @@
    "beauty",
    "face powder"
   ],
-  "reviewCount": 3,
   "specs": {
    "Warranty": "3 months warranty",
    "Shipping": "Ships in 1-2 business days",
    "Returns": "No return policy"
-  }
+  },
+  "reviews": [
+   {
+    "rating": 4,
+    "comment": "Would buy again!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Alexander Jones"
+   },
+   {
+    "rating": 5,
+    "comment": "Highly impressed!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Elijah Cruz"
+   },
+   {
+    "rating": 1,
+    "comment": "Very dissatisfied!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Avery Perez"
+   }
+  ]
  },
  {
   "id": 4,
@@ -88,12 +145,31 @@
    "beauty",
    "lipstick"
   ],
-  "reviewCount": 3,
   "specs": {
    "Warranty": "3 year warranty",
    "Shipping": "Ships in 1 week",
    "Returns": "7 days return policy"
-  }
+  },
+  "reviews": [
+   {
+    "rating": 4,
+    "comment": "Great product!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Liam Garcia"
+   },
+   {
+    "rating": 5,
+    "comment": "Great product!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Ruby Andrews"
+   },
+   {
+    "rating": 5,
+    "comment": "Would buy again!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Clara Berry"
+   }
+  ]
  },
  {
   "id": 5,
@@ -112,12 +188,31 @@
    "beauty",
    "nail polish"
   ],
-  "reviewCount": 3,
   "specs": {
    "Warranty": "1 month warranty",
    "Shipping": "Ships overnight",
    "Returns": "No return policy"
-  }
+  },
+  "reviews": [
+   {
+    "rating": 2,
+    "comment": "Poor quality!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Benjamin Wilson"
+   },
+   {
+    "rating": 5,
+    "comment": "Great product!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Liam Smith"
+   },
+   {
+    "rating": 1,
+    "comment": "Very unhappy with my purchase!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Clara Berry"
+   }
+  ]
  },
  {
   "id": 6,
@@ -138,12 +233,31 @@
    "fragrances",
    "perfumes"
   ],
-  "reviewCount": 3,
   "specs": {
    "Warranty": "1 week warranty",
    "Shipping": "Ships overnight",
    "Returns": "90 days return policy"
-  }
+  },
+  "reviews": [
+   {
+    "rating": 2,
+    "comment": "Very disappointed!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Layla Young"
+   },
+   {
+    "rating": 4,
+    "comment": "Fast shipping!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Daniel Cook"
+   },
+   {
+    "rating": 3,
+    "comment": "Not as described!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Jacob Cooper"
+   }
+  ]
  },
  {
   "id": 7,
@@ -164,12 +278,31 @@
    "fragrances",
    "perfumes"
   ],
-  "reviewCount": 3,
   "specs": {
    "Warranty": "3 year warranty",
    "Shipping": "Ships overnight",
    "Returns": "No return policy"
-  }
+  },
+  "reviews": [
+   {
+    "rating": 4,
+    "comment": "Highly impressed!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Ruby Andrews"
+   },
+   {
+    "rating": 5,
+    "comment": "Awesome product!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Leah Henderson"
+   },
+   {
+    "rating": 5,
+    "comment": "Very happy with my purchase!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Xavier Wright"
+   }
+  ]
  },
  {
   "id": 8,
@@ -190,12 +323,31 @@
    "fragrances",
    "perfumes"
   ],
-  "reviewCount": 3,
   "specs": {
    "Warranty": "1 week warranty",
    "Shipping": "Ships in 2 weeks",
    "Returns": "7 days return policy"
-  }
+  },
+  "reviews": [
+   {
+    "rating": 5,
+    "comment": "Great value for money!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Nicholas Bailey"
+   },
+   {
+    "rating": 4,
+    "comment": "Great value for money!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Penelope Harper"
+   },
+   {
+    "rating": 4,
+    "comment": "Great product!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Emma Miller"
+   }
+  ]
  },
  {
   "id": 9,
@@ -216,12 +368,31 @@
    "fragrances",
    "perfumes"
   ],
-  "reviewCount": 3,
   "specs": {
    "Warranty": "3 year warranty",
    "Shipping": "Ships in 1 month",
    "Returns": "7 days return policy"
-  }
+  },
+  "reviews": [
+   {
+    "rating": 4,
+    "comment": "Would buy again!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Mateo Bennett"
+   },
+   {
+    "rating": 4,
+    "comment": "Highly recommended!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Nolan Gonzalez"
+   },
+   {
+    "rating": 5,
+    "comment": "Very happy with my purchase!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Aurora Lawson"
+   }
+  ]
  },
  {
   "id": 10,
@@ -242,12 +413,31 @@
    "fragrances",
    "perfumes"
   ],
-  "reviewCount": 3,
   "specs": {
    "Warranty": "6 months warranty",
    "Shipping": "Ships overnight",
    "Returns": "No return policy"
-  }
+  },
+  "reviews": [
+   {
+    "rating": 1,
+    "comment": "Very dissatisfied!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Cameron Perez"
+   },
+   {
+    "rating": 5,
+    "comment": "Very happy with my purchase!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Daniel Cook"
+   },
+   {
+    "rating": 4,
+    "comment": "Highly impressed!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Addison Wright"
+   }
+  ]
  },
  {
   "id": 11,
@@ -268,12 +458,31 @@
    "furniture",
    "beds"
   ],
-  "reviewCount": 3,
   "specs": {
    "Warranty": "1 year warranty",
    "Shipping": "Ships in 1 month",
    "Returns": "No return policy"
-  }
+  },
+  "reviews": [
+   {
+    "rating": 2,
+    "comment": "Would not recommend!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Christopher West"
+   },
+   {
+    "rating": 4,
+    "comment": "Highly impressed!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Vivian Carter"
+   },
+   {
+    "rating": 1,
+    "comment": "Poor quality!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Mason Wright"
+   }
+  ]
  },
  {
   "id": 12,
@@ -294,12 +503,31 @@
    "furniture",
    "sofas"
   ],
-  "reviewCount": 3,
   "specs": {
    "Warranty": "Lifetime warranty",
    "Shipping": "Ships in 1 week",
    "Returns": "7 days return policy"
-  }
+  },
+  "reviews": [
+   {
+    "rating": 3,
+    "comment": "Very unhappy with my purchase!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Christian Perez"
+   },
+   {
+    "rating": 5,
+    "comment": "Fast shipping!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Lillian Bishop"
+   },
+   {
+    "rating": 1,
+    "comment": "Poor quality!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Lillian Simmons"
+   }
+  ]
  },
  {
   "id": 13,
@@ -320,12 +548,31 @@
    "furniture",
    "bedside tables"
   ],
-  "reviewCount": 3,
   "specs": {
    "Warranty": "5 year warranty",
    "Shipping": "Ships overnight",
    "Returns": "7 days return policy"
-  }
+  },
+  "reviews": [
+   {
+    "rating": 4,
+    "comment": "Excellent quality!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Aaliyah Hanson"
+   },
+   {
+    "rating": 4,
+    "comment": "Excellent quality!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Liam Smith"
+   },
+   {
+    "rating": 4,
+    "comment": "Highly recommended!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Avery Barnes"
+   }
+  ]
  },
  {
   "id": 14,
@@ -346,12 +593,31 @@
    "furniture",
    "office chairs"
   ],
-  "reviewCount": 3,
   "specs": {
    "Warranty": "2 year warranty",
    "Shipping": "Ships overnight",
    "Returns": "60 days return policy"
-  }
+  },
+  "reviews": [
+   {
+    "rating": 2,
+    "comment": "Waste of money!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Ella Cook"
+   },
+   {
+    "rating": 2,
+    "comment": "Very dissatisfied!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Clara Berry"
+   },
+   {
+    "rating": 5,
+    "comment": "Would buy again!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Elena Long"
+   }
+  ]
  },
  {
   "id": 15,
@@ -372,12 +638,31 @@
    "furniture",
    "bathroom"
   ],
-  "reviewCount": 3,
   "specs": {
    "Warranty": "3 year warranty",
    "Shipping": "Ships in 3-5 business days",
    "Returns": "60 days return policy"
-  }
+  },
+  "reviews": [
+   {
+    "rating": 4,
+    "comment": "Fast shipping!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Logan Torres"
+   },
+   {
+    "rating": 5,
+    "comment": "Very pleased!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Aria Parker"
+   },
+   {
+    "rating": 3,
+    "comment": "Poor quality!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Dylan Wells"
+   }
+  ]
  },
  {
   "id": 16,
@@ -395,12 +680,31 @@
   "tags": [
    "fruits"
   ],
-  "reviewCount": 3,
   "specs": {
    "Warranty": "3 year warranty",
    "Shipping": "Ships in 2 weeks",
    "Returns": "90 days return policy"
-  }
+  },
+  "reviews": [
+   {
+    "rating": 5,
+    "comment": "Very satisfied!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Sophia Brown"
+   },
+   {
+    "rating": 1,
+    "comment": "Very dissatisfied!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Scarlett Bowman"
+   },
+   {
+    "rating": 3,
+    "comment": "Very unhappy with my purchase!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "William Gonzalez"
+   }
+  ]
  },
  {
   "id": 17,
@@ -418,12 +722,31 @@
   "tags": [
    "meat"
   ],
-  "reviewCount": 3,
   "specs": {
    "Warranty": "3 year warranty",
    "Shipping": "Ships overnight",
    "Returns": "60 days return policy"
-  }
+  },
+  "reviews": [
+   {
+    "rating": 3,
+    "comment": "Would not recommend!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Eleanor Tyler"
+   },
+   {
+    "rating": 4,
+    "comment": "Fast shipping!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Alexander Jones"
+   },
+   {
+    "rating": 5,
+    "comment": "Great value for money!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Natalie Harris"
+   }
+  ]
  },
  {
   "id": 18,
@@ -442,12 +765,31 @@
    "pet supplies",
    "cat food"
   ],
-  "reviewCount": 3,
   "specs": {
    "Warranty": "1 year warranty",
    "Shipping": "Ships overnight",
    "Returns": "No return policy"
-  }
+  },
+  "reviews": [
+   {
+    "rating": 3,
+    "comment": "Would not recommend!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Noah Lewis"
+   },
+   {
+    "rating": 3,
+    "comment": "Very unhappy with my purchase!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Ruby Andrews"
+   },
+   {
+    "rating": 2,
+    "comment": "Very disappointed!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Ethan Thompson"
+   }
+  ]
  },
  {
   "id": 19,
@@ -466,12 +808,31 @@
   "tags": [
    "meat"
   ],
-  "reviewCount": 3,
   "specs": {
    "Warranty": "1 year warranty",
    "Shipping": "Ships in 1 month",
    "Returns": "7 days return policy"
-  }
+  },
+  "reviews": [
+   {
+    "rating": 5,
+    "comment": "Great product!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Mateo Bennett"
+   },
+   {
+    "rating": 4,
+    "comment": "Highly recommended!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Jackson Evans"
+   },
+   {
+    "rating": 3,
+    "comment": "Not worth the price!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Sadie Morales"
+   }
+  ]
  },
  {
   "id": 20,
@@ -489,12 +850,31 @@
   "tags": [
    "cooking essentials"
   ],
-  "reviewCount": 3,
   "specs": {
    "Warranty": "Lifetime warranty",
    "Shipping": "Ships in 1-2 business days",
    "Returns": "30 days return policy"
-  }
+  },
+  "reviews": [
+   {
+    "rating": 5,
+    "comment": "Very happy with my purchase!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Victoria McDonald"
+   },
+   {
+    "rating": 2,
+    "comment": "Would not recommend!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Hazel Evans"
+   },
+   {
+    "rating": 5,
+    "comment": "Would buy again!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Zoe Bennett"
+   }
+  ]
  },
  {
   "id": 21,
@@ -512,12 +892,31 @@
   "tags": [
    "vegetables"
   ],
-  "reviewCount": 3,
   "specs": {
    "Warranty": "2 year warranty",
    "Shipping": "Ships in 1-2 business days",
    "Returns": "7 days return policy"
-  }
+  },
+  "reviews": [
+   {
+    "rating": 4,
+    "comment": "Great product!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Lincoln Kelly"
+   },
+   {
+    "rating": 4,
+    "comment": "Great value for money!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Savannah Gomez"
+   },
+   {
+    "rating": 2,
+    "comment": "Poor quality!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "James Davis"
+   }
+  ]
  },
  {
   "id": 22,
@@ -536,12 +935,31 @@
    "pet supplies",
    "dog food"
   ],
-  "reviewCount": 3,
   "specs": {
    "Warranty": "No warranty",
    "Shipping": "Ships in 1-2 business days",
    "Returns": "60 days return policy"
-  }
+  },
+  "reviews": [
+   {
+    "rating": 5,
+    "comment": "Excellent quality!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Nicholas Edwards"
+   },
+   {
+    "rating": 5,
+    "comment": "Awesome product!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Zachary Lee"
+   },
+   {
+    "rating": 4,
+    "comment": "Great product!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Nova Cooper"
+   }
+  ]
  },
  {
   "id": 23,
@@ -559,12 +977,31 @@
   "tags": [
    "dairy"
   ],
-  "reviewCount": 3,
   "specs": {
    "Warranty": "1 week warranty",
    "Shipping": "Ships in 1 week",
    "Returns": "No return policy"
-  }
+  },
+  "reviews": [
+   {
+    "rating": 3,
+    "comment": "Disappointing product!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Penelope King"
+   },
+   {
+    "rating": 3,
+    "comment": "Poor quality!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Eleanor Tyler"
+   },
+   {
+    "rating": 4,
+    "comment": "Very pleased!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Benjamin Foster"
+   }
+  ]
  },
  {
   "id": 24,
@@ -582,12 +1019,31 @@
   "tags": [
    "seafood"
   ],
-  "reviewCount": 3,
   "specs": {
    "Warranty": "1 month warranty",
    "Shipping": "Ships in 3-5 business days",
    "Returns": "60 days return policy"
-  }
+  },
+  "reviews": [
+   {
+    "rating": 2,
+    "comment": "Would not buy again!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Caleb Perkins"
+   },
+   {
+    "rating": 5,
+    "comment": "Excellent quality!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Isabella Jackson"
+   },
+   {
+    "rating": 4,
+    "comment": "Great value for money!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Nathan Dixon"
+   }
+  ]
  },
  {
   "id": 25,
@@ -605,12 +1061,31 @@
   "tags": [
    "vegetables"
   ],
-  "reviewCount": 3,
   "specs": {
    "Warranty": "1 month warranty",
    "Shipping": "Ships in 1 week",
    "Returns": "30 days return policy"
-  }
+  },
+  "reviews": [
+   {
+    "rating": 4,
+    "comment": "Highly recommended!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Avery Carter"
+   },
+   {
+    "rating": 3,
+    "comment": "Would not recommend!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Henry Hill"
+   },
+   {
+    "rating": 5,
+    "comment": "Excellent quality!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Addison Wright"
+   }
+  ]
  },
  {
   "id": 26,
@@ -628,12 +1103,31 @@
   "tags": [
    "vegetables"
   ],
-  "reviewCount": 3,
   "specs": {
    "Warranty": "2 year warranty",
    "Shipping": "Ships in 1 week",
    "Returns": "30 days return policy"
-  }
+  },
+  "reviews": [
+   {
+    "rating": 4,
+    "comment": "Great product!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Luna Russell"
+   },
+   {
+    "rating": 1,
+    "comment": "Waste of money!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Noah Lewis"
+   },
+   {
+    "rating": 3,
+    "comment": "Very disappointed!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Clara Berry"
+   }
+  ]
  },
  {
   "id": 27,
@@ -651,12 +1145,31 @@
   "tags": [
    "condiments"
   ],
-  "reviewCount": 3,
   "specs": {
    "Warranty": "1 month warranty",
    "Shipping": "Ships in 1-2 business days",
    "Returns": "90 days return policy"
-  }
+  },
+  "reviews": [
+   {
+    "rating": 1,
+    "comment": "Very disappointed!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Autumn Gomez"
+   },
+   {
+    "rating": 4,
+    "comment": "Highly impressed!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Benjamin Wilson"
+   },
+   {
+    "rating": 2,
+    "comment": "Very disappointed!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Nicholas Edwards"
+   }
+  ]
  },
  {
   "id": 28,
@@ -677,12 +1190,31 @@
   "tags": [
    "desserts"
   ],
-  "reviewCount": 3,
   "specs": {
    "Warranty": "1 month warranty",
    "Shipping": "Ships in 2 weeks",
    "Returns": "No return policy"
-  }
+  },
+  "reviews": [
+   {
+    "rating": 5,
+    "comment": "Very pleased!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Elijah Cruz"
+   },
+   {
+    "rating": 4,
+    "comment": "Excellent quality!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Jace Smith"
+   },
+   {
+    "rating": 5,
+    "comment": "Highly impressed!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Sadie Morales"
+   }
+  ]
  },
  {
   "id": 29,
@@ -700,12 +1232,31 @@
   "tags": [
    "beverages"
   ],
-  "reviewCount": 3,
   "specs": {
    "Warranty": "6 months warranty",
    "Shipping": "Ships in 1 week",
    "Returns": "No return policy"
-  }
+  },
+  "reviews": [
+   {
+    "rating": 5,
+    "comment": "Excellent quality!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Nolan Gonzalez"
+   },
+   {
+    "rating": 4,
+    "comment": "Would buy again!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Bella Grant"
+   },
+   {
+    "rating": 5,
+    "comment": "Awesome product!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Aria Flores"
+   }
+  ]
  },
  {
   "id": 30,
@@ -723,12 +1274,31 @@
   "tags": [
    "fruits"
   ],
-  "reviewCount": 3,
   "specs": {
    "Warranty": "6 months warranty",
    "Shipping": "Ships overnight",
    "Returns": "7 days return policy"
-  }
+  },
+  "reviews": [
+   {
+    "rating": 4,
+    "comment": "Highly recommended!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Emily Brown"
+   },
+   {
+    "rating": 2,
+    "comment": "Would not buy again!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Jackson Morales"
+   },
+   {
+    "rating": 4,
+    "comment": "Fast shipping!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Nora Russell"
+   }
+  ]
  },
  {
   "id": 31,
@@ -746,12 +1316,31 @@
   "tags": [
    "fruits"
   ],
-  "reviewCount": 3,
   "specs": {
    "Warranty": "No warranty",
    "Shipping": "Ships in 1 month",
    "Returns": "7 days return policy"
-  }
+  },
+  "reviews": [
+   {
+    "rating": 5,
+    "comment": "Awesome product!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Logan Lawson"
+   },
+   {
+    "rating": 5,
+    "comment": "Highly impressed!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Avery Perez"
+   },
+   {
+    "rating": 5,
+    "comment": "Very satisfied!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Benjamin Foster"
+   }
+  ]
  },
  {
   "id": 32,
@@ -769,12 +1358,31 @@
   "tags": [
    "dairy"
   ],
-  "reviewCount": 3,
   "specs": {
    "Warranty": "3 year warranty",
    "Shipping": "Ships in 2 weeks",
    "Returns": "7 days return policy"
-  }
+  },
+  "reviews": [
+   {
+    "rating": 4,
+    "comment": "Very satisfied!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Nicholas Bailey"
+   },
+   {
+    "rating": 3,
+    "comment": "Would not buy again!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Harper Turner"
+   },
+   {
+    "rating": 5,
+    "comment": "Great value for money!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Autumn Gomez"
+   }
+  ]
  },
  {
   "id": 33,
@@ -792,12 +1400,31 @@
   "tags": [
    "fruits"
   ],
-  "reviewCount": 3,
   "specs": {
    "Warranty": "2 year warranty",
    "Shipping": "Ships in 1 week",
    "Returns": "No return policy"
-  }
+  },
+  "reviews": [
+   {
+    "rating": 5,
+    "comment": "Fast shipping!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Avery Barnes"
+   },
+   {
+    "rating": 2,
+    "comment": "Not worth the price!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Sadie Morales"
+   },
+   {
+    "rating": 1,
+    "comment": "Would not buy again!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Oscar Powers"
+   }
+  ]
  },
  {
   "id": 34,
@@ -816,12 +1443,31 @@
    "beverages",
    "coffee"
   ],
-  "reviewCount": 3,
   "specs": {
    "Warranty": "1 year warranty",
    "Shipping": "Ships in 1-2 business days",
    "Returns": "30 days return policy"
-  }
+  },
+  "reviews": [
+   {
+    "rating": 5,
+    "comment": "Very pleased!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Gabriel Adams"
+   },
+   {
+    "rating": 5,
+    "comment": "Highly recommended!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Ella Cook"
+   },
+   {
+    "rating": 4,
+    "comment": "Would buy again!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Logan Torres"
+   }
+  ]
  },
  {
   "id": 35,
@@ -839,12 +1485,31 @@
   "tags": [
    "vegetables"
   ],
-  "reviewCount": 3,
   "specs": {
    "Warranty": "3 year warranty",
    "Shipping": "Ships in 3-5 business days",
    "Returns": "90 days return policy"
-  }
+  },
+  "reviews": [
+   {
+    "rating": 5,
+    "comment": "Highly impressed!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Eleanor Collins"
+   },
+   {
+    "rating": 4,
+    "comment": "Fast shipping!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Lily Torres"
+   },
+   {
+    "rating": 5,
+    "comment": "Highly recommended!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Ariana Ross"
+   }
+  ]
  },
  {
   "id": 36,
@@ -862,12 +1527,31 @@
   "tags": [
    "health supplements"
   ],
-  "reviewCount": 3,
   "specs": {
    "Warranty": "1 week warranty",
    "Shipping": "Ships in 1 month",
    "Returns": "No return policy"
-  }
+  },
+  "reviews": [
+   {
+    "rating": 3,
+    "comment": "Very unhappy with my purchase!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Aurora Rodriguez"
+   },
+   {
+    "rating": 4,
+    "comment": "Would buy again!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Miles Stevenson"
+   },
+   {
+    "rating": 4,
+    "comment": "Very happy with my purchase!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Clara Berry"
+   }
+  ]
  },
  {
   "id": 37,
@@ -885,12 +1569,31 @@
   "tags": [
    "vegetables"
   ],
-  "reviewCount": 3,
   "specs": {
    "Warranty": "1 month warranty",
    "Shipping": "Ships in 3-5 business days",
    "Returns": "7 days return policy"
-  }
+  },
+  "reviews": [
+   {
+    "rating": 4,
+    "comment": "Fast shipping!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Maya Reed"
+   },
+   {
+    "rating": 3,
+    "comment": "Very dissatisfied!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Evelyn Gonzalez"
+   },
+   {
+    "rating": 5,
+    "comment": "Awesome product!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Jackson Evans"
+   }
+  ]
  },
  {
   "id": 38,
@@ -908,12 +1611,31 @@
   "tags": [
    "grains"
   ],
-  "reviewCount": 3,
   "specs": {
    "Warranty": "6 months warranty",
    "Shipping": "Ships overnight",
    "Returns": "No return policy"
-  }
+  },
+  "reviews": [
+   {
+    "rating": 5,
+    "comment": "Would buy again!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Sophia Brown"
+   },
+   {
+    "rating": 4,
+    "comment": "Very satisfied!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Grace Perry"
+   },
+   {
+    "rating": 1,
+    "comment": "Very disappointed!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Cameron Burke"
+   }
+  ]
  },
  {
   "id": 39,
@@ -931,12 +1653,31 @@
   "tags": [
    "beverages"
   ],
-  "reviewCount": 3,
   "specs": {
    "Warranty": "6 months warranty",
    "Shipping": "Ships in 2 weeks",
    "Returns": "7 days return policy"
-  }
+  },
+  "reviews": [
+   {
+    "rating": 2,
+    "comment": "Would not recommend!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Zachary Lee"
+   },
+   {
+    "rating": 2,
+    "comment": "Would not recommend!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Oscar Powers"
+   },
+   {
+    "rating": 5,
+    "comment": "Highly recommended!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Hannah Robinson"
+   }
+  ]
  },
  {
   "id": 40,
@@ -954,12 +1695,31 @@
   "tags": [
    "fruits"
   ],
-  "reviewCount": 3,
   "specs": {
    "Warranty": "1 week warranty",
    "Shipping": "Ships in 1-2 business days",
    "Returns": "No return policy"
-  }
+  },
+  "reviews": [
+   {
+    "rating": 3,
+    "comment": "Would not buy again!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Amelia Perez"
+   },
+   {
+    "rating": 3,
+    "comment": "Would not buy again!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Olivia Wilson"
+   },
+   {
+    "rating": 4,
+    "comment": "Would buy again!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Hunter Gordon"
+   }
+  ]
  },
  {
   "id": 41,
@@ -978,12 +1738,31 @@
   "tags": [
    "household essentials"
   ],
-  "reviewCount": 3,
   "specs": {
    "Warranty": "No warranty",
    "Shipping": "Ships in 1-2 business days",
    "Returns": "90 days return policy"
-  }
+  },
+  "reviews": [
+   {
+    "rating": 1,
+    "comment": "Not as described!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Ariana Ross"
+   },
+   {
+    "rating": 5,
+    "comment": "Fast shipping!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Carter Baker"
+   },
+   {
+    "rating": 5,
+    "comment": "Great value for money!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Penelope Harper"
+   }
+  ]
  },
  {
   "id": 42,
@@ -1001,12 +1780,31 @@
   "tags": [
    "beverages"
   ],
-  "reviewCount": 3,
   "specs": {
    "Warranty": "3 months warranty",
    "Shipping": "Ships in 1 month",
    "Returns": "7 days return policy"
-  }
+  },
+  "reviews": [
+   {
+    "rating": 5,
+    "comment": "Highly impressed!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Jonathan Pierce"
+   },
+   {
+    "rating": 2,
+    "comment": "Would not recommend!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Grayson Coleman"
+   },
+   {
+    "rating": 3,
+    "comment": "Not as described!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Ethan Fletcher"
+   }
+  ]
  },
  {
   "id": 43,
@@ -1027,12 +1825,31 @@
    "home decor",
    "swing"
   ],
-  "reviewCount": 3,
   "specs": {
    "Warranty": "1 week warranty",
    "Shipping": "Ships in 1 month",
    "Returns": "90 days return policy"
-  }
+  },
+  "reviews": [
+   {
+    "rating": 1,
+    "comment": "Would not buy again!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Daniel Cook"
+   },
+   {
+    "rating": 2,
+    "comment": "Poor quality!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Hunter Gordon"
+   },
+   {
+    "rating": 3,
+    "comment": "Very unhappy with my purchase!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Stella Morris"
+   }
+  ]
  },
  {
   "id": 44,
@@ -1051,12 +1868,31 @@
    "home decor",
    "photo frame"
   ],
-  "reviewCount": 3,
   "specs": {
    "Warranty": "1 month warranty",
    "Shipping": "Ships in 2 weeks",
    "Returns": "No return policy"
-  }
+  },
+  "reviews": [
+   {
+    "rating": 4,
+    "comment": "Highly impressed!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Oscar Powers"
+   },
+   {
+    "rating": 5,
+    "comment": "Excellent quality!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Austin Hudson"
+   },
+   {
+    "rating": 2,
+    "comment": "Very dissatisfied!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Luke Cooper"
+   }
+  ]
  },
  {
   "id": 45,
@@ -1077,12 +1913,31 @@
    "home decor",
    "artificial plants"
   ],
-  "reviewCount": 3,
   "specs": {
    "Warranty": "1 year warranty",
    "Shipping": "Ships in 1 week",
    "Returns": "No return policy"
-  }
+  },
+  "reviews": [
+   {
+    "rating": 5,
+    "comment": "Very happy with my purchase!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Natalie Harris"
+   },
+   {
+    "rating": 1,
+    "comment": "Poor quality!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Max Russell"
+   },
+   {
+    "rating": 5,
+    "comment": "Very pleased!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Nolan Gonzalez"
+   }
+  ]
  },
  {
   "id": 46,
@@ -1104,12 +1959,31 @@
    "home decor",
    "plant accessories"
   ],
-  "reviewCount": 3,
   "specs": {
    "Warranty": "Lifetime warranty",
    "Shipping": "Ships in 3-5 business days",
    "Returns": "30 days return policy"
-  }
+  },
+  "reviews": [
+   {
+    "rating": 4,
+    "comment": "Fast shipping!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Vivian Carter"
+   },
+   {
+    "rating": 5,
+    "comment": "Very satisfied!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Ella Adams"
+   },
+   {
+    "rating": 3,
+    "comment": "Poor quality!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Liam Smith"
+   }
+  ]
  },
  {
   "id": 47,
@@ -1128,12 +2002,31 @@
    "home decor",
    "lighting"
   ],
-  "reviewCount": 3,
   "specs": {
    "Warranty": "3 months warranty",
    "Shipping": "Ships in 1-2 business days",
    "Returns": "90 days return policy"
-  }
+  },
+  "reviews": [
+   {
+    "rating": 5,
+    "comment": "Excellent quality!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Benjamin Foster"
+   },
+   {
+    "rating": 3,
+    "comment": "Would not recommend!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Sophia Jones"
+   },
+   {
+    "rating": 5,
+    "comment": "Awesome product!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Natalie Harris"
+   }
+  ]
  },
  {
   "id": 48,
@@ -1152,12 +2045,31 @@
    "kitchen tools",
    "utensils"
   ],
-  "reviewCount": 3,
   "specs": {
    "Warranty": "1 month warranty",
    "Shipping": "Ships overnight",
    "Returns": "60 days return policy"
-  }
+  },
+  "reviews": [
+   {
+    "rating": 5,
+    "comment": "Awesome product!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Lucas Ramirez"
+   },
+   {
+    "rating": 5,
+    "comment": "Highly recommended!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Caleb Perkins"
+   },
+   {
+    "rating": 4,
+    "comment": "Highly recommended!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Nolan Gonzalez"
+   }
+  ]
  },
  {
   "id": 49,
@@ -1177,12 +2089,31 @@
    "drinkware",
    "cups"
   ],
-  "reviewCount": 3,
   "specs": {
    "Warranty": "1 year warranty",
    "Shipping": "Ships overnight",
    "Returns": "30 days return policy"
-  }
+  },
+  "reviews": [
+   {
+    "rating": 3,
+    "comment": "Very disappointed!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Alexander Hernandez"
+   },
+   {
+    "rating": 5,
+    "comment": "Great value for money!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Aurora Rodriguez"
+   },
+   {
+    "rating": 1,
+    "comment": "Not worth the price!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Benjamin Foster"
+   }
+  ]
  },
  {
   "id": 50,
@@ -1201,12 +2132,31 @@
    "kitchen tools",
    "utensils"
   ],
-  "reviewCount": 3,
   "specs": {
    "Warranty": "3 months warranty",
    "Shipping": "Ships in 1 month",
    "Returns": "30 days return policy"
-  }
+  },
+  "reviews": [
+   {
+    "rating": 3,
+    "comment": "Not worth the price!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Cameron Perez"
+   },
+   {
+    "rating": 1,
+    "comment": "Waste of money!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Benjamin Foster"
+   },
+   {
+    "rating": 5,
+    "comment": "Very pleased!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Paisley Bell"
+   }
+  ]
  },
  {
   "id": 51,
@@ -1228,12 +2178,31 @@
    "kitchen appliances",
    "blenders"
   ],
-  "reviewCount": 3,
   "specs": {
    "Warranty": "5 year warranty",
    "Shipping": "Ships in 1-2 business days",
    "Returns": "7 days return policy"
-  }
+  },
+  "reviews": [
+   {
+    "rating": 5,
+    "comment": "Very pleased!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Ella Adams"
+   },
+   {
+    "rating": 5,
+    "comment": "Would buy again!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Ruby Andrews"
+   },
+   {
+    "rating": 5,
+    "comment": "Very happy with my purchase!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Aurora Lawson"
+   }
+  ]
  },
  {
   "id": 52,
@@ -1252,12 +2221,31 @@
    "cookware",
    "woks"
   ],
-  "reviewCount": 3,
   "specs": {
    "Warranty": "2 year warranty",
    "Shipping": "Ships in 1-2 business days",
    "Returns": "7 days return policy"
-  }
+  },
+  "reviews": [
+   {
+    "rating": 4,
+    "comment": "Excellent quality!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Nolan Bryant"
+   },
+   {
+    "rating": 4,
+    "comment": "Highly impressed!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Luna Perez"
+   },
+   {
+    "rating": 5,
+    "comment": "Very satisfied!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Noah Lewis"
+   }
+  ]
  },
  {
   "id": 53,
@@ -1276,12 +2264,31 @@
    "kitchen tools",
    "cutting boards"
   ],
-  "reviewCount": 3,
   "specs": {
    "Warranty": "3 months warranty",
    "Shipping": "Ships in 2 weeks",
    "Returns": "No return policy"
-  }
+  },
+  "reviews": [
+   {
+    "rating": 5,
+    "comment": "Great value for money!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Xavier Wright"
+   },
+   {
+    "rating": 4,
+    "comment": "Great value for money!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Henry Turner"
+   },
+   {
+    "rating": 4,
+    "comment": "Fast shipping!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Evelyn Walker"
+   }
+  ]
  },
  {
   "id": 54,
@@ -1300,12 +2307,31 @@
    "kitchen tools",
    "juicers"
   ],
-  "reviewCount": 3,
   "specs": {
    "Warranty": "2 year warranty",
    "Shipping": "Ships in 3-5 business days",
    "Returns": "60 days return policy"
-  }
+  },
+  "reviews": [
+   {
+    "rating": 4,
+    "comment": "Highly recommended!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Lucas Ramirez"
+   },
+   {
+    "rating": 4,
+    "comment": "Great product!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Eleanor Collins"
+   },
+   {
+    "rating": 5,
+    "comment": "Highly impressed!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Mila Hernandez"
+   }
+  ]
  },
  {
   "id": 55,
@@ -1324,12 +2350,31 @@
    "kitchen tools",
    "slicers"
   ],
-  "reviewCount": 3,
   "specs": {
    "Warranty": "1 week warranty",
    "Shipping": "Ships in 1 month",
    "Returns": "No return policy"
-  }
+  },
+  "reviews": [
+   {
+    "rating": 3,
+    "comment": "Very dissatisfied!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Harper Garcia"
+   },
+   {
+    "rating": 4,
+    "comment": "Very happy with my purchase!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Lily Torres"
+   },
+   {
+    "rating": 1,
+    "comment": "Not worth the price!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Tyler Davis"
+   }
+  ]
  },
  {
   "id": 56,
@@ -1351,12 +2396,31 @@
    "kitchen appliances",
    "cooktops"
   ],
-  "reviewCount": 3,
   "specs": {
    "Warranty": "2 year warranty",
    "Shipping": "Ships in 1 week",
    "Returns": "7 days return policy"
-  }
+  },
+  "reviews": [
+   {
+    "rating": 1,
+    "comment": "Would not recommend!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Ava Harris"
+   },
+   {
+    "rating": 2,
+    "comment": "Very dissatisfied!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Liam Smith"
+   },
+   {
+    "rating": 4,
+    "comment": "Very pleased!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Christian Perez"
+   }
+  ]
  },
  {
   "id": 57,
@@ -1375,12 +2439,31 @@
    "kitchen tools",
    "strainers"
   ],
-  "reviewCount": 3,
   "specs": {
    "Warranty": "1 month warranty",
    "Shipping": "Ships overnight",
    "Returns": "7 days return policy"
-  }
+  },
+  "reviews": [
+   {
+    "rating": 5,
+    "comment": "Very pleased!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Isabella Anderson"
+   },
+   {
+    "rating": 4,
+    "comment": "Highly impressed!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Aaliyah Hanson"
+   },
+   {
+    "rating": 2,
+    "comment": "Would not recommend!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Layla Sullivan"
+   }
+  ]
  },
  {
   "id": 58,
@@ -1399,12 +2482,31 @@
    "kitchen tools",
    "utensils"
   ],
-  "reviewCount": 3,
   "specs": {
    "Warranty": "No warranty",
    "Shipping": "Ships in 1 month",
    "Returns": "No return policy"
-  }
+  },
+  "reviews": [
+   {
+    "rating": 5,
+    "comment": "Highly impressed!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Elena Baker"
+   },
+   {
+    "rating": 5,
+    "comment": "Very satisfied!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Avery Scott"
+   },
+   {
+    "rating": 2,
+    "comment": "Would not buy again!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Mateo Perez"
+   }
+  ]
  },
  {
   "id": 59,
@@ -1423,12 +2525,31 @@
    "drinkware",
    "glasses"
   ],
-  "reviewCount": 3,
   "specs": {
    "Warranty": "3 year warranty",
    "Shipping": "Ships overnight",
    "Returns": "7 days return policy"
-  }
+  },
+  "reviews": [
+   {
+    "rating": 5,
+    "comment": "Very happy with my purchase!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Jackson Evans"
+   },
+   {
+    "rating": 3,
+    "comment": "Waste of money!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Nicholas Bailey"
+   },
+   {
+    "rating": 5,
+    "comment": "Very satisfied!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Nathan Reed"
+   }
+  ]
  },
  {
   "id": 60,
@@ -1447,12 +2568,31 @@
    "kitchen tools",
    "graters"
   ],
-  "reviewCount": 3,
   "specs": {
    "Warranty": "1 month warranty",
    "Shipping": "Ships in 1 week",
    "Returns": "60 days return policy"
-  }
+  },
+  "reviews": [
+   {
+    "rating": 1,
+    "comment": "Would not buy again!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Ella Adams"
+   },
+   {
+    "rating": 1,
+    "comment": "Not as described!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Eli Ward"
+   },
+   {
+    "rating": 5,
+    "comment": "Highly impressed!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "James Garcia"
+   }
+  ]
  },
  {
   "id": 61,
@@ -1471,12 +2611,31 @@
    "kitchen appliances",
    "blenders"
   ],
-  "reviewCount": 3,
   "specs": {
    "Warranty": "1 year warranty",
    "Shipping": "Ships in 1 week",
    "Returns": "No return policy"
-  }
+  },
+  "reviews": [
+   {
+    "rating": 5,
+    "comment": "Excellent quality!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Hazel Evans"
+   },
+   {
+    "rating": 4,
+    "comment": "Highly impressed!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Hannah Howard"
+   },
+   {
+    "rating": 1,
+    "comment": "Would not buy again!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Jonathan Pierce"
+   }
+  ]
  },
  {
   "id": 62,
@@ -1495,12 +2654,31 @@
    "kitchen tools",
    "ice cube trays"
   ],
-  "reviewCount": 3,
   "specs": {
    "Warranty": "1 month warranty",
    "Shipping": "Ships overnight",
    "Returns": "No return policy"
-  }
+  },
+  "reviews": [
+   {
+    "rating": 5,
+    "comment": "Awesome product!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Isaac Lawrence"
+   },
+   {
+    "rating": 5,
+    "comment": "Would buy again!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Leo Rivera"
+   },
+   {
+    "rating": 5,
+    "comment": "Very pleased!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Henry Turner"
+   }
+  ]
  },
  {
   "id": 63,
@@ -1519,12 +2697,31 @@
    "kitchen tools",
    "strainers"
   ],
-  "reviewCount": 3,
   "specs": {
    "Warranty": "1 month warranty",
    "Shipping": "Ships overnight",
    "Returns": "No return policy"
-  }
+  },
+  "reviews": [
+   {
+    "rating": 5,
+    "comment": "Highly recommended!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Stella Morris"
+   },
+   {
+    "rating": 5,
+    "comment": "Very happy with my purchase!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Henry Adams"
+   },
+   {
+    "rating": 4,
+    "comment": "Awesome product!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Lillian Simmons"
+   }
+  ]
  },
  {
   "id": 64,
@@ -1543,12 +2740,31 @@
    "kitchen tools",
    "cutlery"
   ],
-  "reviewCount": 3,
   "specs": {
    "Warranty": "1 month warranty",
    "Shipping": "Ships in 1 week",
    "Returns": "7 days return policy"
-  }
+  },
+  "reviews": [
+   {
+    "rating": 2,
+    "comment": "Very disappointed!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Aaliyah Martinez"
+   },
+   {
+    "rating": 5,
+    "comment": "Fast shipping!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Addison Wright"
+   },
+   {
+    "rating": 5,
+    "comment": "Very pleased!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Mateo Nguyen"
+   }
+  ]
  },
  {
   "id": 65,
@@ -1567,12 +2783,31 @@
    "kitchen tools",
    "storage"
   ],
-  "reviewCount": 3,
   "specs": {
    "Warranty": "5 year warranty",
    "Shipping": "Ships in 1-2 business days",
    "Returns": "30 days return policy"
-  }
+  },
+  "reviews": [
+   {
+    "rating": 5,
+    "comment": "Very pleased!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Jace Smith"
+   },
+   {
+    "rating": 5,
+    "comment": "Very happy with my purchase!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Zoe Bennett"
+   },
+   {
+    "rating": 2,
+    "comment": "Poor quality!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Michael Johnson"
+   }
+  ]
  },
  {
   "id": 66,
@@ -1594,12 +2829,31 @@
    "kitchen appliances",
    "microwaves"
   ],
-  "reviewCount": 3,
   "specs": {
    "Warranty": "1 year warranty",
    "Shipping": "Ships in 1 week",
    "Returns": "7 days return policy"
-  }
+  },
+  "reviews": [
+   {
+    "rating": 3,
+    "comment": "Very dissatisfied!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Nora Russell"
+   },
+   {
+    "rating": 4,
+    "comment": "Fast shipping!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Alice Smith"
+   },
+   {
+    "rating": 2,
+    "comment": "Very disappointed!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Ethan Fletcher"
+   }
+  ]
  },
  {
   "id": 67,
@@ -1619,12 +2873,31 @@
    "kitchen tools",
    "organization"
   ],
-  "reviewCount": 3,
   "specs": {
    "Warranty": "1 year warranty",
    "Shipping": "Ships in 1 month",
    "Returns": "30 days return policy"
-  }
+  },
+  "reviews": [
+   {
+    "rating": 1,
+    "comment": "Very unhappy with my purchase!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Bella Grant"
+   },
+   {
+    "rating": 5,
+    "comment": "Highly recommended!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Paisley Bell"
+   },
+   {
+    "rating": 4,
+    "comment": "Fast shipping!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "David Martinez"
+   }
+  ]
  },
  {
   "id": 68,
@@ -1643,12 +2916,31 @@
    "cookware",
    "pans"
   ],
-  "reviewCount": 3,
   "specs": {
    "Warranty": "1 year warranty",
    "Shipping": "Ships in 3-5 business days",
    "Returns": "30 days return policy"
-  }
+  },
+  "reviews": [
+   {
+    "rating": 5,
+    "comment": "Highly impressed!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Michael Johnson"
+   },
+   {
+    "rating": 4,
+    "comment": "Highly recommended!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Adrian Flores"
+   },
+   {
+    "rating": 1,
+    "comment": "Not as described!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Nicholas Bailey"
+   }
+  ]
  },
  {
   "id": 69,
@@ -1667,12 +2959,31 @@
    "dinnerware",
    "plates"
   ],
-  "reviewCount": 3,
   "specs": {
    "Warranty": "1 year warranty",
    "Shipping": "Ships in 1-2 business days",
    "Returns": "90 days return policy"
-  }
+  },
+  "reviews": [
+   {
+    "rating": 3,
+    "comment": "Disappointing product!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Mia Miller"
+   },
+   {
+    "rating": 4,
+    "comment": "Great product!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Henry Adams"
+   },
+   {
+    "rating": 4,
+    "comment": "Excellent quality!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Nora Russell"
+   }
+  ]
  },
  {
   "id": 70,
@@ -1691,12 +3002,31 @@
    "kitchen tools",
    "tongs"
   ],
-  "reviewCount": 3,
   "specs": {
    "Warranty": "No warranty",
    "Shipping": "Ships in 1 week",
    "Returns": "30 days return policy"
-  }
+  },
+  "reviews": [
+   {
+    "rating": 4,
+    "comment": "Very satisfied!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Xavier Wright"
+   },
+   {
+    "rating": 5,
+    "comment": "Highly recommended!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Stella Hughes"
+   },
+   {
+    "rating": 4,
+    "comment": "Excellent quality!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Jaxon Barnes"
+   }
+  ]
  },
  {
   "id": 71,
@@ -1715,12 +3045,31 @@
    "cookware",
    "pots"
   ],
-  "reviewCount": 3,
   "specs": {
    "Warranty": "1 year warranty",
    "Shipping": "Ships in 1 month",
    "Returns": "90 days return policy"
-  }
+  },
+  "reviews": [
+   {
+    "rating": 4,
+    "comment": "Great product!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Julian Newton"
+   },
+   {
+    "rating": 4,
+    "comment": "Excellent quality!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Noah Lewis"
+   },
+   {
+    "rating": 1,
+    "comment": "Disappointing product!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Brayden Hill"
+   }
+  ]
  },
  {
   "id": 72,
@@ -1739,12 +3088,31 @@
    "kitchen tools",
    "turners"
   ],
-  "reviewCount": 3,
   "specs": {
    "Warranty": "Lifetime warranty",
    "Shipping": "Ships in 1-2 business days",
    "Returns": "7 days return policy"
-  }
+  },
+  "reviews": [
+   {
+    "rating": 1,
+    "comment": "Would not recommend!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Ava Taylor"
+   },
+   {
+    "rating": 2,
+    "comment": "Would not recommend!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Liam Smith"
+   },
+   {
+    "rating": 5,
+    "comment": "Very satisfied!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Gabriel Mitchell"
+   }
+  ]
  },
  {
   "id": 73,
@@ -1763,12 +3131,31 @@
    "kitchen tools",
    "organization"
   ],
-  "reviewCount": 3,
   "specs": {
    "Warranty": "1 week warranty",
    "Shipping": "Ships overnight",
    "Returns": "7 days return policy"
-  }
+  },
+  "reviews": [
+   {
+    "rating": 5,
+    "comment": "Very satisfied!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Elena Baker"
+   },
+   {
+    "rating": 4,
+    "comment": "Excellent quality!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Owen Fisher"
+   },
+   {
+    "rating": 2,
+    "comment": "Waste of money!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Sadie Morales"
+   }
+  ]
  },
  {
   "id": 74,
@@ -1787,12 +3174,31 @@
    "kitchen tools",
    "utensils"
   ],
-  "reviewCount": 3,
   "specs": {
    "Warranty": "1 year warranty",
    "Shipping": "Ships in 1-2 business days",
    "Returns": "90 days return policy"
-  }
+  },
+  "reviews": [
+   {
+    "rating": 3,
+    "comment": "Waste of money!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Jackson Evans"
+   },
+   {
+    "rating": 1,
+    "comment": "Disappointing product!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Elena Baker"
+   },
+   {
+    "rating": 4,
+    "comment": "Awesome product!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Bella Gonzalez"
+   }
+  ]
  },
  {
   "id": 75,
@@ -1811,12 +3217,31 @@
    "serveware",
    "trays"
   ],
-  "reviewCount": 3,
   "specs": {
    "Warranty": "5 year warranty",
    "Shipping": "Ships in 2 weeks",
    "Returns": "7 days return policy"
-  }
+  },
+  "reviews": [
+   {
+    "rating": 5,
+    "comment": "Fast shipping!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Samantha Howard"
+   },
+   {
+    "rating": 3,
+    "comment": "Very disappointed!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Benjamin Wilson"
+   },
+   {
+    "rating": 4,
+    "comment": "Excellent quality!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Caleb Nelson"
+   }
+  ]
  },
  {
   "id": 76,
@@ -1835,12 +3260,31 @@
    "kitchen tools",
    "baking"
   ],
-  "reviewCount": 3,
   "specs": {
    "Warranty": "3 year warranty",
    "Shipping": "Ships in 2 weeks",
    "Returns": "30 days return policy"
-  }
+  },
+  "reviews": [
+   {
+    "rating": 2,
+    "comment": "Would not recommend!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Aurora Lawson"
+   },
+   {
+    "rating": 3,
+    "comment": "Very disappointed!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Ava Taylor"
+   },
+   {
+    "rating": 5,
+    "comment": "Great product!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Mila Hernandez"
+   }
+  ]
  },
  {
   "id": 77,
@@ -1859,12 +3303,31 @@
    "kitchen tools",
    "peelers"
   ],
-  "reviewCount": 3,
   "specs": {
    "Warranty": "1 month warranty",
    "Shipping": "Ships in 3-5 business days",
    "Returns": "90 days return policy"
-  }
+  },
+  "reviews": [
+   {
+    "rating": 1,
+    "comment": "Very unhappy with my purchase!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Claire Foster"
+   },
+   {
+    "rating": 5,
+    "comment": "Very happy with my purchase!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Aaliyah Hanson"
+   },
+   {
+    "rating": 4,
+    "comment": "Great product!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Olivia Wilson"
+   }
+  ]
  },
  {
   "id": 78,
@@ -1885,12 +3348,31 @@
    "laptops",
    "apple"
   ],
-  "reviewCount": 3,
   "specs": {
    "Warranty": "3 year warranty",
    "Shipping": "Ships in 2 weeks",
    "Returns": "90 days return policy"
-  }
+  },
+  "reviews": [
+   {
+    "rating": 5,
+    "comment": "Very happy with my purchase!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Hazel Evans"
+   },
+   {
+    "rating": 5,
+    "comment": "Very happy with my purchase!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Christopher West"
+   },
+   {
+    "rating": 4,
+    "comment": "Very satisfied!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Aubrey Garcia"
+   }
+  ]
  },
  {
   "id": 79,
@@ -1910,12 +3392,31 @@
   "tags": [
    "laptops"
   ],
-  "reviewCount": 3,
   "specs": {
    "Warranty": "3 year warranty",
    "Shipping": "Ships in 1 month",
    "Returns": "7 days return policy"
-  }
+  },
+  "reviews": [
+   {
+    "rating": 4,
+    "comment": "Very happy with my purchase!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Michael Johnson"
+   },
+   {
+    "rating": 5,
+    "comment": "Highly recommended!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Zoe Bennett"
+   },
+   {
+    "rating": 4,
+    "comment": "Very satisfied!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Mila Hernandez"
+   }
+  ]
  },
  {
   "id": 80,
@@ -1935,12 +3436,31 @@
   "tags": [
    "laptops"
   ],
-  "reviewCount": 3,
   "specs": {
    "Warranty": "No warranty",
    "Shipping": "Ships overnight",
    "Returns": "60 days return policy"
-  }
+  },
+  "reviews": [
+   {
+    "rating": 4,
+    "comment": "Very satisfied!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Evan Wright"
+   },
+   {
+    "rating": 4,
+    "comment": "Very happy with my purchase!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Hunter Gordon"
+   },
+   {
+    "rating": 1,
+    "comment": "Not worth the price!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "William Gonzalez"
+   }
+  ]
  },
  {
   "id": 81,
@@ -1960,12 +3480,31 @@
   "tags": [
    "laptops"
   ],
-  "reviewCount": 3,
   "specs": {
    "Warranty": "6 months warranty",
    "Shipping": "Ships in 2 weeks",
    "Returns": "No return policy"
-  }
+  },
+  "reviews": [
+   {
+    "rating": 4,
+    "comment": "Would buy again!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Bella Gonzalez"
+   },
+   {
+    "rating": 5,
+    "comment": "Great value for money!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Nathan Reed"
+   },
+   {
+    "rating": 4,
+    "comment": "Great value for money!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Hazel Gardner"
+   }
+  ]
  },
  {
   "id": 82,
@@ -1985,12 +3524,31 @@
   "tags": [
    "laptops"
   ],
-  "reviewCount": 3,
   "specs": {
    "Warranty": "2 year warranty",
    "Shipping": "Ships in 2 weeks",
    "Returns": "60 days return policy"
-  }
+  },
+  "reviews": [
+   {
+    "rating": 3,
+    "comment": "Poor quality!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Charlotte Lopez"
+   },
+   {
+    "rating": 4,
+    "comment": "Very satisfied!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Alice Smith"
+   },
+   {
+    "rating": 2,
+    "comment": "Disappointing product!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Ava Taylor"
+   }
+  ]
  },
  {
   "id": 83,
@@ -2012,12 +3570,31 @@
    "clothing",
    "men's shirts"
   ],
-  "reviewCount": 3,
   "specs": {
    "Warranty": "3 year warranty",
    "Shipping": "Ships in 3-5 business days",
    "Returns": "30 days return policy"
-  }
+  },
+  "reviews": [
+   {
+    "rating": 1,
+    "comment": "Waste of money!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Logan Lee"
+   },
+   {
+    "rating": 5,
+    "comment": "Very satisfied!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Zachary Lee"
+   },
+   {
+    "rating": 4,
+    "comment": "Fast shipping!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Aurora Rodriguez"
+   }
+  ]
  },
  {
   "id": 84,
@@ -2039,12 +3616,31 @@
    "clothing",
    "men's t-shirts"
   ],
-  "reviewCount": 3,
   "specs": {
    "Warranty": "3 year warranty",
    "Shipping": "Ships overnight",
    "Returns": "30 days return policy"
-  }
+  },
+  "reviews": [
+   {
+    "rating": 5,
+    "comment": "Excellent quality!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Amelia Perez"
+   },
+   {
+    "rating": 5,
+    "comment": "Awesome product!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Tyler Davis"
+   },
+   {
+    "rating": 1,
+    "comment": "Disappointing product!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Harper King"
+   }
+  ]
  },
  {
   "id": 85,
@@ -2066,12 +3662,31 @@
    "clothing",
    "men's shirts"
   ],
-  "reviewCount": 3,
   "specs": {
    "Warranty": "1 week warranty",
    "Shipping": "Ships in 1-2 business days",
    "Returns": "7 days return policy"
-  }
+  },
+  "reviews": [
+   {
+    "rating": 3,
+    "comment": "Disappointing product!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Aubrey Wagner"
+   },
+   {
+    "rating": 4,
+    "comment": "Awesome product!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Evan Reed"
+   },
+   {
+    "rating": 2,
+    "comment": "Very disappointed!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Evelyn Gonzalez"
+   }
+  ]
  },
  {
   "id": 86,
@@ -2093,12 +3708,31 @@
    "clothing",
    "men's shirts"
   ],
-  "reviewCount": 3,
   "specs": {
    "Warranty": "3 year warranty",
    "Shipping": "Ships in 2 weeks",
    "Returns": "30 days return policy"
-  }
+  },
+  "reviews": [
+   {
+    "rating": 5,
+    "comment": "Highly recommended!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Charlotte Lopez"
+   },
+   {
+    "rating": 2,
+    "comment": "Poor quality!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Ellie Stewart"
+   },
+   {
+    "rating": 1,
+    "comment": "Would not recommend!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Sadie Morales"
+   }
+  ]
  },
  {
   "id": 87,
@@ -2120,12 +3754,31 @@
    "clothing",
    "men's shirts"
   ],
-  "reviewCount": 3,
   "specs": {
    "Warranty": "No warranty",
    "Shipping": "Ships in 1-2 business days",
    "Returns": "30 days return policy"
-  }
+  },
+  "reviews": [
+   {
+    "rating": 3,
+    "comment": "Would not recommend!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Mateo Nguyen"
+   },
+   {
+    "rating": 5,
+    "comment": "Fast shipping!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Lucas Allen"
+   },
+   {
+    "rating": 2,
+    "comment": "Very unhappy with my purchase!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Henry Adams"
+   }
+  ]
  },
  {
   "id": 88,
@@ -2147,12 +3800,31 @@
    "footwear",
    "athletic shoes"
   ],
-  "reviewCount": 3,
   "specs": {
    "Warranty": "1 year warranty",
    "Shipping": "Ships in 1 week",
    "Returns": "No return policy"
-  }
+  },
+  "reviews": [
+   {
+    "rating": 5,
+    "comment": "Highly impressed!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Elena Long"
+   },
+   {
+    "rating": 4,
+    "comment": "Very happy with my purchase!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Addison Wright"
+   },
+   {
+    "rating": 1,
+    "comment": "Waste of money!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Mason Wright"
+   }
+  ]
  },
  {
   "id": 89,
@@ -2174,12 +3846,31 @@
    "footwear",
    "sports cleats"
   ],
-  "reviewCount": 3,
   "specs": {
    "Warranty": "6 months warranty",
    "Shipping": "Ships in 2 weeks",
    "Returns": "No return policy"
-  }
+  },
+  "reviews": [
+   {
+    "rating": 5,
+    "comment": "Would buy again!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Aaron Cook"
+   },
+   {
+    "rating": 2,
+    "comment": "Very disappointed!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Noah Lewis"
+   },
+   {
+    "rating": 3,
+    "comment": "Would not recommend!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Michael Johnson"
+   }
+  ]
  },
  {
   "id": 90,
@@ -2201,12 +3892,31 @@
    "footwear",
    "casual shoes"
   ],
-  "reviewCount": 3,
   "specs": {
    "Warranty": "5 year warranty",
    "Shipping": "Ships in 1-2 business days",
    "Returns": "90 days return policy"
-  }
+  },
+  "reviews": [
+   {
+    "rating": 5,
+    "comment": "Highly impressed!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Jackson Morales"
+   },
+   {
+    "rating": 1,
+    "comment": "Very disappointed!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Sophia Jones"
+   },
+   {
+    "rating": 5,
+    "comment": "Very pleased!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Logan Torres"
+   }
+  ]
  },
  {
   "id": 91,
@@ -2228,12 +3938,31 @@
    "footwear",
    "athletic shoes"
   ],
-  "reviewCount": 3,
   "specs": {
    "Warranty": "1 week warranty",
    "Shipping": "Ships in 3-5 business days",
    "Returns": "30 days return policy"
-  }
+  },
+  "reviews": [
+   {
+    "rating": 4,
+    "comment": "Would buy again!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Sadie Morales"
+   },
+   {
+    "rating": 5,
+    "comment": "Fast shipping!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Julian Newton"
+   },
+   {
+    "rating": 5,
+    "comment": "Awesome product!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Logan Lee"
+   }
+  ]
  },
  {
   "id": 92,
@@ -2255,12 +3984,31 @@
    "footwear",
    "casual shoes"
   ],
-  "reviewCount": 3,
   "specs": {
    "Warranty": "3 months warranty",
    "Shipping": "Ships overnight",
    "Returns": "60 days return policy"
-  }
+  },
+  "reviews": [
+   {
+    "rating": 4,
+    "comment": "Excellent quality!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Aurora Lawson"
+   },
+   {
+    "rating": 5,
+    "comment": "Great value for money!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Gabriel Mitchell"
+   },
+   {
+    "rating": 1,
+    "comment": "Not worth the price!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Eli Bennett"
+   }
+  ]
  },
  {
   "id": 93,
@@ -2281,12 +4029,31 @@
    "watches",
    "leather watches"
   ],
-  "reviewCount": 3,
   "specs": {
    "Warranty": "1 year warranty",
    "Shipping": "Ships in 1 month",
    "Returns": "30 days return policy"
-  }
+  },
+  "reviews": [
+   {
+    "rating": 1,
+    "comment": "Very unhappy with my purchase!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "James Garcia"
+   },
+   {
+    "rating": 4,
+    "comment": "Fast shipping!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Avery Barnes"
+   },
+   {
+    "rating": 4,
+    "comment": "Would buy again!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "David Martinez"
+   }
+  ]
  },
  {
   "id": 94,
@@ -2307,12 +4074,31 @@
    "watches",
    "luxury watches"
   ],
-  "reviewCount": 3,
   "specs": {
    "Warranty": "1 week warranty",
    "Shipping": "Ships in 1-2 business days",
    "Returns": "7 days return policy"
-  }
+  },
+  "reviews": [
+   {
+    "rating": 4,
+    "comment": "Highly impressed!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Eli Ward"
+   },
+   {
+    "rating": 3,
+    "comment": "Very disappointed!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Owen Fisher"
+   },
+   {
+    "rating": 5,
+    "comment": "Great product!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Nathan Reed"
+   }
+  ]
  },
  {
   "id": 95,
@@ -2333,12 +4119,31 @@
    "watches",
    "luxury watches"
   ],
-  "reviewCount": 3,
   "specs": {
    "Warranty": "3 months warranty",
    "Shipping": "Ships in 1 week",
    "Returns": "90 days return policy"
-  }
+  },
+  "reviews": [
+   {
+    "rating": 3,
+    "comment": "Not worth the price!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Owen Sullivan"
+   },
+   {
+    "rating": 4,
+    "comment": "Very satisfied!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Jonathan Pierce"
+   },
+   {
+    "rating": 1,
+    "comment": "Would not buy again!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Adrian Flores"
+   }
+  ]
  },
  {
   "id": 96,
@@ -2359,12 +4164,31 @@
    "watches",
    "luxury watches"
   ],
-  "reviewCount": 3,
   "specs": {
    "Warranty": "6 months warranty",
    "Shipping": "Ships overnight",
    "Returns": "7 days return policy"
-  }
+  },
+  "reviews": [
+   {
+    "rating": 3,
+    "comment": "Poor quality!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Ella Adams"
+   },
+   {
+    "rating": 5,
+    "comment": "Very satisfied!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Leo Rivera"
+   },
+   {
+    "rating": 4,
+    "comment": "Very pleased!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Emma Miller"
+   }
+  ]
  },
  {
   "id": 97,
@@ -2385,12 +4209,31 @@
    "watches",
    "luxury watches"
   ],
-  "reviewCount": 3,
   "specs": {
    "Warranty": "2 year warranty",
    "Shipping": "Ships in 1 month",
    "Returns": "7 days return policy"
-  }
+  },
+  "reviews": [
+   {
+    "rating": 4,
+    "comment": "Fast shipping!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Alice Smith"
+   },
+   {
+    "rating": 4,
+    "comment": "Very pleased!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Abigail Rivera"
+   },
+   {
+    "rating": 3,
+    "comment": "Waste of money!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Daniel Cook"
+   }
+  ]
  },
  {
   "id": 98,
@@ -2411,12 +4254,31 @@
    "watches",
    "luxury watches"
   ],
-  "reviewCount": 3,
   "specs": {
    "Warranty": "5 year warranty",
    "Shipping": "Ships in 1 month",
    "Returns": "90 days return policy"
-  }
+  },
+  "reviews": [
+   {
+    "rating": 4,
+    "comment": "Great value for money!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Luna Perez"
+   },
+   {
+    "rating": 5,
+    "comment": "Highly recommended!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Hannah Robinson"
+   },
+   {
+    "rating": 5,
+    "comment": "Fast shipping!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Aaliyah Hanson"
+   }
+  ]
  },
  {
   "id": 99,
@@ -2436,12 +4298,31 @@
    "electronics",
    "smart speakers"
   ],
-  "reviewCount": 3,
   "specs": {
    "Warranty": "6 months warranty",
    "Shipping": "Ships in 1 week",
    "Returns": "7 days return policy"
-  }
+  },
+  "reviews": [
+   {
+    "rating": 2,
+    "comment": "Would not recommend!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Chloe Morales"
+   },
+   {
+    "rating": 3,
+    "comment": "Very disappointed!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Mateo Perez"
+   },
+   {
+    "rating": 4,
+    "comment": "Fast shipping!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Evelyn Walker"
+   }
+  ]
  },
  {
   "id": 100,
@@ -2462,12 +4343,31 @@
    "electronics",
    "wireless earphones"
   ],
-  "reviewCount": 3,
   "specs": {
    "Warranty": "3 year warranty",
    "Shipping": "Ships in 3-5 business days",
    "Returns": "No return policy"
-  }
+  },
+  "reviews": [
+   {
+    "rating": 3,
+    "comment": "Would not buy again!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Christopher West"
+   },
+   {
+    "rating": 5,
+    "comment": "Great product!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Emma Wilson"
+   },
+   {
+    "rating": 4,
+    "comment": "Excellent quality!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Xavier Wright"
+   }
+  ]
  },
  {
   "id": 101,
@@ -2486,12 +4386,31 @@
    "electronics",
    "over-ear headphones"
   ],
-  "reviewCount": 3,
   "specs": {
    "Warranty": "No warranty",
    "Shipping": "Ships in 2 weeks",
    "Returns": "No return policy"
-  }
+  },
+  "reviews": [
+   {
+    "rating": 5,
+    "comment": "Excellent quality!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Henry Adams"
+   },
+   {
+    "rating": 4,
+    "comment": "Very happy with my purchase!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Elijah Cruz"
+   },
+   {
+    "rating": 4,
+    "comment": "Would buy again!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "William Lopez"
+   }
+  ]
  },
  {
   "id": 102,
@@ -2510,12 +4429,31 @@
    "electronics",
    "wireless chargers"
   ],
-  "reviewCount": 3,
   "specs": {
    "Warranty": "2 year warranty",
    "Shipping": "Ships in 1 week",
    "Returns": "90 days return policy"
-  }
+  },
+  "reviews": [
+   {
+    "rating": 5,
+    "comment": "Would buy again!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Christian Perez"
+   },
+   {
+    "rating": 4,
+    "comment": "Awesome product!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Ruby Andrews"
+   },
+   {
+    "rating": 3,
+    "comment": "Not worth the price!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Harper Turner"
+   }
+  ]
  },
  {
   "id": 103,
@@ -2534,12 +4472,31 @@
    "electronics",
    "smart speakers"
   ],
-  "reviewCount": 3,
   "specs": {
    "Warranty": "3 months warranty",
    "Shipping": "Ships in 1 month",
    "Returns": "90 days return policy"
-  }
+  },
+  "reviews": [
+   {
+    "rating": 5,
+    "comment": "Great product!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Max Russell"
+   },
+   {
+    "rating": 3,
+    "comment": "Would not buy again!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Isaac Lawrence"
+   },
+   {
+    "rating": 4,
+    "comment": "Very pleased!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Avery Carter"
+   }
+  ]
  },
  {
   "id": 104,
@@ -2559,12 +4516,31 @@
    "electronics",
    "chargers"
   ],
-  "reviewCount": 3,
   "specs": {
    "Warranty": "1 year warranty",
    "Shipping": "Ships in 2 weeks",
    "Returns": "90 days return policy"
-  }
+  },
+  "reviews": [
+   {
+    "rating": 1,
+    "comment": "Very disappointed!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Sadie Morales"
+   },
+   {
+    "rating": 5,
+    "comment": "Great product!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Lily Torres"
+   },
+   {
+    "rating": 2,
+    "comment": "Waste of money!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Luke Cooper"
+   }
+  ]
  },
  {
   "id": 105,
@@ -2584,12 +4560,31 @@
    "electronics",
    "power banks"
   ],
-  "reviewCount": 3,
   "specs": {
    "Warranty": "2 year warranty",
    "Shipping": "Ships overnight",
    "Returns": "No return policy"
-  }
+  },
+  "reviews": [
+   {
+    "rating": 2,
+    "comment": "Would not recommend!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Stella Morris"
+   },
+   {
+    "rating": 2,
+    "comment": "Not as described!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Henry Adams"
+   },
+   {
+    "rating": 5,
+    "comment": "Fast shipping!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Cameron Burke"
+   }
+  ]
  },
  {
   "id": 106,
@@ -2610,12 +4605,31 @@
    "electronics",
    "smartwatches"
   ],
-  "reviewCount": 3,
   "specs": {
    "Warranty": "6 months warranty",
    "Shipping": "Ships in 1 month",
    "Returns": "No return policy"
-  }
+  },
+  "reviews": [
+   {
+    "rating": 3,
+    "comment": "Very unhappy with my purchase!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Chloe Morales"
+   },
+   {
+    "rating": 4,
+    "comment": "Fast shipping!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Ava Harrison"
+   },
+   {
+    "rating": 4,
+    "comment": "Would buy again!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Nicholas Bailey"
+   }
+  ]
  },
  {
   "id": 107,
@@ -2634,12 +4648,31 @@
    "electronics",
    "wireless earphones"
   ],
-  "reviewCount": 3,
   "specs": {
    "Warranty": "1 year warranty",
    "Shipping": "Ships in 1-2 business days",
    "Returns": "7 days return policy"
-  }
+  },
+  "reviews": [
+   {
+    "rating": 2,
+    "comment": "Disappointing product!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "William Gonzalez"
+   },
+   {
+    "rating": 5,
+    "comment": "Very pleased!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Gabriel Mitchell"
+   },
+   {
+    "rating": 2,
+    "comment": "Not worth the price!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Gabriel Adams"
+   }
+  ]
  },
  {
   "id": 108,
@@ -2661,12 +4694,31 @@
    "electronics",
    "phone accessories"
   ],
-  "reviewCount": 3,
   "specs": {
    "Warranty": "3 months warranty",
    "Shipping": "Ships in 3-5 business days",
    "Returns": "90 days return policy"
-  }
+  },
+  "reviews": [
+   {
+    "rating": 2,
+    "comment": "Would not buy again!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Penelope King"
+   },
+   {
+    "rating": 5,
+    "comment": "Great value for money!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Isabella Anderson"
+   },
+   {
+    "rating": 5,
+    "comment": "Highly recommended!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Claire Foster"
+   }
+  ]
  },
  {
   "id": 109,
@@ -2686,12 +4738,31 @@
    "electronics",
    "camera accessories"
   ],
-  "reviewCount": 3,
   "specs": {
    "Warranty": "1 year warranty",
    "Shipping": "Ships in 1-2 business days",
    "Returns": "60 days return policy"
-  }
+  },
+  "reviews": [
+   {
+    "rating": 1,
+    "comment": "Not worth the price!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Max Parker"
+   },
+   {
+    "rating": 4,
+    "comment": "Highly recommended!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Maya Reed"
+   },
+   {
+    "rating": 5,
+    "comment": "Fast shipping!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Mila Hernandez"
+   }
+  ]
  },
  {
   "id": 110,
@@ -2710,12 +4781,31 @@
    "electronics",
    "selfie accessories"
   ],
-  "reviewCount": 3,
   "specs": {
    "Warranty": "Lifetime warranty",
    "Shipping": "Ships in 2 weeks",
    "Returns": "60 days return policy"
-  }
+  },
+  "reviews": [
+   {
+    "rating": 4,
+    "comment": "Highly recommended!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Luke Cooper"
+   },
+   {
+    "rating": 3,
+    "comment": "Poor quality!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Caleb Perkins"
+   },
+   {
+    "rating": 4,
+    "comment": "Highly recommended!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Benjamin Wilson"
+   }
+  ]
  },
  {
   "id": 111,
@@ -2734,12 +4824,31 @@
    "electronics",
    "selfie accessories"
   ],
-  "reviewCount": 3,
   "specs": {
    "Warranty": "3 year warranty",
    "Shipping": "Ships in 1-2 business days",
    "Returns": "30 days return policy"
-  }
+  },
+  "reviews": [
+   {
+    "rating": 4,
+    "comment": "Great product!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Ryan Graham"
+   },
+   {
+    "rating": 4,
+    "comment": "Great product!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Nora Russell"
+   },
+   {
+    "rating": 1,
+    "comment": "Very dissatisfied!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Luna Perez"
+   }
+  ]
  },
  {
   "id": 112,
@@ -2758,12 +4867,31 @@
    "electronics",
    "camera accessories"
   ],
-  "reviewCount": 3,
   "specs": {
    "Warranty": "3 months warranty",
    "Shipping": "Ships in 1-2 business days",
    "Returns": "7 days return policy"
-  }
+  },
+  "reviews": [
+   {
+    "rating": 3,
+    "comment": "Would not recommend!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Aubrey Gutierrez"
+   },
+   {
+    "rating": 5,
+    "comment": "Would buy again!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Carter Rivera"
+   },
+   {
+    "rating": 5,
+    "comment": "Fast shipping!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Max Russell"
+   }
+  ]
  },
  {
   "id": 118,
@@ -2784,12 +4912,31 @@
    "personal care",
    "hand soap"
   ],
-  "reviewCount": 3,
   "specs": {
    "Warranty": "6 months warranty",
    "Shipping": "Ships overnight",
    "Returns": "60 days return policy"
-  }
+  },
+  "reviews": [
+   {
+    "rating": 5,
+    "comment": "Very satisfied!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Liam Garcia"
+   },
+   {
+    "rating": 4,
+    "comment": "Great product!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Victoria McDonald"
+   },
+   {
+    "rating": 5,
+    "comment": "Very happy with my purchase!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Hannah Robinson"
+   }
+  ]
  },
  {
   "id": 119,
@@ -2810,12 +4957,31 @@
    "personal care",
    "body wash"
   ],
-  "reviewCount": 3,
   "specs": {
    "Warranty": "1 year warranty",
    "Shipping": "Ships in 1-2 business days",
    "Returns": "30 days return policy"
-  }
+  },
+  "reviews": [
+   {
+    "rating": 4,
+    "comment": "Very satisfied!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Abigail Rivera"
+   },
+   {
+    "rating": 4,
+    "comment": "Great value for money!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Hunter Gordon"
+   },
+   {
+    "rating": 4,
+    "comment": "Very pleased!",
+    "date": "2025-04-30T09:41:02.053Z",
+    "name": "Zoe Bennett"
+   }
+  ]
  },
  {
   "id": 120,
@@ -2836,12 +5002,31 @@
    "personal care",
    "body lotion"
   ],
-  "reviewCount": 3,
   "specs": {
    "Warranty": "Lifetime warranty",
    "Shipping": "Ships overnight",
    "Returns": "90 days return policy"
-  }
+  },
+  "reviews": [
+   {
+    "rating": 4,
+    "comment": "Excellent quality!",
+    "date": "2025-04-30T09:41:02.054Z",
+    "name": "Aria Ferguson"
+   },
+   {
+    "rating": 5,
+    "comment": "Very pleased!",
+    "date": "2025-04-30T09:41:02.054Z",
+    "name": "Nova Cooper"
+   },
+   {
+    "rating": 4,
+    "comment": "Great product!",
+    "date": "2025-04-30T09:41:02.054Z",
+    "name": "Madison Collins"
+   }
+  ]
  },
  {
   "id": 121,
@@ -2862,12 +5047,31 @@
    "smartphones",
    "apple"
   ],
-  "reviewCount": 3,
   "specs": {
    "Warranty": "Lifetime warranty",
    "Shipping": "Ships in 1 month",
    "Returns": "60 days return policy"
-  }
+  },
+  "reviews": [
+   {
+    "rating": 5,
+    "comment": "Highly recommended!",
+    "date": "2025-04-30T09:41:02.054Z",
+    "name": "Jace Smith"
+   },
+   {
+    "rating": 1,
+    "comment": "Not as described!",
+    "date": "2025-04-30T09:41:02.054Z",
+    "name": "Logan Torres"
+   },
+   {
+    "rating": 5,
+    "comment": "Very satisfied!",
+    "date": "2025-04-30T09:41:02.054Z",
+    "name": "Harper Kelly"
+   }
+  ]
  },
  {
   "id": 122,
@@ -2888,12 +5092,31 @@
    "smartphones",
    "apple"
   ],
-  "reviewCount": 3,
   "specs": {
    "Warranty": "1 month warranty",
    "Shipping": "Ships overnight",
    "Returns": "7 days return policy"
-  }
+  },
+  "reviews": [
+   {
+    "rating": 3,
+    "comment": "Disappointing product!",
+    "date": "2025-04-30T09:41:02.054Z",
+    "name": "Stella Morris"
+   },
+   {
+    "rating": 4,
+    "comment": "Excellent quality!",
+    "date": "2025-04-30T09:41:02.054Z",
+    "name": "Nolan Gonzalez"
+   },
+   {
+    "rating": 5,
+    "comment": "Great value for money!",
+    "date": "2025-04-30T09:41:02.054Z",
+    "name": "Benjamin Foster"
+   }
+  ]
  },
  {
   "id": 123,
@@ -2914,12 +5137,31 @@
    "smartphones",
    "apple"
   ],
-  "reviewCount": 3,
   "specs": {
    "Warranty": "3 year warranty",
    "Shipping": "Ships in 2 weeks",
    "Returns": "7 days return policy"
-  }
+  },
+  "reviews": [
+   {
+    "rating": 5,
+    "comment": "Would buy again!",
+    "date": "2025-04-30T09:41:02.054Z",
+    "name": "Christian Perez"
+   },
+   {
+    "rating": 3,
+    "comment": "Not worth the price!",
+    "date": "2025-04-30T09:41:02.054Z",
+    "name": "Liam Gonzalez"
+   },
+   {
+    "rating": 5,
+    "comment": "Very satisfied!",
+    "date": "2025-04-30T09:41:02.054Z",
+    "name": "Tristan Scott"
+   }
+  ]
  },
  {
   "id": 124,
@@ -2940,12 +5182,31 @@
    "smartphones",
    "apple"
   ],
-  "reviewCount": 3,
   "specs": {
    "Warranty": "3 months warranty",
    "Shipping": "Ships in 3-5 business days",
    "Returns": "7 days return policy"
-  }
+  },
+  "reviews": [
+   {
+    "rating": 4,
+    "comment": "Highly recommended!",
+    "date": "2025-04-30T09:41:02.054Z",
+    "name": "Tyler Davis"
+   },
+   {
+    "rating": 5,
+    "comment": "Great product!",
+    "date": "2025-04-30T09:41:02.054Z",
+    "name": "Aria Parker"
+   },
+   {
+    "rating": 2,
+    "comment": "Not as described!",
+    "date": "2025-04-30T09:41:02.054Z",
+    "name": "Lily Torres"
+   }
+  ]
  },
  {
   "id": 125,
@@ -2966,12 +5227,31 @@
    "smartphones",
    "oppo"
   ],
-  "reviewCount": 3,
   "specs": {
    "Warranty": "Lifetime warranty",
    "Shipping": "Ships in 3-5 business days",
    "Returns": "90 days return policy"
-  }
+  },
+  "reviews": [
+   {
+    "rating": 4,
+    "comment": "Excellent quality!",
+    "date": "2025-04-30T09:41:02.054Z",
+    "name": "Scarlett Wright"
+   },
+   {
+    "rating": 5,
+    "comment": "Excellent quality!",
+    "date": "2025-04-30T09:41:02.054Z",
+    "name": "Jacob Cooper"
+   },
+   {
+    "rating": 2,
+    "comment": "Poor quality!",
+    "date": "2025-04-30T09:41:02.054Z",
+    "name": "Zoe Nicholson"
+   }
+  ]
  },
  {
   "id": 126,
@@ -2992,12 +5272,31 @@
    "smartphones",
    "oppo"
   ],
-  "reviewCount": 3,
   "specs": {
    "Warranty": "3 year warranty",
    "Shipping": "Ships in 1 week",
    "Returns": "90 days return policy"
-  }
+  },
+  "reviews": [
+   {
+    "rating": 5,
+    "comment": "Very happy with my purchase!",
+    "date": "2025-04-30T09:41:02.054Z",
+    "name": "Emily Johnson"
+   },
+   {
+    "rating": 5,
+    "comment": "Highly recommended!",
+    "date": "2025-04-30T09:41:02.054Z",
+    "name": "Jaxon Barnes"
+   },
+   {
+    "rating": 4,
+    "comment": "Would buy again!",
+    "date": "2025-04-30T09:41:02.054Z",
+    "name": "Nova Cooper"
+   }
+  ]
  },
  {
   "id": 127,
@@ -3019,12 +5318,31 @@
    "smartphones",
    "oppo"
   ],
-  "reviewCount": 3,
   "specs": {
    "Warranty": "1 month warranty",
    "Shipping": "Ships in 1-2 business days",
    "Returns": "30 days return policy"
-  }
+  },
+  "reviews": [
+   {
+    "rating": 4,
+    "comment": "Very pleased!",
+    "date": "2025-04-30T09:41:02.054Z",
+    "name": "Christopher West"
+   },
+   {
+    "rating": 4,
+    "comment": "Highly recommended!",
+    "date": "2025-04-30T09:41:02.054Z",
+    "name": "Mia Miller"
+   },
+   {
+    "rating": 2,
+    "comment": "Very dissatisfied!",
+    "date": "2025-04-30T09:41:02.054Z",
+    "name": "Ella Adams"
+   }
+  ]
  },
  {
   "id": 128,
@@ -3045,12 +5363,31 @@
    "smartphones",
    "realme"
   ],
-  "reviewCount": 3,
   "specs": {
    "Warranty": "3 year warranty",
    "Shipping": "Ships overnight",
    "Returns": "90 days return policy"
-  }
+  },
+  "reviews": [
+   {
+    "rating": 4,
+    "comment": "Great product!",
+    "date": "2025-04-30T09:41:02.054Z",
+    "name": "Penelope King"
+   },
+   {
+    "rating": 2,
+    "comment": "Very unhappy with my purchase!",
+    "date": "2025-04-30T09:41:02.054Z",
+    "name": "Asher Scott"
+   },
+   {
+    "rating": 4,
+    "comment": "Highly impressed!",
+    "date": "2025-04-30T09:41:02.054Z",
+    "name": "Henry Adams"
+   }
+  ]
  },
  {
   "id": 129,
@@ -3071,12 +5408,31 @@
    "smartphones",
    "realme"
   ],
-  "reviewCount": 3,
   "specs": {
    "Warranty": "1 month warranty",
    "Shipping": "Ships in 3-5 business days",
    "Returns": "No return policy"
-  }
+  },
+  "reviews": [
+   {
+    "rating": 5,
+    "comment": "Would buy again!",
+    "date": "2025-04-30T09:41:02.054Z",
+    "name": "Hazel Evans"
+   },
+   {
+    "rating": 5,
+    "comment": "Fast shipping!",
+    "date": "2025-04-30T09:41:02.054Z",
+    "name": "Brayden Fleming"
+   },
+   {
+    "rating": 5,
+    "comment": "Very satisfied!",
+    "date": "2025-04-30T09:41:02.054Z",
+    "name": "Madison Stewart"
+   }
+  ]
  },
  {
   "id": 130,
@@ -3097,12 +5453,31 @@
    "smartphones",
    "realme"
   ],
-  "reviewCount": 3,
   "specs": {
    "Warranty": "3 year warranty",
    "Shipping": "Ships in 1 month",
    "Returns": "60 days return policy"
-  }
+  },
+  "reviews": [
+   {
+    "rating": 4,
+    "comment": "Very satisfied!",
+    "date": "2025-04-30T09:41:02.054Z",
+    "name": "Emily Brown"
+   },
+   {
+    "rating": 3,
+    "comment": "Not as described!",
+    "date": "2025-04-30T09:41:02.054Z",
+    "name": "Ella Cook"
+   },
+   {
+    "rating": 5,
+    "comment": "Would buy again!",
+    "date": "2025-04-30T09:41:02.054Z",
+    "name": "Layla Sullivan"
+   }
+  ]
  },
  {
   "id": 131,
@@ -3123,12 +5498,31 @@
    "smartphones",
    "samsung galaxy"
   ],
-  "reviewCount": 3,
   "specs": {
    "Warranty": "3 months warranty",
    "Shipping": "Ships in 3-5 business days",
    "Returns": "No return policy"
-  }
+  },
+  "reviews": [
+   {
+    "rating": 1,
+    "comment": "Not as described!",
+    "date": "2025-04-30T09:41:02.054Z",
+    "name": "Julian James"
+   },
+   {
+    "rating": 4,
+    "comment": "Fast shipping!",
+    "date": "2025-04-30T09:41:02.054Z",
+    "name": "Lucas Gordon"
+   },
+   {
+    "rating": 4,
+    "comment": "Excellent quality!",
+    "date": "2025-04-30T09:41:02.054Z",
+    "name": "Ava Taylor"
+   }
+  ]
  },
  {
   "id": 132,
@@ -3149,12 +5543,31 @@
    "smartphones",
    "samsung galaxy"
   ],
-  "reviewCount": 3,
   "specs": {
    "Warranty": "2 year warranty",
    "Shipping": "Ships in 1 week",
    "Returns": "No return policy"
-  }
+  },
+  "reviews": [
+   {
+    "rating": 4,
+    "comment": "Highly impressed!",
+    "date": "2025-04-30T09:41:02.054Z",
+    "name": "Owen Fisher"
+   },
+   {
+    "rating": 4,
+    "comment": "Highly impressed!",
+    "date": "2025-04-30T09:41:02.054Z",
+    "name": "Clara Berry"
+   },
+   {
+    "rating": 4,
+    "comment": "Highly recommended!",
+    "date": "2025-04-30T09:41:02.054Z",
+    "name": "Tyler Davis"
+   }
+  ]
  },
  {
   "id": 133,
@@ -3175,12 +5588,31 @@
    "smartphones",
    "samsung galaxy"
   ],
-  "reviewCount": 3,
   "specs": {
    "Warranty": "No warranty",
    "Shipping": "Ships in 2 weeks",
    "Returns": "30 days return policy"
-  }
+  },
+  "reviews": [
+   {
+    "rating": 4,
+    "comment": "Excellent quality!",
+    "date": "2025-04-30T09:41:02.054Z",
+    "name": "Tristan Scott"
+   },
+   {
+    "rating": 5,
+    "comment": "Would buy again!",
+    "date": "2025-04-30T09:41:02.054Z",
+    "name": "Christopher West"
+   },
+   {
+    "rating": 2,
+    "comment": "Would not recommend!",
+    "date": "2025-04-30T09:41:02.054Z",
+    "name": "Amelia Perez"
+   }
+  ]
  },
  {
   "id": 134,
@@ -3201,12 +5633,31 @@
    "smartphones",
    "vivo"
   ],
-  "reviewCount": 3,
   "specs": {
    "Warranty": "6 months warranty",
    "Shipping": "Ships in 3-5 business days",
    "Returns": "7 days return policy"
-  }
+  },
+  "reviews": [
+   {
+    "rating": 4,
+    "comment": "Very satisfied!",
+    "date": "2025-04-30T09:41:02.054Z",
+    "name": "Samantha Martinez"
+   },
+   {
+    "rating": 3,
+    "comment": "Very disappointed!",
+    "date": "2025-04-30T09:41:02.054Z",
+    "name": "Logan Lee"
+   },
+   {
+    "rating": 4,
+    "comment": "Would buy again!",
+    "date": "2025-04-30T09:41:02.054Z",
+    "name": "Sophia Jones"
+   }
+  ]
  },
  {
   "id": 135,
@@ -3227,12 +5678,31 @@
    "smartphones",
    "vivo"
   ],
-  "reviewCount": 3,
   "specs": {
    "Warranty": "2 year warranty",
    "Shipping": "Ships in 1 month",
    "Returns": "60 days return policy"
-  }
+  },
+  "reviews": [
+   {
+    "rating": 2,
+    "comment": "Very unhappy with my purchase!",
+    "date": "2025-04-30T09:41:02.054Z",
+    "name": "Logan Lawson"
+   },
+   {
+    "rating": 5,
+    "comment": "Awesome product!",
+    "date": "2025-04-30T09:41:02.054Z",
+    "name": "Layla Young"
+   },
+   {
+    "rating": 4,
+    "comment": "Great value for money!",
+    "date": "2025-04-30T09:41:02.054Z",
+    "name": "Asher Scott"
+   }
+  ]
  },
  {
   "id": 136,
@@ -3253,12 +5723,31 @@
    "smartphones",
    "vivo"
   ],
-  "reviewCount": 3,
   "specs": {
    "Warranty": "1 year warranty",
    "Shipping": "Ships in 1-2 business days",
    "Returns": "60 days return policy"
-  }
+  },
+  "reviews": [
+   {
+    "rating": 4,
+    "comment": "Very pleased!",
+    "date": "2025-04-30T09:41:02.054Z",
+    "name": "Liam Gonzalez"
+   },
+   {
+    "rating": 4,
+    "comment": "Fast shipping!",
+    "date": "2025-04-30T09:41:02.054Z",
+    "name": "Aurora Barnes"
+   },
+   {
+    "rating": 2,
+    "comment": "Not as described!",
+    "date": "2025-04-30T09:41:02.054Z",
+    "name": "Evelyn Walker"
+   }
+  ]
  },
  {
   "id": 137,
@@ -3277,12 +5766,31 @@
    "sports equipment",
    "american football"
   ],
-  "reviewCount": 3,
   "specs": {
    "Warranty": "6 months warranty",
    "Shipping": "Ships in 1 month",
    "Returns": "90 days return policy"
-  }
+  },
+  "reviews": [
+   {
+    "rating": 4,
+    "comment": "Awesome product!",
+    "date": "2025-04-30T09:41:02.054Z",
+    "name": "Scarlett Bowman"
+   },
+   {
+    "rating": 4,
+    "comment": "Would buy again!",
+    "date": "2025-04-30T09:41:02.054Z",
+    "name": "Tristan Scott"
+   },
+   {
+    "rating": 4,
+    "comment": "Very pleased!",
+    "date": "2025-04-30T09:41:02.054Z",
+    "name": "Eleanor Tyler"
+   }
+  ]
  },
  {
   "id": 138,
@@ -3301,12 +5809,31 @@
    "sports equipment",
    "baseball"
   ],
-  "reviewCount": 3,
   "specs": {
    "Warranty": "6 months warranty",
    "Shipping": "Ships in 1 week",
    "Returns": "30 days return policy"
-  }
+  },
+  "reviews": [
+   {
+    "rating": 5,
+    "comment": "Excellent quality!",
+    "date": "2025-04-30T09:41:02.054Z",
+    "name": "Scarlett Wright"
+   },
+   {
+    "rating": 4,
+    "comment": "Great value for money!",
+    "date": "2025-04-30T09:41:02.054Z",
+    "name": "Carter Baker"
+   },
+   {
+    "rating": 1,
+    "comment": "Poor quality!",
+    "date": "2025-04-30T09:41:02.054Z",
+    "name": "Aria Flores"
+   }
+  ]
  },
  {
   "id": 139,
@@ -3327,12 +5854,31 @@
    "sports equipment",
    "baseball"
   ],
-  "reviewCount": 3,
   "specs": {
    "Warranty": "Lifetime warranty",
    "Shipping": "Ships in 2 weeks",
    "Returns": "90 days return policy"
-  }
+  },
+  "reviews": [
+   {
+    "rating": 1,
+    "comment": "Very unhappy with my purchase!",
+    "date": "2025-04-30T09:41:02.054Z",
+    "name": "Hazel Gardner"
+   },
+   {
+    "rating": 4,
+    "comment": "Great value for money!",
+    "date": "2025-04-30T09:41:02.054Z",
+    "name": "Scarlett Wright"
+   },
+   {
+    "rating": 3,
+    "comment": "Would not recommend!",
+    "date": "2025-04-30T09:41:02.054Z",
+    "name": "Nathan Reed"
+   }
+  ]
  },
  {
   "id": 140,
@@ -3351,12 +5897,31 @@
    "sports equipment",
    "basketball"
   ],
-  "reviewCount": 3,
   "specs": {
    "Warranty": "1 year warranty",
    "Shipping": "Ships in 1 week",
    "Returns": "90 days return policy"
-  }
+  },
+  "reviews": [
+   {
+    "rating": 5,
+    "comment": "Highly recommended!",
+    "date": "2025-04-30T09:41:02.054Z",
+    "name": "Mia Rodriguez"
+   },
+   {
+    "rating": 2,
+    "comment": "Would not buy again!",
+    "date": "2025-04-30T09:41:02.054Z",
+    "name": "Ella Adams"
+   },
+   {
+    "rating": 4,
+    "comment": "Very satisfied!",
+    "date": "2025-04-30T09:41:02.054Z",
+    "name": "Aubrey Garcia"
+   }
+  ]
  },
  {
   "id": 141,
@@ -3375,12 +5940,31 @@
    "sports equipment",
    "basketball"
   ],
-  "reviewCount": 3,
   "specs": {
    "Warranty": "3 months warranty",
    "Shipping": "Ships overnight",
    "Returns": "No return policy"
-  }
+  },
+  "reviews": [
+   {
+    "rating": 4,
+    "comment": "Fast shipping!",
+    "date": "2025-04-30T09:41:02.054Z",
+    "name": "Mason Wright"
+   },
+   {
+    "rating": 5,
+    "comment": "Highly recommended!",
+    "date": "2025-04-30T09:41:02.054Z",
+    "name": "Tristan Scott"
+   },
+   {
+    "rating": 1,
+    "comment": "Would not buy again!",
+    "date": "2025-04-30T09:41:02.054Z",
+    "name": "Max Parker"
+   }
+  ]
  },
  {
   "id": 142,
@@ -3399,12 +5983,31 @@
    "sports equipment",
    "cricket"
   ],
-  "reviewCount": 3,
   "specs": {
    "Warranty": "3 year warranty",
    "Shipping": "Ships in 3-5 business days",
    "Returns": "7 days return policy"
-  }
+  },
+  "reviews": [
+   {
+    "rating": 1,
+    "comment": "Poor quality!",
+    "date": "2025-04-30T09:41:02.054Z",
+    "name": "Julian James"
+   },
+   {
+    "rating": 1,
+    "comment": "Poor quality!",
+    "date": "2025-04-30T09:41:02.054Z",
+    "name": "Autumn Gomez"
+   },
+   {
+    "rating": 2,
+    "comment": "Waste of money!",
+    "date": "2025-04-30T09:41:02.054Z",
+    "name": "Liam Gonzalez"
+   }
+  ]
  },
  {
   "id": 143,
@@ -3423,12 +6026,31 @@
    "sports equipment",
    "cricket"
   ],
-  "reviewCount": 3,
   "specs": {
    "Warranty": "1 year warranty",
    "Shipping": "Ships in 1-2 business days",
    "Returns": "No return policy"
-  }
+  },
+  "reviews": [
+   {
+    "rating": 5,
+    "comment": "Very satisfied!",
+    "date": "2025-04-30T09:41:02.054Z",
+    "name": "Samantha Howard"
+   },
+   {
+    "rating": 5,
+    "comment": "Would buy again!",
+    "date": "2025-04-30T09:41:02.054Z",
+    "name": "Ella Adams"
+   },
+   {
+    "rating": 3,
+    "comment": "Poor quality!",
+    "date": "2025-04-30T09:41:02.054Z",
+    "name": "Julian Newton"
+   }
+  ]
  },
  {
   "id": 144,
@@ -3450,12 +6072,31 @@
    "sports equipment",
    "cricket"
   ],
-  "reviewCount": 3,
   "specs": {
    "Warranty": "Lifetime warranty",
    "Shipping": "Ships overnight",
    "Returns": "60 days return policy"
-  }
+  },
+  "reviews": [
+   {
+    "rating": 5,
+    "comment": "Great value for money!",
+    "date": "2025-04-30T09:41:02.054Z",
+    "name": "Henry Turner"
+   },
+   {
+    "rating": 4,
+    "comment": "Excellent quality!",
+    "date": "2025-04-30T09:41:02.054Z",
+    "name": "Maya Reed"
+   },
+   {
+    "rating": 4,
+    "comment": "Very pleased!",
+    "date": "2025-04-30T09:41:02.054Z",
+    "name": "Avery Perez"
+   }
+  ]
  },
  {
   "id": 145,
@@ -3474,12 +6115,31 @@
    "sports equipment",
    "cricket"
   ],
-  "reviewCount": 3,
   "specs": {
    "Warranty": "3 months warranty",
    "Shipping": "Ships overnight",
    "Returns": "No return policy"
-  }
+  },
+  "reviews": [
+   {
+    "rating": 3,
+    "comment": "Very dissatisfied!",
+    "date": "2025-04-30T09:41:02.054Z",
+    "name": "Gabriel Mitchell"
+   },
+   {
+    "rating": 5,
+    "comment": "Fast shipping!",
+    "date": "2025-04-30T09:41:02.054Z",
+    "name": "Grayson Coleman"
+   },
+   {
+    "rating": 5,
+    "comment": "Awesome product!",
+    "date": "2025-04-30T09:41:02.054Z",
+    "name": "Grace Green"
+   }
+  ]
  },
  {
   "id": 146,
@@ -3498,12 +6158,31 @@
    "sports equipment",
    "badminton"
   ],
-  "reviewCount": 3,
   "specs": {
    "Warranty": "3 year warranty",
    "Shipping": "Ships in 1-2 business days",
    "Returns": "60 days return policy"
-  }
+  },
+  "reviews": [
+   {
+    "rating": 4,
+    "comment": "Awesome product!",
+    "date": "2025-04-30T09:41:02.054Z",
+    "name": "Liam Smith"
+   },
+   {
+    "rating": 5,
+    "comment": "Very happy with my purchase!",
+    "date": "2025-04-30T09:41:02.054Z",
+    "name": "Aubrey Wagner"
+   },
+   {
+    "rating": 4,
+    "comment": "Very pleased!",
+    "date": "2025-04-30T09:41:02.054Z",
+    "name": "Scarlett Bowman"
+   }
+  ]
  },
  {
   "id": 147,
@@ -3522,12 +6201,31 @@
    "sports equipment",
    "football"
   ],
-  "reviewCount": 3,
   "specs": {
    "Warranty": "Lifetime warranty",
    "Shipping": "Ships overnight",
    "Returns": "7 days return policy"
-  }
+  },
+  "reviews": [
+   {
+    "rating": 4,
+    "comment": "Very happy with my purchase!",
+    "date": "2025-04-30T09:41:02.054Z",
+    "name": "Elena Long"
+   },
+   {
+    "rating": 2,
+    "comment": "Would not recommend!",
+    "date": "2025-04-30T09:41:02.054Z",
+    "name": "Leah Gutierrez"
+   },
+   {
+    "rating": 4,
+    "comment": "Very happy with my purchase!",
+    "date": "2025-04-30T09:41:02.054Z",
+    "name": "Nathan Dixon"
+   }
+  ]
  },
  {
   "id": 148,
@@ -3546,12 +6244,31 @@
    "sports equipment",
    "golf"
   ],
-  "reviewCount": 3,
   "specs": {
    "Warranty": "1 year warranty",
    "Shipping": "Ships in 3-5 business days",
    "Returns": "No return policy"
-  }
+  },
+  "reviews": [
+   {
+    "rating": 2,
+    "comment": "Not worth the price!",
+    "date": "2025-04-30T09:41:02.054Z",
+    "name": "Ella Cook"
+   },
+   {
+    "rating": 2,
+    "comment": "Waste of money!",
+    "date": "2025-04-30T09:41:02.054Z",
+    "name": "Cameron Perez"
+   },
+   {
+    "rating": 5,
+    "comment": "Very satisfied!",
+    "date": "2025-04-30T09:41:02.054Z",
+    "name": "Mason Wright"
+   }
+  ]
  },
  {
   "id": 149,
@@ -3570,12 +6287,31 @@
    "sports equipment",
    "golf"
   ],
-  "reviewCount": 3,
   "specs": {
    "Warranty": "3 months warranty",
    "Shipping": "Ships in 2 weeks",
    "Returns": "7 days return policy"
-  }
+  },
+  "reviews": [
+   {
+    "rating": 5,
+    "comment": "Awesome product!",
+    "date": "2025-04-30T09:41:02.054Z",
+    "name": "Julian Newton"
+   },
+   {
+    "rating": 1,
+    "comment": "Would not buy again!",
+    "date": "2025-04-30T09:41:02.054Z",
+    "name": "Caleb Perkins"
+   },
+   {
+    "rating": 5,
+    "comment": "Awesome product!",
+    "date": "2025-04-30T09:41:02.054Z",
+    "name": "Aria Ferguson"
+   }
+  ]
  },
  {
   "id": 150,
@@ -3594,12 +6330,31 @@
    "sports equipment",
    "baseball"
   ],
-  "reviewCount": 3,
   "specs": {
    "Warranty": "3 year warranty",
    "Shipping": "Ships in 1 week",
    "Returns": "60 days return policy"
-  }
+  },
+  "reviews": [
+   {
+    "rating": 5,
+    "comment": "Very happy with my purchase!",
+    "date": "2025-04-30T09:41:02.054Z",
+    "name": "Gabriel Bailey"
+   },
+   {
+    "rating": 4,
+    "comment": "Great value for money!",
+    "date": "2025-04-30T09:41:02.054Z",
+    "name": "Owen Fisher"
+   },
+   {
+    "rating": 5,
+    "comment": "Would buy again!",
+    "date": "2025-04-30T09:41:02.054Z",
+    "name": "Logan Lawson"
+   }
+  ]
  },
  {
   "id": 151,
@@ -3618,12 +6373,31 @@
    "sports equipment",
    "tennis"
   ],
-  "reviewCount": 3,
   "specs": {
    "Warranty": "5 year warranty",
    "Shipping": "Ships in 1 week",
    "Returns": "7 days return policy"
-  }
+  },
+  "reviews": [
+   {
+    "rating": 4,
+    "comment": "Would buy again!",
+    "date": "2025-04-30T09:41:02.054Z",
+    "name": "Addison Ward"
+   },
+   {
+    "rating": 5,
+    "comment": "Great value for money!",
+    "date": "2025-04-30T09:41:02.054Z",
+    "name": "Max Russell"
+   },
+   {
+    "rating": 4,
+    "comment": "Very happy with my purchase!",
+    "date": "2025-04-30T09:41:02.054Z",
+    "name": "Luna Perez"
+   }
+  ]
  },
  {
   "id": 152,
@@ -3642,12 +6416,31 @@
    "sports equipment",
    "tennis"
   ],
-  "reviewCount": 3,
   "specs": {
    "Warranty": "5 year warranty",
    "Shipping": "Ships overnight",
    "Returns": "7 days return policy"
-  }
+  },
+  "reviews": [
+   {
+    "rating": 3,
+    "comment": "Poor quality!",
+    "date": "2025-04-30T09:41:02.054Z",
+    "name": "Mason Parker"
+   },
+   {
+    "rating": 5,
+    "comment": "Highly impressed!",
+    "date": "2025-04-30T09:41:02.054Z",
+    "name": "Gabriel Bailey"
+   },
+   {
+    "rating": 5,
+    "comment": "Highly recommended!",
+    "date": "2025-04-30T09:41:02.054Z",
+    "name": "Lincoln Kelly"
+   }
+  ]
  },
  {
   "id": 153,
@@ -3666,12 +6459,31 @@
    "sports equipment",
    "volleyball"
   ],
-  "reviewCount": 3,
   "specs": {
    "Warranty": "1 week warranty",
    "Shipping": "Ships in 1 week",
    "Returns": "90 days return policy"
-  }
+  },
+  "reviews": [
+   {
+    "rating": 4,
+    "comment": "Great product!",
+    "date": "2025-04-30T09:41:02.054Z",
+    "name": "Carter Rivera"
+   },
+   {
+    "rating": 1,
+    "comment": "Would not recommend!",
+    "date": "2025-04-30T09:41:02.054Z",
+    "name": "Eli Ward"
+   },
+   {
+    "rating": 4,
+    "comment": "Highly recommended!",
+    "date": "2025-04-30T09:41:02.054Z",
+    "name": "Emma Wilson"
+   }
+  ]
  },
  {
   "id": 154,
@@ -3692,12 +6504,31 @@
    "eyewear",
    "sunglasses"
   ],
-  "reviewCount": 3,
   "specs": {
    "Warranty": "No warranty",
    "Shipping": "Ships in 1-2 business days",
    "Returns": "7 days return policy"
-  }
+  },
+  "reviews": [
+   {
+    "rating": 3,
+    "comment": "Would not recommend!",
+    "date": "2025-04-30T09:41:02.054Z",
+    "name": "Jonathan Pierce"
+   },
+   {
+    "rating": 2,
+    "comment": "Disappointing product!",
+    "date": "2025-04-30T09:41:02.054Z",
+    "name": "Owen Fisher"
+   },
+   {
+    "rating": 4,
+    "comment": "Very happy with my purchase!",
+    "date": "2025-04-30T09:41:02.054Z",
+    "name": "Samantha Martinez"
+   }
+  ]
  },
  {
   "id": 155,
@@ -3718,12 +6549,31 @@
    "eyewear",
    "sunglasses"
   ],
-  "reviewCount": 3,
   "specs": {
    "Warranty": "6 months warranty",
    "Shipping": "Ships in 1 month",
    "Returns": "90 days return policy"
-  }
+  },
+  "reviews": [
+   {
+    "rating": 5,
+    "comment": "Very satisfied!",
+    "date": "2025-04-30T09:41:02.054Z",
+    "name": "Logan Lee"
+   },
+   {
+    "rating": 3,
+    "comment": "Very dissatisfied!",
+    "date": "2025-04-30T09:41:02.054Z",
+    "name": "Jack Ward"
+   },
+   {
+    "rating": 4,
+    "comment": "Very happy with my purchase!",
+    "date": "2025-04-30T09:41:02.054Z",
+    "name": "Julian James"
+   }
+  ]
  },
  {
   "id": 156,
@@ -3744,12 +6594,31 @@
    "eyewear",
    "sunglasses"
   ],
-  "reviewCount": 3,
   "specs": {
    "Warranty": "1 year warranty",
    "Shipping": "Ships overnight",
    "Returns": "30 days return policy"
-  }
+  },
+  "reviews": [
+   {
+    "rating": 3,
+    "comment": "Waste of money!",
+    "date": "2025-04-30T09:41:02.054Z",
+    "name": "Ava Taylor"
+   },
+   {
+    "rating": 3,
+    "comment": "Disappointing product!",
+    "date": "2025-04-30T09:41:02.054Z",
+    "name": "Owen Sullivan"
+   },
+   {
+    "rating": 5,
+    "comment": "Highly impressed!",
+    "date": "2025-04-30T09:41:02.054Z",
+    "name": "Victoria McDonald"
+   }
+  ]
  },
  {
   "id": 157,
@@ -3770,12 +6639,31 @@
    "eyewear",
    "party glasses"
   ],
-  "reviewCount": 3,
   "specs": {
    "Warranty": "3 months warranty",
    "Shipping": "Ships overnight",
    "Returns": "7 days return policy"
-  }
+  },
+  "reviews": [
+   {
+    "rating": 5,
+    "comment": "Very pleased!",
+    "date": "2025-04-30T09:41:02.054Z",
+    "name": "Levi Hicks"
+   },
+   {
+    "rating": 5,
+    "comment": "Excellent quality!",
+    "date": "2025-04-30T09:41:02.054Z",
+    "name": "Ariana Ross"
+   },
+   {
+    "rating": 4,
+    "comment": "Great product!",
+    "date": "2025-04-30T09:41:02.054Z",
+    "name": "Samantha Howard"
+   }
+  ]
  },
  {
   "id": 158,
@@ -3796,12 +6684,31 @@
    "eyewear",
    "sunglasses"
   ],
-  "reviewCount": 3,
   "specs": {
    "Warranty": "3 year warranty",
    "Shipping": "Ships in 3-5 business days",
    "Returns": "60 days return policy"
-  }
+  },
+  "reviews": [
+   {
+    "rating": 5,
+    "comment": "Would buy again!",
+    "date": "2025-04-30T09:41:02.054Z",
+    "name": "Olivia Wilson"
+   },
+   {
+    "rating": 2,
+    "comment": "Not worth the price!",
+    "date": "2025-04-30T09:41:02.054Z",
+    "name": "Lillian Bishop"
+   },
+   {
+    "rating": 4,
+    "comment": "Fast shipping!",
+    "date": "2025-04-30T09:41:02.054Z",
+    "name": "Leah Henderson"
+   }
+  ]
  },
  {
   "id": 159,
@@ -3823,12 +6730,31 @@
    "electronics",
    "tablets"
   ],
-  "reviewCount": 3,
   "specs": {
    "Warranty": "2 year warranty",
    "Shipping": "Ships in 1-2 business days",
    "Returns": "No return policy"
-  }
+  },
+  "reviews": [
+   {
+    "rating": 4,
+    "comment": "Highly impressed!",
+    "date": "2025-04-30T09:41:02.054Z",
+    "name": "Eleanor Collins"
+   },
+   {
+    "rating": 5,
+    "comment": "Very happy with my purchase!",
+    "date": "2025-04-30T09:41:02.054Z",
+    "name": "Leo Rivera"
+   },
+   {
+    "rating": 4,
+    "comment": "Would buy again!",
+    "date": "2025-04-30T09:41:02.054Z",
+    "name": "Carter Rivera"
+   }
+  ]
  },
  {
   "id": 160,
@@ -3850,12 +6776,31 @@
    "electronics",
    "tablets"
   ],
-  "reviewCount": 3,
   "specs": {
    "Warranty": "3 months warranty",
    "Shipping": "Ships in 2 weeks",
    "Returns": "7 days return policy"
-  }
+  },
+  "reviews": [
+   {
+    "rating": 5,
+    "comment": "Highly impressed!",
+    "date": "2025-04-30T09:41:02.054Z",
+    "name": "Christopher West"
+   },
+   {
+    "rating": 2,
+    "comment": "Disappointing product!",
+    "date": "2025-04-30T09:41:02.054Z",
+    "name": "Owen Sullivan"
+   },
+   {
+    "rating": 2,
+    "comment": "Very disappointed!",
+    "date": "2025-04-30T09:41:02.054Z",
+    "name": "Aria Roberts"
+   }
+  ]
  },
  {
   "id": 161,
@@ -3877,12 +6822,31 @@
    "electronics",
    "tablets"
   ],
-  "reviewCount": 3,
   "specs": {
    "Warranty": "3 months warranty",
    "Shipping": "Ships overnight",
    "Returns": "7 days return policy"
-  }
+  },
+  "reviews": [
+   {
+    "rating": 1,
+    "comment": "Waste of money!",
+    "date": "2025-04-30T09:41:02.054Z",
+    "name": "Max Russell"
+   },
+   {
+    "rating": 2,
+    "comment": "Poor quality!",
+    "date": "2025-04-30T09:41:02.054Z",
+    "name": "Lincoln Kelly"
+   },
+   {
+    "rating": 4,
+    "comment": "Very satisfied!",
+    "date": "2025-04-30T09:41:02.054Z",
+    "name": "Elena Long"
+   }
+  ]
  },
  {
   "id": 162,
@@ -3904,12 +6868,31 @@
    "clothing",
    "dresses"
   ],
-  "reviewCount": 3,
   "specs": {
    "Warranty": "Lifetime warranty",
    "Shipping": "Ships in 2 weeks",
    "Returns": "60 days return policy"
-  }
+  },
+  "reviews": [
+   {
+    "rating": 4,
+    "comment": "Great product!",
+    "date": "2025-04-30T09:41:02.054Z",
+    "name": "Victoria McDonald"
+   },
+   {
+    "rating": 4,
+    "comment": "Fast shipping!",
+    "date": "2025-04-30T09:41:02.054Z",
+    "name": "Benjamin Foster"
+   },
+   {
+    "rating": 4,
+    "comment": "Would buy again!",
+    "date": "2025-04-30T09:41:02.054Z",
+    "name": "Addison Ward"
+   }
+  ]
  },
  {
   "id": 163,
@@ -3931,12 +6914,31 @@
    "clothing",
    "girls' dresses"
   ],
-  "reviewCount": 3,
   "specs": {
    "Warranty": "Lifetime warranty",
    "Shipping": "Ships in 1 month",
    "Returns": "60 days return policy"
-  }
+  },
+  "reviews": [
+   {
+    "rating": 5,
+    "comment": "Excellent quality!",
+    "date": "2025-04-30T09:41:02.054Z",
+    "name": "Mason Pearson"
+   },
+   {
+    "rating": 4,
+    "comment": "Great product!",
+    "date": "2025-04-30T09:41:02.054Z",
+    "name": "Aubrey Garcia"
+   },
+   {
+    "rating": 4,
+    "comment": "Very satisfied!",
+    "date": "2025-04-30T09:41:02.054Z",
+    "name": "Charlotte Davis"
+   }
+  ]
  },
  {
   "id": 164,
@@ -3958,12 +6960,31 @@
    "clothing",
    "dresses"
   ],
-  "reviewCount": 3,
   "specs": {
    "Warranty": "1 month warranty",
    "Shipping": "Ships in 1 month",
    "Returns": "90 days return policy"
-  }
+  },
+  "reviews": [
+   {
+    "rating": 5,
+    "comment": "Highly impressed!",
+    "date": "2025-04-30T09:41:02.054Z",
+    "name": "Brayden Fleming"
+   },
+   {
+    "rating": 4,
+    "comment": "Awesome product!",
+    "date": "2025-04-30T09:41:02.054Z",
+    "name": "Michael Johnson"
+   },
+   {
+    "rating": 5,
+    "comment": "Highly recommended!",
+    "date": "2025-04-30T09:41:02.054Z",
+    "name": "Evelyn Sanchez"
+   }
+  ]
  },
  {
   "id": 165,
@@ -3985,12 +7006,31 @@
    "clothing",
    "dresses"
   ],
-  "reviewCount": 3,
   "specs": {
    "Warranty": "1 year warranty",
    "Shipping": "Ships in 1-2 business days",
    "Returns": "30 days return policy"
-  }
+  },
+  "reviews": [
+   {
+    "rating": 3,
+    "comment": "Disappointing product!",
+    "date": "2025-04-30T09:41:02.054Z",
+    "name": "Gabriel Hayes"
+   },
+   {
+    "rating": 5,
+    "comment": "Awesome product!",
+    "date": "2025-04-30T09:41:02.054Z",
+    "name": "Samantha Howard"
+   },
+   {
+    "rating": 4,
+    "comment": "Fast shipping!",
+    "date": "2025-04-30T09:41:02.054Z",
+    "name": "Luke Cooper"
+   }
+  ]
  },
  {
   "id": 166,
@@ -4012,12 +7052,31 @@
    "clothing",
    "dresses"
   ],
-  "reviewCount": 3,
   "specs": {
    "Warranty": "1 month warranty",
    "Shipping": "Ships overnight",
    "Returns": "No return policy"
-  }
+  },
+  "reviews": [
+   {
+    "rating": 5,
+    "comment": "Highly recommended!",
+    "date": "2025-04-30T09:41:02.054Z",
+    "name": "Mason Pearson"
+   },
+   {
+    "rating": 3,
+    "comment": "Not as described!",
+    "date": "2025-04-30T09:41:02.054Z",
+    "name": "Luke Cooper"
+   },
+   {
+    "rating": 4,
+    "comment": "Excellent quality!",
+    "date": "2025-04-30T09:41:02.054Z",
+    "name": "William Lopez"
+   }
+  ]
  },
  {
   "id": 172,
@@ -4038,12 +7097,31 @@
    "fashion accessories",
    "handbags"
   ],
-  "reviewCount": 3,
   "specs": {
    "Warranty": "1 year warranty",
    "Shipping": "Ships in 1 week",
    "Returns": "7 days return policy"
-  }
+  },
+  "reviews": [
+   {
+    "rating": 3,
+    "comment": "Waste of money!",
+    "date": "2025-04-30T09:41:02.054Z",
+    "name": "Grace Perry"
+   },
+   {
+    "rating": 3,
+    "comment": "Not worth the price!",
+    "date": "2025-04-30T09:41:02.054Z",
+    "name": "Evelyn Sanchez"
+   },
+   {
+    "rating": 4,
+    "comment": "Highly impressed!",
+    "date": "2025-04-30T09:41:02.054Z",
+    "name": "Eli Ward"
+   }
+  ]
  },
  {
   "id": 173,
@@ -4064,12 +7142,31 @@
    "fashion accessories",
    "leather bags"
   ],
-  "reviewCount": 3,
   "specs": {
    "Warranty": "5 year warranty",
    "Shipping": "Ships overnight",
    "Returns": "90 days return policy"
-  }
+  },
+  "reviews": [
+   {
+    "rating": 5,
+    "comment": "Excellent quality!",
+    "date": "2025-04-30T09:41:02.054Z",
+    "name": "Hunter Gordon"
+   },
+   {
+    "rating": 4,
+    "comment": "Awesome product!",
+    "date": "2025-04-30T09:41:02.054Z",
+    "name": "Mason Parker"
+   },
+   {
+    "rating": 4,
+    "comment": "Awesome product!",
+    "date": "2025-04-30T09:41:02.054Z",
+    "name": "William Gonzalez"
+   }
+  ]
  },
  {
   "id": 174,
@@ -4090,12 +7187,31 @@
    "fashion accessories",
    "designer bags"
   ],
-  "reviewCount": 3,
   "specs": {
    "Warranty": "3 year warranty",
    "Shipping": "Ships in 1-2 business days",
    "Returns": "60 days return policy"
-  }
+  },
+  "reviews": [
+   {
+    "rating": 2,
+    "comment": "Would not buy again!",
+    "date": "2025-04-30T09:41:02.054Z",
+    "name": "Caleb Perkins"
+   },
+   {
+    "rating": 4,
+    "comment": "Great value for money!",
+    "date": "2025-04-30T09:41:02.054Z",
+    "name": "Carter Baker"
+   },
+   {
+    "rating": 5,
+    "comment": "Highly recommended!",
+    "date": "2025-04-30T09:41:02.054Z",
+    "name": "Lucas Ramirez"
+   }
+  ]
  },
  {
   "id": 175,
@@ -4116,12 +7232,31 @@
    "fashion accessories",
    "backpacks"
   ],
-  "reviewCount": 3,
   "specs": {
    "Warranty": "2 year warranty",
    "Shipping": "Ships in 1 week",
    "Returns": "90 days return policy"
-  }
+  },
+  "reviews": [
+   {
+    "rating": 4,
+    "comment": "Awesome product!",
+    "date": "2025-04-30T09:41:02.054Z",
+    "name": "Ava Harrison"
+   },
+   {
+    "rating": 1,
+    "comment": "Not as described!",
+    "date": "2025-04-30T09:41:02.054Z",
+    "name": "Liam Garcia"
+   },
+   {
+    "rating": 5,
+    "comment": "Great value for money!",
+    "date": "2025-04-30T09:41:02.054Z",
+    "name": "Cameron Perez"
+   }
+  ]
  },
  {
   "id": 176,
@@ -4142,12 +7277,31 @@
    "fashion accessories",
    "handbags"
   ],
-  "reviewCount": 3,
   "specs": {
    "Warranty": "Lifetime warranty",
    "Shipping": "Ships in 1 month",
    "Returns": "60 days return policy"
-  }
+  },
+  "reviews": [
+   {
+    "rating": 4,
+    "comment": "Very pleased!",
+    "date": "2025-04-30T09:41:02.054Z",
+    "name": "Natalie Price"
+   },
+   {
+    "rating": 5,
+    "comment": "Great product!",
+    "date": "2025-04-30T09:41:02.054Z",
+    "name": "Emily Johnson"
+   },
+   {
+    "rating": 1,
+    "comment": "Waste of money!",
+    "date": "2025-04-30T09:41:02.054Z",
+    "name": "Henry Hill"
+   }
+  ]
  },
  {
   "id": 177,
@@ -4169,12 +7323,31 @@
    "clothing",
    "gowns"
   ],
-  "reviewCount": 3,
   "specs": {
    "Warranty": "Lifetime warranty",
    "Shipping": "Ships in 1 week",
    "Returns": "No return policy"
-  }
+  },
+  "reviews": [
+   {
+    "rating": 4,
+    "comment": "Great value for money!",
+    "date": "2025-04-30T09:41:02.054Z",
+    "name": "Ethan Fletcher"
+   },
+   {
+    "rating": 3,
+    "comment": "Very dissatisfied!",
+    "date": "2025-04-30T09:41:02.054Z",
+    "name": "Julian Newton"
+   },
+   {
+    "rating": 5,
+    "comment": "Very satisfied!",
+    "date": "2025-04-30T09:41:02.054Z",
+    "name": "Savannah Gomez"
+   }
+  ]
  },
  {
   "id": 178,
@@ -4197,12 +7370,31 @@
    "corsets",
    "skirts"
   ],
-  "reviewCount": 3,
   "specs": {
    "Warranty": "2 year warranty",
    "Shipping": "Ships overnight",
    "Returns": "30 days return policy"
-  }
+  },
+  "reviews": [
+   {
+    "rating": 5,
+    "comment": "Very happy with my purchase!",
+    "date": "2025-04-30T09:41:02.054Z",
+    "name": "Natalie Price"
+   },
+   {
+    "rating": 4,
+    "comment": "Highly recommended!",
+    "date": "2025-04-30T09:41:02.054Z",
+    "name": "Sophia Jones"
+   },
+   {
+    "rating": 4,
+    "comment": "Highly recommended!",
+    "date": "2025-04-30T09:41:02.054Z",
+    "name": "Leo Rivera"
+   }
+  ]
  },
  {
   "id": 179,
@@ -4225,12 +7417,31 @@
    "corsets",
    "skirts"
   ],
-  "reviewCount": 3,
   "specs": {
    "Warranty": "1 month warranty",
    "Shipping": "Ships in 1 week",
    "Returns": "No return policy"
-  }
+  },
+  "reviews": [
+   {
+    "rating": 5,
+    "comment": "Very satisfied!",
+    "date": "2025-04-30T09:41:02.054Z",
+    "name": "Lucas Allen"
+   },
+   {
+    "rating": 2,
+    "comment": "Disappointing product!",
+    "date": "2025-04-30T09:41:02.054Z",
+    "name": "Benjamin Wilson"
+   },
+   {
+    "rating": 5,
+    "comment": "Very happy with my purchase!",
+    "date": "2025-04-30T09:41:02.054Z",
+    "name": "Elena Long"
+   }
+  ]
  },
  {
   "id": 180,
@@ -4252,12 +7463,31 @@
    "clothing",
    "dresses"
   ],
-  "reviewCount": 3,
   "specs": {
    "Warranty": "2 year warranty",
    "Shipping": "Ships overnight",
    "Returns": "90 days return policy"
-  }
+  },
+  "reviews": [
+   {
+    "rating": 4,
+    "comment": "Fast shipping!",
+    "date": "2025-04-30T09:41:02.054Z",
+    "name": "Harper Turner"
+   },
+   {
+    "rating": 1,
+    "comment": "Not worth the price!",
+    "date": "2025-04-30T09:41:02.054Z",
+    "name": "Luna Russell"
+   },
+   {
+    "rating": 2,
+    "comment": "Would not buy again!",
+    "date": "2025-04-30T09:41:02.054Z",
+    "name": "Michael Johnson"
+   }
+  ]
  },
  {
   "id": 181,
@@ -4279,12 +7509,31 @@
    "clothing",
    "suits"
   ],
-  "reviewCount": 3,
   "specs": {
    "Warranty": "5 year warranty",
    "Shipping": "Ships in 2 weeks",
    "Returns": "90 days return policy"
-  }
+  },
+  "reviews": [
+   {
+    "rating": 5,
+    "comment": "Fast shipping!",
+    "date": "2025-04-30T09:41:02.054Z",
+    "name": "Avery Perez"
+   },
+   {
+    "rating": 3,
+    "comment": "Very disappointed!",
+    "date": "2025-04-30T09:41:02.054Z",
+    "name": "Scarlett Wright"
+   },
+   {
+    "rating": 4,
+    "comment": "Highly impressed!",
+    "date": "2025-04-30T09:41:02.054Z",
+    "name": "Claire Foster"
+   }
+  ]
  },
  {
   "id": 182,
@@ -4305,12 +7554,31 @@
    "fashion accessories",
    "earrings"
   ],
-  "reviewCount": 3,
   "specs": {
    "Warranty": "5 year warranty",
    "Shipping": "Ships in 3-5 business days",
    "Returns": "60 days return policy"
-  }
+  },
+  "reviews": [
+   {
+    "rating": 4,
+    "comment": "Would buy again!",
+    "date": "2025-04-30T09:41:02.054Z",
+    "name": "Michael Williams"
+   },
+   {
+    "rating": 5,
+    "comment": "Great value for money!",
+    "date": "2025-04-30T09:41:02.054Z",
+    "name": "Samantha Howard"
+   },
+   {
+    "rating": 4,
+    "comment": "Excellent quality!",
+    "date": "2025-04-30T09:41:02.054Z",
+    "name": "Xavier Wright"
+   }
+  ]
  },
  {
   "id": 183,
@@ -4331,12 +7599,31 @@
    "fashion accessories",
    "earrings"
   ],
-  "reviewCount": 3,
   "specs": {
    "Warranty": "3 months warranty",
    "Shipping": "Ships in 3-5 business days",
    "Returns": "60 days return policy"
-  }
+  },
+  "reviews": [
+   {
+    "rating": 3,
+    "comment": "Would not buy again!",
+    "date": "2025-04-30T09:41:02.054Z",
+    "name": "Elena Long"
+   },
+   {
+    "rating": 5,
+    "comment": "Very satisfied!",
+    "date": "2025-04-30T09:41:02.054Z",
+    "name": "Layla Sullivan"
+   },
+   {
+    "rating": 4,
+    "comment": "Would buy again!",
+    "date": "2025-04-30T09:41:02.054Z",
+    "name": "Xavier Wright"
+   }
+  ]
  },
  {
   "id": 184,
@@ -4357,12 +7644,31 @@
    "fashion accessories",
    "earrings"
   ],
-  "reviewCount": 3,
   "specs": {
    "Warranty": "3 year warranty",
    "Shipping": "Ships in 1-2 business days",
    "Returns": "7 days return policy"
-  }
+  },
+  "reviews": [
+   {
+    "rating": 5,
+    "comment": "Great product!",
+    "date": "2025-04-30T09:41:02.054Z",
+    "name": "Alexander Jones"
+   },
+   {
+    "rating": 4,
+    "comment": "Awesome product!",
+    "date": "2025-04-30T09:41:02.054Z",
+    "name": "Eli Ward"
+   },
+   {
+    "rating": 1,
+    "comment": "Very unhappy with my purchase!",
+    "date": "2025-04-30T09:41:02.054Z",
+    "name": "Carter Rivera"
+   }
+  ]
  },
  {
   "id": 185,
@@ -4384,12 +7690,31 @@
    "footwear",
    "slippers"
   ],
-  "reviewCount": 3,
   "specs": {
    "Warranty": "Lifetime warranty",
    "Shipping": "Ships in 1 month",
    "Returns": "60 days return policy"
-  }
+  },
+  "reviews": [
+   {
+    "rating": 5,
+    "comment": "Highly impressed!",
+    "date": "2025-04-30T09:41:02.054Z",
+    "name": "Isaac Lawrence"
+   },
+   {
+    "rating": 2,
+    "comment": "Not worth the price!",
+    "date": "2025-04-30T09:41:02.054Z",
+    "name": "William Gonzalez"
+   },
+   {
+    "rating": 4,
+    "comment": "Very happy with my purchase!",
+    "date": "2025-04-30T09:41:02.054Z",
+    "name": "Sophia Jones"
+   }
+  ]
  },
  {
   "id": 186,
@@ -4411,12 +7736,31 @@
    "footwear",
    "heel shoes"
   ],
-  "reviewCount": 3,
   "specs": {
    "Warranty": "2 year warranty",
    "Shipping": "Ships in 1 week",
    "Returns": "60 days return policy"
-  }
+  },
+  "reviews": [
+   {
+    "rating": 5,
+    "comment": "Great value for money!",
+    "date": "2025-04-30T09:41:02.054Z",
+    "name": "Maya Reed"
+   },
+   {
+    "rating": 5,
+    "comment": "Great value for money!",
+    "date": "2025-04-30T09:41:02.054Z",
+    "name": "Grace Perry"
+   },
+   {
+    "rating": 1,
+    "comment": "Not as described!",
+    "date": "2025-04-30T09:41:02.054Z",
+    "name": "Eleanor Collins"
+   }
+  ]
  },
  {
   "id": 187,
@@ -4438,12 +7782,31 @@
    "footwear",
    "women's shoes"
   ],
-  "reviewCount": 3,
   "specs": {
    "Warranty": "6 months warranty",
    "Shipping": "Ships in 2 weeks",
    "Returns": "7 days return policy"
-  }
+  },
+  "reviews": [
+   {
+    "rating": 4,
+    "comment": "Excellent quality!",
+    "date": "2025-04-30T09:41:02.054Z",
+    "name": "Nolan Gonzalez"
+   },
+   {
+    "rating": 5,
+    "comment": "Very pleased!",
+    "date": "2025-04-30T09:41:02.054Z",
+    "name": "Brayden Fleming"
+   },
+   {
+    "rating": 4,
+    "comment": "Very pleased!",
+    "date": "2025-04-30T09:41:02.054Z",
+    "name": "Eleanor Tyler"
+   }
+  ]
  },
  {
   "id": 188,
@@ -4465,12 +7828,31 @@
    "footwear",
    "casual shoes"
   ],
-  "reviewCount": 3,
   "specs": {
    "Warranty": "No warranty",
    "Shipping": "Ships in 1 week",
    "Returns": "60 days return policy"
-  }
+  },
+  "reviews": [
+   {
+    "rating": 4,
+    "comment": "Highly recommended!",
+    "date": "2025-04-30T09:41:02.054Z",
+    "name": "Nathan Reed"
+   },
+   {
+    "rating": 4,
+    "comment": "Would buy again!",
+    "date": "2025-04-30T09:41:02.054Z",
+    "name": "Connor Baker"
+   },
+   {
+    "rating": 5,
+    "comment": "Awesome product!",
+    "date": "2025-04-30T09:41:02.054Z",
+    "name": "Noah Lewis"
+   }
+  ]
  },
  {
   "id": 189,
@@ -4492,12 +7874,31 @@
    "footwear",
    "women's shoes"
   ],
-  "reviewCount": 3,
   "specs": {
    "Warranty": "No warranty",
    "Shipping": "Ships in 1 month",
    "Returns": "60 days return policy"
-  }
+  },
+  "reviews": [
+   {
+    "rating": 5,
+    "comment": "Fast shipping!",
+    "date": "2025-04-30T09:41:02.054Z",
+    "name": "Isabella Anderson"
+   },
+   {
+    "rating": 4,
+    "comment": "Awesome product!",
+    "date": "2025-04-30T09:41:02.054Z",
+    "name": "Luna Perez"
+   },
+   {
+    "rating": 5,
+    "comment": "Highly impressed!",
+    "date": "2025-04-30T09:41:02.054Z",
+    "name": "Savannah Gomez"
+   }
+  ]
  },
  {
   "id": 190,
@@ -4518,12 +7919,31 @@
    "watches",
    "luxury watches"
   ],
-  "reviewCount": 3,
   "specs": {
    "Warranty": "1 year warranty",
    "Shipping": "Ships overnight",
    "Returns": "No return policy"
-  }
+  },
+  "reviews": [
+   {
+    "rating": 3,
+    "comment": "Disappointing product!",
+    "date": "2025-04-30T09:41:02.054Z",
+    "name": "Gabriel Adams"
+   },
+   {
+    "rating": 5,
+    "comment": "Great value for money!",
+    "date": "2025-04-30T09:41:02.054Z",
+    "name": "Evan Reed"
+   },
+   {
+    "rating": 3,
+    "comment": "Would not buy again!",
+    "date": "2025-04-30T09:41:02.054Z",
+    "name": "Clara Berry"
+   }
+  ]
  },
  {
   "id": 191,
@@ -4544,12 +7964,31 @@
    "watches",
    "luxury watches"
   ],
-  "reviewCount": 3,
   "specs": {
    "Warranty": "1 month warranty",
    "Shipping": "Ships in 1 week",
    "Returns": "30 days return policy"
-  }
+  },
+  "reviews": [
+   {
+    "rating": 4,
+    "comment": "Very happy with my purchase!",
+    "date": "2025-04-30T09:41:02.054Z",
+    "name": "Gabriel Hayes"
+   },
+   {
+    "rating": 5,
+    "comment": "Fast shipping!",
+    "date": "2025-04-30T09:41:02.054Z",
+    "name": "Logan Torres"
+   },
+   {
+    "rating": 1,
+    "comment": "Disappointing product!",
+    "date": "2025-04-30T09:41:02.054Z",
+    "name": "Isabella Jackson"
+   }
+  ]
  },
  {
   "id": 192,
@@ -4571,12 +8010,31 @@
    "luxury watches",
    "women's watches"
   ],
-  "reviewCount": 3,
   "specs": {
    "Warranty": "5 year warranty",
    "Shipping": "Ships in 2 weeks",
    "Returns": "No return policy"
-  }
+  },
+  "reviews": [
+   {
+    "rating": 3,
+    "comment": "Not as described!",
+    "date": "2025-04-30T09:41:02.054Z",
+    "name": "Benjamin Wilson"
+   },
+   {
+    "rating": 5,
+    "comment": "Highly impressed!",
+    "date": "2025-04-30T09:41:02.054Z",
+    "name": "Madison Collins"
+   },
+   {
+    "rating": 4,
+    "comment": "Very satisfied!",
+    "date": "2025-04-30T09:41:02.054Z",
+    "name": "Lucas Gray"
+   }
+  ]
  },
  {
   "id": 193,
@@ -4597,12 +8055,31 @@
    "watches",
    "women's watches"
   ],
-  "reviewCount": 3,
   "specs": {
    "Warranty": "2 year warranty",
    "Shipping": "Ships in 1-2 business days",
    "Returns": "60 days return policy"
-  }
+  },
+  "reviews": [
+   {
+    "rating": 4,
+    "comment": "Highly impressed!",
+    "date": "2025-04-30T09:41:02.054Z",
+    "name": "Elena Baker"
+   },
+   {
+    "rating": 4,
+    "comment": "Would buy again!",
+    "date": "2025-04-30T09:41:02.054Z",
+    "name": "Avery Barnes"
+   },
+   {
+    "rating": 5,
+    "comment": "Great product!",
+    "date": "2025-04-30T09:41:02.054Z",
+    "name": "Evelyn Sanchez"
+   }
+  ]
  },
  {
   "id": 194,
@@ -4623,11 +8100,30 @@
    "watches",
    "women's watches"
   ],
-  "reviewCount": 3,
   "specs": {
    "Warranty": "1 year warranty",
    "Shipping": "Ships in 2 weeks",
    "Returns": "No return policy"
-  }
+  },
+  "reviews": [
+   {
+    "rating": 4,
+    "comment": "Very happy with my purchase!",
+    "date": "2025-04-30T09:41:02.054Z",
+    "name": "Harper Kelly"
+   },
+   {
+    "rating": 5,
+    "comment": "Highly recommended!",
+    "date": "2025-04-30T09:41:02.054Z",
+    "name": "Gabriel Bailey"
+   },
+   {
+    "rating": 5,
+    "comment": "Fast shipping!",
+    "date": "2025-04-30T09:41:02.054Z",
+    "name": "Natalie Price"
+   }
+  ]
  }
 ]

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Check } from "lucide-react";
+import { Check, Square, SquareCheck } from "lucide-react";
 import { RatingStars } from "@/components/rating-stars";
 import { searchHref, type SearchInput } from "@/lib/search";
 import { cn } from "@/lib/utils";
@@ -33,12 +33,19 @@ export function SearchFilters({
   facets,
   idPrefix,
   categoryName,
+  brandFacets,
 }: {
   input: SearchInput;
   facets: { slug: string; name: string; count: number }[];
   idPrefix: string;
   categoryName?: string;
+  brandFacets: { name: string; count: number }[];
 }) {
+  // Keep selected brands visible even if other filters have zeroed them out.
+  const brands = [
+    ...brandFacets,
+    ...input.brands.filter((b) => !brandFacets.some((f) => f.name === b)).map((name) => ({ name, count: 0 })),
+  ].slice(0, Math.max(12, input.brands.length));
   // A selected category with zero matches drops out of the facets; keep it visible
   // so the user can see what's filtering their results away.
   const selectedFacet = input.category && !facets.some((f) => f.slug === input.category);
@@ -74,6 +81,36 @@ export function SearchFilters({
           ))}
         </ul>
       </section>
+
+      {brands.length > 0 && (
+        <section aria-labelledby={`${idPrefix}-brand`}>
+          <h2 id={`${idPrefix}-brand`} className="mb-1 px-2 text-sm font-bold text-zinc-900">
+            Brands
+          </h2>
+          <ul>
+            {brands.map((b) => {
+              const selected = input.brands.includes(b.name);
+              const next = selected ? input.brands.filter((x) => x !== b.name) : [...input.brands, b.name];
+              const Icon = selected ? SquareCheck : Square;
+              return (
+                <li key={b.name}>
+                  <Link
+                    href={searchHref(input, { brand: next })}
+                    scroll={false}
+                    role="checkbox"
+                    aria-checked={selected}
+                    className="flex items-center gap-2 rounded-md px-2 py-1 text-sm text-zinc-800 hover:bg-zinc-100 focus-visible:outline-2 focus-visible:outline-amber-500"
+                  >
+                    <Icon className={`size-4 shrink-0 ${selected ? "text-amz-link" : "text-zinc-500"}`} aria-hidden />
+                    <span className="truncate">{b.name}</span>
+                    <span className="text-xs text-zinc-500">({b.count})</span>
+                  </Link>
+                </li>
+              );
+            })}
+          </ul>
+        </section>
+      )}
 
       <section aria-labelledby={`${idPrefix}-rating`}>
         <h2 id={`${idPrefix}-rating`} className="mb-1 px-2 text-sm font-bold text-zinc-900">
@@ -119,6 +156,9 @@ export function SearchFilters({
           {input.q && <input type="hidden" name="q" value={input.q} />}
           {input.category && <input type="hidden" name="category" value={input.category} />}
           {input.rating && <input type="hidden" name="rating" value={input.rating} />}
+          {input.brands.map((b) => (
+            <input key={b} type="hidden" name="brand" value={b} />
+          ))}
           {input.sort !== "relevance" && <input type="hidden" name="sort" value={input.sort} />}
           <label className="flex min-w-0 flex-1 flex-col text-xs text-zinc-600">
             Min

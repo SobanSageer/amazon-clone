@@ -28,17 +28,20 @@ function Stars({ rating, size }: { rating: number; size: "sm" | "md" }) {
 }
 
 // Amazon's pattern: "4.6 ★★★★½ (2,145)".
-export function RatingStars({ rating, count, size = "sm" }: {
+export function RatingStars({ rating, count, size = "sm", showValue = true }: {
   rating: number;
   count?: number;
   size?: "sm" | "md";
+  showValue?: boolean;
 }) {
   const label = `${rating.toFixed(1)} out of 5 stars${count !== undefined ? `, ${formatCount(count)} ratings` : ""}`;
   return (
     <span className={cn("inline-flex items-center gap-1", size === "md" ? "text-sm" : "text-[13px]")} role="img" aria-label={label}>
-      <span aria-hidden className="text-[#0f1111]">
-        {rating.toFixed(1)}
-      </span>
+      {showValue && (
+        <span aria-hidden className="text-[#0f1111]">
+          {rating.toFixed(1)}
+        </span>
+      )}
       <Stars rating={rating} size={size} />
       {count !== undefined && (
         <span aria-hidden className="text-amz-link">

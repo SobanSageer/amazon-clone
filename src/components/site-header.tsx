@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { Suspense } from "react";
 import { CategoryNav } from "@/components/category-nav";
-import { AccountMenu, CartButton, DeliverTo, MeProvider, MobileAccountLink, OrdersLink } from "@/components/header-actions";
+import { AccountMenu, CartButton, DeliverTo, MobileAccountLink, OrdersLink } from "@/components/header-actions";
 import { SearchBox, SearchBoxFallback } from "@/components/search-box";
 import { Wordmark } from "@/components/wordmark";
 import { getCategories } from "@/lib/catalog";
@@ -26,8 +26,7 @@ export async function SiteHeader() {
   );
 
   return (
-    <MeProvider>
-      <header className="relative z-40">
+    <header className="relative z-40">
         <a
           href="#main"
           className="sr-only focus:not-sr-only focus:absolute focus:left-2 focus:top-2 focus:z-50 focus:rounded focus:bg-amz-yellow focus:px-3 focus:py-2 focus:text-sm focus:font-bold focus:text-zinc-900"
@@ -61,7 +60,6 @@ export async function SiteHeader() {
         </div>
 
         <CategoryNav categories={categories} />
-      </header>
-    </MeProvider>
+    </header>
   );
 }

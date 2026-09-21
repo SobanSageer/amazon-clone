@@ -16,6 +16,7 @@ model User {
   addresses    Address[]
   cartItems    CartItem[]
   orders       Order[]
+  reviews      Review[]
 }
 
 model Address {
@@ -61,8 +62,27 @@ model Product {
   category    Category    @relation(fields: [categoryId], references: [id])
   cartItems   CartItem[]
   orderItems  OrderItem[]
+  reviews     Review[]
 
   @@index([categoryId])
+}
+
+model Review {
+  id         String   @id @default(cuid())
+  productId  String
+  product    Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
+  userId     String?
+  user       User?    @relation(fields: [userId], references: [id], onDelete: SetNull)
+  authorName String
+  rating     Int
+  title      String?
+  body       String
+  verified   Boolean  @default(false)
+  sourceKey  String?  @unique
+  createdAt  DateTime @default(now())
+
+  @@unique([userId, productId])
+  @@index([productId, createdAt])
 }
 
 model CartItem {

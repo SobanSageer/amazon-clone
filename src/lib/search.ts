@@ -14,6 +14,7 @@ export type SearchInput = {
   min?: number;
   max?: number;
   rating?: number;
+  brands: string[];
   sort: Sort;
   page: number;
 };
@@ -37,6 +38,7 @@ export function parseSearchParams(sp: Record<string, string | string[] | undefin
     min: num(one(sp.min)),
     max: num(one(sp.max)),
     rating: rating && rating >= 1 && rating <= 5 ? rating : undefined,
+    brands: [sp.brand].flat().filter((b): b is string => typeof b === "string" && b.length > 0).slice(0, 20),
     sort: sort && sort in SORTS ? (sort as Sort) : "relevance",
     page: Math.max(1, Math.floor(num(one(sp.page)) ?? 1)),
   };
@@ -94,21 +96,32 @@ function popularity(p: Row) {
 export async function searchProducts(input: SearchInput) {
   const matched = await matchText(input.q);
 
-  const passesNonCategory = (p: Row) =>
+  const passesBase = (p: Row) =>
     (input.min === undefined || p.price >= input.min) &&
     (input.max === undefined || p.price <= input.max) &&
     (input.rating === undefined || p.rating >= input.rating);
+  const inCategory = (p: Row) => !input.category || p.categorySlug === input.category;
+  const brandSet = new Set(input.brands);
+  const inBrands = (p: Row) => brandSet.size === 0 || (p.brand !== null && brandSet.has(p.brand));
 
-  const facetMap = new Map<string, { slug: string; name: string; count: number }>();
+  // Each facet counts what you'd get by changing only that facet, like Amazon's.
+  const categoryMap = new Map<string, { slug: string; name: string; count: number }>();
+  const brandMap = new Map<string, number>();
   for (const p of matched) {
-    if (!passesNonCategory(p)) continue;
-    const f = facetMap.get(p.categorySlug) ?? { slug: p.categorySlug, name: p.categoryName, count: 0 };
-    f.count++;
-    facetMap.set(p.categorySlug, f);
+    if (!passesBase(p)) continue;
+    if (inBrands(p)) {
+      const f = categoryMap.get(p.categorySlug) ?? { slug: p.categorySlug, name: p.categoryName, count: 0 };
+      f.count++;
+      categoryMap.set(p.categorySlug, f);
+    }
+    if (inCategory(p) && p.brand) brandMap.set(p.brand, (brandMap.get(p.brand) ?? 0) + 1);
   }
-  const categoryFacets = [...facetMap.values()].sort((a, b) => b.count - a.count || a.name.localeCompare(b.name));
+  const categoryFacets = [...categoryMap.values()].sort((a, b) => b.count - a.count || a.name.localeCompare(b.name));
+  const brandFacets = [...brandMap.entries()]
+    .map(([name, count]) => ({ name, count }))
+    .sort((a, b) => b.count - a.count || a.name.localeCompare(b.name));
 
-  const filtered = matched.filter((p) => passesNonCategory(p) && (!input.category || p.categorySlug === input.category));
+  const filtered = matched.filter((p) => passesBase(p) && inCategory(p) && inBrands(p));
 
   const sorted = [...filtered].sort((a, b) => {
     switch (input.sort) {
@@ -128,7 +141,54 @@ export async function searchProducts(input: SearchInput) {
   const page = Math.min(input.page, pageCount);
   const results = sorted.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE);
 
-  return { results, total, page, pageCount, categoryFacets };
+  const didYouMean = total === 0 && input.q && matched.length === 0 ? await spellingSuggestion(input.q) : null;
+
+  return { results, total, page, pageCount, categoryFacets, brandFacets, didYouMean };
+}
+
+function editDistance(a: string, b: string) {
+  const prev = Array.from({ length: b.length + 1 }, (_, i) => i);
+  for (let i = 1; i <= a.length; i++) {
+    let diag = prev[0];
+    prev[0] = i;
+    for (let j = 1; j <= b.length; j++) {
+      const tmp = prev[j];
+      prev[j] = Math.min(prev[j] + 1, prev[j - 1] + 1, diag + (a[i - 1] === b[j - 1] ? 0 : 1));
+      diag = tmp;
+    }
+  }
+  return prev[b.length];
+}
+
+// "Did you mean": swap each unknown query word for the closest word in the catalog's own
+// titles/brands/categories, and only offer it if the corrected query finds something.
+async function spellingSuggestion(q: string) {
+  const rows = await db.product.findMany({ select: { title: true, brand: true, category: { select: { name: true } } } });
+  const vocab = new Set<string>();
+  for (const r of rows) {
+    for (const w of `${r.title} ${r.brand ?? ""} ${r.category.name}`.toLowerCase().split(/[^a-z0-9]+/)) {
+      if (w.length >= 3) vocab.add(w);
+    }
+  }
+  let changed = false;
+  const fixed = terms(q).map((t) => {
+    if (vocab.has(t) || t.length < 3) return t;
+    let best = t;
+    let bestD = t.length <= 4 ? 1 : 2;
+    for (const w of vocab) {
+      if (Math.abs(w.length - t.length) > bestD) continue;
+      const d = editDistance(t, w);
+      if (d < bestD || (d === bestD && best === t)) {
+        best = w;
+        bestD = d;
+      }
+    }
+    if (best !== t) changed = true;
+    return best;
+  });
+  if (!changed) return null;
+  const suggestion = fixed.join(" ");
+  return (await matchText(suggestion, 1)).length ? suggestion : null;
 }
 
 export async function suggestProducts(q: string, limit = 6) {
@@ -140,10 +200,13 @@ export async function suggestProducts(q: string, limit = 6) {
     .map((p) => ({ slug: p.slug, title: p.title, thumbnail: p.thumbnail, categoryName: p.categoryName, price: p.price }));
 }
 
-export function searchHref(input: Partial<SearchInput>, overrides: Partial<Record<keyof SearchInput, string | number | undefined>> = {}) {
-  const merged: Record<string, string | number | undefined> = {
+type HrefValue = string | number | string[] | undefined;
+
+export function searchHref(input: Partial<SearchInput>, overrides: Partial<Record<keyof SearchInput | "brand", HrefValue>> = {}) {
+  const merged: Record<string, HrefValue> = {
     q: input.q,
     category: input.category,
+    brand: input.brands,
     min: input.min,
     max: input.max,
     rating: input.rating,
@@ -152,7 +215,10 @@ export function searchHref(input: Partial<SearchInput>, overrides: Partial<Recor
     ...overrides,
   };
   const params = new URLSearchParams();
-  for (const [k, v] of Object.entries(merged)) if (v !== undefined && v !== "") params.set(k, String(v));
+  for (const [k, v] of Object.entries(merged)) {
+    if (Array.isArray(v)) v.forEach((x) => params.append(k, x));
+    else if (v !== undefined && v !== "") params.set(k, String(v));
+  }
   const qs = params.toString();
   return qs ? `/search?${qs}` : "/search";
 }

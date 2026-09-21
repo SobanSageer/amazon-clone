@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ProductCard } from "@/components/product-card";
+import { HeroCarousel, type HeroSlide } from "@/components/hero-carousel";
 import { ProductRail } from "@/components/product-rail";
 import { getCategories, getProductsInCategory, getTopRated } from "@/lib/catalog";
 
@@ -24,34 +25,51 @@ export default async function HomePage() {
     ...cardCategories.map((c) => getProductsInCategory(c.slug, 12)),
   ]);
   const productTotal = categories.reduce((n, c) => n + c.productCount, 0);
+  const listFor = (slug: string) => lists[cardCategories.findIndex((c) => c.slug === slug)] ?? [];
+  const fade = "bg-gradient-to-b to-amz-page";
+  const slides: HeroSlide[] = [
+    {
+      eyebrow: `${productTotal} products · ${categories.length} categories`,
+      title: "Everything you need. None of the clutter.",
+      body: "Instant search, a one-page checkout, and no upsells in the way.",
+      href: "/search",
+      cta: "Shop all products",
+      images: topRated.map((p) => p.thumbnail),
+      bg: `${fade} from-[#f6c77a] via-[#fde2b3]`,
+    },
+    {
+      eyebrow: "Smartphones",
+      title: "The latest phones, delivered fast",
+      body: "Compare top-rated phones from Apple, Samsung, Oppo and more.",
+      href: "/search?category=smartphones",
+      cta: "Shop phones",
+      images: listFor("smartphones").map((p) => p.thumbnail),
+      bg: `${fade} from-[#a9d6f5] via-[#d7ecfa]`,
+    },
+    {
+      eyebrow: "Kitchen",
+      title: "Upgrade your kitchen",
+      body: "Cookware, tools and storage that make weeknights easier.",
+      href: "/search?category=kitchen-accessories",
+      cta: "Shop kitchen",
+      images: listFor("kitchen-accessories").map((p) => p.thumbnail),
+      bg: `${fade} from-[#f4b7a8] via-[#fadcd3]`,
+    },
+    {
+      eyebrow: "Sports & Outdoors",
+      title: "Gear up to get fit",
+      body: "Balls, bats, rackets and more for every game.",
+      href: "/search?category=sports-accessories",
+      cta: "Shop sports",
+      images: listFor("sports-accessories").map((p) => p.thumbnail),
+      bg: `${fade} from-[#b9e3b0] via-[#dcf1d6]`,
+    },
+  ].filter((s) => s.images.length >= 3);
 
   return (
     <div className="bg-amz-page">
-      <section className="relative overflow-hidden bg-gradient-to-b from-[#f6c77a] via-[#fde2b3] to-amz-page">
-        <div className="mx-auto max-w-7xl px-4 pb-16 pt-8 sm:pb-24 sm:pt-12 lg:pb-64">
-          <p className="text-sm font-semibold uppercase tracking-wider text-zinc-800">{productTotal} products · {categories.length} categories</p>
-          <h1 className="mt-2 max-w-2xl text-3xl font-extrabold tracking-tight text-zinc-900 text-balance sm:text-5xl">
-            Everything you need. None of the clutter.
-          </h1>
-          <p className="mt-3 max-w-xl text-base text-zinc-800 sm:text-lg">
-            Instant search, a one-page checkout, and no upsells in the way.
-          </p>
-          <div className="mt-6 flex flex-wrap gap-3">
-            <Link
-              href="/search"
-              className="rounded-full bg-amz-yellow px-5 py-2.5 text-sm font-semibold text-zinc-900 shadow-sm hover:bg-amz-yellow-hover focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-zinc-900"
-            >
-              Shop all products
-            </Link>
-            <Link
-              href="#top-rated"
-              className="rounded-full border border-zinc-400 bg-white/80 px-5 py-2.5 text-sm font-semibold text-zinc-900 hover:bg-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-zinc-900"
-            >
-              See top rated
-            </Link>
-          </div>
-        </div>
-      </section>
+      <h1 className="sr-only">Amazon Clone: shop {productTotal} products across {categories.length} categories</h1>
+      <HeroCarousel slides={slides} />
 
       <div className="relative mx-auto flex max-w-7xl flex-col gap-5 px-4 pb-8 lg:-mt-52">
         <ul className="-mt-8 grid gap-4 sm:grid-cols-2 lg:mt-0 lg:grid-cols-4" aria-label="Shop by category">

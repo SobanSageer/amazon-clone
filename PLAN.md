@@ -88,6 +88,17 @@ consistency across the whole app rather than first-time review: a full click-thr
 the core loop, visual/spacing/copy consistency across phases, empty/loading/error states
 anywhere missed, a final accessibility sweep, final deploy.
 
+### Phase 8 — Second pass: Amazon features worth adding (decided 2026-09-21)
+Rule: ship what is real, testable in the core loop, and backed by real data; skip anything
+that needs fabricated data, a paid third-party service, or is Amazon upsell clutter.
+- **A · Product & search:** customer reviews (DummyJSON's real reviews + write your own,
+  "Verified Purchase" when you've ordered it), brand filter, image zoom, share, homepage
+  hero carousel (pausable), "Did you mean" spelling suggestions.
+- **B · Lists:** Save for later, a wishlist ("Your List"), Buy it again.
+- **C · Checkout & orders:** delivery speed options, per-state tax, promo codes, cancel order.
+- **D · Account:** edit name, change password, address book.
+- **Needs an email provider (Resend) — pending user:** password reset, confirmation emails.
+
 ---
 
 ## Left out on purpose
@@ -98,12 +109,11 @@ anywhere missed, a final accessibility sweep, final deploy.
 | Seller Central / "Sell" flow | This is a buyer-side clone; a seller marketplace is a second, unrelated application. |
 | Real payments (Stripe/etc.) | Assignment explicitly wants simulated payment; wiring a real gateway is scope and risk (PCI, real charges) for zero judged benefit. |
 | Email OTP + WhatsApp/SMS phone verification at signup | Real Amazon's screenshots show a 4-step identity-verification gauntlet; it demos account-security maturity, not commerce UX, and burns hours on a canary account. Single email+password is enough to prove "login gates checkout." |
-| Product reviews (writing them) | Ratings are seeded and shown read-only; a review-authoring + moderation system is a separate feature with no payoff in a buy-flow demo. |
-| Wishlists / "Save for later" / "Buy it again" | Secondary retention features, not part of the core loop. |
 | Protection plans / gift cards / "Add a new Amazon Visa" upsells | Pure monetization surface on the buy box; adds visual clutter without demonstrating engineering or UX judgement. |
 | ML-style recommendation engine ("customers also bought", personalized) | Needs real usage data to not look fake; a hardcoded "you might also like" rail would be theater. (A same-category "More in this category" rail is in scope — it's real data, not a fabricated model.) |
-| Order tracking / carrier integration / returns & refunds | Post-purchase logistics is a large separate domain; order history with a status field is enough to close the loop. |
+| Order tracking / carrier integration / returns & refunds | Post-purchase logistics is a large separate domain; order history with a status field (plus cancel) is enough to close the loop. |
 | Admin/inventory dashboard | Not in the buyer-facing core loop; seeding covers inventory needs for this build. |
+| Product variants, price history, multiple sellers, condition filter | DummyJSON has no data for them; inventing it would make the demo dishonest. |
 | Multi-currency / international shipping | One currency, one country (US) keeps checkout and tax math simple and correct rather than broad and buggy. |
 
 ---

@@ -25,7 +25,7 @@ function priceLabel(input: SearchInput) {
 
 export default async function SearchPage(props: PageProps<"/search">) {
   const input = parseSearchParams(await props.searchParams);
-  const [{ results, total, page, pageCount, categoryFacets }, categories] = await Promise.all([
+  const [{ results, total, page, pageCount, categoryFacets, brandFacets, didYouMean }, categories] = await Promise.all([
     searchProducts(input),
     getCategories(),
   ]);
@@ -33,6 +33,7 @@ export default async function SearchPage(props: PageProps<"/search">) {
 
   const chips: { label: string; href: string }[] = [];
   if (input.category) chips.push({ label: categoryName ?? input.category, href: searchHref(input, { category: undefined }) });
+  for (const b of input.brands) chips.push({ label: b, href: searchHref(input, { brand: input.brands.filter((x) => x !== b) }) });
   if (input.rating) chips.push({ label: `${input.rating}★ & up`, href: searchHref(input, { rating: undefined }) });
   const price = priceLabel(input);
   if (price) chips.push({ label: price, href: searchHref(input, { min: undefined, max: undefined }) });
@@ -65,7 +66,7 @@ export default async function SearchPage(props: PageProps<"/search">) {
 
       <div className="mx-auto grid max-w-[1500px] gap-6 px-4 py-4 lg:grid-cols-[15rem_1fr]">
         <aside aria-label="Filters" className="hidden lg:block">
-          <SearchFilters input={input} facets={categoryFacets} idPrefix="desk" categoryName={categoryName} />
+          <SearchFilters input={input} facets={categoryFacets} idPrefix="desk" categoryName={categoryName} brandFacets={brandFacets} />
         </aside>
 
         <div className="min-w-0">
@@ -80,7 +81,7 @@ export default async function SearchPage(props: PageProps<"/search">) {
               )}
             </summary>
             <div className="border-t border-zinc-200 p-2">
-              <SearchFilters input={input} facets={categoryFacets} idPrefix="mob" categoryName={categoryName} />
+              <SearchFilters input={input} facets={categoryFacets} idPrefix="mob" categoryName={categoryName} brandFacets={brandFacets} />
             </div>
           </details>
 
@@ -110,6 +111,15 @@ export default async function SearchPage(props: PageProps<"/search">) {
           {results.length === 0 ? (
             <div className="rounded-xl border border-dashed border-zinc-300 bg-white px-6 py-12 text-center">
               <p className="text-lg font-semibold text-zinc-900">No products match{input.q ? ` “${input.q}”` : ""}</p>
+              {didYouMean && (
+                <p className="mt-2 text-base text-[#0f1111]">
+                  Did you mean{" "}
+                  <Link href={searchHref({ q: didYouMean })} className="font-bold italic text-amz-link hover:text-amz-link-hover hover:underline">
+                    {didYouMean}
+                  </Link>
+                  ?
+                </p>
+              )}
               <p className="mt-1 text-sm text-zinc-600">
                 {chips.length > 0 ? "Try removing a filter, or " : "Check the spelling, or "}
                 browse a category instead.

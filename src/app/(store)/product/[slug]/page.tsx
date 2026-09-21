@@ -7,7 +7,9 @@ import { Price } from "@/components/price";
 import { ProductGallery } from "@/components/product-gallery";
 import { ProductRail } from "@/components/product-rail";
 import { RatingStars } from "@/components/rating-stars";
+import { ReviewsSection } from "@/components/reviews-section";
 import { getMoreInCategory, getProduct } from "@/lib/catalog";
+import { getReviews } from "@/lib/reviews";
 import { deliveryEstimate } from "@/lib/delivery";
 import { formatPrice } from "@/lib/format";
 import { FREE_SHIPPING_THRESHOLD, SHIPPING_FEE } from "@/lib/pricing";
@@ -42,7 +44,7 @@ export default async function ProductPage(props: PageProps<"/product/[slug]">) {
   const product = await getProduct((await props.params).slug);
   if (!product) notFound();
 
-  const more = await getMoreInCategory(product.categoryId, product.id, 14);
+  const [more, reviews] = await Promise.all([getMoreInCategory(product.categoryId, product.id, 14), getReviews(product.id)]);
   const stock = stockLine(product.stock);
   const images = product.images.length ? product.images : [product.thumbnail];
   const { Shipping, Returns, Warranty } = product.specs;
@@ -89,10 +91,10 @@ export default async function ProductPage(props: PageProps<"/product/[slug]">) {
               Visit the {product.brand} Store
             </Link>
           )}
-          <div className="mt-1 flex items-center gap-2">
+          <a href="#reviews" className="mt-1 flex w-fit items-center gap-2 hover:underline">
             <RatingStars rating={product.rating} count={product.ratingCount} size="md" />
             <span className="text-sm text-amz-link">ratings</span>
-          </div>
+          </a>
           <hr className="my-3 border-zinc-200" />
           {/* Phones and tablets see the price in the buy box just below; only the 3-column
               desktop layout repeats it here, as Amazon does. */}
@@ -167,6 +169,8 @@ export default async function ProductPage(props: PageProps<"/product/[slug]">) {
           </section>
         </div>
       </div>
+
+      <ReviewsSection productId={product.id} rating={product.rating} ratingCount={product.ratingCount} reviews={reviews} />
 
       {more.length > 0 && (
         <div className="mt-10 border-t border-zinc-200 pt-2">

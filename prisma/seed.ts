@@ -104,9 +104,24 @@ async function main() {
     );
   }
 
+  // DummyJSON's real reviews. sourceKey makes this idempotent across builds.
+  const ids = await db.product.findMany({ select: { id: true, slug: true } });
+  const idBySlug = new Map(ids.map((p) => [p.slug, p.id]));
+  const reviewRows = products.flatMap((p, i) =>
+    p.reviews.map((r, j) => ({
+      sourceKey: `dj-${p.id}-${j}`,
+      productId: idBySlug.get(productRows[i].slug)!,
+      authorName: r.name,
+      rating: r.rating,
+      body: r.comment,
+      createdAt: new Date(r.date),
+    })),
+  );
+  const reviews = await db.review.createMany({ data: reviewRows, skipDuplicates: true });
+
   const total = await db.product.count();
   console.log(
-    `Seed: ${categories.length} categories, ${total} products (${inserted.count} new, ${missingSpecs.length} specs backfilled).`,
+    `Seed: ${categories.length} categories, ${total} products (${inserted.count} new, ${missingSpecs.length} specs backfilled, ${reviews.count} reviews added).`,
   );
 }
 
