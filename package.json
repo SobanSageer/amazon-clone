@@ -11,7 +11,7 @@
     "db:migrate": "prisma migrate dev",
     "db:deploy": "prisma migrate deploy",
     "db:seed": "prisma db seed",
-    "vercel-build": "prisma generate && prisma migrate deploy && prisma db seed && next build"
+    "vercel-build": "node scripts/check-env.mjs && prisma generate && prisma migrate deploy && prisma db seed && next build"
   },
   "dependencies": {
     "@base-ui/react": "^1.8.0",
