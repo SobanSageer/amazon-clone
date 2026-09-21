@@ -165,7 +165,7 @@ export function CartButton() {
     >
       <span className="relative">
         <ShoppingCart className="size-8" strokeWidth={1.75} aria-hidden />
-        <span aria-hidden className="absolute -top-1.5 left-1/2 -translate-x-[40%] text-base font-bold text-[#f08804]">
+        <span aria-hidden className="absolute left-1/2 top-[1px] -translate-x-[35%] text-sm font-bold leading-none text-[#f08804]">
           {count > 99 ? "99+" : count}
         </span>
       </span>

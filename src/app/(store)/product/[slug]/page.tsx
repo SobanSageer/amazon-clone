@@ -94,10 +94,9 @@ export default async function ProductPage(props: PageProps<"/product/[slug]">) {
             <span className="text-sm text-amz-link">ratings</span>
           </div>
           <hr className="my-3 border-zinc-200" />
-          <Price value={product.price} size="lg" />
-          <p className="mt-1 text-sm text-zinc-700">
-            {delivery.free ? "FREE Returns" : `Free shipping on orders over ${formatPrice(FREE_SHIPPING_THRESHOLD)}`}
-          </p>
+          {/* Phones and tablets see the price in the buy box just below; only the 3-column
+              desktop layout repeats it here, as Amazon does. */}
+          <Price value={product.price} size="lg" className="hidden lg:inline-flex" />
         </div>
 
         <aside

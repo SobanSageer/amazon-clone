@@ -10,7 +10,7 @@ export function ProductGallery({ images, title }: { images: string[]; title: str
 
   return (
     <div className="flex flex-col gap-3 md:flex-row-reverse">
-      <div className="relative aspect-square w-full overflow-hidden rounded-xl border border-zinc-200 bg-white">
+      <div className="relative aspect-square w-full overflow-hidden bg-white">
         <Image
           src={current}
           alt={images.length > 1 ? `${title}, image ${index + 1} of ${images.length}` : title}
@@ -31,8 +31,8 @@ export function ProductGallery({ images, title }: { images: string[]; title: str
                 aria-label={`Show image ${i + 1} of ${images.length}`}
                 aria-pressed={i === index}
                 className={cn(
-                  "relative block size-16 overflow-hidden rounded-lg border-2 bg-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-500",
-                  i === index ? "border-amber-500" : "border-zinc-200 hover:border-zinc-400",
+                  "relative block size-12 overflow-hidden rounded-lg border bg-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#007185]",
+                  i === index ? "border-[#007185] shadow-[0_0_3px_2px_rgba(0,113,133,.5)]" : "border-zinc-300 hover:border-[#007185]",
                 )}
               >
                 <Image src={src} alt="" fill sizes="64px" className="object-contain p-1" />
