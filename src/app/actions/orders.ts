@@ -9,6 +9,7 @@ export async function cancelOrderAction(formData: FormData) {
   const user = await currentUser();
   if (!user) return;
   const orderNumber = String(formData.get("orderNumber") ?? "");
+  let restocked: string[] = [];
 
   await db.$transaction(async (tx) => {
     // Conditional update so a double-submit can't restock twice.
@@ -17,11 +18,18 @@ export async function cancelOrderAction(formData: FormData) {
       data: { status: "cancelled", cancelledAt: new Date() },
     });
     if (count === 0) return;
-    const items = await tx.orderItem.findMany({ where: { order: { orderNumber } }, select: { productId: true, quantity: true } });
+    const items = await tx.orderItem.findMany({
+      where: { order: { orderNumber } },
+      select: { productId: true, quantity: true, product: { select: { slug: true } } },
+    });
     for (const i of items) {
       await tx.product.update({ where: { id: i.productId }, data: { stock: { increment: i.quantity } } });
     }
+    restocked = items.map((i) => i.product.slug);
   });
+
+  for (const slug of restocked) revalidatePath(`/product/${slug}`);
+  revalidatePath("/");
 
   revalidatePath("/orders");
   revalidatePath(`/orders/${orderNumber}`);

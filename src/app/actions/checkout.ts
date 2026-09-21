@@ -1,6 +1,7 @@
 "use server";
 
 import { randomInt } from "node:crypto";
+import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { currentUser } from "@/auth";
 import { getCartItems } from "@/lib/cart";
@@ -134,6 +135,10 @@ export async function placeOrderAction(_prev: CheckoutState, formData: FormData)
     throw err;
   }
   if (!orderNumber) return { error: "We couldn’t place your order. Please try again." };
+
+  // Product pages and the homepage are cached; their stock lines just changed.
+  for (const i of items) revalidatePath(`/product/${i.product.slug}`);
+  revalidatePath("/");
 
   redirect(`/orders/${orderNumber}?placed=1`);
 }

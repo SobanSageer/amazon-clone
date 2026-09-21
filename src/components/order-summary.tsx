@@ -38,7 +38,7 @@ export function OrderSummary({
         </div>
         <div className="flex justify-between">
           <dt>
-            Estimated tax{t.taxRate !== null && state ? ` (${state} ${(t.taxRate * 100).toFixed(t.taxRate * 100 % 1 ? 3 : 0).replace(/\.?0+$/, "")}%)` : ""}:
+            Estimated tax{t.taxRate !== null && state ? ` (${state} ${+(t.taxRate * 100).toFixed(3)}%)` : ""}:
           </dt>
           <dd className="tabular-nums">{t.taxRate === null ? "—" : formatPrice(t.tax)}</dd>
         </div>
