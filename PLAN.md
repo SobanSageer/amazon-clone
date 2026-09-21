@@ -190,6 +190,8 @@ Order
   tax           Decimal
   shippingFee   Decimal
   total         Decimal
+  paymentBrand  String                  // e.g. "Visa" — simulated card; full number never stored
+  paymentLast4  String
   createdAt     DateTime
 
 OrderItem

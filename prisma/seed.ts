@@ -109,7 +109,7 @@ async function main() {
 
   // The demo account signs in through its own provider, never with a password, so it
   // gets a random, unguessable hash rather than a shared credential.
-  await db.user.upsert({
+  const demo = await db.user.upsert({
     where: { email: DEMO_USER.email },
     update: {},
     create: {
@@ -119,6 +119,12 @@ async function main() {
       passwordHash: await bcrypt.hash(randomBytes(32).toString("hex"), 10),
     },
   });
+
+  // A ready-made address so reviewers can check out without typing one.
+  const demoAddress = await db.address.findFirst({ where: { userId: demo.id, isDefault: true } });
+  if (!demoAddress) {
+    await db.address.create({ data: { userId: demo.id, isDefault: true, ...DEMO_USER.address } });
+  }
 
   const total = await db.product.count();
   console.log(
