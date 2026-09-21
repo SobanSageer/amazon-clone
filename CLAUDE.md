@@ -9,7 +9,8 @@ Target: full core loop (Phases 0–6) live in ~8–10 hours, then polish.
 
 ## Stack
 
-- Next.js, App Router, TypeScript
+- Next.js 16, App Router, TypeScript. Its APIs differ from older Next versions — read
+  the bundled docs per @AGENTS.md before writing Next-specific code.
 - Tailwind CSS + shadcn/ui
 - Prisma + Neon Postgres
 - Auth.js for authentication
@@ -21,8 +22,13 @@ Target: full core loop (Phases 0–6) live in ~8–10 hours, then polish.
   standalone Neon project wired by hand).
 - `DATABASE_URL` = Neon's **pooled** connection string (runtime queries).
   `DIRECT_URL` = Neon's **direct** (non-pooled) connection string (migrations only).
-  Prisma's `datasource` uses both: `url = env("DATABASE_URL")`,
-  `directUrl = env("DIRECT_URL")`.
+  This is Prisma 7 (pinned 7.10.0 — npm `latest` is an 8.0 RC; don't bump it):
+  there is no `directUrl`. The CLI uses `datasource.url` in `prisma.config.ts`
+  → `DIRECT_URL`; the app connects through the `@prisma/adapter-neon` driver adapter
+  in `src/lib/db.ts` → `DATABASE_URL`. Generated client lives in `src/generated/prisma`
+  (gitignored; `postinstall` and `build` regenerate it).
+- The Vercel Neon integration names its direct string `DATABASE_URL_UNPOOLED`;
+  `DIRECT_URL` must be added in Vercel with that same value.
 - `prisma generate` runs as part of the build step (`"build": "prisma generate && next
   build"`), so Vercel always builds against a fresh client.
 - `AUTH_SECRET` is set in Vercel project env vars (and in `.env.local` for local dev).
@@ -39,6 +45,10 @@ Target: full core loop (Phases 0–6) live in ~8–10 hours, then polish.
   update that section first if the schema needs to diverge, so the doc stays truthful.
 
 ## Product rules
+
+- The public brand is **Nile** (`src/lib/site.ts`), not Amazon — no Amazon name or logo
+  on a public site that has a sign-in page and a card form. Keep the "demo, payments
+  simulated" notice visible.
 
 - Guest users can browse, search, view products, and add to cart with **no account**.
   Cart persists for guests via a cookie-scoped session id.

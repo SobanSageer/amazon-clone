@@ -196,6 +196,7 @@ OrderItem
   productId     String   -> Product
   titleSnapshot String                  // frozen at purchase time
   priceSnapshot Decimal                 // frozen at purchase time — price can drift later
+  imageSnapshot String?                 // thumbnail for order history, frozen too
   quantity      Int
 ```
 
