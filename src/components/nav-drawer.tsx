@@ -35,9 +35,9 @@ export function NavDrawer({ categories }: { categories: Category[] }) {
         ref={ref}
         aria-label="All categories and account"
         onClick={(e) => e.target === ref.current && close()}
-        className="fixed inset-y-0 left-0 m-0 h-full max-h-none w-[85vw] max-w-sm bg-m-surface p-0 backdrop:bg-black/70 open:animate-in open:slide-in-from-left"
+        className="fixed inset-y-0 left-0 m-0 flex h-full max-h-none w-[85vw] max-w-sm flex-col bg-m-surface p-0 backdrop:bg-black/70 open:animate-in open:slide-in-from-left"
       >
-        <div className="flex items-center gap-2 bg-m-accent px-6 py-3.5 text-lg font-bold text-white">
+        <div className="flex shrink-0 items-center gap-2 bg-m-accent px-6 py-3.5 text-lg font-bold text-white">
           <UserCircle2 className="size-7" aria-hidden />
           <span className="truncate">Hello, {me?.user ? me.user.name.split(" ")[0] : "sign in"}</span>
         </div>
@@ -49,6 +49,7 @@ export function NavDrawer({ categories }: { categories: Category[] }) {
         >
           <X className="size-6" aria-hidden />
         </button>
+        <div className="min-h-0 flex-1 overflow-y-auto overscroll-contain">
         <nav aria-label="Shop by category" className="border-b border-m-border py-2">
           <h2 className="px-6 py-2 text-lg font-bold text-m-ink">Shop by Category</h2>
           <ul>
@@ -103,6 +104,7 @@ export function NavDrawer({ categories }: { categories: Category[] }) {
               )}
             </li>
           </ul>
+        </div>
         </div>
       </dialog>
     </>

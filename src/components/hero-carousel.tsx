@@ -58,7 +58,7 @@ export function HeroCarousel({ slides }: { slides: HeroSlide[] }) {
         aria-roledescription="slide"
         aria-label={`${index + 1} of ${slides.length}: ${slide.title}`}
         aria-live={rotating ? "off" : "polite"}
-        className="mx-auto grid min-h-[22rem] max-w-7xl items-center gap-6 px-12 pb-20 pt-8 sm:min-h-[24rem] sm:px-16 sm:pb-24 md:grid-cols-[1.1fr_1fr] lg:min-h-[36rem] lg:pb-64"
+        className="mx-auto grid min-h-[24rem] max-w-7xl items-center gap-6 px-12 pb-20 pt-8 sm:min-h-[26rem] sm:px-16 sm:pb-24 md:grid-cols-[1.1fr_1fr] lg:min-h-[36rem] lg:pb-64"
       >
         <div key={index} className="animate-in fade-in duration-500">
           <p className="text-sm font-bold uppercase tracking-wider text-zinc-800">{slide.eyebrow}</p>
