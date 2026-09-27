@@ -37,15 +37,10 @@
   --color-m-warning-bg: #FEF3C7;
   --color-m-error-bg: #FEE2E2;
 
-  /* Spacing scale (Figma) */
-  --spacing-2xs: 4px;
-  --spacing-xs: 8px;
-  --spacing-sm: 12px;
-  --spacing-md: 16px;
-  --spacing-lg: 24px;
-  --spacing-xl: 32px;
-  --spacing-2xl: 48px;
-  --spacing-3xl: 64px;
+  /* Spacing scale 4/8/12/16/24/32/48/64 maps to Tailwind's numeric scale:
+     p-1 p-2 p-3 p-4 p-6 p-8 p-12 p-16. Do NOT re-add --spacing-xs/sm/md/lg/xl
+     aliases: in Tailwind v4 they shadow the size scale, so max-w-xl became 32px
+     and max-w-sm 12px, which collapsed the hero text and the nav drawer. */
 }
 
 @theme inline {
