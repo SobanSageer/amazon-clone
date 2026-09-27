@@ -22,11 +22,8 @@ export function SearchBox({ categories }: { categories: Category[] }) {
   const [open, setOpen] = useState(false);
   const [active, setActive] = useState(-1);
   const listId = useId();
-  // True while the input holds text the user typed that the URL doesn't reflect yet.
   const [dirty, setDirty] = useState(false);
 
-  // Keep the box in sync when the URL changes from elsewhere (back button, filter links,
-  // leaving /search).
   const [category, setCategory] = useState(urlCategory);
   const [syncedCategory, setSyncedCategory] = useState(urlCategory);
   if (urlCategory !== syncedCategory) {
@@ -38,12 +35,9 @@ export function SearchBox({ categories }: { categories: Category[] }) {
   const [syncedQ, setSyncedQ] = useState(urlQ);
   if (urlQ !== syncedQ) {
     setSyncedQ(urlQ);
-    // Compare trimmed so a trailing space the user just typed isn't wiped when their
-    // own debounced search lands in the URL.
     if (!dirty && urlQ !== value.trim()) setValue(urlQ);
   }
 
-  // On the results page, typing re-runs the search in place — no navigation, no reload.
   useEffect(() => {
     if (!onSearchPage || !dirty) return;
     const t = setTimeout(() => {
@@ -58,7 +52,6 @@ export function SearchBox({ categories }: { categories: Category[] }) {
     return () => clearTimeout(t);
   }, [value, dirty, onSearchPage, router, searchParams]);
 
-  // Everywhere else, show instant product suggestions.
   useEffect(() => {
     if (onSearchPage) return;
     const q = value.trim();
@@ -72,7 +65,7 @@ export function SearchBox({ categories }: { categories: Category[] }) {
           setActive(-1);
         }
       } catch {
-        // aborted or offline — keep the previous suggestions
+        // aborted or offline
       }
     }, 150);
     return () => {
@@ -134,7 +127,7 @@ export function SearchBox({ categories }: { categories: Category[] }) {
       <div className="relative hidden shrink-0 sm:block">
         <span
           aria-hidden
-          className="flex h-10 items-center gap-1 rounded-l-md border-r border-zinc-300 bg-[#e6e6e6] px-2.5 text-xs text-zinc-700"
+          className="flex h-10 items-center gap-1 rounded-l-md border border-r-0 border-m-border bg-m-muted px-2.5 text-xs text-m-secondary"
         >
           {categoryName}
           <ChevronDown className="size-3" />
@@ -170,18 +163,18 @@ export function SearchBox({ categories }: { categories: Category[] }) {
         onFocus={() => setOpen(true)}
         onBlur={() => setTimeout(() => setOpen(false), 120)}
         onKeyDown={onKeyDown}
-        placeholder="Search Amazon Clone"
+        placeholder="Search Marlo"
         autoComplete="off"
         role="combobox"
         aria-expanded={showList}
         aria-controls={listId}
         aria-autocomplete="list"
         aria-activedescendant={showList && active >= 0 ? `${listId}-opt-${active}` : undefined}
-        className="h-10 min-w-0 flex-1 rounded-l-md border-0 bg-white px-3 text-base text-zinc-900 placeholder:text-zinc-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-amber-400 sm:rounded-l-none sm:text-[15px]"
+        className="h-10 min-w-0 flex-1 rounded-l-md border border-m-border bg-m-surface px-3 text-base text-m-ink placeholder:text-m-dim focus:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-m-accent sm:rounded-l-none sm:border-l-0 sm:text-[15px]"
       />
       <button
         type="submit"
-        className="flex h-10 w-12 shrink-0 items-center justify-center rounded-r-md bg-amz-search text-zinc-900 hover:bg-amz-search-hover focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-400"
+        className="flex h-10 w-12 shrink-0 items-center justify-center rounded-r-md bg-m-accent text-white hover:bg-m-accent-hover focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-m-accent"
       >
         <Search className="size-5" aria-hidden />
         <span className="sr-only">Search</span>
@@ -192,7 +185,7 @@ export function SearchBox({ categories }: { categories: Category[] }) {
         role="listbox"
         aria-label="Product suggestions"
         hidden={!showList}
-        className="absolute left-0 right-0 top-full z-50 mt-1 overflow-hidden rounded-md border border-zinc-200 bg-white py-1 text-zinc-900 shadow-lg"
+        className="absolute left-0 right-0 top-full z-50 mt-1 overflow-hidden rounded-md border border-m-border bg-m-surface py-1 text-m-ink shadow-lg"
       >
         {suggestions.map((s, i) => (
           <li
@@ -205,14 +198,14 @@ export function SearchBox({ categories }: { categories: Category[] }) {
               go(`/product/${s.slug}`);
             }}
             onMouseEnter={() => setActive(i)}
-            className={`flex cursor-pointer items-center gap-3 px-3 py-2 ${i === active ? "bg-zinc-100" : ""}`}
+            className={`flex cursor-pointer items-center gap-3 px-3 py-2 ${i === active ? "bg-m-muted" : ""}`}
           >
-            <span className="relative size-10 shrink-0 overflow-hidden rounded bg-white">
+            <span className="relative size-10 shrink-0 overflow-hidden rounded bg-m-surface">
               <Image src={s.thumbnail} alt="" fill sizes="40px" className="object-contain" />
             </span>
             <span className="min-w-0 flex-1">
               <span className="block truncate text-sm">{s.title}</span>
-              <span className="block text-xs text-zinc-600">in {s.categoryName}</span>
+              <span className="block text-xs text-m-secondary">in {s.categoryName}</span>
             </span>
             <span className="shrink-0 text-sm font-medium">{formatPrice(s.price)}</span>
           </li>
@@ -224,9 +217,9 @@ export function SearchBox({ categories }: { categories: Category[] }) {
             e.preventDefault();
             go(resultsHref(value.trim(), category));
           }}
-          className="cursor-pointer border-t border-zinc-100 px-3 py-2 text-sm font-medium text-amz-link hover:bg-zinc-50"
+          className="cursor-pointer border-t border-m-border-subtle px-3 py-2 text-sm font-medium text-m-accent-text hover:bg-m-muted"
         >
-          See all results for “{value.trim()}”
+          See all results for &ldquo;{value.trim()}&rdquo;
         </li>
       </ul>
     </form>
@@ -243,10 +236,10 @@ export function SearchBoxFallback() {
         id="search-fallback"
         name="q"
         type="search"
-        placeholder="Search Amazon Clone"
-        className="h-10 min-w-0 flex-1 rounded-l-md border-0 bg-white px-3 text-base text-zinc-900 placeholder:text-zinc-500 sm:text-sm"
+        placeholder="Search Marlo"
+        className="h-10 min-w-0 flex-1 rounded-l-md border border-m-border bg-m-surface px-3 text-base text-m-ink placeholder:text-m-dim sm:text-sm"
       />
-      <button type="submit" className="flex h-10 w-12 items-center justify-center rounded-r-md bg-amz-search text-zinc-900">
+      <button type="submit" className="flex h-10 w-12 items-center justify-center rounded-r-md bg-m-accent text-white hover:bg-m-accent-hover">
         <Search className="size-5" aria-hidden />
         <span className="sr-only">Search</span>
       </button>

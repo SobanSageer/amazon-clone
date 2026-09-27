@@ -9,14 +9,14 @@ import { announceCartCount } from "@/lib/cart-events";
 function StepperButtons({ quantity, max, title }: { quantity: number; max: number; title: string }) {
   const { pending } = useFormStatus();
   return (
-    <div className="inline-flex h-8 items-center rounded-full border-[3px] border-amz-yellow bg-white">
+    <div className="inline-flex h-8 items-center rounded-full border-2 border-m-accent bg-m-surface">
       <button
         type="submit"
         name="quantity"
         value={quantity - 1}
         disabled={pending}
         aria-label={quantity === 1 ? `Remove ${title} from cart` : `Decrease quantity of ${title}`}
-        className="flex size-8 items-center justify-center rounded-full text-zinc-800 hover:bg-zinc-100 disabled:opacity-50 focus-visible:outline-2 focus-visible:outline-zinc-900"
+        className="flex size-8 items-center justify-center rounded-full text-m-ink hover:bg-m-muted disabled:opacity-50 focus-visible:outline-2 focus-visible:outline-m-accent"
       >
         {quantity === 1 ? <Trash2 className="size-4" aria-hidden /> : <Minus className="size-4" aria-hidden />}
       </button>
@@ -29,7 +29,7 @@ function StepperButtons({ quantity, max, title }: { quantity: number; max: numbe
         value={quantity + 1}
         disabled={pending || quantity >= max}
         aria-label={`Increase quantity of ${title}`}
-        className="flex size-8 items-center justify-center rounded-full text-zinc-800 hover:bg-zinc-100 disabled:opacity-40 focus-visible:outline-2 focus-visible:outline-zinc-900"
+        className="flex size-8 items-center justify-center rounded-full text-m-ink hover:bg-m-muted disabled:opacity-40 focus-visible:outline-2 focus-visible:outline-m-accent"
       >
         <Plus className="size-4" aria-hidden />
       </button>
@@ -49,7 +49,7 @@ export function CartQuantity({ itemId, quantity, max, title }: { itemId: string;
 function RemoveButton() {
   const { pending } = useFormStatus();
   return (
-    <button type="submit" disabled={pending} className="text-xs text-amz-link hover:text-amz-link-hover hover:underline disabled:opacity-50">
+    <button type="submit" disabled={pending} className="text-xs text-m-accent-text hover:text-m-accent-hover hover:underline disabled:opacity-50">
       Delete
     </button>
   );
@@ -73,7 +73,7 @@ export function CartCountSync({ count }: { count: number }) {
 function LinkButton({ children }: { children: React.ReactNode }) {
   const { pending } = useFormStatus();
   return (
-    <button type="submit" disabled={pending} className="text-xs text-amz-link hover:text-amz-link-hover hover:underline disabled:opacity-50">
+    <button type="submit" disabled={pending} className="text-xs text-m-accent-text hover:text-m-accent-hover hover:underline disabled:opacity-50">
       {children}
     </button>
   );

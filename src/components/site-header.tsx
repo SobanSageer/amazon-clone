@@ -14,7 +14,7 @@ export async function SiteHeader() {
     <Link
       href="/"
       aria-label={`${site.name} home`}
-      className="shrink-0 rounded-sm border border-transparent px-1.5 pb-1 pt-2 hover:border-white focus-visible:outline-2 focus-visible:outline-amber-400"
+      className="shrink-0 rounded-sm border border-transparent px-1.5 pb-1 pt-2 hover:border-m-border focus-visible:outline-2 focus-visible:outline-m-accent"
     >
       <Wordmark />
     </Link>
@@ -29,13 +29,13 @@ export async function SiteHeader() {
     <header className="relative z-40">
         <a
           href="#main"
-          className="sr-only focus:not-sr-only focus:absolute focus:left-2 focus:top-2 focus:z-50 focus:rounded focus:bg-amz-yellow focus:px-3 focus:py-2 focus:text-sm focus:font-bold focus:text-zinc-900"
+          className="sr-only focus:not-sr-only focus:absolute focus:left-2 focus:top-2 focus:z-50 focus:rounded focus:bg-m-accent focus:px-3 focus:py-2 focus:text-sm focus:font-bold focus:text-white"
         >
           Skip to main content
         </a>
 
         {/* One search box that reflows: its own full-width row on phones, inline on desktop. */}
-        <div className="flex flex-wrap items-center gap-x-1 bg-amz-header px-2 pt-1 md:h-[60px] md:flex-nowrap md:pt-0">
+        <div className="flex flex-wrap items-center gap-x-1 border-b border-m-border bg-m-surface px-2 pt-1 md:h-[60px] md:flex-nowrap md:pt-0">
           {logo}
           <div className="hidden shrink-0 lg:block">
             <DeliverTo />

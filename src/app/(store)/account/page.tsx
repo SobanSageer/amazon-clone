@@ -22,12 +22,12 @@ export default async function AccountPage(props: PageProps<"/account">) {
   });
   const editing = editId ? addresses.find((a) => a.id === editId) : undefined;
 
-  const card = "rounded-lg border border-[#d5d9d9] bg-white p-5";
-  const linkBtn = "text-[13px] text-amz-link hover:text-amz-link-hover hover:underline";
+  const card = "rounded-lg border border-m-border bg-white p-5";
+  const linkBtn = "text-[13px] text-m-accent-text hover:text-m-accent-hover hover:underline";
 
   return (
     <div className="mx-auto max-w-4xl px-4 py-6">
-      <h1 className="text-[28px] font-normal text-[#0f1111]">Your Account</h1>
+      <h1 className="text-[28px] font-normal text-m-ink">Your Account</h1>
 
       <nav aria-label="Account shortcuts" className="mt-4 grid gap-3 sm:grid-cols-3">
         {[
@@ -35,10 +35,10 @@ export default async function AccountPage(props: PageProps<"/account">) {
           { href: "/list", icon: Heart, title: "Your List", body: "Products you saved for later" },
           { href: "#addresses", icon: MapPin, title: "Your Addresses", body: "Edit addresses for orders" },
         ].map(({ href, icon: Icon, title, body }) => (
-          <Link key={href} href={href} className={`${card} flex gap-3 hover:bg-[#f7fafa] focus-visible:outline-2 focus-visible:outline-[#007185]`}>
-            <Icon className="size-8 shrink-0 text-amz-link" strokeWidth={1.5} aria-hidden />
+          <Link key={href} href={href} className={`${card} flex gap-3 hover:bg-m-muted focus-visible:outline-2 focus-visible:outline-m-accent`}>
+            <Icon className="size-8 shrink-0 text-m-accent-text" strokeWidth={1.5} aria-hidden />
             <span>
-              <span className="block text-base text-[#0f1111]">{title}</span>
+              <span className="block text-base text-m-ink">{title}</span>
               <span className="block text-sm text-zinc-600">{body}</span>
             </span>
           </Link>
@@ -46,23 +46,23 @@ export default async function AccountPage(props: PageProps<"/account">) {
       </nav>
 
       <section aria-labelledby="security-heading" className={`${card} mt-6`}>
-        <h2 id="security-heading" className="text-lg font-bold text-[#0f1111]">
+        <h2 id="security-heading" className="text-lg font-bold text-m-ink">
           Login & security
         </h2>
         <p className="mt-1 text-sm text-zinc-600">
-          Email: <span className="text-[#0f1111]">{user.email}</span>
+          Email: <span className="text-m-ink">{user.email}</span>
         </p>
         <div className="mt-4">
           <NameForm name={user.name} />
         </div>
         <hr className="my-5 border-zinc-200" />
-        <h3 className="mb-3 text-base font-bold text-[#0f1111]">Change password</h3>
+        <h3 className="mb-3 text-base font-bold text-m-ink">Change password</h3>
         <PasswordForm />
       </section>
 
       <section id="addresses" aria-labelledby="addresses-heading" className={`${card} mt-6 scroll-mt-4`}>
         <div className="flex items-center justify-between">
-          <h2 id="addresses-heading" className="text-lg font-bold text-[#0f1111]">
+          <h2 id="addresses-heading" className="text-lg font-bold text-m-ink">
             Your Addresses
           </h2>
           {!adding && !editing && (
@@ -74,7 +74,7 @@ export default async function AccountPage(props: PageProps<"/account">) {
 
         {(adding || editing) && (
           <div className="mt-4">
-            <h3 className="mb-2 text-base font-bold text-[#0f1111]">{editing ? "Edit address" : "Add a new address"}</h3>
+            <h3 className="mb-2 text-base font-bold text-m-ink">{editing ? "Edit address" : "Add a new address"}</h3>
             <AddressForm initial={editing} />
           </div>
         )}
@@ -84,7 +84,7 @@ export default async function AccountPage(props: PageProps<"/account">) {
         ) : (
           <ul className="mt-4 grid gap-3 sm:grid-cols-2">
             {addresses.map((a) => (
-              <li key={a.id} className="flex flex-col rounded-lg border border-[#d5d9d9] p-4 text-sm text-[#0f1111]">
+              <li key={a.id} className="flex flex-col rounded-lg border border-m-border p-4 text-sm text-m-ink">
                 {a.isDefault && <p className="mb-2 border-b border-zinc-200 pb-2 text-xs text-zinc-600">Default</p>}
                 <p className="font-bold">{a.fullName}</p>
                 <p>

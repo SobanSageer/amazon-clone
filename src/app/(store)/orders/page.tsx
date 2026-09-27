@@ -16,7 +16,7 @@ export default async function OrdersPage() {
   const orders = await getOrders(user.id);
 
   return (
-    <div className="bg-amz-page">
+    <div className="bg-m-page">
       <div className="mx-auto flex max-w-4xl flex-col gap-4 px-4 py-6 sm:py-8">
         <div>
           <h1 className="text-2xl font-bold tracking-tight text-zinc-900">Your orders</h1>
@@ -27,7 +27,7 @@ export default async function OrdersPage() {
             <Package className="mx-auto size-10 text-zinc-400" aria-hidden />
             <p className="mt-3 text-lg font-semibold text-zinc-900">No orders yet</p>
             <p className="mt-1 text-sm text-zinc-600">When you place an order, it’ll show up here.</p>
-            <Link href="/" className="mt-5 inline-block rounded-full bg-amz-yellow px-5 py-2.5 text-sm font-semibold text-zinc-900 hover:bg-amz-yellow-hover">
+            <Link href="/" className="mt-5 inline-block rounded-full bg-m-accent px-5 py-2.5 text-sm font-semibold text-white hover:bg-m-accent-hover">
               Start shopping
             </Link>
           </div>
@@ -52,7 +52,7 @@ export default async function OrdersPage() {
                   </dl>
                   <div className="text-right">
                     <p className="text-xs tabular-nums text-zinc-500">Order {o.orderNumber}</p>
-                    <Link href={`/orders/${o.orderNumber}`} className="font-medium text-amz-link hover:underline">
+                    <Link href={`/orders/${o.orderNumber}`} className="font-medium text-m-accent-text hover:underline">
                       View order details
                     </Link>
                   </div>

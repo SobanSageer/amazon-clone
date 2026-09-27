@@ -13,7 +13,7 @@ function Button({ added, title, label }: { added: boolean; title: string; label:
       type="submit"
       disabled={pending}
       aria-label={`${label}: ${title}`}
-      className="relative z-10 flex h-8 items-center gap-1.5 rounded-full bg-amz-yellow px-3 text-[13px] text-[#0f1111] shadow-[0_2px_5px_rgba(213,217,217,.5)] hover:bg-amz-yellow-hover focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#007185] disabled:opacity-70"
+      className="relative z-10 flex h-8 items-center gap-1.5 rounded-full bg-m-accent px-3 text-[13px] font-medium text-white shadow-sm hover:bg-m-accent-hover focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-m-accent disabled:opacity-70"
     >
       {pending ? <Loader2 className="size-3.5 animate-spin" aria-hidden /> : added ? <Check className="size-3.5" aria-hidden /> : null}
       {added && !pending ? "Added to cart" : label}

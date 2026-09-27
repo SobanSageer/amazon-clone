@@ -27,17 +27,17 @@ export default async function CartPage() {
 
   const savedSection = saved.length > 0 && (
     <section aria-labelledby="saved-heading" className="bg-white px-5 py-4">
-      <h2 id="saved-heading" className="border-b border-zinc-200 pb-2 text-xl font-bold text-[#0f1111]">
+      <h2 id="saved-heading" className="border-b border-zinc-200 pb-2 text-xl font-bold text-m-ink">
         Saved for later ({saved.length} {saved.length === 1 ? "item" : "items"})
       </h2>
       <ul className="grid gap-4 pt-4 sm:grid-cols-2 lg:grid-cols-4">
         {saved.map((item) => (
           <li key={item.id} className="flex gap-3 rounded-lg border border-zinc-200 p-3 lg:flex-col">
-            <Link href={`/product/${item.product.slug}`} tabIndex={-1} aria-hidden className="relative size-24 shrink-0 bg-[#f7f7f7] lg:size-auto lg:aspect-square">
+            <Link href={`/product/${item.product.slug}`} tabIndex={-1} aria-hidden className="relative size-24 shrink-0 bg-m-muted lg:size-auto lg:aspect-square">
               <Image src={item.product.thumbnail} alt="" fill sizes="200px" className="object-contain p-2 mix-blend-multiply" />
             </Link>
             <div className="flex min-w-0 flex-1 flex-col gap-1">
-              <Link href={`/product/${item.product.slug}`} className="line-clamp-2 text-sm text-[#0f1111] hover:text-amz-link-hover hover:underline">
+              <Link href={`/product/${item.product.slug}`} className="line-clamp-2 text-sm text-m-ink hover:text-m-accent-hover hover:underline">
                 {item.product.title}
               </Link>
               <Price value={item.product.price} />
@@ -55,20 +55,20 @@ export default async function CartPage() {
 
   if (items.length === 0) {
     return (
-      <div className="flex flex-col gap-5 bg-amz-page px-4 py-6">
+      <div className="flex flex-col gap-5 bg-m-page px-4 py-6">
         <CartCountSync count={0} />
         <div className="mx-auto w-full max-w-[1500px]">{savedSection}</div>
         <div className="order-first mx-auto w-full max-w-[1500px] bg-white p-6 sm:p-8">
-          <h1 className="text-[28px] font-normal leading-tight text-[#0f1111]">Your Amazon Clone Cart is empty</h1>
-          <p className="mt-2 text-sm text-[#0f1111]">
+          <h1 className="text-[28px] font-normal leading-tight text-m-ink">Your Marlo cart is empty</h1>
+          <p className="mt-2 text-sm text-m-ink">
             Your Shopping Cart lives to serve. Give it purpose — fill it with groceries, clothing, household supplies,
             electronics, and more. You don’t need an account to start.
           </p>
           <div className="mt-5 flex flex-wrap gap-3">
-            <Link href="/" className="rounded-full bg-amz-yellow px-5 py-2 text-[13px] text-[#0f1111] shadow-[0_2px_5px_rgba(213,217,217,.5)] hover:bg-amz-yellow-hover">
+            <Link href="/" className="rounded-full bg-m-accent px-5 py-2 text-[13px] text-white shadow-sm hover:bg-m-accent-hover">
               Continue shopping
             </Link>
-            <Link href="/search" className="rounded-full border border-[#d5d9d9] bg-white px-5 py-2 text-[13px] text-[#0f1111] shadow-[0_2px_5px_rgba(213,217,217,.5)] hover:bg-[#f7fafa]">
+            <Link href="/search" className="rounded-full border border-m-border bg-white px-5 py-2 text-[13px] text-m-ink shadow-sm hover:bg-m-muted">
               Browse all products
             </Link>
           </div>
@@ -78,12 +78,12 @@ export default async function CartPage() {
   }
 
   return (
-    <div className="bg-amz-page">
+    <div className="bg-m-page">
       <CartCountSync count={itemCount} />
       <div className="mx-auto grid max-w-[1500px] gap-5 px-4 py-5 lg:grid-cols-[1fr_18.5rem] lg:items-start">
         <section aria-labelledby="cart-heading" className="order-2 bg-white px-5 py-4 lg:order-1">
           <div className="flex items-end justify-between border-b border-zinc-200 pb-1">
-            <h1 id="cart-heading" className="text-[28px] font-normal leading-tight text-[#0f1111]">
+            <h1 id="cart-heading" className="text-[28px] font-normal leading-tight text-m-ink">
               Shopping Cart
             </h1>
             <span className="hidden text-sm text-zinc-600 sm:block">Price</span>
@@ -96,7 +96,7 @@ export default async function CartPage() {
                 <li key={item.id} className="flex gap-4 py-4">
                   <Link
                     href={`/product/${item.product.slug}`}
-                    className="relative size-28 shrink-0 bg-[#f7f7f7] sm:size-44"
+                    className="relative size-28 shrink-0 bg-m-muted sm:size-44"
                     tabIndex={-1}
                     aria-hidden
                   >
@@ -106,11 +106,11 @@ export default async function CartPage() {
                     <div className="min-w-0">
                       <Link
                         href={`/product/${item.product.slug}`}
-                        className="line-clamp-2 text-base leading-snug text-[#0f1111] hover:text-amz-link-hover hover:underline sm:text-lg"
+                        className="line-clamp-2 text-base leading-snug text-m-ink hover:text-m-accent-hover hover:underline sm:text-lg"
                       >
                         {item.product.title}
                       </Link>
-                      <p className={`mt-0.5 text-xs ${inStock ? "text-[#007600]" : "text-amz-deal"}`}>
+                      <p className={`mt-0.5 text-xs ${inStock ? "text-m-success" : "text-m-deal"}`}>
                         {inStock ? "In Stock" : `Only ${item.product.stock} left in stock - order soon.`}
                       </p>
                       <p className="text-xs text-zinc-600">Eligible for FREE Shipping on orders over {formatPrice(FREE_SHIPPING_THRESHOLD)}</p>
@@ -130,7 +130,7 @@ export default async function CartPage() {
               );
             })}
           </ul>
-          <Subtotal count={itemCount} amount={subtotal} className="border-t border-zinc-200 pt-2 text-right text-lg text-[#0f1111]" />
+          <Subtotal count={itemCount} amount={subtotal} className="border-t border-zinc-200 pt-2 text-right text-lg text-m-ink" />
         </section>
         {savedSection && <div className="order-3 lg:col-start-1">{savedSection}</div>}
 
@@ -138,13 +138,13 @@ export default async function CartPage() {
           {toFree > 0 ? (
             <div className="mb-3 text-xs">
               <div className="mb-1.5 h-2 overflow-hidden rounded-full bg-zinc-200" aria-hidden>
-                <div className="h-full rounded-full bg-[#067d62]" style={{ width: `${(subtotal / FREE_SHIPPING_THRESHOLD) * 100}%` }} />
+                <div className="h-full rounded-full bg-m-success" style={{ width: `${(subtotal / FREE_SHIPPING_THRESHOLD) * 100}%` }} />
               </div>
-              Add <span className="font-bold text-amz-deal">{formatPrice(toFree)}</span> of eligible items to your order to qualify
+              Add <span className="font-bold text-m-deal">{formatPrice(toFree)}</span> of eligible items to your order to qualify
               for FREE Shipping.
             </div>
           ) : (
-            <p className="mb-3 flex gap-1.5 text-xs text-[#067d62]">
+            <p className="mb-3 flex gap-1.5 text-xs text-m-success">
               <CheckCircle2 className="size-5 shrink-0" aria-hidden />
               <span>
                 <span className="font-bold">Your order qualifies for FREE Shipping.</span>{" "}
@@ -152,10 +152,10 @@ export default async function CartPage() {
               </span>
             </p>
           )}
-          <Subtotal count={itemCount} amount={subtotal} className="text-lg text-[#0f1111]" />
+          <Subtotal count={itemCount} amount={subtotal} className="text-lg text-m-ink" />
           <Link
             href="/checkout"
-            className="mt-3 flex h-9 items-center justify-center rounded-full bg-amz-yellow text-[13px] text-[#0f1111] shadow-[0_2px_5px_rgba(213,217,217,.5)] hover:bg-amz-yellow-hover focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#007185]"
+            className="mt-3 flex h-9 items-center justify-center rounded-full bg-m-accent text-[13px] text-white shadow-sm hover:bg-m-accent-hover focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-m-accent"
           >
             Proceed to checkout
           </Link>

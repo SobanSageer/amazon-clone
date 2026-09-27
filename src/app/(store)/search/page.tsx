@@ -51,11 +51,11 @@ export default async function SearchPage(props: PageProps<"/search">) {
     <div>
       <div className="border-b border-zinc-200 shadow-[0_2px_4px_-2px_rgba(0,0,0,.12)]">
         <div className="mx-auto flex max-w-[1500px] flex-wrap items-center justify-between gap-2 px-4 py-2.5">
-          <p className="text-sm text-[#0f1111]" aria-live="polite">
+          <p className="text-sm text-m-ink" aria-live="polite">
             {range} {total === 1 ? "result" : "results"}
             {input.q && (
               <>
-                {" "}for <span className="font-bold text-amz-link-hover">“{input.q}”</span>
+                {" "}for <span className="font-bold text-m-accent-hover">“{input.q}”</span>
               </>
             )}
             {categoryName && <> in {categoryName}</>}
@@ -70,14 +70,14 @@ export default async function SearchPage(props: PageProps<"/search">) {
         </aside>
 
         <div className="min-w-0">
-          <h1 className="text-xl font-bold text-[#0f1111]">{input.q || categoryName ? "Results" : "All products"}</h1>
+          <h1 className="text-xl font-bold text-m-ink">{input.q || categoryName ? "Results" : "All products"}</h1>
           <p className="mb-4 text-sm text-zinc-600">Check each product page for other buying options.</p>
           <details className="mb-4 rounded-lg border border-zinc-200 bg-white lg:hidden">
             <summary className="flex cursor-pointer list-none items-center gap-2 px-4 py-3 text-sm font-semibold text-zinc-900 [&::-webkit-details-marker]:hidden">
               <SlidersHorizontal className="size-4" aria-hidden />
               Filters
               {chips.length > 0 && (
-                <span className="rounded-full bg-amz-yellow px-2 py-0.5 text-xs font-bold text-zinc-900">{chips.length}</span>
+                <span className="rounded-full bg-m-accent px-2 py-0.5 text-xs font-bold text-white">{chips.length}</span>
               )}
             </summary>
             <div className="border-t border-zinc-200 p-2">
@@ -92,7 +92,7 @@ export default async function SearchPage(props: PageProps<"/search">) {
                   <Link
                     href={c.href}
                     scroll={false}
-                    className="inline-flex items-center gap-1 rounded-full border border-zinc-300 bg-white py-1 pl-3 pr-2 text-sm text-zinc-800 hover:bg-zinc-50 focus-visible:outline-2 focus-visible:outline-amber-500"
+                    className="inline-flex items-center gap-1 rounded-full border border-zinc-300 bg-white py-1 pl-3 pr-2 text-sm text-zinc-800 hover:bg-zinc-50 focus-visible:outline-2 focus-visible:outline-m-accent"
                   >
                     {c.label}
                     <X className="size-3.5" aria-hidden />
@@ -101,7 +101,7 @@ export default async function SearchPage(props: PageProps<"/search">) {
                 </li>
               ))}
               <li>
-                <Link href={clearAll} scroll={false} className="text-sm font-medium text-amz-link hover:underline">
+                <Link href={clearAll} scroll={false} className="text-sm font-medium text-m-accent-text hover:underline">
                   Clear all
                 </Link>
               </li>
@@ -112,9 +112,9 @@ export default async function SearchPage(props: PageProps<"/search">) {
             <div className="rounded-xl border border-dashed border-zinc-300 bg-white px-6 py-12 text-center">
               <p className="text-lg font-semibold text-zinc-900">No products match{input.q ? ` “${input.q}”` : ""}</p>
               {didYouMean && (
-                <p className="mt-2 text-base text-[#0f1111]">
+                <p className="mt-2 text-base text-m-ink">
                   Did you mean{" "}
-                  <Link href={searchHref({ q: didYouMean })} className="font-bold italic text-amz-link hover:text-amz-link-hover hover:underline">
+                  <Link href={searchHref({ q: didYouMean })} className="font-bold italic text-m-accent-text hover:text-m-accent-hover hover:underline">
                     {didYouMean}
                   </Link>
                   ?
@@ -126,7 +126,7 @@ export default async function SearchPage(props: PageProps<"/search">) {
               </p>
               <div className="mt-5 flex flex-wrap justify-center gap-2">
                 {chips.length > 0 && (
-                  <Link href={clearAll} className="rounded-full bg-amz-yellow px-4 py-2 text-sm font-semibold text-zinc-900 hover:bg-amz-yellow-hover">
+                  <Link href={clearAll} className="rounded-full bg-m-accent px-4 py-2 text-sm font-semibold text-white hover:bg-m-accent-hover">
                     Clear filters
                   </Link>
                 )}

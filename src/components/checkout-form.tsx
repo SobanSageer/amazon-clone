@@ -27,7 +27,7 @@ type Line = { id: string; quantity: number; product: { title: string; thumbnail:
 
 const inputCls = (error?: string) =>
   cn(
-    "mt-1 h-11 w-full rounded-md border bg-white px-3 text-base text-zinc-900 focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-amber-500 sm:text-sm",
+    "mt-1 h-11 w-full rounded-md border bg-white px-3 text-base text-zinc-900 focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-m-accent sm:text-sm",
     error ? "border-red-600" : "border-zinc-300",
   );
 
@@ -92,7 +92,7 @@ function PlaceOrderButton({ pending }: { pending: boolean }) {
     <button
       type="submit"
       disabled={pending}
-      className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-amz-yellow text-base font-semibold text-zinc-900 hover:bg-amz-yellow-hover focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-zinc-900 disabled:opacity-60"
+      className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-m-accent text-base font-semibold text-white hover:bg-m-accent-hover focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-m-accent disabled:opacity-60"
     >
       {pending ? <Loader2 className="size-5 animate-spin" aria-hidden /> : <Lock className="size-4" aria-hidden />}
       {pending ? "Placing your order…" : "Place your order"}
@@ -176,8 +176,8 @@ export function CheckoutForm({
                 <label
                   key={a.id}
                   className={cn(
-                    "flex cursor-pointer gap-3 rounded-lg border p-3 text-sm has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-amber-500",
-                    addressId === a.id ? "border-amber-500 bg-amber-50" : "border-zinc-200 hover:border-zinc-300",
+                    "flex cursor-pointer gap-3 rounded-lg border p-3 text-sm has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-m-accent",
+                    addressId === a.id ? "border-m-accent bg-m-accent-subtle" : "border-zinc-200 hover:border-zinc-300",
                   )}
                 >
                   <input
@@ -186,7 +186,7 @@ export function CheckoutForm({
                     value={a.id}
                     checked={addressId === a.id}
                     onChange={() => setAddressId(a.id)}
-                    className="mt-1 accent-amber-600"
+                    className="mt-1 accent-m-accent"
                   />
                   <span>
                     <span className="font-semibold text-zinc-900">{a.fullName}</span>
@@ -201,8 +201,8 @@ export function CheckoutForm({
               {addresses.length > 0 && (
                 <label
                   className={cn(
-                    "flex cursor-pointer items-center gap-3 rounded-lg border p-3 text-sm font-medium has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-amber-500",
-                    addressId === "new" ? "border-amber-500 bg-amber-50" : "border-zinc-200 hover:border-zinc-300",
+                    "flex cursor-pointer items-center gap-3 rounded-lg border p-3 text-sm font-medium has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-m-accent",
+                    addressId === "new" ? "border-m-accent bg-m-accent-subtle" : "border-zinc-200 hover:border-zinc-300",
                   )}
                 >
                   <input
@@ -211,7 +211,7 @@ export function CheckoutForm({
                     value="new"
                     checked={addressId === "new"}
                     onChange={() => setAddressId("new")}
-                    className="accent-amber-600"
+                    className="accent-m-accent"
                   />
                   Ship to a new address
                 </label>
@@ -268,8 +268,8 @@ export function CheckoutForm({
                   <label
                     key={sp}
                     className={cn(
-                      "flex cursor-pointer items-start gap-3 rounded-lg border p-3 text-sm has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-[#007185]",
-                      speed === sp ? "border-[#007185] bg-[#f0f8fa]" : "border-zinc-200 hover:border-zinc-300",
+                      "flex cursor-pointer items-start gap-3 rounded-lg border p-3 text-sm has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-m-accent",
+                      speed === sp ? "border-m-accent bg-m-accent-subtle" : "border-zinc-200 hover:border-zinc-300",
                     )}
                   >
                     <input
@@ -278,10 +278,10 @@ export function CheckoutForm({
                       value={sp}
                       checked={speed === sp}
                       onChange={() => setSpeed(sp)}
-                      className="mt-1 accent-[#007185]"
+                      className="mt-1 accent-m-accent"
                     />
                     <span className="flex-1">
-                      <span className="block font-bold text-[#067d62]">{arrivalFor(processing, sp).long}</span>
+                      <span className="block font-bold text-m-success">{arrivalFor(processing, sp).long}</span>
                       <span className="block text-zinc-700">
                         {fee === 0 ? "FREE" : formatPrice(fee)} — {SHIPPING_SPEEDS[sp].label}
                       </span>
@@ -303,7 +303,7 @@ export function CheckoutForm({
             <button
               type="button"
               onClick={() => setCard(TEST_CARD)}
-              className="rounded-full border border-zinc-300 px-3 py-1.5 text-xs font-semibold text-zinc-800 hover:bg-zinc-50 focus-visible:outline-2 focus-visible:outline-amber-500"
+              className="rounded-full border border-zinc-300 px-3 py-1.5 text-xs font-semibold text-zinc-800 hover:bg-zinc-50 focus-visible:outline-2 focus-visible:outline-m-accent"
             >
               Use test card
             </button>
@@ -393,7 +393,7 @@ export function CheckoutForm({
           step={4}
           title={`Review items (${itemCount})`}
           action={
-            <Link href="/cart" className="text-sm font-medium text-amz-link hover:underline">
+            <Link href="/cart" className="text-sm font-medium text-m-accent-text hover:underline">
               Edit cart
             </Link>
           }
@@ -421,23 +421,23 @@ export function CheckoutForm({
           <PlaceOrderButton pending={pending} />
           <p className="mt-2 text-center text-xs text-zinc-600">Simulated payment — you won’t be charged.</p>
         </OrderSummary>
-        <div className="mt-3 rounded-lg border border-[#d5d9d9] bg-white p-4">
+        <div className="mt-3 rounded-lg border border-m-border bg-white p-4">
           {promo ? (
             <p className="flex items-center justify-between gap-2 text-sm">
               <span>
-                <span className="font-bold text-[#067d62]">{promo}</span> applied — {findPromo(promo)?.description}
+                <span className="font-bold text-m-success">{promo}</span> applied — {findPromo(promo)?.description}
               </span>
               <button
                 type="button"
                 onClick={() => setPromo("")}
-                className="text-[13px] text-amz-link hover:text-amz-link-hover hover:underline"
+                className="text-[13px] text-m-accent-text hover:text-m-accent-text-hover hover:underline"
               >
                 Remove
               </button>
             </p>
           ) : (
             <>
-              <label htmlFor="promo-input" className="block text-sm font-bold text-[#0f1111]">
+              <label htmlFor="promo-input" className="block text-sm font-bold text-m-ink">
                 Gift card or promo code
               </label>
               <div className="mt-1 flex gap-2">
@@ -453,17 +453,17 @@ export function CheckoutForm({
                   }}
                   aria-invalid={promoMsg || state.promoError ? true : undefined}
                   aria-describedby="promo-help"
-                  className="h-8 min-w-0 flex-1 rounded-[3px] border border-[#a6a6a6] px-2 text-base uppercase focus:border-[#e77600] focus:shadow-[0_0_3px_2px_rgba(228,121,17,.5)] focus:outline-none sm:text-sm"
+                  className="h-8 min-w-0 flex-1 rounded-[3px] border border-m-border-strong px-2 text-base uppercase focus:border-m-accent focus:ring-2 focus:ring-m-accent/30 focus:outline-none sm:text-sm"
                 />
                 <button
                   type="button"
                   onClick={applyPromo}
-                  className="h-8 rounded-lg border border-[#d5d9d9] bg-white px-3 text-[13px] shadow-[0_2px_5px_rgba(213,217,217,.5)] hover:bg-[#f7fafa]"
+                  className="h-8 rounded-lg border border-m-border bg-white px-3 text-[13px] shadow-sm hover:bg-m-muted"
                 >
                   Apply
                 </button>
               </div>
-              <p id="promo-help" className={cn("mt-1 text-xs", promoMsg || state.promoError ? "text-[#c40000]" : "text-zinc-600")} aria-live="polite">
+              <p id="promo-help" className={cn("mt-1 text-xs", promoMsg || state.promoError ? "text-m-deal" : "text-zinc-600")} aria-live="polite">
                 {promoMsg ?? state.promoError ?? `Demo codes: ${PROMOS.map((p) => p.code).join(", ")}`}
               </p>
             </>

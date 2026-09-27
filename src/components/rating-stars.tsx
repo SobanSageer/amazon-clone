@@ -20,7 +20,7 @@ function Stars({ rating, size }: { rating: number; size: "sm" | "md" }) {
       <span className="text-[#dcdcdc]">
         <StarRow className={starCls} />
       </span>
-      <span className="absolute inset-y-0 left-0 overflow-hidden text-amz-star" style={{ width: `${pct}%` }}>
+      <span className="absolute inset-y-0 left-0 overflow-hidden text-m-star" style={{ width: `${pct}%` }}>
         <StarRow className={starCls} />
       </span>
     </span>
@@ -38,13 +38,13 @@ export function RatingStars({ rating, count, size = "sm", showValue = true }: {
   return (
     <span className={cn("inline-flex items-center gap-1", size === "md" ? "text-sm" : "text-[13px]")} role="img" aria-label={label}>
       {showValue && (
-        <span aria-hidden className="text-[#0f1111]">
+        <span aria-hidden className="text-m-ink">
           {rating.toFixed(1)}
         </span>
       )}
       <Stars rating={rating} size={size} />
       {count !== undefined && (
-        <span aria-hidden className="text-amz-link">
+        <span aria-hidden className="text-m-accent-text">
           ({formatCount(count)})
         </span>
       )}

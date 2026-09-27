@@ -26,7 +26,7 @@ export default async function HomePage() {
   ]);
   const productTotal = categories.reduce((n, c) => n + c.productCount, 0);
   const listFor = (slug: string) => lists[cardCategories.findIndex((c) => c.slug === slug)] ?? [];
-  const fade = "bg-gradient-to-b to-amz-page";
+  const fade = "bg-gradient-to-b to-m-page";
   const slides: HeroSlide[] = [
     {
       eyebrow: `${productTotal} products · ${categories.length} categories`,
@@ -67,8 +67,8 @@ export default async function HomePage() {
   ].filter((s) => s.images.length >= 3);
 
   return (
-    <div className="bg-amz-page">
-      <h1 className="sr-only">Amazon Clone: shop {productTotal} products across {categories.length} categories</h1>
+    <div className="bg-m-page">
+      <h1 className="sr-only">Marlo: shop {productTotal} products across {categories.length} categories</h1>
       <HeroCarousel slides={slides} />
 
       <div className="relative mx-auto flex max-w-7xl flex-col gap-5 px-4 pb-8 lg:-mt-52">
@@ -79,7 +79,7 @@ export default async function HomePage() {
               <ul className="mt-3 grid flex-1 grid-cols-2 gap-3">
                 {lists[idx].slice(0, 4).map((p) => (
                   <li key={p.slug}>
-                    <Link href={`/product/${p.slug}`} className="group block focus-visible:outline-2 focus-visible:outline-amber-500">
+                    <Link href={`/product/${p.slug}`} className="group block focus-visible:outline-2 focus-visible:outline-m-accent">
                       <span className="relative block aspect-square overflow-hidden bg-zinc-50">
                         <Image
                           src={p.thumbnail}
@@ -95,7 +95,7 @@ export default async function HomePage() {
                   </li>
                 ))}
               </ul>
-              <Link href={`/search?category=${c.slug}`} className="mt-3 text-sm font-medium text-amz-link hover:text-amz-link-hover hover:underline">
+              <Link href={`/search?category=${c.slug}`} className="mt-3 text-sm font-medium text-m-accent-text hover:text-m-accent-hover hover:underline">
                 See all {c.productCount} in {c.name}
               </Link>
             </li>

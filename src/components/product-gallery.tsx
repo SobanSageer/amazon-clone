@@ -26,9 +26,9 @@ function ShareButton({ title }: { title: string }) {
       type="button"
       onClick={share}
       aria-label={copied ? "Link copied" : "Share this product"}
-      className="absolute right-2 top-2 z-10 flex size-9 items-center justify-center rounded-full bg-white/90 text-zinc-700 shadow-sm hover:bg-white focus-visible:outline-2 focus-visible:outline-[#007185]"
+      className="absolute right-2 top-2 z-10 flex size-9 items-center justify-center rounded-full bg-white/90 text-zinc-700 shadow-sm hover:bg-white focus-visible:outline-2 focus-visible:outline-m-accent"
     >
-      {copied ? <Check className="size-4 text-[#067d62]" aria-hidden /> : <Share className="size-4" aria-hidden />}
+      {copied ? <Check className="size-4 text-m-success" aria-hidden /> : <Share className="size-4" aria-hidden />}
       <span aria-live="polite" className="sr-only">
         {copied ? "Link copied" : ""}
       </span>
@@ -60,8 +60,8 @@ function Thumbs({
             aria-label={`Show image ${i + 1} of ${images.length}`}
             aria-pressed={i === index}
             className={cn(
-              "relative block size-12 overflow-hidden rounded-lg border bg-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#007185]",
-              i === index ? "border-[#007185] shadow-[0_0_3px_2px_rgba(0,113,133,.5)]" : "border-zinc-300 hover:border-[#007185]",
+              "relative block size-12 overflow-hidden rounded-lg border bg-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-m-accent",
+              i === index ? "border-m-accent ring-2 ring-m-accent/50" : "border-zinc-300 hover:border-m-accent",
             )}
           >
             <Image src={src} alt="" fill sizes="64px" className="object-contain p-1" />
@@ -89,7 +89,7 @@ export function ProductGallery({ images, title }: { images: string[]; title: str
             type="button"
             onClick={() => dialogRef.current?.showModal()}
             aria-label={`Open full view of ${title}`}
-            className="relative block size-full cursor-zoom-in focus-visible:outline-2 focus-visible:outline-[#007185]"
+            className="relative block size-full cursor-zoom-in focus-visible:outline-2 focus-visible:outline-m-accent"
           >
             <Image src={current} alt={alt} fill sizes="(min-width: 1024px) 40vw, 100vw" className="object-contain p-4" priority />
           </button>
@@ -97,7 +97,7 @@ export function ProductGallery({ images, title }: { images: string[]; title: str
         <button
           type="button"
           onClick={() => dialogRef.current?.showModal()}
-          className="mx-auto mt-1 hidden text-sm text-amz-link hover:text-amz-link-hover hover:underline md:block"
+          className="mx-auto mt-1 hidden text-sm text-m-accent-text hover:text-m-accent-hover hover:underline md:block"
         >
           Click to see full view
         </button>
@@ -116,12 +116,12 @@ export function ProductGallery({ images, title }: { images: string[]; title: str
       >
         <div className="flex h-full flex-col">
           <div className="flex items-center justify-between border-b border-zinc-200 px-4 py-3">
-            <p className="truncate pr-4 text-sm font-bold text-[#0f1111]">{title}</p>
+            <p className="truncate pr-4 text-sm font-bold text-m-ink">{title}</p>
             <button
               type="button"
               onClick={() => dialogRef.current?.close()}
               aria-label="Close full view"
-              className="rounded-sm p-1 hover:bg-zinc-100 focus-visible:outline-2 focus-visible:outline-[#007185]"
+              className="rounded-sm p-1 hover:bg-zinc-100 focus-visible:outline-2 focus-visible:outline-m-accent"
             >
               <X className="size-5" aria-hidden />
             </button>
@@ -134,7 +134,7 @@ export function ProductGallery({ images, title }: { images: string[]; title: str
                   type="button"
                   onClick={() => step(-1)}
                   aria-label="Previous image"
-                  className="absolute left-2 top-1/2 -translate-y-1/2 rounded-full bg-white p-2 shadow-md hover:bg-zinc-50 focus-visible:outline-2 focus-visible:outline-[#007185]"
+                  className="absolute left-2 top-1/2 -translate-y-1/2 rounded-full bg-white p-2 shadow-md hover:bg-zinc-50 focus-visible:outline-2 focus-visible:outline-m-accent"
                 >
                   <ChevronLeft className="size-5" aria-hidden />
                 </button>
@@ -142,7 +142,7 @@ export function ProductGallery({ images, title }: { images: string[]; title: str
                   type="button"
                   onClick={() => step(1)}
                   aria-label="Next image"
-                  className="absolute right-2 top-1/2 -translate-y-1/2 rounded-full bg-white p-2 shadow-md hover:bg-zinc-50 focus-visible:outline-2 focus-visible:outline-[#007185]"
+                  className="absolute right-2 top-1/2 -translate-y-1/2 rounded-full bg-white p-2 shadow-md hover:bg-zinc-50 focus-visible:outline-2 focus-visible:outline-m-accent"
                 >
                   <ChevronRight className="size-5" aria-hidden />
                 </button>

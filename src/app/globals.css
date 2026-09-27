@@ -4,29 +4,56 @@
 
 @custom-variant dark (&:is(.dark *));
 
-/* Amazon's storefront palette. */
+/* Marlo palette — mapped from Figma variables. */
 @theme {
-  --color-amz-header: #131921;
-  --color-amz-nav: #232f3e;
-  --color-amz-search: #febd69;
-  --color-amz-search-hover: #f3a847;
-  --color-amz-yellow: #ffd814;
-  --color-amz-yellow-hover: #f7ca00;
-  --color-amz-orange: #ffa41c;
-  --color-amz-orange-hover: #fa8900;
-  --color-amz-link: #007185;
-  --color-amz-link-hover: #c7511f;
-  --color-amz-star: #de7921;
-  --color-amz-page: #eaeded;
-  --color-amz-deal: #cc0c39;
+  /* Backgrounds */
+  --color-m-page: #FBFAF8;
+  --color-m-surface: #FFFFFF;
+  --color-m-muted: #F5F5F5;
+  --color-m-hover: #E5E5E5;
+
+  /* Text */
+  --color-m-ink: #1A1A1A;
+  --color-m-secondary: #6B6B6B;
+  --color-m-dim: #A3A3A3;
+
+  /* Accent — deep teal */
+  --color-m-accent: #0F5F57;
+  --color-m-accent-hover: #0A4A43;
+  --color-m-accent-subtle: #EDF8F6;
+  --color-m-accent-text: #0F5F57;
+
+  /* Borders */
+  --color-m-border: #E5E5E5;
+  --color-m-border-subtle: #F5F5F5;
+  --color-m-border-strong: #D4D4D4;
+
+  /* Feedback */
+  --color-m-star: #D97706;
+  --color-m-deal: #DC2626;
+  --color-m-success: #16A34A;
+  --color-m-success-bg: #DCFCE7;
+  --color-m-warning: #D97706;
+  --color-m-warning-bg: #FEF3C7;
+  --color-m-error-bg: #FEE2E2;
+
+  /* Spacing scale (Figma) */
+  --spacing-2xs: 4px;
+  --spacing-xs: 8px;
+  --spacing-sm: 12px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 32px;
+  --spacing-2xl: 48px;
+  --spacing-3xl: 64px;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: Arial, "Helvetica Neue", Helvetica, sans-serif;
+  --font-sans: "Inter", system-ui, sans-serif;
   --font-mono: ui-monospace, SFMono-Regular, Menlo, monospace;
-  --font-heading: Arial, "Helvetica Neue", Helvetica, sans-serif;
+  --font-heading: "Inter", system-ui, sans-serif;
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);

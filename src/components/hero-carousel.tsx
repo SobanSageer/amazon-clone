@@ -66,7 +66,7 @@ export function HeroCarousel({ slides }: { slides: HeroSlide[] }) {
           <p className="mt-3 max-w-lg text-base text-zinc-800 sm:text-lg">{slide.body}</p>
           <Link
             href={slide.href}
-            className="mt-5 inline-block rounded-full bg-amz-yellow px-5 py-2.5 text-sm font-bold text-zinc-900 shadow-sm hover:bg-amz-yellow-hover focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-zinc-900"
+            className="mt-5 inline-block rounded-full bg-m-accent px-5 py-2.5 text-sm font-bold text-white shadow-sm hover:bg-m-accent-hover focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-m-accent"
           >
             {slide.cta}
           </Link>
@@ -87,7 +87,7 @@ export function HeroCarousel({ slides }: { slides: HeroSlide[] }) {
         type="button"
         onClick={() => go(-1)}
         aria-label="Previous slide"
-        className="absolute left-0 top-0 flex h-full max-h-[70%] w-10 items-center justify-center text-zinc-800 hover:bg-black/5 focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-[#007185] sm:w-14"
+        className="absolute left-0 top-0 flex h-full max-h-[70%] w-10 items-center justify-center text-zinc-800 hover:bg-black/5 focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-m-accent sm:w-14"
       >
         <ChevronLeft className="size-9" strokeWidth={1.5} aria-hidden />
       </button>
@@ -95,7 +95,7 @@ export function HeroCarousel({ slides }: { slides: HeroSlide[] }) {
         type="button"
         onClick={() => go(1)}
         aria-label="Next slide"
-        className="absolute right-0 top-0 flex h-full max-h-[70%] w-10 items-center justify-center text-zinc-800 hover:bg-black/5 focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-[#007185] sm:w-14"
+        className="absolute right-0 top-0 flex h-full max-h-[70%] w-10 items-center justify-center text-zinc-800 hover:bg-black/5 focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-m-accent sm:w-14"
       >
         <ChevronRight className="size-9" strokeWidth={1.5} aria-hidden />
       </button>
@@ -116,7 +116,7 @@ export function HeroCarousel({ slides }: { slides: HeroSlide[] }) {
             type="button"
             onClick={() => setPaused((p) => !p)}
             aria-label={paused ? "Play carousel" : "Pause carousel"}
-            className="ml-1 rounded-full bg-white/80 p-1 text-zinc-900 hover:bg-white focus-visible:outline-2 focus-visible:outline-[#007185]"
+            className="ml-1 rounded-full bg-white/80 p-1 text-zinc-900 hover:bg-white focus-visible:outline-2 focus-visible:outline-m-accent"
           >
             {paused ? <Play className="size-3" aria-hidden /> : <Pause className="size-3" aria-hidden />}
           </button>

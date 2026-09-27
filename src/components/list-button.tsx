@@ -8,7 +8,7 @@ import { toggleListAction } from "@/app/actions/list";
 import { useMe } from "@/components/header-actions";
 
 const cls =
-  "flex h-8 w-full items-center justify-center gap-1.5 rounded-lg border border-[#d5d9d9] bg-white text-[13px] text-[#0f1111] shadow-[0_2px_5px_rgba(213,217,217,.5)] hover:bg-[#f7fafa] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#007185] disabled:opacity-60";
+  "flex h-8 w-full items-center justify-center gap-1.5 rounded-lg border border-m-border bg-white text-[13px] text-m-ink shadow-sm hover:bg-m-muted focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-m-accent disabled:opacity-60";
 
 export function ListButton({ productId }: { productId: string }) {
   const { me } = useMe();
@@ -49,11 +49,11 @@ export function ListButton({ productId }: { productId: string }) {
         }
         className={cls}
       >
-        {pending ? <Loader2 className="size-3.5 animate-spin" aria-hidden /> : inList ? <Check className="size-3.5 text-[#067d62]" aria-hidden /> : null}
+        {pending ? <Loader2 className="size-3.5 animate-spin" aria-hidden /> : inList ? <Check className="size-3.5 text-m-success" aria-hidden /> : null}
         {inList ? "Added to Your List" : "Add to List"}
       </button>
       {inList && (
-        <Link href="/list" className="mt-1 block text-center text-xs text-amz-link hover:text-amz-link-hover hover:underline">
+        <Link href="/list" className="mt-1 block text-center text-xs text-m-accent-text hover:text-m-accent-hover hover:underline">
           View Your List
         </Link>
       )}

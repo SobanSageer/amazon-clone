@@ -23,7 +23,7 @@ export default async function CheckoutPage() {
   const subtotal = items.reduce((s, i) => s + i.quantity * i.product.price, 0);
 
   return (
-    <div className="bg-amz-page">
+    <div className="bg-m-page">
       <div className="mx-auto max-w-6xl px-4 py-6 sm:py-8">
         <h1 className="mb-5 text-2xl font-bold tracking-tight text-zinc-900">Checkout</h1>
         <CheckoutForm

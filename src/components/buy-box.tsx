@@ -19,7 +19,7 @@ function SubmitButtons({ disabled }: { disabled: boolean }) {
         type="submit"
         onClick={() => setClicked("add")}
         disabled={disabled || pending}
-        className="flex h-9 items-center justify-center gap-2 rounded-full text-[13px] text-[#0f1111] shadow-[0_2px_5px_rgba(213,217,217,.5)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#007185] disabled:cursor-not-allowed disabled:opacity-60 bg-amz-yellow hover:bg-amz-yellow-hover"
+        className="flex h-9 items-center justify-center gap-2 rounded-full border border-m-accent bg-m-accent text-[13px] font-medium text-white shadow-sm focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-m-accent disabled:cursor-not-allowed disabled:opacity-60 hover:bg-m-accent-hover"
       >
         {busyAdd && <Loader2 className="size-4 animate-spin" aria-hidden />}
         Add to Cart
@@ -29,7 +29,7 @@ function SubmitButtons({ disabled }: { disabled: boolean }) {
         formAction={buyNowAction}
         onClick={() => setClicked("buy")}
         disabled={disabled || pending}
-        className="flex h-9 items-center justify-center gap-2 rounded-full text-[13px] text-[#0f1111] shadow-[0_2px_5px_rgba(213,217,217,.5)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#007185] disabled:cursor-not-allowed disabled:opacity-60 bg-amz-orange hover:bg-amz-orange-hover"
+        className="flex h-9 items-center justify-center gap-2 rounded-full border border-m-border bg-m-surface text-[13px] font-medium text-m-ink shadow-sm focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-m-accent disabled:cursor-not-allowed disabled:opacity-60 hover:bg-m-muted"
       >
         {busyBuy && <Loader2 className="size-4 animate-spin" aria-hidden />}
         Buy Now
@@ -53,12 +53,10 @@ export function BuyBoxForm({ productId, stock }: { productId: string; stock: num
   return (
     <form action={formAction} className="flex flex-col gap-3">
       <input type="hidden" name="productId" value={productId} />
-      {/* Sent via a hidden input, not the select: React resets forms after an action and a
-          reset select would silently fall back to 1 while the pill still shows the choice. */}
       <input type="hidden" name="quantity" value={qty} />
       {available && (
-        <div className="relative w-fit rounded-lg border border-[#d5d9d9] bg-[#f0f2f2] shadow-[0_2px_5px_rgba(15,17,17,.15)] focus-within:outline-2 focus-within:outline-[#007185] hover:bg-[#e3e6e6]">
-          <span aria-hidden className="flex h-8 items-center gap-1 px-2.5 text-[13px] text-[#0f1111]">
+        <div className="relative w-fit rounded-lg border border-m-border bg-m-muted shadow-sm focus-within:outline-2 focus-within:outline-m-accent hover:bg-m-hover">
+          <span aria-hidden className="flex h-8 items-center gap-1 px-2.5 text-[13px] text-m-ink">
             Quantity: {qty}
             <ChevronDown className="size-3.5" />
           </span>
@@ -79,17 +77,17 @@ export function BuyBoxForm({ productId, stock }: { productId: string; stock: num
       <SubmitButtons disabled={!available} />
       <div aria-live="polite" className="text-sm">
         {state.status === "added" && (
-          <div className="flex flex-col gap-1 rounded-lg bg-emerald-50 p-3 text-emerald-900">
+          <div className="flex flex-col gap-1 rounded-lg bg-m-success-bg p-3 text-emerald-900">
             <p className="flex items-center gap-1.5 font-semibold">
               <CheckCircle2 className="size-4" aria-hidden /> Added to cart
             </p>
             {state.note && <p>{state.note}</p>}
-            <Link href="/cart" className="font-medium text-amz-link underline">
+            <Link href="/cart" className="font-medium text-m-accent-text underline">
               Go to cart ({state.count} {state.count === 1 ? "item" : "items"})
             </Link>
           </div>
         )}
-        {state.status === "error" && <p className="rounded-lg bg-red-50 p-3 text-red-800">{state.message}</p>}
+        {state.status === "error" && <p className="rounded-lg bg-m-error-bg p-3 text-red-800">{state.message}</p>}
       </div>
     </form>
   );

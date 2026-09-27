@@ -9,11 +9,11 @@ export function ProductRail({ title, href, products }: {
 }) {
   const headingId = `rail-${title.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`;
   return (
-    <section aria-labelledby={headingId} className="bg-white p-4 sm:p-5">
+    <section aria-labelledby={headingId} className="bg-m-surface p-4 sm:p-5">
       <div className="mb-3 flex items-baseline justify-between gap-4">
-        <h2 id={headingId} className="text-xl font-bold leading-tight text-[#0f1111]">{title}</h2>
+        <h2 id={headingId} className="text-xl font-bold leading-tight text-m-ink">{title}</h2>
         {href && (
-          <Link href={href} className="inline-flex shrink-0 items-center gap-0.5 rounded-sm text-sm font-medium text-amz-link hover:text-amz-link-hover hover:underline">
+          <Link href={href} className="inline-flex shrink-0 items-center gap-0.5 rounded-sm text-sm font-medium text-m-accent-text hover:text-m-accent-hover hover:underline">
             See more<span className="sr-only"> {title}</span>
             <ChevronRight className="size-4" aria-hidden />
           </Link>

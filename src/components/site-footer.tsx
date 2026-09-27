@@ -5,10 +5,10 @@ import { site } from "@/lib/site";
 export function SiteFooter() {
   return (
     <footer className="mt-auto text-sm">
-      <a href="#main" className="block bg-[#37475a] py-3.5 text-center font-medium text-white hover:bg-[#485769]">
+      <a href="#main" className="block bg-m-muted py-3.5 text-center font-medium text-m-ink hover:bg-m-hover">
         Back to top
       </a>
-      <div className="bg-amz-nav text-zinc-300">
+      <div className="border-t border-m-border bg-m-surface text-m-secondary">
         <div className="mx-auto flex max-w-7xl flex-col gap-6 px-4 py-8 sm:flex-row sm:items-start sm:justify-between">
           <div className="max-w-xl">
             <Wordmark />
@@ -17,17 +17,17 @@ export function SiteFooter() {
           <nav aria-label="Footer" className="flex gap-8">
             <ul className="space-y-2">
               <li>
-                <Link href="/search" className="hover:underline">
+                <Link href="/search" className="text-m-ink hover:text-m-accent hover:underline">
                   All products
                 </Link>
               </li>
               <li>
-                <Link href="/cart" className="hover:underline">
+                <Link href="/cart" className="text-m-ink hover:text-m-accent hover:underline">
                   Your cart
                 </Link>
               </li>
               <li>
-                <Link href="/orders" className="hover:underline">
+                <Link href="/orders" className="text-m-ink hover:text-m-accent hover:underline">
                   Your orders
                 </Link>
               </li>

@@ -42,4 +42,4 @@ export const orderDate = (d: Date) =>
   d.toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric", timeZone: "UTC" });
 
 export const STATUS_LABEL: Record<string, string> = { placed: "Order placed", cancelled: "Cancelled" };
-export const STATUS_CLASS: Record<string, string> = { placed: "text-[#067d62]", cancelled: "text-[#c40000]" };
+export const STATUS_CLASS: Record<string, string> = { placed: "text-m-success", cancelled: "text-m-deal" };

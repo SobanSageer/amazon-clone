@@ -18,16 +18,16 @@ export function OrderSummary({
 }) {
   const t = totals;
   return (
-    <div className="rounded-lg border border-[#d5d9d9] bg-white p-4 sm:p-5">
+    <div className="rounded-lg border border-m-border bg-white p-4 sm:p-5">
       {children && <div className="mb-4 border-b border-zinc-200 pb-4">{children}</div>}
-      <h2 className="text-lg font-bold text-[#0f1111]">Order Summary</h2>
+      <h2 className="text-lg font-bold text-m-ink">Order Summary</h2>
       <dl className="mt-3 space-y-1.5 text-sm" aria-live="polite">
         <div className="flex justify-between">
           <dt>Items ({itemCount}):</dt>
           <dd className="tabular-nums">{formatPrice(t.subtotal)}</dd>
         </div>
         {t.discount > 0 && (
-          <div className="flex justify-between text-[#067d62]">
+          <div className="flex justify-between text-m-success">
             <dt>Promotion ({t.promoCode}):</dt>
             <dd className="tabular-nums">−{formatPrice(t.discount)}</dd>
           </div>

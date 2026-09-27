@@ -8,7 +8,7 @@ import { deleteReviewAction, submitReviewAction, type ReviewFormState } from "@/
 import { useMe } from "@/components/header-actions";
 import { cn } from "@/lib/utils";
 
-const LABELS = ["", "I hate it", "I don’t like it", "It’s okay", "I like it", "I love it"];
+const LABELS = ["", "I hate it", "I don't like it", "It's okay", "I like it", "I love it"];
 
 export function ReviewForm({ productId }: { productId: string }) {
   const { me } = useMe();
@@ -17,7 +17,6 @@ export function ReviewForm({ productId }: { productId: string }) {
   const [open, setOpen] = useState(false);
   const [rating, setRating] = useState(0);
   const [state, action, pending] = useActionState<ReviewFormState, FormData>(submitReviewAction, { status: "idle" });
-  // undefined = not checked yet, null = no review of mine on this product.
   const [mine, setMine] = useState<{ rating: number } | null | undefined>(undefined);
   const [deleting, setDeleting] = useState(false);
   const signedIn = Boolean(me?.user);
@@ -37,12 +36,12 @@ export function ReviewForm({ productId }: { productId: string }) {
   }, [state, router]);
 
   const pillBtn =
-    "flex h-8 w-full items-center justify-center rounded-full border border-[#d5d9d9] bg-white text-[13px] text-[#0f1111] shadow-[0_2px_5px_rgba(213,217,217,.5)] hover:bg-[#f7fafa] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#007185]";
+    "flex h-8 w-full items-center justify-center rounded-full border border-m-border bg-m-surface text-[13px] text-m-ink shadow-sm hover:bg-m-muted focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-m-accent";
 
   if (signedIn && mine) {
     return (
       <div className="flex flex-col gap-2">
-        <p className="rounded-lg bg-[#f0f8f6] p-3 text-sm text-[#067d62]">
+        <p className="rounded-lg bg-m-accent-subtle p-3 text-sm text-m-accent">
           {state.status === "done" ? "Thanks! Your review is live." : `You rated this product ${mine.rating} out of 5.`}
         </p>
         <form
@@ -57,8 +56,8 @@ export function ReviewForm({ productId }: { productId: string }) {
           }}
         >
           <input type="hidden" name="productId" value={productId} />
-          <button type="submit" disabled={deleting} className="text-[13px] text-amz-link hover:text-amz-link-hover hover:underline disabled:opacity-50">
-            {deleting ? "Deleting…" : "Delete your review"}
+          <button type="submit" disabled={deleting} className="text-[13px] text-m-accent-text hover:text-m-accent-hover hover:underline disabled:opacity-50">
+            {deleting ? "Deleting\u2026" : "Delete your review"}
           </button>
         </form>
       </div>
@@ -88,21 +87,21 @@ export function ReviewForm({ productId }: { productId: string }) {
         startTransition(() => action(data));
       }}
       noValidate
-      className="flex flex-col gap-3 rounded-lg border border-[#d5d9d9] p-4"
+      className="flex flex-col gap-3 rounded-lg border border-m-border p-4"
     >
       <input type="hidden" name="productId" value={productId} />
       {state.message && (
-        <p role="alert" className="text-sm text-[#c40000]">
+        <p role="alert" className="text-sm text-m-deal">
           {state.message}
         </p>
       )}
       <fieldset>
-        <legend className="text-sm font-bold text-[#0f1111]">Overall rating</legend>
+        <legend className="text-sm font-bold text-m-ink">Overall rating</legend>
         <div className="mt-1 flex items-center gap-1">
           {[1, 2, 3, 4, 5].map((n) => (
             <label
               key={n}
-              className="cursor-pointer rounded-sm has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-[#007185]"
+              className="cursor-pointer rounded-sm has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-m-accent"
             >
               <input
                 type="radio"
@@ -115,34 +114,34 @@ export function ReviewForm({ productId }: { productId: string }) {
               />
               <span className="sr-only">{`${n} star${n > 1 ? "s" : ""}: ${LABELS[n]}`}</span>
               <Star
-                className={cn("size-7", n <= rating ? "fill-amz-star text-amz-star" : "fill-none text-zinc-400")}
+                className={cn("size-7", n <= rating ? "fill-m-star text-m-star" : "fill-none text-m-dim")}
                 strokeWidth={1.5}
                 aria-hidden
               />
             </label>
           ))}
-          <span className="ml-2 text-sm text-zinc-600" aria-hidden>
+          <span className="ml-2 text-sm text-m-secondary" aria-hidden>
             {LABELS[rating]}
           </span>
         </div>
         {fe.rating && (
-          <p id="rating-error" className="mt-1 text-xs text-[#c40000]">
+          <p id="rating-error" className="mt-1 text-xs text-m-deal">
             {fe.rating}
           </p>
         )}
       </fieldset>
-      <label className="text-sm font-bold text-[#0f1111]">
-        Add a headline <span className="font-normal text-zinc-500">(optional)</span>
+      <label className="text-sm font-bold text-m-ink">
+        Add a headline <span className="font-normal text-m-dim">(optional)</span>
         <input
           name="title"
           maxLength={100}
-          placeholder="What’s most important to know?"
+          placeholder="What's most important to know?"
           aria-invalid={fe.title ? true : undefined}
-          className="mt-1 h-9 w-full rounded-[3px] border border-[#a6a6a6] px-2 text-base font-normal focus:border-[#e77600] focus:shadow-[0_0_3px_2px_rgba(228,121,17,.5)] focus:outline-none sm:text-sm"
+          className="mt-1 h-9 w-full rounded-md border border-m-border-strong px-2 text-base font-normal focus:border-m-accent focus:ring-2 focus:ring-m-accent/30 focus:outline-none sm:text-sm"
         />
-        {fe.title && <span className="mt-1 block text-xs font-normal text-[#c40000]">{fe.title}</span>}
+        {fe.title && <span className="mt-1 block text-xs font-normal text-m-deal">{fe.title}</span>}
       </label>
-      <label className="text-sm font-bold text-[#0f1111]">
+      <label className="text-sm font-bold text-m-ink">
         Add a written review
         <textarea
           name="body"
@@ -150,20 +149,20 @@ export function ReviewForm({ productId }: { productId: string }) {
           maxLength={2000}
           placeholder="What did you like or dislike? What did you use this product for?"
           aria-invalid={fe.body ? true : undefined}
-          className="mt-1 w-full rounded-[3px] border border-[#a6a6a6] p-2 text-base font-normal focus:border-[#e77600] focus:shadow-[0_0_3px_2px_rgba(228,121,17,.5)] focus:outline-none sm:text-sm"
+          className="mt-1 w-full rounded-md border border-m-border-strong p-2 text-base font-normal focus:border-m-accent focus:ring-2 focus:ring-m-accent/30 focus:outline-none sm:text-sm"
         />
-        {fe.body && <span className="mt-1 block text-xs font-normal text-[#c40000]">{fe.body}</span>}
+        {fe.body && <span className="mt-1 block text-xs font-normal text-m-deal">{fe.body}</span>}
       </label>
       <div className="flex gap-2">
         <button
           type="submit"
           disabled={pending}
-          className="flex h-8 items-center gap-2 rounded-full bg-amz-yellow px-5 text-[13px] text-[#0f1111] shadow-[0_2px_5px_rgba(213,217,217,.5)] hover:bg-amz-yellow-hover disabled:opacity-60"
+          className="flex h-8 items-center gap-2 rounded-full bg-m-accent px-5 text-[13px] font-medium text-white shadow-sm hover:bg-m-accent-hover disabled:opacity-60"
         >
           {pending && <Loader2 className="size-3.5 animate-spin" aria-hidden />}
           Submit
         </button>
-        <button type="button" onClick={() => setOpen(false)} className="px-3 text-[13px] text-amz-link hover:underline">
+        <button type="button" onClick={() => setOpen(false)} className="px-3 text-[13px] text-m-accent-text hover:underline">
           Cancel
         </button>
       </div>

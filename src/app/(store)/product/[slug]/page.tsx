@@ -28,9 +28,9 @@ export async function generateMetadata(props: PageProps<"/product/[slug]">): Pro
 }
 
 function stockLine(stock: number) {
-  if (stock <= 0) return { text: "Currently unavailable.", className: "text-amz-deal" };
-  if (stock < 10) return { text: `Only ${stock} left in stock - order soon.`, className: "text-amz-deal" };
-  return { text: "In Stock", className: "text-[#007600]" };
+  if (stock <= 0) return { text: "Currently unavailable.", className: "text-m-deal" };
+  if (stock < 10) return { text: `Only ${stock} left in stock - order soon.`, className: "text-m-deal" };
+  return { text: "In Stock", className: "text-m-success" };
 }
 
 // DummyJSON descriptions are 1–3 sentences; Amazon shows "About this item" as bullets.
@@ -62,7 +62,7 @@ export default async function ProductPage(props: PageProps<"/product/[slug]">) {
       <nav aria-label="Breadcrumb" className="py-3 text-xs text-zinc-600">
         <ol className="flex flex-wrap items-center gap-1">
           <li>
-            <Link href="/" className="hover:text-amz-link-hover hover:underline">
+            <Link href="/" className="hover:text-m-accent-hover hover:underline">
               Home
             </Link>
           </li>
@@ -70,7 +70,7 @@ export default async function ProductPage(props: PageProps<"/product/[slug]">) {
             <ChevronRight className="size-3" />
           </li>
           <li>
-            <Link href={`/search?category=${product.category.slug}`} className="hover:text-amz-link-hover hover:underline">
+            <Link href={`/search?category=${product.category.slug}`} className="hover:text-m-accent-hover hover:underline">
               {product.category.name}
             </Link>
           </li>
@@ -83,18 +83,18 @@ export default async function ProductPage(props: PageProps<"/product/[slug]">) {
         </div>
 
         <div className="[grid-area:head]">
-          <h1 className="text-2xl font-normal leading-8 text-[#0f1111]">{product.title}</h1>
+          <h1 className="text-2xl font-normal leading-8 text-m-ink">{product.title}</h1>
           {product.brand && (
             <Link
               href={`/search?q=${encodeURIComponent(product.brand)}`}
-              className="text-sm text-amz-link hover:text-amz-link-hover hover:underline"
+              className="text-sm text-m-accent-text hover:text-m-accent-hover hover:underline"
             >
               Visit the {product.brand} Store
             </Link>
           )}
           <a href="#reviews" className="mt-1 flex w-fit items-center gap-2 hover:underline">
             <RatingStars rating={product.rating} count={product.ratingCount} size="md" />
-            <span className="text-sm text-amz-link">ratings</span>
+            <span className="text-sm text-m-accent-text">ratings</span>
           </a>
           <hr className="my-3 border-zinc-200" />
           {/* Phones and tablets see the price in the buy box just below; only the 3-column
@@ -104,17 +104,17 @@ export default async function ProductPage(props: PageProps<"/product/[slug]">) {
 
         <aside
           aria-label="Purchase options"
-          className="self-start rounded-lg border border-[#d5d9d9] p-4 text-sm text-[#0f1111] [grid-area:buy] lg:sticky lg:top-4"
+          className="self-start rounded-lg border border-m-border p-4 text-sm text-m-ink [grid-area:buy] lg:sticky lg:top-4"
         >
           <Price value={product.price} size="lg" />
           <p className="mt-3">
             {delivery.free ? (
               <>
-                <span className="text-amz-link">FREE delivery</span> <span className="font-bold">{delivery.long}</span>
+                <span className="text-m-accent-text">FREE delivery</span> <span className="font-bold">{delivery.long}</span>
               </>
             ) : (
               <>
-                <span className="text-amz-link">{formatPrice(SHIPPING_FEE)} delivery</span>{" "}
+                <span className="text-m-accent-text">{formatPrice(SHIPPING_FEE)} delivery</span>{" "}
                 <span className="font-bold">{delivery.long}</span>. Or FREE delivery on orders over{" "}
                 {formatPrice(FREE_SHIPPING_THRESHOLD)}.
               </>
@@ -129,17 +129,17 @@ export default async function ProductPage(props: PageProps<"/product/[slug]">) {
           </div>
           <dl className="mt-4 grid grid-cols-[5.5rem_1fr] gap-x-2 gap-y-1 text-xs">
             <dt className="text-zinc-600">Ships from</dt>
-            <dd>Amazon Clone</dd>
+            <dd>Marlo</dd>
             <dt className="text-zinc-600">Sold by</dt>
-            <dd>Amazon Clone</dd>
+            <dd>Marlo</dd>
             {Returns && (
               <>
                 <dt className="text-zinc-600">Returns</dt>
-                <dd className="text-amz-link">{Returns}</dd>
+                <dd className="text-m-accent-text">{Returns}</dd>
               </>
             )}
             <dt className="text-zinc-600">Payment</dt>
-            <dd className="flex items-center gap-1 text-amz-link">
+            <dd className="flex items-center gap-1 text-m-accent-text">
               <Lock className="size-3" aria-hidden /> Simulated · no charge
             </dd>
           </dl>
@@ -151,10 +151,10 @@ export default async function ProductPage(props: PageProps<"/product/[slug]">) {
               <tbody>
                 {details.map(([k, v]) => (
                   <tr key={k}>
-                    <th scope="row" className="w-36 py-1 pr-4 text-left align-top font-bold text-[#0f1111]">
+                    <th scope="row" className="w-36 py-1 pr-4 text-left align-top font-bold text-m-ink">
                       {k}
                     </th>
-                    <td className="py-1 text-[#0f1111]">{v}</td>
+                    <td className="py-1 text-m-ink">{v}</td>
                   </tr>
                 ))}
               </tbody>
@@ -162,10 +162,10 @@ export default async function ProductPage(props: PageProps<"/product/[slug]">) {
           )}
           <hr className="border-zinc-200" />
           <section aria-labelledby="about-heading">
-            <h2 id="about-heading" className="text-base font-bold text-[#0f1111]">
+            <h2 id="about-heading" className="text-base font-bold text-m-ink">
               About this item
             </h2>
-            <ul className="mt-2 list-disc space-y-1.5 pl-5 text-sm leading-relaxed text-[#0f1111]">
+            <ul className="mt-2 list-disc space-y-1.5 pl-5 text-sm leading-relaxed text-m-ink">
               {toBullets(product.description).map((b) => (
                 <li key={b}>{b}</li>
               ))}

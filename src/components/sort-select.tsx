@@ -8,8 +8,8 @@ import { SORTS, type Sort } from "@/lib/search-sorts";
 export function SortSelect({ value, hrefs }: { value: Sort; hrefs: Record<Sort, string> }) {
   const router = useRouter();
   return (
-    <div className="relative rounded-lg border border-[#d5d9d9] bg-[#f0f2f2] shadow-[0_2px_5px_rgba(15,17,17,.15)] focus-within:outline-2 focus-within:outline-[#007185] hover:bg-[#e3e6e6]">
-      <span aria-hidden className="flex h-8 items-center gap-1 px-2.5 text-[13px] text-[#0f1111]">
+    <div className="relative rounded-lg border border-m-border bg-m-muted shadow-sm focus-within:outline-2 focus-within:outline-m-accent hover:bg-m-hover">
+      <span aria-hidden className="flex h-8 items-center gap-1 px-2.5 text-[13px] text-m-ink">
         Sort by: {SORTS[value]}
         <ChevronDown className="size-3.5" />
       </span>

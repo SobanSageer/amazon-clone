@@ -26,7 +26,7 @@ function Field({
   const describedBy = error ? `${name}-error` : hint ? `${name}-hint` : undefined;
   return (
     <div>
-      <label htmlFor={name} className="block text-[13px] font-bold text-[#0f1111]">
+      <label htmlFor={name} className="block text-[13px] font-bold text-m-ink">
         {label}
       </label>
       <input
@@ -38,16 +38,16 @@ function Field({
         aria-invalid={error ? true : undefined}
         aria-describedby={describedBy}
         className={cn(
-          "mt-1 h-9 w-full rounded-[3px] border bg-white px-2 text-base text-[#0f1111] shadow-[0_1px_0_rgba(255,255,255,.5),0_1px_0_rgba(0,0,0,.07)_inset] focus:border-[#e77600] focus:shadow-[0_0_3px_2px_rgba(228,121,17,.5)] focus:outline-none sm:text-[13px]",
-          error ? "border-[#d00]" : "border-[#a6a6a6] border-t-[#949494]",
+          "mt-1 h-9 w-full rounded-md border bg-m-surface px-2 text-base text-m-ink shadow-sm focus:border-m-accent focus:ring-2 focus:ring-m-accent/30 focus:outline-none sm:text-[13px]",
+          error ? "border-m-deal" : "border-m-border-strong",
         )}
       />
       {error ? (
-        <p id={`${name}-error`} className="mt-1 text-xs text-[#c40000]">
+        <p id={`${name}-error`} className="mt-1 text-xs text-m-deal">
           {error}
         </p>
       ) : hint ? (
-        <p id={`${name}-hint`} className="mt-1 text-xs text-zinc-600">
+        <p id={`${name}-hint`} className="mt-1 text-xs text-m-secondary">
           {hint}
         </p>
       ) : null}
@@ -61,7 +61,7 @@ function Submit({ children }: { children: React.ReactNode }) {
     <button
       type="submit"
       disabled={pending}
-      className="flex h-8 w-full items-center justify-center gap-2 rounded-full bg-amz-yellow text-[13px] text-[#0f1111] shadow-[0_2px_5px_rgba(213,217,217,.5)] hover:bg-amz-yellow-hover focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#007185] disabled:opacity-60"
+      className="flex h-8 w-full items-center justify-center gap-2 rounded-full bg-m-accent text-[13px] font-medium text-white shadow-sm hover:bg-m-accent-hover focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-m-accent disabled:opacity-60"
     >
       {pending && <Loader2 className="size-4 animate-spin" aria-hidden />}
       {children}
@@ -72,8 +72,8 @@ function Submit({ children }: { children: React.ReactNode }) {
 function FormError({ state }: { state: AuthFormState }) {
   if (!state.error) return null;
   return (
-    <p role="alert" className="rounded-lg border border-[#c40000] p-3 text-[13px] text-[#0f1111] shadow-[0_0_0_4px_#fcf4f4_inset]">
-      <span className="block font-bold text-[#c40000]">There was a problem</span>
+    <p role="alert" className="rounded-lg border border-m-deal/30 bg-m-error-bg p-3 text-[13px] text-m-ink">
+      <span className="block font-bold text-m-deal">There was a problem</span>
       {state.error}
     </p>
   );

@@ -18,12 +18,12 @@ function FilterLink({ href, selected, children }: { href: string; selected: bool
       scroll={false}
       aria-current={selected ? "true" : undefined}
       className={cn(
-        "flex items-center justify-between gap-2 rounded-md px-2 py-1.5 text-sm hover:bg-zinc-100 focus-visible:outline-2 focus-visible:outline-amber-500",
+        "flex items-center justify-between gap-2 rounded-md px-2 py-1.5 text-sm hover:bg-zinc-100 focus-visible:outline-2 focus-visible:outline-m-accent",
         selected ? "font-semibold text-zinc-900" : "text-zinc-700",
       )}
     >
       {children}
-      {selected && <Check className="size-4 shrink-0 text-amber-600" aria-hidden />}
+      {selected && <Check className="size-4 shrink-0 text-m-accent" aria-hidden />}
     </Link>
   );
 }
@@ -99,9 +99,9 @@ export function SearchFilters({
                     scroll={false}
                     role="checkbox"
                     aria-checked={selected}
-                    className="flex items-center gap-2 rounded-md px-2 py-1 text-sm text-zinc-800 hover:bg-zinc-100 focus-visible:outline-2 focus-visible:outline-amber-500"
+                    className="flex items-center gap-2 rounded-md px-2 py-1 text-sm text-zinc-800 hover:bg-zinc-100 focus-visible:outline-2 focus-visible:outline-m-accent"
                   >
-                    <Icon className={`size-4 shrink-0 ${selected ? "text-amz-link" : "text-zinc-500"}`} aria-hidden />
+                    <Icon className={`size-4 shrink-0 ${selected ? "text-m-accent-text" : "text-zinc-500"}`} aria-hidden />
                     <span className="truncate">{b.name}</span>
                     <span className="text-xs text-zinc-500">({b.count})</span>
                   </Link>
@@ -186,7 +186,7 @@ export function SearchFilters({
           </label>
           <button
             type="submit"
-            className="h-9 shrink-0 rounded-md border border-zinc-300 bg-white px-3 text-sm font-medium text-zinc-900 hover:bg-zinc-50 focus-visible:outline-2 focus-visible:outline-amber-500"
+            className="h-9 shrink-0 rounded-md border border-zinc-300 bg-white px-3 text-sm font-medium text-zinc-900 hover:bg-zinc-50 focus-visible:outline-2 focus-visible:outline-m-accent"
           >
             Go
           </button>

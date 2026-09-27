@@ -24,8 +24,8 @@ export default async function SignInPage(props: PageProps<"/signin">) {
   return (
     <div className="px-4 pb-10 pt-2">
       <div className="mx-auto w-full max-w-[350px]">
-        <section className="rounded-lg border border-[#ddd] px-6 py-5">
-          <h1 className="text-[28px] font-normal leading-tight text-[#0f1111]">
+        <section className="rounded-lg border border-m-border px-6 py-5">
+          <h1 className="text-[28px] font-normal leading-tight text-m-ink">
             {mode === "signup" ? "Create account" : "Sign in"}
           </h1>
           {fromCheckout && mode === "signin" && (
@@ -34,13 +34,13 @@ export default async function SignInPage(props: PageProps<"/signin">) {
           <div className="mt-4">
             {mode === "signup" ? <SignUpForm callbackUrl={callbackUrl} /> : <SignInForm callbackUrl={callbackUrl} />}
           </div>
-          <p className="mt-4 text-xs leading-relaxed text-[#0f1111]">
+          <p className="mt-4 text-xs leading-relaxed text-m-ink">
             This is a portfolio clone, not Amazon. Don’t reuse your real Amazon password here.
           </p>
           {mode === "signup" && (
-            <p className="mt-4 border-t border-zinc-200 pt-4 text-[13px] text-[#0f1111]">
+            <p className="mt-4 border-t border-zinc-200 pt-4 text-[13px] text-m-ink">
               Already have an account?{" "}
-              <Link href={href("signin")} className="inline-flex items-center text-amz-link hover:text-amz-link-hover hover:underline">
+              <Link href={href("signin")} className="inline-flex items-center text-m-accent-text hover:text-m-accent-hover hover:underline">
                 Sign in <ChevronRight className="size-3" aria-hidden />
               </Link>
             </p>
@@ -51,14 +51,14 @@ export default async function SignInPage(props: PageProps<"/signin">) {
           <>
             <div className="mt-6 flex items-center gap-2 text-xs text-zinc-600" aria-hidden>
               <span className="h-px flex-1 bg-zinc-200" />
-              New to Amazon Clone?
+              New to Marlo?
               <span className="h-px flex-1 bg-zinc-200" />
             </div>
             <Link
               href={href("signup")}
-              className="mt-3 flex h-8 items-center justify-center rounded-full border border-[#d5d9d9] bg-white text-[13px] text-[#0f1111] shadow-[0_2px_5px_rgba(213,217,217,.5)] hover:bg-[#f7fafa] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#007185]"
+              className="mt-3 flex h-8 items-center justify-center rounded-full border border-m-border bg-white text-[13px] text-m-ink shadow-sm hover:bg-m-muted focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-m-accent"
             >
-              Create your Amazon Clone account
+              Create your Marlo account
             </Link>
           </>
         )}

@@ -26,7 +26,7 @@ export default async function OrderPage(props: PageProps<"/orders/[orderNumber]"
   const itemCount = order.items.reduce((s, i) => s + i.quantity, 0);
 
   return (
-    <div className="bg-amz-page">
+    <div className="bg-m-page">
       {placed && <CartCountSync count={0} />}
       <div className="mx-auto flex max-w-4xl flex-col gap-5 px-4 py-6 sm:py-8">
         {placed ? (
@@ -46,7 +46,7 @@ export default async function OrderPage(props: PageProps<"/orders/[orderNumber]"
           </section>
         ) : (
           <div>
-            <Link href="/orders" className="text-sm font-medium text-amz-link hover:underline">
+            <Link href="/orders" className="text-sm font-medium text-m-accent-text hover:underline">
               ← Your orders
             </Link>
             <h1 className="mt-2 text-2xl font-bold tracking-tight text-zinc-900">Order details</h1>
@@ -150,8 +150,8 @@ export default async function OrderPage(props: PageProps<"/orders/[orderNumber]"
         </div>
 
         {order.status === "cancelled" && order.cancelledAt && (
-          <p className="rounded-lg border border-[#c40000] bg-white p-4 text-sm text-[#0f1111]">
-            <span className="font-bold text-[#c40000]">Cancelled</span> on {orderDate(order.cancelledAt)}. Nothing was charged
+          <p className="rounded-lg border border-m-deal bg-white p-4 text-sm text-m-ink">
+            <span className="font-bold text-m-deal">Cancelled</span> on {orderDate(order.cancelledAt)}. Nothing was charged
             and the items went back into stock.
           </p>
         )}
@@ -161,13 +161,13 @@ export default async function OrderPage(props: PageProps<"/orders/[orderNumber]"
               <input type="hidden" name="orderNumber" value={order.orderNumber} />
               <button
                 type="submit"
-                className="rounded-full border border-[#d5d9d9] bg-white px-5 py-2.5 text-sm text-[#0f1111] shadow-[0_2px_5px_rgba(213,217,217,.5)] hover:bg-[#f7fafa]"
+                className="rounded-full border border-m-border bg-white px-5 py-2.5 text-sm text-m-ink shadow-sm hover:bg-m-muted"
               >
                 Cancel order
               </button>
             </form>
           )}
-          <Link href="/" className="rounded-full bg-amz-yellow px-5 py-2.5 text-sm font-semibold text-zinc-900 hover:bg-amz-yellow-hover">
+          <Link href="/" className="rounded-full bg-m-accent px-5 py-2.5 text-sm font-semibold text-white hover:bg-m-accent-hover">
             Continue shopping
           </Link>
           <Link href="/orders" className="rounded-full border border-zinc-300 bg-white px-5 py-2.5 text-sm font-semibold text-zinc-900 hover:bg-zinc-50">

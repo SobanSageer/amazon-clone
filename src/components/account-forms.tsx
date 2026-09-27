@@ -15,8 +15,8 @@ import { cn } from "@/lib/utils";
 
 const input = (error?: string) =>
   cn(
-    "mt-1 h-9 w-full rounded-[3px] border bg-white px-2 text-base text-[#0f1111] focus:border-[#e77600] focus:shadow-[0_0_3px_2px_rgba(228,121,17,.5)] focus:outline-none sm:text-[13px]",
-    error ? "border-[#d00]" : "border-[#a6a6a6]",
+    "mt-1 h-9 w-full rounded-md border bg-m-surface px-2 text-base text-m-ink focus:border-m-accent focus:ring-2 focus:ring-m-accent/30 focus:outline-none sm:text-[13px]",
+    error ? "border-m-deal" : "border-m-border-strong",
   );
 
 function Field({
@@ -40,9 +40,9 @@ function Field({
 }) {
   return (
     <div className={className}>
-      <label htmlFor={name} className="block text-[13px] font-bold text-[#0f1111]">
+      <label htmlFor={name} className="block text-[13px] font-bold text-m-ink">
         {label}
-        {optional && <span className="font-normal text-zinc-500"> (optional)</span>}
+        {optional && <span className="font-normal text-m-dim"> (optional)</span>}
       </label>
       <input
         id={name}
@@ -55,7 +55,7 @@ function Field({
         className={input(error)}
       />
       {error && (
-        <p id={`${name}-error`} className="mt-1 text-xs text-[#c40000]">
+        <p id={`${name}-error`} className="mt-1 text-xs text-m-deal">
           {error}
         </p>
       )}
@@ -68,7 +68,7 @@ function SubmitButton({ pending, children }: { pending: boolean; children: React
     <button
       type="submit"
       disabled={pending}
-      className="flex h-8 items-center gap-2 rounded-full bg-amz-yellow px-5 text-[13px] text-[#0f1111] shadow-[0_2px_5px_rgba(213,217,217,.5)] hover:bg-amz-yellow-hover focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#007185] disabled:opacity-60"
+      className="flex h-8 items-center gap-2 rounded-full bg-m-accent px-5 text-[13px] font-medium text-white shadow-sm hover:bg-m-accent-hover focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-m-accent disabled:opacity-60"
     >
       {pending && <Loader2 className="size-3.5 animate-spin" aria-hidden />}
       {children}
@@ -76,8 +76,6 @@ function SubmitButton({ pending, children }: { pending: boolean; children: React
   );
 }
 
-// Submitting through a transition (not <form action>) so React doesn't reset fields
-// after a validation error.
 function useSubmit<S>(action: (payload: FormData) => void, state: S) {
   const ref = useRef<HTMLFormElement>(null);
   useEffect(() => {
@@ -99,7 +97,7 @@ export function NameForm({ name }: { name: string }) {
       <Field name="name" label="Name" defaultValue={name} autoComplete="name" error={state.fieldErrors?.name} className="flex-1" />
       <SubmitButton pending={pending}>Save</SubmitButton>
       {state.ok && (
-        <p role="status" className="flex items-center gap-1 text-sm text-[#067d62]">
+        <p role="status" className="flex items-center gap-1 text-sm text-m-success">
           <CheckCircle2 className="size-4" aria-hidden /> Saved
         </p>
       )}
@@ -122,7 +120,7 @@ export function PasswordForm() {
       <div className="flex items-center gap-3">
         <SubmitButton pending={pending}>Change password</SubmitButton>
         {state.ok && (
-          <p role="status" className="flex items-center gap-1 text-sm text-[#067d62]">
+          <p role="status" className="flex items-center gap-1 text-sm text-m-success">
             <CheckCircle2 className="size-4" aria-hidden /> Password changed
           </p>
         )}
@@ -139,7 +137,7 @@ export function AddressForm({ initial }: { initial?: AddressValues }) {
   const e = state.errors ?? {};
   const v = { ...initial, ...state.values };
   return (
-    <form ref={ref} onSubmit={onSubmit} noValidate className="grid grid-cols-6 gap-3 rounded-lg border border-[#d5d9d9] p-4">
+    <form ref={ref} onSubmit={onSubmit} noValidate className="grid grid-cols-6 gap-3 rounded-lg border border-m-border p-4">
       {initial?.id && <input type="hidden" name="id" value={initial.id} />}
       <Field className="col-span-6 sm:col-span-3" name="fullName" label="Full name" autoComplete="shipping name" defaultValue={v.fullName} error={e.fullName} />
       <Field className="col-span-6 sm:col-span-3" name="phone" label="Phone number" autoComplete="shipping tel" defaultValue={v.phone} error={e.phone} />
@@ -147,7 +145,7 @@ export function AddressForm({ initial }: { initial?: AddressValues }) {
       <Field className="col-span-6" name="unit" label="Apt, suite, unit" optional autoComplete="shipping address-line2" defaultValue={v.unit ?? ""} error={e.unit} />
       <Field className="col-span-6 sm:col-span-3" name="city" label="City" autoComplete="shipping address-level2" defaultValue={v.city} error={e.city} />
       <div className="col-span-3 sm:col-span-2">
-        <label htmlFor="state" className="block text-[13px] font-bold text-[#0f1111]">
+        <label htmlFor="state" className="block text-[13px] font-bold text-m-ink">
           State
         </label>
         <select
@@ -169,19 +167,19 @@ export function AddressForm({ initial }: { initial?: AddressValues }) {
           ))}
         </select>
         {e.state && (
-          <p id="state-error" className="mt-1 text-xs text-[#c40000]">
+          <p id="state-error" className="mt-1 text-xs text-m-deal">
             {e.state}
           </p>
         )}
       </div>
       <Field className="col-span-3 sm:col-span-1" name="zip" label="ZIP" autoComplete="shipping postal-code" defaultValue={v.zip} error={e.zip} />
-      <label className="col-span-6 flex items-center gap-2 text-sm text-[#0f1111]">
-        <input type="checkbox" name="isDefault" defaultChecked={initial?.isDefault} className="size-4 accent-[#007185]" />
+      <label className="col-span-6 flex items-center gap-2 text-sm text-m-ink">
+        <input type="checkbox" name="isDefault" defaultChecked={initial?.isDefault} className="size-4 accent-m-accent" />
         Make this my default address
       </label>
       <div className="col-span-6 flex items-center gap-3">
         <SubmitButton pending={pending}>{initial?.id ? "Save changes" : "Add address"}</SubmitButton>
-        <Link href="/account#addresses" className="text-[13px] text-amz-link hover:text-amz-link-hover hover:underline">
+        <Link href="/account#addresses" className="text-[13px] text-m-accent-text hover:text-m-accent-hover hover:underline">
           Cancel
         </Link>
       </div>

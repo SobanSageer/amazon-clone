@@ -10,9 +10,9 @@ export default function AuthLayout({ children }: { children: React.ReactNode }) 
         <Link
           href="/"
           aria-label={`${site.name} home`}
-          className="rounded-sm px-2 py-1 focus-visible:outline-2 focus-visible:outline-amber-500"
+          className="rounded-sm px-2 py-1 focus-visible:outline-2 focus-visible:outline-m-accent"
         >
-          <Wordmark tone="dark" />
+          <Wordmark />
         </Link>
       </header>
       <main id="main" className="flex-1">

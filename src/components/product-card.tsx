@@ -32,7 +32,7 @@ export function ProductCard({
   const delivery = deliveryEstimate(product.shipping, product.price);
   return (
     <article className="group relative flex h-full flex-col">
-      <div className="relative aspect-square overflow-hidden bg-[#f7f7f7]">
+      <div className="relative aspect-square overflow-hidden rounded-t-lg bg-m-muted">
         <Image
           src={product.thumbnail}
           alt=""
@@ -44,12 +44,12 @@ export function ProductCard({
       </div>
       <div className="flex flex-1 flex-col gap-1 pt-2">
         {variant === "grid" && product.brand && (
-          <p className="text-[13px] font-bold leading-tight text-[#0f1111]">{product.brand}</p>
+          <p className="text-[13px] font-bold leading-tight text-m-ink">{product.brand}</p>
         )}
         <h3 className={variant === "grid" ? "line-clamp-3 text-[15px] leading-snug" : "line-clamp-2 text-sm leading-snug"}>
           <Link
             href={`/product/${product.slug}`}
-            className="text-[#0f1111] outline-none after:absolute after:inset-0 hover:text-amz-link-hover focus-visible:underline"
+            className="text-m-ink outline-none after:absolute after:inset-0 hover:text-m-accent focus-visible:underline"
           >
             {product.title}
           </Link>
@@ -58,7 +58,7 @@ export function ProductCard({
         <Price value={product.price} className="mt-0.5" />
         {variant === "grid" && (
           <>
-            <p className="text-xs text-[#0f1111]">
+            <p className="text-xs text-m-ink">
               {delivery.free ? (
                 <>
                   <span className="font-bold">FREE delivery</span> {delivery.short}
@@ -70,7 +70,7 @@ export function ProductCard({
               )}
             </p>
             {product.stock > 0 && product.stock < 10 && (
-              <p className="text-xs text-amz-deal">Only {product.stock} left in stock - order soon.</p>
+              <p className="text-xs text-m-deal">Only {product.stock} left in stock - order soon.</p>
             )}
             <div className="mt-auto pt-2">
               {product.stock > 0 ? (
