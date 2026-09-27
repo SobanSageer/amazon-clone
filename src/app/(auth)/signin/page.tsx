@@ -35,7 +35,7 @@ export default async function SignInPage(props: PageProps<"/signin">) {
             {mode === "signup" ? <SignUpForm callbackUrl={callbackUrl} /> : <SignInForm callbackUrl={callbackUrl} />}
           </div>
           <p className="mt-4 text-xs leading-relaxed text-m-ink">
-            This is a portfolio clone, not Amazon. Don’t reuse your real Amazon password here.
+            Marlo is a portfolio project. Please use a new password here, not one you use elsewhere.
           </p>
           {mode === "signup" && (
             <p className="mt-4 border-t border-zinc-200 pt-4 text-[13px] text-m-ink">
