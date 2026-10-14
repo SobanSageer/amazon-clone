@@ -25,6 +25,8 @@ const HINT_MIN_MS = 20_000;
 const HINT_MAX_MS = 30_000;
 
 const subscribeNoop = () => () => {};
+const GREETED_KEY = "marlo:milo:greeted";
+const GREETING = "Hi, I'm Milo. How can I help?";
 
 function Card({ p }: { p: ProductCard }) {
   return (
@@ -100,6 +102,7 @@ export function AssistantWidget() {
   const [input, setInput] = useState("");
   const [busy, setBusy] = useState(false);
   const [hint, setHint] = useState<string | null>(null);
+  const [greeting, setGreeting] = useState(false);
   const [hintsOff, setHintsOff] = useState(false);
   const listRef = useRef<HTMLUListElement>(null);
   const inputRef = useRef<HTMLTextAreaElement>(null);
@@ -113,9 +116,25 @@ export function AssistantWidget() {
     listRef.current?.scrollTo({ top: listRef.current.scrollHeight, behavior: "smooth" });
   }, [messages, busy]);
 
+  // A standing greeting on arrival, once per session, until opened or dismissed.
+  useEffect(() => {
+    if (sessionStorage.getItem(GREETED_KEY)) return;
+    const t = window.setTimeout(() => setGreeting(true), 1200);
+    return () => clearTimeout(t);
+  }, []);
+
+  const closeGreeting = useCallback(() => {
+    setGreeting(false);
+    try {
+      sessionStorage.setItem(GREETED_KEY, "1");
+    } catch {
+      // private mode — it just greets again next load
+    }
+  }, []);
+
   // Rotating hint bubble while the panel is closed.
   useEffect(() => {
-    if (open || hintsOff) return;
+    if (open || hintsOff || greeting) return;
     let i = Math.floor(Math.random() * HINTS.length);
     const schedule = () =>
       window.setTimeout(
@@ -133,7 +152,7 @@ export function AssistantWidget() {
       clearTimeout(timer);
       clearTimeout(hideTimer);
     };
-  }, [open, hintsOff]);
+  }, [open, hintsOff, greeting]);
 
   useEffect(() => {
     if (!open) return;
@@ -188,39 +207,48 @@ export function AssistantWidget() {
   return (
     <>
       {/* Launcher */}
-      <div className="fixed bottom-4 left-4 z-50 flex items-end gap-2 print:hidden">
-        <button
-          type="button"
-          onClick={() => setOpen((v) => !v)}
-          aria-expanded={open}
-          aria-label={open ? `Close ${ASSISTANT_NAME}` : `Open ${ASSISTANT_NAME}, the shopping assistant`}
-          className="size-14 rounded-full bg-m-surface p-1.5 shadow-[0_6px_20px_rgba(15,95,87,0.22)] ring-1 ring-m-border transition-transform hover:scale-105 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-m-accent sm:size-16"
-        >
-          <MiloCharacter listening={busy} />
-        </button>
-
-        {hint && !open && (
-          <div className="mb-2 flex max-w-[15rem] items-start gap-1 rounded-lg rounded-bl-sm border border-m-border bg-m-surface px-3 py-2 shadow-sm">
+      <div className="fixed bottom-4 right-4 z-50 flex items-end gap-2 print:hidden">
+        {(greeting || hint) && !open && (
+          <div className="order-first mb-3 flex max-w-[15rem] items-start gap-1 rounded-lg rounded-br-sm border border-m-border bg-m-surface px-3 py-2 shadow-md">
             <button
               type="button"
-              onClick={() => setOpen(true)}
+              onClick={() => {
+                closeGreeting();
+                setOpen(true);
+              }}
               className="text-left text-[13px] leading-snug text-m-ink hover:text-m-accent"
             >
-              {hint}
+              {greeting ? GREETING : hint}
             </button>
             <button
               type="button"
               onClick={() => {
-                setHint(null);
-                setHintsOff(true);
+                if (greeting) closeGreeting();
+                else {
+                  setHint(null);
+                  setHintsOff(true);
+                }
               }}
-              aria-label="Dismiss hint"
+              aria-label="Dismiss message"
               className="-mr-1 -mt-1 shrink-0 rounded p-1 text-m-dim hover:text-m-ink focus-visible:outline-2 focus-visible:outline-m-accent"
             >
               <X className="size-3.5" aria-hidden />
             </button>
           </div>
         )}
+        <button
+          type="button"
+          onClick={() => {
+            closeGreeting();
+            setOpen((v) => !v);
+          }}
+          aria-expanded={open}
+          aria-label={open ? `Close ${ASSISTANT_NAME}` : `Open ${ASSISTANT_NAME}, the shopping assistant`}
+          className="h-[76px] w-[68px] drop-shadow-[0_6px_14px_rgba(15,95,87,0.25)] transition-transform hover:-translate-y-0.5 hover:scale-105 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-m-accent sm:h-[88px] sm:w-[78px]"
+        >
+          <MiloCharacter listening={busy} />
+        </button>
+
       </div>
 
       {/* Panel: non-modal, so the page stays usable while it's open. */}
@@ -233,7 +261,7 @@ export function AssistantWidget() {
           "fixed z-50 flex flex-col border-m-border bg-m-surface shadow-2xl print:hidden",
           // phones: bottom sheet. sm and up: full-height panel from the left.
           "inset-x-0 bottom-0 h-[78vh] rounded-t-2xl border-t",
-          "sm:inset-y-0 sm:left-0 sm:right-auto sm:h-full sm:w-[380px] sm:rounded-none sm:border-r sm:border-t-0",
+          "sm:inset-y-0 sm:right-0 sm:left-auto sm:h-full sm:w-[380px] sm:rounded-none sm:border-l sm:border-t-0",
         )}
       >
         <header className="flex shrink-0 items-center gap-2 border-b border-m-border bg-m-accent px-4 py-3 text-white sm:rounded-none">

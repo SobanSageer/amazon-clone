@@ -169,13 +169,36 @@
 }
 /* Milo, the shopping assistant. Keyframes live here rather than styled-jsx so the
    widget has no extra runtime dependency. */
-.milo-body {
-  transform-origin: 32px 58px;
+.milo * {
+  transform-box: view-box;
+}
+.milo-float {
+  transform-origin: 32px 64px;
   animation: milo-bob 3.2s ease-in-out infinite;
 }
 .milo-eyes {
-  transform-origin: 32px 37px;
+  transform-origin: 32px 27px;
   animation: milo-blink 5.5s infinite;
+}
+.milo-arm-right {
+  transform-origin: 42px 45px;
+  animation: milo-wave 2.6s ease-in-out infinite;
+}
+.milo-arm-left {
+  transform-origin: 22px 46px;
+  animation: milo-swing 3.2s ease-in-out infinite;
+}
+.milo-antenna {
+  transform-origin: 32px 6.5px;
+  animation: milo-pulse 2.4s ease-in-out infinite;
+}
+.milo-foot-l {
+  transform-origin: 25px 62px;
+  animation: milo-tap 1.8s ease-in-out infinite;
+}
+.milo-foot-r {
+  transform-origin: 39px 62px;
+  animation: milo-tap 1.8s ease-in-out infinite 0.9s;
 }
 .milo-dots circle {
   animation: milo-think 1.2s ease-in-out infinite;
@@ -185,11 +208,29 @@
 
 @keyframes milo-bob {
   0%, 100% { transform: translateY(0) rotate(0deg); }
-  50% { transform: translateY(-2.5px) rotate(-1.5deg); }
+  50% { transform: translateY(-2.5px) rotate(-1.2deg); }
 }
 @keyframes milo-blink {
   0%, 92%, 100% { transform: scaleY(1); }
   95% { transform: scaleY(0.1); }
+}
+@keyframes milo-wave {
+  0%, 60%, 100% { transform: rotate(0deg); }
+  70% { transform: rotate(-18deg); }
+  80% { transform: rotate(6deg); }
+  90% { transform: rotate(-12deg); }
+}
+@keyframes milo-swing {
+  0%, 100% { transform: rotate(0deg); }
+  50% { transform: rotate(6deg); }
+}
+@keyframes milo-pulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.25); opacity: 0.75; }
+}
+@keyframes milo-tap {
+  0%, 85%, 100% { transform: translateY(0); }
+  92% { transform: translateY(-2px); }
 }
 @keyframes milo-think {
   0%, 100% { opacity: 0.35; transform: translateY(0); }
@@ -197,5 +238,6 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .milo-body, .milo-eyes, .milo-dots circle { animation: none; }
+  .milo-float, .milo-eyes, .milo-arm-right, .milo-arm-left,
+  .milo-antenna, .milo-foot-l, .milo-foot-r, .milo-dots circle { animation: none; }
 }
