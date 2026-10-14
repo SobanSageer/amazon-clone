@@ -301,7 +301,7 @@ export function AssistantWidget() {
         )}
       >
         <header className="flex shrink-0 items-center gap-2 border-b border-m-border bg-m-accent px-4 py-3 text-white sm:rounded-none">
-          <span className="size-8 shrink-0">
+          <span className="h-9 w-8 shrink-0">
             <MiloCharacter />
           </span>
           <span className="min-w-0 flex-1">
