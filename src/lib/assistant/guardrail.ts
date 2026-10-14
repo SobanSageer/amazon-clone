@@ -51,8 +51,10 @@ export function isRelevant(message: string, products: RetrievedProduct[]) {
     .split(/[^a-z0-9]+/)
     .filter((t) => t.length >= 3 && !WORD_STOP.has(t));
   if (!tokens.length) return false;
+  // Match the fields retrieval itself searches, description included: "what headphones
+  // do you have" matches AirPods Max on its description, and rejecting that was wrong.
   return products.some((p) => {
-    const haystack = `${p.title} ${p.brand ?? ""} ${p.category}`.toLowerCase();
+    const haystack = `${p.title} ${p.brand ?? ""} ${p.category} ${p.description}`.toLowerCase();
     return tokens.some((t) => haystack.includes(t));
   });
 }
