@@ -25,7 +25,11 @@ STYLE:
 - Plain text and markdown links only. No code blocks, no tables, no images.`;
 
 export type CartLine = { title: string; slug: string; quantity: number; price: number; lineTotal: number; stock: number };
-export type CartSnapshot = { items: CartLine[]; itemCount: number; subtotal: number; freeShippingRemaining: number };
+export type CartSnapshot = {
+  items: CartLine[];
+  itemCount: number;
+  subtotal: number;
+} & ({ qualifiesForFreeShipping: true } | { amountToFreeShipping: number });
 
 export function buildUserMessage(question: string, products: RetrievedProduct[], cart?: CartSnapshot | null) {
   const catalogue = products.map((p) => ({

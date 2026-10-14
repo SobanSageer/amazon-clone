@@ -244,7 +244,7 @@ export function AssistantWidget() {
       {/* Launcher */}
       <div className="fixed bottom-4 right-4 z-50 flex items-end gap-2 print:hidden">
         {(greeting || hint) && !open && (
-          <div className="order-first mb-3 flex max-w-[15rem] items-start gap-1 rounded-lg rounded-br-sm border border-m-border bg-m-surface px-3 py-2 shadow-md">
+          <div className="order-first mb-3 flex max-w-[11.5rem] items-start gap-1 sm:max-w-[15rem] rounded-lg rounded-br-sm border border-m-border bg-m-surface px-3 py-2 shadow-md">
             <button
               type="button"
               onClick={() => {
@@ -279,7 +279,7 @@ export function AssistantWidget() {
           }}
           aria-expanded={open}
           aria-label={open ? `Close ${ASSISTANT_NAME}` : `Open ${ASSISTANT_NAME}, the shopping assistant`}
-          className="h-[76px] w-[68px] drop-shadow-[0_6px_14px_rgba(15,95,87,0.25)] transition-transform hover:-translate-y-0.5 hover:scale-105 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-m-accent sm:h-[88px] sm:w-[78px]"
+          className="h-16 w-14 drop-shadow-[0_6px_14px_rgba(15,95,87,0.25)] transition-transform hover:-translate-y-0.5 hover:scale-105 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-m-accent sm:h-[88px] sm:w-[78px]"
         >
           <MiloCharacter listening={busy} />
         </button>
@@ -295,7 +295,7 @@ export function AssistantWidget() {
         className={cn(
           "fixed z-50 flex flex-col border-m-border bg-m-surface shadow-2xl print:hidden",
           // phones: bottom sheet. sm and up: full-height panel from the left.
-          "inset-x-0 bottom-0 h-[78vh] rounded-t-2xl border-t",
+          "inset-x-0 bottom-0 h-[78dvh] rounded-t-2xl border-t",
           // Opens on the same side as Milo.
           "sm:inset-y-0 sm:right-0 sm:left-auto sm:h-full sm:w-[380px] sm:rounded-none sm:border-l sm:border-t-0",
         )}
@@ -359,7 +359,7 @@ export function AssistantWidget() {
             e.preventDefault();
             send(input);
           }}
-          className="flex shrink-0 items-end gap-2 border-t border-m-border p-3"
+          className="flex shrink-0 items-end gap-2 border-t border-m-border p-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] sm:pb-3"
         >
           <label htmlFor="milo-input" className="sr-only">
             Ask {ASSISTANT_NAME} about products

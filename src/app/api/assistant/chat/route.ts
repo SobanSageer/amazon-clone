@@ -128,7 +128,9 @@ export async function POST(request: Request) {
         })),
         itemCount: lines.reduce((n, l) => n + l.quantity, 0),
         subtotal: Math.round(subtotal * 100) / 100,
-        freeShippingRemaining: Math.max(0, Math.round((FREE_SHIPPING_THRESHOLD - subtotal) * 100) / 100),
+        ...(subtotal >= FREE_SHIPPING_THRESHOLD
+          ? { qualifiesForFreeShipping: true as const }
+          : { amountToFreeShipping: Math.round((FREE_SHIPPING_THRESHOLD - subtotal) * 100) / 100 }),
       };
       cartCards = lines.map((l) => ({
         slug: l.product.slug,
