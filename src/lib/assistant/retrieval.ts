@@ -56,16 +56,20 @@ export async function retrieveProducts(question: string): Promise<RetrievedProdu
              ts_rank(to_tsvector('english', c."name"), q) AS catrank,
              (
                SELECT count(*) FROM unnest(${likeTokens}::text[]) AS t
-               WHERE p."title" ILIKE '%' || t || '%'
-                  OR coalesce(p."brand", '') ILIKE '%' || t || '%'
-                  OR c."name" ILIKE '%' || t || '%'
-             ) AS lex
+               WHERE p."title" ILIKE '%' || t || '%' OR coalesce(p."brand", '') ILIKE '%' || t || '%'
+             ) AS lex_title,
+             (
+               SELECT count(*) FROM unnest(${likeTokens}::text[]) AS t
+               WHERE c."name" ILIKE '%' || t || '%'
+             ) AS lex_cat
       FROM "Product" p
       JOIN "Category" c ON c."id" = p."categoryId"
       , to_tsquery('english', ${tsquery}) AS q
     ) scored
-    WHERE fts > 0 OR catrank > 0 OR lex > 0
-    ORDER BY (fts + 0.3 * catrank + 0.25 * lex) DESC, "rating" DESC
+    WHERE fts > 0 OR catrank > 0 OR lex_title > 0 OR lex_cat > 0
+    -- A title hit ("iPhone X") must outrank a category hit, or asking for a phone
+    -- returns everything filed under Phone Accessories.
+    ORDER BY (fts + 0.3 * catrank + 0.5 * lex_title + 0.12 * lex_cat) DESC, "rating" DESC
     LIMIT ${MAX_MATCHES}
   `;
 
