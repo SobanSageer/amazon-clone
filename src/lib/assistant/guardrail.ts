@@ -17,6 +17,15 @@ const PROBING =
 const OFF_TOPIC =
   /\b(who is|who was|capital of|president|prime minister|weather|news|translate|write (me )?(a |an )?(poem|essay|code|script|story)|python|javascript|sql query|solve|calculate|math|recipe for|diagnose|symptom|medical|legal advice|stock price|bitcoin|crypto)\b/i;
 
+// Questions about the shopper's own cart are answered from the cart rows, not the
+// catalogue search, so they skip the relevance gate.
+const CART_INTENT =
+  /\b(my|the)\s+(cart|basket|bag)\b|\bin my cart\b|\bcart total\b|\bwhat('?s| is| have i)?\s+(in|added to)\b.*\bcart\b|\bcheckout total\b|\bhow much.*\b(cart|basket)\b/i;
+
+export function isCartQuestion(message: string) {
+  return CART_INTENT.test(message);
+}
+
 export type Screen = { allow: true } | { allow: false; reply: string };
 
 export function screenQuestion(message: string): Screen {

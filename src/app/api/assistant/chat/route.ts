@@ -8,8 +8,11 @@ import {
   SYSTEM_INSTRUCTIONS,
   type ChatTurn,
 } from "@/lib/assistant/prompt";
-import { isRelevant, screenQuestion } from "@/lib/assistant/guardrail";
+import { isCartQuestion, isRelevant, screenQuestion } from "@/lib/assistant/guardrail";
 import { retrieveProducts, topCategories, type RetrievedProduct } from "@/lib/assistant/retrieval";
+import { getCartItems, getCartOwner } from "@/lib/cart";
+import { FREE_SHIPPING_THRESHOLD } from "@/lib/pricing";
+import type { CartSnapshot } from "@/lib/assistant/prompt";
 
 export const dynamic = "force-dynamic";
 export const maxDuration = 30;
@@ -106,6 +109,54 @@ export async function POST(request: Request) {
     return new Response(refusal, { headers: { "Content-Type": "application/x-ndjson", "Cache-Control": "no-store" } });
   }
 
+  let cartCards: ReturnType<typeof cardFor>[] = [];
+  // The shopper's own cart is a second grounded source — real rows, same rules.
+  const wantsCart = isCartQuestion(message);
+  let cart: CartSnapshot | null = null;
+  if (wantsCart) {
+    try {
+      const lines = await getCartItems(await getCartOwner({ create: false }));
+      const subtotal = lines.reduce((sum, l) => sum + l.quantity * l.product.price, 0);
+      cart = {
+        items: lines.map((l) => ({
+          title: l.product.title,
+          slug: l.product.slug,
+          quantity: l.quantity,
+          price: l.product.price,
+          lineTotal: Math.round(l.quantity * l.product.price * 100) / 100,
+          stock: l.product.stock,
+        })),
+        itemCount: lines.reduce((n, l) => n + l.quantity, 0),
+        subtotal: Math.round(subtotal * 100) / 100,
+        freeShippingRemaining: Math.max(0, Math.round((FREE_SHIPPING_THRESHOLD - subtotal) * 100) / 100),
+      };
+      cartCards = lines.map((l) => ({
+        slug: l.product.slug,
+        title: l.product.title,
+        price: l.product.price,
+        rating: 0,
+        ratingCount: 0,
+        stock: l.product.stock,
+        thumbnail: l.product.thumbnail,
+      }));
+    } catch (err) {
+      console.error("[assistant] cart lookup failed", err);
+    }
+
+    if (cart && cart.items.length === 0) {
+      const empty = new ReadableStream({
+        start(controller) {
+          controller.enqueue(line({ type: "products", products: [] }));
+          controller.enqueue(
+            line({ type: "text", v: "Your cart is empty right now. Tell me what you're after and I'll find something — or browse [all products](/search)." }),
+          );
+          controller.close();
+        },
+      });
+      return new Response(empty, { headers: { "Content-Type": "application/x-ndjson", "Cache-Control": "no-store" } });
+    }
+  }
+
   let products: RetrievedProduct[] = [];
   try {
     products = await retrieveProducts(message);
@@ -116,7 +167,7 @@ export async function POST(request: Request) {
 
   // Nothing matched, or the matches are incidental: answer deterministically instead
   // of asking the model to improvise.
-  if (products.length === 0 || !isRelevant(message, products)) {
+  if (!cart && (products.length === 0 || !isRelevant(message, products))) {
     const categories = await topCategories().catch(() => []);
     const stream = new ReadableStream({
       start(controller) {
@@ -131,7 +182,7 @@ export async function POST(request: Request) {
   const stream = new ReadableStream({
     async start(controller) {
       // Cards go out before the model runs, so matches still render if it fails.
-      controller.enqueue(line({ type: "products", products: products.map(cardFor) }));
+      controller.enqueue(line({ type: "products", products: [...cartCards, ...products.map(cardFor)] }));
       if (!GROQ_API_KEY) {
         controller.enqueue(line({ type: "error", message: "The assistant isn't configured yet (missing GROQ_API_KEY)." }));
         controller.close();
@@ -152,7 +203,7 @@ export async function POST(request: Request) {
               messages: [
                 { role: "system", content: SYSTEM_INSTRUCTIONS },
                 ...history.map((t) => ({ role: t.role, content: t.content })),
-                { role: "user", content: buildUserMessage(message, products) },
+                { role: "user", content: buildUserMessage(message, products, cart) },
               ],
             }),
           });
