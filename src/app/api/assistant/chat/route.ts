@@ -8,6 +8,7 @@ import {
   SYSTEM_INSTRUCTIONS,
   type ChatTurn,
 } from "@/lib/assistant/prompt";
+import { isRelevant, screenQuestion } from "@/lib/assistant/guardrail";
 import { retrieveProducts, topCategories, type RetrievedProduct } from "@/lib/assistant/retrieval";
 
 export const dynamic = "force-dynamic";
@@ -92,6 +93,19 @@ export async function POST(request: Request) {
     return Response.json({ error: "You're sending messages quite fast — give me a few seconds." }, { status: 429 });
   }
 
+  // Screen before spending a model call or leaking scope.
+  const screen = screenQuestion(message);
+  if (!screen.allow) {
+    const refusal = new ReadableStream({
+      start(controller) {
+        controller.enqueue(line({ type: "products", products: [] }));
+        controller.enqueue(line({ type: "text", v: screen.reply }));
+        controller.close();
+      },
+    });
+    return new Response(refusal, { headers: { "Content-Type": "application/x-ndjson", "Cache-Control": "no-store" } });
+  }
+
   let products: RetrievedProduct[] = [];
   try {
     products = await retrieveProducts(message);
@@ -100,8 +114,9 @@ export async function POST(request: Request) {
     return Response.json({ error: "I couldn't reach the catalogue just now. Please try again." }, { status: 503 });
   }
 
-  // Nothing matched: answer deterministically instead of asking the model to improvise.
-  if (products.length === 0) {
+  // Nothing matched, or the matches are incidental: answer deterministically instead
+  // of asking the model to improvise.
+  if (products.length === 0 || !isRelevant(message, products)) {
     const categories = await topCategories().catch(() => []);
     const stream = new ReadableStream({
       start(controller) {

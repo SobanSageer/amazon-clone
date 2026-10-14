@@ -108,19 +108,66 @@ export async function streamReply(
   }
 }
 
-// Splits "text [label](/product/slug) more" into renderable pieces.
-export function parseLinks(text: string) {
-  const parts: ({ type: "text"; value: string } | { type: "link"; label: string; href: string })[] = [];
-  const re = /\[([^\]]+)\]\((\/[^)\s]*)\)/g;
+// Minimal markdown the assistant actually emits: bold, italic, links and bullet
+// lists. Parsed into data and rendered as React elements — never raw HTML.
+export type Inline =
+  | { type: "text"; value: string }
+  | { type: "bold"; value: string }
+  | { type: "italic"; value: string }
+  | { type: "link"; label: string; href: string };
+
+export type Block = { type: "p"; inline: Inline[] } | { type: "ul"; items: Inline[][] };
+
+const INLINE_RE = /\[([^\]]+)\]\(([^)\s]+)\)|\*\*([^*]+)\*\*|(?<![\w*])\*([^*\n]+)\*(?!\w)|(?<![\w_])_([^_\n]+)_(?!\w)/g;
+
+export function parseInline(text: string): Inline[] {
+  const parts: Inline[] = [];
   let last = 0;
   let m: RegExpExecArray | null;
-  while ((m = re.exec(text))) {
+  INLINE_RE.lastIndex = 0;
+  while ((m = INLINE_RE.exec(text))) {
     if (m.index > last) parts.push({ type: "text", value: text.slice(last, m.index) });
-    parts.push({ type: "link", label: m[1], href: m[2] });
+    if (m[1] !== undefined) parts.push({ type: "link", label: m[1], href: m[2] });
+    else if (m[3] !== undefined) parts.push({ type: "bold", value: m[3] });
+    else parts.push({ type: "italic", value: (m[4] ?? m[5]) as string });
     last = m.index + m[0].length;
   }
   if (last < text.length) parts.push({ type: "text", value: text.slice(last) });
   return parts;
+}
+
+export function parseBlocks(text: string): Block[] {
+  const blocks: Block[] = [];
+  let paragraph: string[] = [];
+  let list: string[] = [];
+
+  const flushParagraph = () => {
+    const joined = paragraph.join(" ").trim();
+    if (joined) blocks.push({ type: "p", inline: parseInline(joined) });
+    paragraph = [];
+  };
+  const flushList = () => {
+    if (list.length) blocks.push({ type: "ul", items: list.map(parseInline) });
+    list = [];
+  };
+
+  for (const rawLine of text.split("\n")) {
+    const line = rawLine.trim();
+    const bullet = /^[-*•]\s+(.*)$/.exec(line);
+    if (bullet) {
+      flushParagraph();
+      list.push(bullet[1]);
+    } else if (!line) {
+      flushParagraph();
+      flushList();
+    } else {
+      flushList();
+      paragraph.push(line);
+    }
+  }
+  flushParagraph();
+  flushList();
+  return blocks;
 }
 
 // Only show cards for products the reply actually named.

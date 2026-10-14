@@ -11,8 +11,9 @@ import {
   loadHistory,
   MAX_INPUT_CHARS,
   type Message,
+  type Inline,
   mentionedProducts,
-  parseLinks,
+  parseBlocks,
   type ProductCard,
   saveHistory,
   STARTERS,
@@ -49,6 +50,24 @@ function Card({ p }: { p: ProductCard }) {
   );
 }
 
+function InlineRun({ parts }: { parts: Inline[] }) {
+  return (
+    <>
+      {parts.map((part, i) => {
+        if (part.type === "bold") return <strong key={i} className="font-bold">{part.value}</strong>;
+        if (part.type === "italic") return <em key={i}>{part.value}</em>;
+        if (part.type === "link")
+          return (
+            <Link key={i} href={part.href} className="font-medium text-m-accent-text underline underline-offset-2">
+              {part.label}
+            </Link>
+          );
+        return <span key={i}>{part.value}</span>;
+      })}
+    </>
+  );
+}
+
 function Bubble({ m }: { m: Message }) {
   const cards = mentionedProducts(m.text, m.products);
   if (m.role === "user") {
@@ -62,22 +81,28 @@ function Bubble({ m }: { m: Message }) {
   }
   return (
     <li className="flex flex-col gap-2">
-      <p
+      <div
         className={cn(
-          "max-w-[92%] whitespace-pre-wrap rounded-lg rounded-bl-sm px-3 py-2 text-sm",
+          "flex max-w-[92%] flex-col gap-2 rounded-lg rounded-bl-sm px-3 py-2 text-sm",
           m.failed ? "bg-m-error-bg text-m-ink" : "bg-m-muted text-m-ink",
         )}
       >
-        {parseLinks(m.text).map((part, i) =>
-          part.type === "text" ? (
-            <span key={i}>{part.value}</span>
+        {parseBlocks(m.text).map((block, bi) =>
+          block.type === "p" ? (
+            <p key={bi}>
+              <InlineRun parts={block.inline} />
+            </p>
           ) : (
-            <Link key={i} href={part.href} className="font-medium text-m-accent-text underline underline-offset-2">
-              {part.label}
-            </Link>
+            <ul key={bi} className="flex list-disc flex-col gap-1 pl-4">
+              {block.items.map((item, ii) => (
+                <li key={ii}>
+                  <InlineRun parts={item} />
+                </li>
+              ))}
+            </ul>
           ),
         )}
-      </p>
+      </div>
       {cards.length > 0 && (
         <ul className="flex flex-col gap-2">
           {cards.map((p) => (
