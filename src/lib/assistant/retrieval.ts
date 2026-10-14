@@ -19,13 +19,12 @@ export const MAX_MATCHES = 8;
 // Words → an OR'd prefix tsquery ("wireless head" → 'wireless:* | head:*"). OR rather than
 // AND keeps recall up for natural questions ("something cheap for the kitchen"); ts_rank
 // then sorts the good matches to the top.
-function toTsQuery(question: string) {
-  const tokens = question
+function queryTokens(question: string) {
+  return question
     .toLowerCase()
     .split(/[^a-z0-9]+/)
     .filter((t) => t.length >= 2 && !STOPWORDS.has(t))
     .slice(0, 8);
-  return tokens.map((t) => `${t}:*`).join(" | ");
 }
 
 const STOPWORDS = new Set([
@@ -37,20 +36,36 @@ const STOPWORDS = new Set([
 type Row = Omit<RetrievedProduct, "price" | "rating"> & { price: string | number; rating: number };
 
 export async function retrieveProducts(question: string): Promise<RetrievedProduct[]> {
-  const tsquery = toTsQuery(question);
-  if (!tsquery) return [];
+  const tokens = queryTokens(question);
+  if (!tokens.length) return [];
+  const tsquery = tokens.map((t) => `${t}:*`).join(" | ");
+  // Full-text matches whole words, so "phone" never reaches "iPhone" or "Smartphones".
+  // A substring pass over title/brand/category catches those; with 184 products the
+  // scan is free, and it only ever adds candidates the ranking then orders.
+  const likeTokens = tokens.filter((t) => t.length >= 3);
 
   // Rank title/brand/description (weighted in the stored vector) and give a smaller
   // boost when the category name itself matches.
   const rows = await db.$queryRaw<Row[]>`
-    SELECT p."slug", p."title", p."brand", c."name" AS "category", p."price"::text AS "price",
-           p."rating", p."ratingCount", p."stock", p."description", p."thumbnail"
-    FROM "Product" p
-    JOIN "Category" c ON c."id" = p."categoryId"
-    , to_tsquery('english', ${tsquery}) AS q
-    WHERE p."searchVector" @@ q OR to_tsvector('english', c."name") @@ q
-    ORDER BY (ts_rank(p."searchVector", q) + 0.3 * ts_rank(to_tsvector('english', c."name"), q)) DESC,
-             p."rating" DESC
+    SELECT "slug", "title", "brand", "category", "price", "rating", "ratingCount", "stock",
+           "description", "thumbnail"
+    FROM (
+      SELECT p."slug", p."title", p."brand", c."name" AS "category", p."price"::text AS "price",
+             p."rating", p."ratingCount", p."stock", p."description", p."thumbnail",
+             ts_rank(p."searchVector", q) AS fts,
+             ts_rank(to_tsvector('english', c."name"), q) AS catrank,
+             (
+               SELECT count(*) FROM unnest(${likeTokens}::text[]) AS t
+               WHERE p."title" ILIKE '%' || t || '%'
+                  OR coalesce(p."brand", '') ILIKE '%' || t || '%'
+                  OR c."name" ILIKE '%' || t || '%'
+             ) AS lex
+      FROM "Product" p
+      JOIN "Category" c ON c."id" = p."categoryId"
+      , to_tsquery('english', ${tsquery}) AS q
+    ) scored
+    WHERE fts > 0 OR catrank > 0 OR lex > 0
+    ORDER BY (fts + 0.3 * catrank + 0.25 * lex) DESC, "rating" DESC
     LIMIT ${MAX_MATCHES}
   `;
 
