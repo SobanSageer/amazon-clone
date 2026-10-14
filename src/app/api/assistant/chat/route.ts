@@ -1,6 +1,5 @@
 import { randomUUID } from "node:crypto";
 import { cookies } from "next/headers";
-import { GoogleGenerativeAI } from "@google/generative-ai";
 import {
   buildUserMessage,
   HISTORY_TURNS,
@@ -14,11 +13,12 @@ import { retrieveProducts, topCategories, type RetrievedProduct } from "@/lib/as
 export const dynamic = "force-dynamic";
 export const maxDuration = 30;
 
-// Temporary free-tier Gemini key: set GEMINI_API_KEY in the Vercel project and rotate it
+// Temporary free-tier Groq key: set GROQ_API_KEY in the Vercel project and rotate it
 // whenever it leaks. Deliberately not hardcoded — this repo is public, and a committed key
 // is scraped within minutes.
-const GEMINI_API_KEY = process.env.GEMINI_API_KEY ?? "";
-const MODEL = "gemini-2.0-flash";
+const GROQ_API_KEY = process.env.GROQ_API_KEY ?? "";
+const GROQ_URL = "https://api.groq.com/openai/v1/chat/completions";
+const MODEL = "llama-3.3-70b-versatile";
 
 const SESSION_COOKIE = "assistant_session";
 const RATE_LIMIT = { windowMs: 60_000, max: 10 };
@@ -112,26 +112,64 @@ export async function POST(request: Request) {
     return new Response(stream, { headers: { "Content-Type": "application/x-ndjson", "Cache-Control": "no-store" } });
   }
 
-  const model = !GEMINI_API_KEY ? null : new GoogleGenerativeAI(GEMINI_API_KEY).getGenerativeModel({
-    model: MODEL,
-    systemInstruction: SYSTEM_INSTRUCTIONS,
-    generationConfig: { temperature: 0.2, maxOutputTokens: 500 },
-  });
-
   const stream = new ReadableStream({
     async start(controller) {
       // Cards go out before the model runs, so matches still render if it fails.
       controller.enqueue(line({ type: "products", products: products.map(cardFor) }));
-      if (!model) {
-        controller.enqueue(line({ type: "error", message: "The assistant isn't configured yet (missing GEMINI_API_KEY)." }));
+      if (!GROQ_API_KEY) {
+        controller.enqueue(line({ type: "error", message: "The assistant isn't configured yet (missing GROQ_API_KEY)." }));
         controller.close();
         return;
       }
       try {
-        const result = await model.generateContentStream(buildUserMessage(message, products, history));
-        for await (const chunk of result.stream) {
-          const text = chunk.text();
-          if (text) controller.enqueue(line({ type: "text", v: text }));
+        const res = await fetch(GROQ_URL, {
+          method: "POST",
+          headers: { Authorization: `Bearer ${GROQ_API_KEY}`, "Content-Type": "application/json" },
+          body: JSON.stringify({
+            model: MODEL,
+            temperature: 0.2,
+            max_tokens: 500,
+            stream: true,
+            messages: [
+              { role: "system", content: SYSTEM_INSTRUCTIONS },
+              ...history.map((t) => ({ role: t.role, content: t.content })),
+              { role: "user", content: buildUserMessage(message, products) },
+            ],
+          }),
+        });
+
+        if (!res.ok || !res.body) {
+          const detail = await res.text().catch(() => "");
+          console.error("[assistant] groq rejected the call", res.status, detail.slice(0, 500));
+          controller.enqueue(
+            line({ type: "error", message: "I had trouble answering that one. Please try again in a moment." }),
+          );
+          controller.close();
+          return;
+        }
+
+        // Groq streams OpenAI-style SSE: "data: {json}" lines, ending with "data: [DONE]".
+        const reader = res.body.getReader();
+        const decoder = new TextDecoder();
+        let buffer = "";
+        for (;;) {
+          const { done, value } = await reader.read();
+          if (done) break;
+          buffer += decoder.decode(value, { stream: true });
+          const lines = buffer.split("\n");
+          buffer = lines.pop() ?? "";
+          for (const raw of lines) {
+            const payload = raw.trim();
+            if (!payload.startsWith("data:")) continue;
+            const data = payload.slice(5).trim();
+            if (!data || data === "[DONE]") continue;
+            try {
+              const token = JSON.parse(data)?.choices?.[0]?.delta?.content;
+              if (token) controller.enqueue(line({ type: "text", v: token }));
+            } catch {
+              // partial frame — the next chunk completes it
+            }
+          }
         }
       } catch (err) {
         console.error("[assistant] model call failed", err);
