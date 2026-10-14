@@ -54,8 +54,18 @@ function InlineRun({ parts }: { parts: Inline[] }) {
   return (
     <>
       {parts.map((part, i) => {
-        if (part.type === "bold") return <strong key={i} className="font-bold">{part.value}</strong>;
-        if (part.type === "italic") return <em key={i}>{part.value}</em>;
+        if (part.type === "bold")
+          return (
+            <strong key={i} className="font-bold">
+              <InlineRun parts={part.parts} />
+            </strong>
+          );
+        if (part.type === "italic")
+          return (
+            <em key={i}>
+              <InlineRun parts={part.parts} />
+            </em>
+          );
         if (part.type === "link")
           return (
             <Link key={i} href={part.href} className="font-medium text-m-accent-text underline underline-offset-2">

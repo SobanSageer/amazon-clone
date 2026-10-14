@@ -112,24 +112,28 @@ export async function streamReply(
 // lists. Parsed into data and rendered as React elements — never raw HTML.
 export type Inline =
   | { type: "text"; value: string }
-  | { type: "bold"; value: string }
-  | { type: "italic"; value: string }
+  | { type: "bold"; parts: Inline[] }
+  | { type: "italic"; parts: Inline[] }
   | { type: "link"; label: string; href: string };
 
 export type Block = { type: "p"; inline: Inline[] } | { type: "ul"; items: Inline[][] };
 
-const INLINE_RE = /\[([^\]]+)\]\(([^)\s]+)\)|\*\*([^*]+)\*\*|(?<![\w*])\*([^*\n]+)\*(?!\w)|(?<![\w_])_([^_\n]+)_(?!\w)/g;
+// Built per call: a shared /g regex carries lastIndex, which recursion would clobber.
+const inlineMatcher = () =>
+  /\[([^\]]+)\]\(([^)\s]+)\)|\*\*([^*]+)\*\*|(?<![\w*])\*([^*\n]+)\*(?!\w)|(?<![\w_])_([^_\n]+)_(?!\w)/g;
 
 export function parseInline(text: string): Inline[] {
   const parts: Inline[] = [];
   let last = 0;
   let m: RegExpExecArray | null;
-  INLINE_RE.lastIndex = 0;
-  while ((m = INLINE_RE.exec(text))) {
+  const re = inlineMatcher();
+  while ((m = re.exec(text))) {
     if (m.index > last) parts.push({ type: "text", value: text.slice(last, m.index) });
+    // Emphasis can wrap a link ("**[Title](/product/x)**"), so recurse into it
+    // instead of treating the contents as plain text.
     if (m[1] !== undefined) parts.push({ type: "link", label: m[1], href: m[2] });
-    else if (m[3] !== undefined) parts.push({ type: "bold", value: m[3] });
-    else parts.push({ type: "italic", value: (m[4] ?? m[5]) as string });
+    else if (m[3] !== undefined) parts.push({ type: "bold", parts: parseInline(m[3]) });
+    else parts.push({ type: "italic", parts: parseInline((m[4] ?? m[5]) as string) });
     last = m.index + m[0].length;
   }
   if (last < text.length) parts.push({ type: "text", value: text.slice(last) });
