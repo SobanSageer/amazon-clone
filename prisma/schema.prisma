@@ -68,6 +68,9 @@ model Product {
   reviews     Review[]
   listItems   ListItem[]
 
+  /// Postgres-generated tsvector (migration 7). Never written by Prisma; queried via raw SQL.
+  searchVector Unsupported("tsvector")?
+
   @@index([categoryId])
 }
 
