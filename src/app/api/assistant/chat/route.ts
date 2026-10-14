@@ -18,7 +18,8 @@ export const maxDuration = 30;
 // is scraped within minutes.
 const GROQ_API_KEY = process.env.GROQ_API_KEY ?? "";
 const GROQ_URL = "https://api.groq.com/openai/v1/chat/completions";
-const MODEL = "llama-3.3-70b-versatile";
+// Groq retires model ids periodically; fall through the list if one is rejected.
+const MODELS = ["llama-3.3-70b-versatile", "llama-3.1-8b-instant", "openai/gpt-oss-20b"];
 
 const SESSION_COOKIE = "assistant_session";
 const RATE_LIMIT = { windowMs: 60_000, max: 10 };
@@ -121,28 +122,39 @@ export async function POST(request: Request) {
         controller.close();
         return;
       }
+      let res: Response | null = null;
+      let lastError = "";
       try {
-        const res = await fetch(GROQ_URL, {
-          method: "POST",
-          headers: { Authorization: `Bearer ${GROQ_API_KEY}`, "Content-Type": "application/json" },
-          body: JSON.stringify({
-            model: MODEL,
-            temperature: 0.2,
-            max_tokens: 500,
-            stream: true,
-            messages: [
-              { role: "system", content: SYSTEM_INSTRUCTIONS },
-              ...history.map((t) => ({ role: t.role, content: t.content })),
-              { role: "user", content: buildUserMessage(message, products) },
-            ],
-          }),
-        });
+        for (const model of MODELS) {
+          const attempt = await fetch(GROQ_URL, {
+            method: "POST",
+            headers: { Authorization: `Bearer ${GROQ_API_KEY}`, "Content-Type": "application/json" },
+            body: JSON.stringify({
+              model,
+              temperature: 0.2,
+              max_tokens: 500,
+              stream: true,
+              messages: [
+                { role: "system", content: SYSTEM_INSTRUCTIONS },
+                ...history.map((t) => ({ role: t.role, content: t.content })),
+                { role: "user", content: buildUserMessage(message, products) },
+              ],
+            }),
+          });
+          if (attempt.ok && attempt.body) {
+            res = attempt;
+            break;
+          }
+          const detail = await attempt.text().catch(() => "");
+          lastError = `${attempt.status} ${detail.slice(0, 200)}`;
+          console.error("[assistant] groq rejected the call", model, lastError);
+          // Auth and quota problems won't be fixed by trying another model.
+          if (attempt.status === 401 || attempt.status === 403 || attempt.status === 429) break;
+        }
 
-        if (!res.ok || !res.body) {
-          const detail = await res.text().catch(() => "");
-          console.error("[assistant] groq rejected the call", res.status, detail.slice(0, 500));
+        if (!res || !res.body) {
           controller.enqueue(
-            line({ type: "error", message: "I had trouble answering that one. Please try again in a moment." }),
+            line({ type: "error", message: `I couldn't reach the model. (Groq: ${lastError || "no response"})` }),
           );
           controller.close();
           return;
