@@ -261,7 +261,9 @@ export function AssistantWidget() {
           "fixed z-50 flex flex-col border-m-border bg-m-surface shadow-2xl print:hidden",
           // phones: bottom sheet. sm and up: full-height panel from the left.
           "inset-x-0 bottom-0 h-[78vh] rounded-t-2xl border-t",
-          "sm:inset-y-0 sm:right-0 sm:left-auto sm:h-full sm:w-[380px] sm:rounded-none sm:border-l sm:border-t-0",
+          // Panel stays on the left: on the right it would cover the header's cart and
+          // account controls, which sit top-right.
+          "sm:inset-y-0 sm:left-0 sm:right-auto sm:h-full sm:w-[380px] sm:rounded-none sm:border-r sm:border-t-0",
         )}
       >
         <header className="flex shrink-0 items-center gap-2 border-b border-m-border bg-m-accent px-4 py-3 text-white sm:rounded-none">
