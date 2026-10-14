@@ -112,14 +112,7 @@ export async function POST(request: Request) {
     return new Response(stream, { headers: { "Content-Type": "application/x-ndjson", "Cache-Control": "no-store" } });
   }
 
-  if (!GEMINI_API_KEY) {
-    return Response.json(
-      { error: "The assistant isn't configured yet (missing GEMINI_API_KEY)." },
-      { status: 503 },
-    );
-  }
-
-  const model = new GoogleGenerativeAI(GEMINI_API_KEY).getGenerativeModel({
+  const model = !GEMINI_API_KEY ? null : new GoogleGenerativeAI(GEMINI_API_KEY).getGenerativeModel({
     model: MODEL,
     systemInstruction: SYSTEM_INSTRUCTIONS,
     generationConfig: { temperature: 0.2, maxOutputTokens: 500 },
@@ -127,7 +120,13 @@ export async function POST(request: Request) {
 
   const stream = new ReadableStream({
     async start(controller) {
+      // Cards go out before the model runs, so matches still render if it fails.
       controller.enqueue(line({ type: "products", products: products.map(cardFor) }));
+      if (!model) {
+        controller.enqueue(line({ type: "error", message: "The assistant isn't configured yet (missing GEMINI_API_KEY)." }));
+        controller.close();
+        return;
+      }
       try {
         const result = await model.generateContentStream(buildUserMessage(message, products, history));
         for await (const chunk of result.stream) {

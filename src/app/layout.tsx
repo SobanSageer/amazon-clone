@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import { AssistantWidget } from "@/components/assistant/assistant-widget";
 import { site } from "@/lib/site";
 import "./globals.css";
 
@@ -13,7 +14,10 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="en" className={`h-full antialiased ${inter.className}`}>
-      <body className="flex min-h-full flex-col bg-m-page text-m-ink">{children}</body>
+      <body className="flex min-h-full flex-col bg-m-page text-m-ink">
+        {children}
+        <AssistantWidget />
+      </body>
     </html>
   );
 }
